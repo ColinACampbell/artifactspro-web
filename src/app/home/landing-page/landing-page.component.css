@@ -1,0 +1,18 @@
+.header
+{
+    height: 80px;
+    width: 100%;
+    background-color: indigo;
+    height: 70px;
+    box-shadow: 0px 0px 5px rgb(60, 4, 100);
+}
+
+.title
+{
+    margin: 0;
+    color:white;
+    position: relative;
+    top:20px;
+    left: 50px;
+    width: 300px;
+}
