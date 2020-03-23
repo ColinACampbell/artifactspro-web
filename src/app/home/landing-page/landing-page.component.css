@@ -2,9 +2,8 @@
 {
     height: 80px;
     width: 100%;
-    background-color: indigo;
+    background-color: #512DA8;
     height: 70px;
-    box-shadow: 0px 0px 5px rgb(60, 4, 100);
 }
 
 .title
@@ -12,7 +11,35 @@
     margin: 0;
     color:white;
     position: relative;
-    top:20px;
+    top:15px;
     left: 50px;
     width: 300px;
+}
+
+.nav
+{
+    flex: initial;
+}
+
+.intro-page
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.intro-container { 
+    margin-top: 100px;
+}
+
+.intro {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 70px;
+    text-align: center;
+}
+
+.emph
+{
+    color: #3597fa;
 }

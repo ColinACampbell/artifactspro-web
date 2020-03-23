@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('./../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .dark-primary-color    { background: #512DA8; }
-.default-primary-color { background: #673AB7; }
+.default-primary-color { background: #3597fa; }
 .light-primary-color   { background: #D1C4E9; }
 .text-primary-color    { color: #FFFFFF; }
 .accent-color          { background: #FFC107; }
