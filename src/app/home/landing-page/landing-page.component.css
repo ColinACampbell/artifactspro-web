@@ -48,3 +48,9 @@
 {
     margin-top: 80px;
 }
+
+@media only screen and (max-width: 909px) {
+    .img {
+      display: none;
+    }
+  }
