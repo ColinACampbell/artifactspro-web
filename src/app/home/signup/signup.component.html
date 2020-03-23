@@ -1,1 +1,27 @@
-<p>signup works!</p>
+<app-header></app-header>
+<div class="container">
+    <div style="width: 500px;">
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500>
+                <mat-label>Enter Your Email Address</mat-label>
+                <input matInput placeholder="Please enter your email" [type]='email'>
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <mat-hint>Enter Email</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500 >
+                <mat-label>Please Enter a Password</mat-label>
+                <input matInput placeholder="Please enter a secure password" [type]="'password'">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint>Enter Password</mat-hint>
+            </mat-form-field>
+        </p>
+        <p style="text-align:center">
+            <button mat-raised-button color="primary"> Login </button>
+        </p>
+    </div>
+    <div>
+        <img width="500" src="./../../../assets/undraw_reviewed_docs_neeb.svg">
+    </div>
+</div>
