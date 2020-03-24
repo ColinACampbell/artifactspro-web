@@ -11,7 +11,7 @@
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500>
                 <mat-label>Enter Your Email Address</mat-label>
-                <input matInput placeholder="Please enter your email" [type]='email' #email (focusout)='setEmail(email.value)'>
+                <input matInput placeholder="Please enter your email" [type]='email' #email>
                 <mat-icon matSuffix>account_circle</mat-icon>
                 <mat-hint>Enter Email</mat-hint>
             </mat-form-field>
@@ -19,13 +19,13 @@
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500 >
                 <mat-label>Please Enter a Password</mat-label>
-                <input matInput placeholder="Please enter a secure password" [type]="'password'" #password (focusout)="setPassword(password.value)">
+                <input matInput placeholder="Please enter a secure password" [type]="'password'" #password>
                 <mat-icon matSuffix>lock</mat-icon>
                 <mat-hint>Enter Password</mat-hint>
             </mat-form-field>
         </p>
         <p style="text-align:center">
-            <button mat-raised-button color="primary" (click)="login()"> Login </button>
+            <button mat-raised-button color="primary"> Login </button>
         </p>
     </div>
     <div class="img">
