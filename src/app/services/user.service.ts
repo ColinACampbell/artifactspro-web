@@ -9,8 +9,12 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   private url : String = 'http://localhost:3000/';
+  private prod:boolean = true; // make this is always false when testing
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    if (this.prod)
+      this.url = "https://artifactspro.herokuapp.com/"
+  }
 
   public signup(email:String,password:String)
   {
