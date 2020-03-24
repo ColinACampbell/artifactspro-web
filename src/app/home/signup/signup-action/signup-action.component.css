@@ -5,6 +5,12 @@
     margin-top: 10px;
 }
 
+.tab-item
+{
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-width:999px)
 {
     .img

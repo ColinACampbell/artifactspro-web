@@ -9,8 +9,30 @@
                     <h1 style="text-align: center;"> I would like to </h1>
                 </div>
                 <mat-tab-group mat-align-tabs="center">
-                    <mat-tab label="Create Organization/Business"> Content </mat-tab>
-                    <mat-tab label="Join Organization"> Content </mat-tab>
+                    <mat-tab label="Create Organization/Business">
+                        <div class="tab-item">
+                            <div>
+                                <p>
+                                    <mat-form-field appearance="outline" [style.width.px]=500>
+                                        <mat-label> Enter Name of Organization/Business</mat-label>
+                                        <input matInput placeholder="Please enter your email" [type]="'text'" #business>
+                                        <mat-icon matSuffix>account_circle</mat-icon>
+                                        <mat-hint>Enter Email</mat-hint>
+                                    </mat-form-field>
+                                </p>
+                                <p>
+                                    <mat-form-field appearance="outline" [style.width.px]=500>
+                                        <mat-label> Create Or</mat-label>
+                                        <input matInput placeholder="Please enter a secure password" [type]="'password'"
+                                            #password>
+                                        <mat-icon matSuffix>lock</mat-icon>
+                                        <mat-hint>Enter Password</mat-hint>
+                                    </mat-form-field>
+                                </p>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Join Organization (Using Code)"> Content </mat-tab>
                     <mat-tab label="Use Artifacts Pro for personal use"> Content </mat-tab>
                 </mat-tab-group>
 

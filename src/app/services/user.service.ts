@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class UserService {
 
-  private url : String = 'http://localhost:3000/';
-  private prod:boolean = true; // make this is always false when testing
+  private url: String = 'http://localhost:3000/';
+  private prod:boolean = false; // make this is always false when testing
 
   constructor(private httpClient: HttpClient) { 
     if (this.prod)
@@ -19,7 +19,7 @@ export class UserService {
   public signup(email:String,password:String)
   {
     let body = {email,password}
-    console.log(body);
+
     return this.httpClient
     .post(this.url+"api/user/signup/process-1",body,{
       withCredentials : true
