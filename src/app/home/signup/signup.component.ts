@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signup',
@@ -8,17 +10,40 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userServ:UserService) { }
+  constructor(private userServ:UserService,private router : Router,private snackBar:MatSnackBar) { }
+
+  private password:String;
+  private email:String;
 
   ngOnInit() {
   }
 
-  login()
+  login(email:String,password:String)
   {
-    this.userServ.signup("foo","foo").then((data)=>
+    this.password = password;
+    this.email = email;
+    if (this.password === '' || this.email === '')
     {
-      console.log(data);
+      alert("None of the fields can be empty")
+    }
+
+    console.log(this.email);
+    console.log(this.password)
+
+    this.userServ.signup(this.email,this.password).then((data)=>
+    {
+      let message = data['message'];
+      console.log(message)
+      if (message === 'success')
+      {
+        let snackBarRef = this.snackBar.open("Sign Up Success","Next");
+        snackBarRef.onAction().subscribe(()=>{
+          this.router.navigate(['/signup/action'])
+        })
+      }
+      else {
+        this.snackBar.open("It seems this email already exists","Okay");
+      }
     })
   }
-
 }
