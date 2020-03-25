@@ -15,7 +15,7 @@
                                 <p>
                                     <mat-form-field appearance="outline" [style.width.px]=500>
                                         <mat-label> Enter Name of Organization/Business</mat-label>
-                                        <input matInput placeholder="Name of Organization" [type]="'text'" #business>
+                                        <input matInput placeholder="Name of Organization" [type]="'text'" #name>
                                         <mat-icon matSuffix>apartment</mat-icon>
                                         <mat-hint>Enter Email</mat-hint>
                                     </mat-form-field>
@@ -23,8 +23,7 @@
                                 <p>
                                     <mat-form-field appearance="outline" [style.width.px]=500>
                                         <mat-label> Create Organization Key *</mat-label>
-                                        <input matInput placeholder="Please enter a Organization key" [type]="'text'"
-                                            #password>
+                                        <input matInput placeholder="Please enter a Organization key" [type]="'text'" #key>
                                         <mat-icon matSuffix>vpn_key</mat-icon>
                                         <mat-hint> This is a unique username for your business</mat-hint>
                                     </mat-form-field>
@@ -32,14 +31,13 @@
                                 <p>
                                     <mat-form-field appearance="outline" [style.width.px]=500>
                                         <mat-label> Create Organization Pass key *</mat-label>
-                                        <input matInput placeholder="Please enter a secure password" [type]="'password'"
-                                            #password>
+                                        <input matInput placeholder="Please enter a secure password" [type]="'password'" #passKey>
                                         <mat-icon matSuffix>lock</mat-icon>
                                         <mat-hint> This is the password for your business. Keep it safe</mat-hint>
                                     </mat-form-field>
                                 </p>
                                 <div class="container">
-                                    <button mat-raised-button color="primary"> Create Organization </button>
+                                    <button mat-raised-button color="primary" (click)="createOrganization(name.value,key.value,passKey.value)"> Create Organization </button>
                                 </div>
                             </div>
                         </div>

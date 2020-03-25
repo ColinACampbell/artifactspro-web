@@ -16,6 +16,7 @@ import { UserService } from './services/user.service';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
 import { MainComponent } from './main/main/main.component';
 import { MainHeaderComponent } from './main/main-header/main-header.component';
+import { OrganizationService } from './services/organization.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { MainHeaderComponent } from './main/main-header/main-header.component';
     MatSnackBarModule,
     MatSelectModule
   ],
-  providers: [UserService],
+  providers: [UserService,OrganizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
