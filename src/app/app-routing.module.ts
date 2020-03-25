@@ -4,13 +4,15 @@ import { LandingPageComponent } from './home/landing-page/landing-page.component
 import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
+import { MainComponent } from './main/main/main.component';
 
 
 const routes: Routes = [
   { path : "", component: LandingPageComponent },
   { path : "signup", component : SignupComponent },
   { path : 'login', component : LoginComponent },
-  { path : 'signup/action', component : SignupActionComponent }
+  { path : 'signup/action', component : SignupActionComponent },
+  { path : 'app', component : MainComponent }
 ];
 
 @NgModule({

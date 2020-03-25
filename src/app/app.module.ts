@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
+import { MatButtonModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -14,6 +14,8 @@ import { HeaderComponent } from './home/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
+import { MainComponent } from './main/main/main.component';
+import { MainHeaderComponent } from './main/main-header/main-header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SignupActionComponent } from './home/signup/signup-action/signup-action
     LoginComponent,
     SignupComponent,
     HeaderComponent,
-    SignupActionComponent
+    SignupActionComponent,
+    MainComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { SignupActionComponent } from './home/signup/signup-action/signup-action
     MatFormFieldModule,
     HttpClientModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
