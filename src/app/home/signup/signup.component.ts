@@ -18,16 +18,15 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(email:String,password:String)
+  signup(email:String,password:String)
   {
-    this.password = password;
-    this.email = email;
+    
     if (this.password === '' || this.email === '')
     {
       alert("None of the fields can be empty")
     }
 
-    this.userServ.signup(this.email,this.password).then((data)=>
+    this.userServ.signup(email,password).then((data)=>
     {
       let message = data['message'];
       if (message === 'success')

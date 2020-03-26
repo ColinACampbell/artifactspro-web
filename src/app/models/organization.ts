@@ -29,8 +29,6 @@ export class Organization
     this.name = params.name;
     this.key = params.org_key;
     this.code = params.org_code;
-
-    console.log(this.owner,this.code,this.type,this.key,this.code,this.name)
   }
 
   public getName() : String

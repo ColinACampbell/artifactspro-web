@@ -25,4 +25,14 @@ export class UserService {
       withCredentials : true
     }).toPromise()
   }
+
+  public login(email:String,password:String)
+  {
+    let body = {email,password}
+
+    return this.httpClient
+    .post(this.url+"api/user/login",body,{
+      withCredentials : true
+    }).toPromise()
+  }
 }
