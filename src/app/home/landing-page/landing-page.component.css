@@ -49,6 +49,12 @@
     margin-top: 80px;
 }
 
+.action-btn
+{
+    width: 150px;
+    margin: 10px;
+}
+
 @media only screen and (max-width: 909px) {
     .img {
       display: none;
