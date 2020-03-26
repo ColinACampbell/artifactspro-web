@@ -27,13 +27,9 @@ export class SignupComponent implements OnInit {
       alert("None of the fields can be empty")
     }
 
-    console.log(this.email);
-    console.log(this.password)
-
     this.userServ.signup(this.email,this.password).then((data)=>
     {
       let message = data['message'];
-      console.log(message)
       if (message === 'success')
       {
         let snackBarRef = this.snackBar.open("Sign Up Success","Next");

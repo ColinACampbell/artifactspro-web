@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationService } from 'src/app/services/organization.service';
+import { Organization } from 'src/app/models/organization';
 
 @Component({
   selector: 'app-main-header',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainHeaderComponent implements OnInit {
 
-  constructor() { }
+  public organization : Organization = new Organization({});
+  constructor(private orgServe:OrganizationService) { }
 
   ngOnInit() {
+    this.getOrganization().then((data)=>
+    {
+      console.log(data);
+      this.organization = new Organization(data);
+    })
+  }
+
+  private getOrganization() : Promise<any>
+  {
+    return this.orgServe.getOrganization();
   }
 
 }

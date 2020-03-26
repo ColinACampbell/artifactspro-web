@@ -27,7 +27,7 @@ import { OrganizationService } from './services/organization.service';
     HeaderComponent,
     SignupActionComponent,
     MainComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
   ],
   imports: [
     BrowserModule,

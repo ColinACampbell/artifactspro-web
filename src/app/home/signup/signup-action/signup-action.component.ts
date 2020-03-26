@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrganizationService } from 'src/app/services/organization.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { Organization } from 'src/app/models/organization';
 
 @Component({
   selector: 'app-signup-action',
@@ -23,12 +24,24 @@ export class SignupActionComponent implements OnInit {
     this.orgServ.createOrganization(name,orgKey,orgPassKey)
     .then((data)=>{
       let message = data['message'];
+      let organizationParams = data['organization']; // get information about the organization set in the request
       if (message === 'success')
       {
-        let snackBarRef = this.snackBar.open("Sign Up Success","Next");
+        console.log(organizationParams);
+        let snackBarRef = this.snackBar.open("Creation Success","Next");
+
+        /**
+        let organization = new Organization(organizationParams)
+        this.orgServ.setOrganization(organization)
+        
+        console.log(organization);
+        console.log(organization.getName());
+        **/
+       
         snackBarRef.onAction().subscribe(()=>{
           this.router.navigate(['/app'])
         })
+
       }
       else {
         this.snackBar.open("It seems like the organization code already exists","Okay");

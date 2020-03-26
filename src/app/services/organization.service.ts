@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Organization } from '../models/organization';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class OrganizationService {
   
   private url: String = 'http://localhost:3000/';
-  private prod:boolean = false; // make this is always false when testing
+  private prod :boolean = false; // make this is always false when testing
+  private organization : Organization;
 
   constructor(private httpClient: HttpClient) { 
     if (this.prod)
@@ -23,6 +26,19 @@ export class OrganizationService {
     },
     {
       withCredentials : true
+    }).toPromise();
+  }
+
+  public setOrganization(organization:Organization)
+  {
+    this.organization = organization;
+  }
+
+  public getOrganization()
+  {
+    return this.httpClient.get(this.url+'api/org/info',
+    {
+      withCredentials : true,
     }).toPromise();
   }
 }
