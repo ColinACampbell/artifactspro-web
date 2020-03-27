@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
+import { MatButtonModule,MatListModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -17,6 +17,7 @@ import { SignupActionComponent } from './home/signup/signup-action/signup-action
 import { MainComponent } from './main/main/main.component';
 import { MainHeaderComponent } from './main/main-header/main-header.component';
 import { OrganizationService } from './services/organization.service';
+import { ArtifactsComponent } from './main/artifacts/artifacts.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OrganizationService } from './services/organization.service';
     SignupActionComponent,
     MainComponent,
     MainHeaderComponent,
+    ArtifactsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { OrganizationService } from './services/organization.service';
     HttpClientModule,
     MatTabsModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [UserService,OrganizationService],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+<div class="flex">
+    <mat-list style="width: 60%;">
+        <!--
+        <div mat-subheader style="justify-content: center;">
+            <form class="example-form">
+                <mat-form-field class="artifact-search">
+                    <mat-label>Search Document</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="">
+                </mat-form-field>
+
+            </form>
+        </div>-->
+        <div mat-subheader style="justify-content: center;">
+           Artifacts
+        </div>
+        <mat-list-item *ngFor="let artifact of artifacts">
+        <mat-divider></mat-divider>
+            <mat-icon mat-list-icon>library_books</mat-icon>
+            <div mat-line>{{ artifact.name }}</div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+
+    <div style="width: 40%;" class="artifact-view">
+        <div style="margin-top: 90px;">
+            <img width="300" src="./../../../assets/doc_search.svg">
+            <h3 style="text-align: center;"> Select An Artifact </h3>
+        </div>
+    </div>
+</div>
