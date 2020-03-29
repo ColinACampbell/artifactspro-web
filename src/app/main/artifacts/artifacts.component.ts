@@ -1,25 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { ArtifactsService } from 'src/app/services/artifacts.service';
+import { Artifact } from 'src/app/models/artifacts';
 
 @Component({
   selector: 'app-artifacts',
   templateUrl: './artifacts.component.html',
   styleUrls: ['./artifacts.component.css']
 })
+
 export class ArtifactsComponent implements OnInit {
 
-  public artifacts = [
-    { name: "Caribbean Studies SBA", art_id: 1},
-    { name: "Physics Lab", art_id: 1},
-    { name: "Analytics", art_id: 1},
-    { name: "PSD Designs", art_id: 1},
-    { name: "Sample Paragraphs", art_id: 1},
-    { name: "Invoices", art_id: 1},
-    { name: "2020 Revision", art_id: 1},
+  public isInDocView:boolean = false;
+  public artifacts:Artifact[];
+  public selectedArtifact:Artifact;
+  public isArtifactSelected: boolean = false;
 
-  ]
-  constructor() { }
+  constructor(private artServ:ArtifactsService) { }
 
   ngOnInit() {
+    this.getAllArtifacts();
   }
 
+  private getAllArtifacts()
+  {
+    this.artServ.getAllArtifacts().subscribe(data => this.artifacts = data);
+  }
+
+  public selectArtifact(artifact:Artifact)
+  {
+    console.log(artifact);
+    this.selectedArtifact = artifact;    
+    this.isArtifactSelected = true;
+  }
+
+  public viewDetails(artifact)
+  {
+    this.isInDocView = true;
+  }
 }

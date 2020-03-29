@@ -1,5 +1,6 @@
 <div class="flex">
-    <mat-list style="width: 60%;">
+
+    <mat-list style="width: 60%;" *ngIf="!isInDocView">
         <!--
         <div mat-subheader style="justify-content: center;">
             <form class="example-form">
@@ -13,19 +14,67 @@
         <div mat-subheader style="justify-content: center;">
            Artifacts
         </div>
-        <mat-list-item *ngFor="let artifact of artifacts">
         <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let artifact of artifacts" (click)="selectArtifact(artifact)">
             <mat-icon mat-list-icon>library_books</mat-icon>
             <div mat-line>{{ artifact.name }}</div>
+            <div mat-line>{{ artifact.date_created }}</div>
             <mat-divider></mat-divider>
         </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
 
-    <div style="width: 40%;" class="artifact-view">
-        <div style="margin-top: 90px;">
-            <img width="300" src="./../../../assets/doc_search.svg">
-            <h3 style="text-align: center;"> Select An Artifact </h3>
+    <div style="width: 40%;" >
+        <div class="artifact-view-absent" *ngIf="!isArtifactSelected">
+            <div>
+                <img width="300" src="./../../../assets/doc_search.svg">
+                <h3 style="text-align: center;"> No Artifact Selected </h3>
+            </div>
+        </div>
+        <div *ngIf="isArtifactSelected" class="artifact-view">
+            <div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src='./../../../assets/document_collection.svg' width="150"/>
+                </div>
+                <div style="text-align: left;">
+                    <h1 > {{ selectedArtifact.name }}</h1>
+                    <h4> {{ selectedArtifact.date_created }}</h4>
+                </div>
+                <div>
+                    <p>
+                        {{ selectedArtifact.description }}
+                    </p>
+                </div>
+                <mat-divider></mat-divider>
+                <br/>
+                <div class="btn-group">
+                    <button mat-flat-button color="primary"> Edit Artifact </button>
+                    <button mat-flat-button color="primary"> Download </button>
+                    <button mat-flat-button color="primary" (click)="viewDetails(artifact)"> View Documents &#8594; </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="width: 60%;" *ngIf="isInDocView">
+        <div class="artifact-view-absent" *ngIf="!isArtifactSelected">
+            <div>
+                <img width="300" src="./../../../assets/doc_search.svg">
+                <h3 style="text-align: center;"> No Artifact Selected </h3>
+            </div>
+        </div>
+        <div *ngIf="isArtifactSelected" class="artifact-view">
+            <div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src='./../../../assets/document_collection.svg' width="200"/>
+                </div>
+                <div>
+                    <h1 style="text-align: center;"> {{ selectedArtifact.name }}</h1>
+                </div>
+                <mat-divider></mat-divider>
+                <br/>
+                <button mat-raised-button color="primary"> View Documents </button>
+            </div>
         </div>
     </div>
 </div>

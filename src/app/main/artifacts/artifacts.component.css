@@ -27,8 +27,21 @@ mat-list
 
 .artifact-view
 {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.artifact-view-absent
+{
     height: calc(100vh - 115px);
     border-left: 1px solid rgba(0, 0, 0, 0.12);
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.btn-group > button
+{
+  margin-left: 10px;
 }

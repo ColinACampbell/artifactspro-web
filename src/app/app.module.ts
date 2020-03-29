@@ -18,6 +18,7 @@ import { MainComponent } from './main/main/main.component';
 import { MainHeaderComponent } from './main/main-header/main-header.component';
 import { OrganizationService } from './services/organization.service';
 import { ArtifactsComponent } from './main/artifacts/artifacts.component';
+import { ArtifactsService } from './services/artifacts.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ArtifactsComponent } from './main/artifacts/artifacts.component';
     MatSelectModule,
     MatListModule
   ],
-  providers: [UserService,OrganizationService],
+  providers: [UserService,OrganizationService,ArtifactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
