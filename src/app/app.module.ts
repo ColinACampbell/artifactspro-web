@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule,MatListModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
+import { MatButtonModule,MatListModule,MatDialogModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule,MatFormFieldModule, MatTabsModule} from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -19,6 +19,7 @@ import { MainHeaderComponent } from './main/main-header/main-header.component';
 import { OrganizationService } from './services/organization.service';
 import { ArtifactsComponent } from './main/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
+import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ArtifactsService } from './services/artifacts.service';
     MainComponent,
     MainHeaderComponent,
     ArtifactsComponent,
+    CreateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { ArtifactsService } from './services/artifacts.service';
     MatTabsModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [UserService,OrganizationService,ArtifactsService],
   bootstrap: [AppComponent]

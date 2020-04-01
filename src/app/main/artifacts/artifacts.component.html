@@ -11,8 +11,9 @@
 
             </form>
         </div>-->
-        <div mat-subheader style="justify-content: center;">
-           Artifacts
+        <div mat-subheader style="justify-content:flex-start;">
+            <button mat-raised-button color="primary"> Create New Artifact </button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
         </div>
         <mat-divider></mat-divider>
         <mat-list-item *ngFor="let artifact of artifacts" (click)="selectArtifact(artifact)">
@@ -77,4 +78,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal-bg">
+
 </div>
