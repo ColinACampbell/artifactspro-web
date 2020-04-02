@@ -22,6 +22,7 @@ import { ArtifactsComponent } from './main/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
 import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -23,7 +23,7 @@ export class ArtifactsComponent implements OnInit {
     this.getAllArtifacts();
   }
 
-  private getAllArtifacts()
+  public getAllArtifacts()
   {
     this.artServ.getAllArtifacts().subscribe(data => this.artifacts = data);
   }

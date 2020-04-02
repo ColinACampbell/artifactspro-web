@@ -23,4 +23,17 @@ export class ArtifactsService {
       withCredentials : true,
     });
   }
+
+  createArtifact(name:String,description:String,date:String) : Observable<void>
+  {
+    let date_created = date
+    return this.httpClient.post<void>(this.url+"api/art/create",{
+      name,
+      description,
+      date_created
+    },
+    {
+      withCredentials : true
+    });
+  }
 }

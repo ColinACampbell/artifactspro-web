@@ -4,23 +4,23 @@
     </div>
     <mat-form-field class="fields">
         <mat-label>Enter Name Of Artifact</mat-label>
-        <input matInput placeholder="Eg. Report 2020, Revision etc" value="">
+        <input matInput placeholder="Eg. Report 2020, Revision etc" value="" #name>
     </mat-form-field>
 
     <mat-form-field class="fields">
         <mat-label>Enter the description of this artifact</mat-label>
-        <textarea matInput placeholder="Eg. What this artifact mainly entails and its purpose"></textarea>
+        <textarea matInput placeholder="Eg. What this artifact mainly entails and its purpose" #description></textarea>
     </mat-form-field>
 
     <mat-form-field class="fields">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" (dateInput)="onDate($event.value)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial>Save</button>
+            <button mat-button cdkFocusInitial (click)="createArtifact(name.value,description.value,picker)">Save & Upload Document</button>
             <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>
