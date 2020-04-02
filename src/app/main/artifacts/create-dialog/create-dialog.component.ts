@@ -23,7 +23,7 @@ export class CreateDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
+    closeDialog(): void {
     this.dialogRef.close();
   }
 

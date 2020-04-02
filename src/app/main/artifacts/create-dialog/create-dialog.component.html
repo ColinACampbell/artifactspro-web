@@ -1,1 +1,27 @@
-<p>create-dialog works!</p>
+<div class="form">
+    <div style="display: flex; justify-content: center;">
+        <h2> Create Artifact</h2>
+    </div>
+    <mat-form-field class="fields">
+        <mat-label>Enter Name Of Artifact</mat-label>
+        <input matInput placeholder="Eg. Report 2020, Revision etc" value="">
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label>Enter the description of this artifact</mat-label>
+        <textarea matInput placeholder="Eg. What this artifact mainly entails and its purpose"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial>Save</button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

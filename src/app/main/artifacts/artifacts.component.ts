@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
+import { MatDialog } from '@angular/material';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-artifacts',
@@ -15,7 +17,7 @@ export class ArtifactsComponent implements OnInit {
   public selectedArtifact:Artifact;
   public isArtifactSelected: boolean = false;
 
-  constructor(private artServ:ArtifactsService) { }
+  constructor(private artServ:ArtifactsService,public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllArtifacts();
@@ -37,4 +39,13 @@ export class ArtifactsComponent implements OnInit {
   {
     this.isInDocView = true;
   }
+
+  public openDialog()
+  {
+    let dialogRef = this.dialog.open(CreateDialogComponent,
+      {
+        width: "400px"
+      })
+  }
+  
 }
