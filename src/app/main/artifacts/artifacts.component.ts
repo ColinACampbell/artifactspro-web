@@ -33,7 +33,6 @@ export class ArtifactsComponent implements OnInit {
 
   public selectArtifact(artifact:Artifact)
   {
-    console.log(artifact);
     this.selectedArtifact = artifact;    
     this.isArtifactSelected = true;
   }

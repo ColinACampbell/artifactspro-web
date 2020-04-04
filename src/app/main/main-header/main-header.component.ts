@@ -15,7 +15,6 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit() {
     this.getOrganization().then((data)=>
     {
-      console.log(data);
       this.organization = new Organization(data);
     })
   }

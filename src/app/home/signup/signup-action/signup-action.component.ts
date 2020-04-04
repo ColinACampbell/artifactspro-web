@@ -27,17 +27,7 @@ export class SignupActionComponent implements OnInit {
       let organizationParams = data['organization']; // get information about the organization set in the request
       if (message === 'success')
       {
-        console.log(organizationParams);
         let snackBarRef = this.snackBar.open("Creation Success","Next");
-
-        /**
-        let organization = new Organization(organizationParams)
-        this.orgServ.setOrganization(organization)
-        
-        console.log(organization);
-        console.log(organization.getName());
-        **/
-       
         snackBarRef.onAction().subscribe(()=>{
           this.router.navigate(['/app'])
         })

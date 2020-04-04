@@ -1,6 +1,35 @@
 <app-main-header></app-main-header>
-<mat-toolbar color='primary'>  
-    <mat-toolbar-row>
-      <span> /{{ artifact.name }} </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+<mat-toolbar color='primary'>
+  <mat-toolbar-row>
+    <span matTooltip='{1+1}'> / {{ artifact.name || async }} </span>
+    <div style="display: flex;justify-content: end;width:100%;">
+      <button matTooltip="Upload Document" mat-flat-button color='primary'>
+        <mat-icon> cloud_upload </mat-icon>
+      </button>
+      <button matTooltip='Artifact Info' mat-button>
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="display: flex; justify-content: center;" >
+
+  <mat-list style="width: 40%;">
+    <div mat-subheader style="justify-content:flex-start;">
+      Documents
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let document of documents" (click)="selectDocument(document)">
+      <mat-icon mat-list-icon>library_books</mat-icon>
+      <div mat-line>{{ document.version }}</div>
+      <div mat-line>{{ document.modified }}</div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+  <div style="width: 60%;">
+
+  </div>
+</div>

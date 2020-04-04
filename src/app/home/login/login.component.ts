@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     this.userServ.login(email,password).then((data)=>
     {
       let message = data['message'];
-      console.log(data);
       if (message === 'success')
       {
         this.router.navigate(['/app'])

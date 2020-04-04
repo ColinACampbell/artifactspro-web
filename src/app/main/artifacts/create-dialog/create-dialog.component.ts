@@ -62,8 +62,6 @@ export class CreateDialogComponent implements OnInit {
 
 
   createArtifact(name: String, description: String) {
-    console.log(name);
-    console.log(description);
 
     if (name === '' || description === '' || this.fullDate === '') {
       this.snackBar.open('None of the fields should be empty', "Okay");
@@ -73,8 +71,7 @@ export class CreateDialogComponent implements OnInit {
     this.artServ.createArtifact(name, description, this.fullDate)
       .subscribe((data) => {
         let artID = data.art_id;
-        console.log(artID);
-        console.log(data);
+
         let message = data['message'];
         if (message === 'ok')
         {

@@ -20,8 +20,6 @@ export class Organization
 
   constructor(params : any)
   {
-
-    console.log("In model")
     
     this.owner = params.user_id;
     this.orgID = params.org_id;
