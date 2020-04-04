@@ -1,0 +1,28 @@
+.doc-list
+{
+    overflow-y: scroll;
+    height: calc(100vh - 138px);
+    width: 40%;
+}
+
+mat-list-item:hover
+{
+    color:red;
+}
+
+.artifact-view-absent
+{
+    height: calc(100vh - 138px);
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.util-bar
+{
+  display: flex;
+  justify-content: flex-end;
+  -webkit-justify-content:flex-end; /* For chrome */
+  width:100%;
+}

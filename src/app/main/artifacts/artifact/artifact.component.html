@@ -1,8 +1,8 @@
 <app-main-header></app-main-header>
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
-    <span matTooltip='{1+1}'> / {{ artifact.name || async }} </span>
-    <div style="display: flex;justify-content: end;width:100%;">
+    <span matTooltip='{1+1}'> / {{ artifact.name }} / <span *ngIf="selectedDocument"> {{ selectedDocument.version }}</span> </span>
+    <div class="util-bar">
       <button matTooltip="Upload Document" mat-flat-button color='primary'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
@@ -13,9 +13,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div style="display: flex; justify-content: center;" >
+<div style="display: flex; justify-content: center;">
 
-  <mat-list style="width: 40%;">
+  <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
       Documents
     </div>
@@ -30,6 +30,11 @@
   </mat-list>
 
   <div style="width: 60%;">
-
+    <div class="artifact-view-absent" *ngIf="!docSelected">
+      <div>
+        <img width="300" src="./../../../assets/doc_search.svg">
+        <h3 style="text-align: center;"> No Document Selected </h3>
+      </div>
+    </div>
   </div>
 </div>

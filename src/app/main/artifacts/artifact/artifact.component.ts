@@ -12,7 +12,9 @@ import { ADocument } from 'src/app/models/adocument';
 export class ArtifactComponent implements OnInit {
 
   public artifact:Artifact;
+  public selectedDocument:ADocument = null;
   public documents:ADocument[];
+  public docSelected:boolean = false;
   constructor(private artServ:ArtifactsService,
     private route:ActivatedRoute) { }
 
@@ -36,4 +38,9 @@ export class ArtifactComponent implements OnInit {
     })
   }
 
+  public selectDocument(document:any)
+  {
+    this.docSelected = true;
+    this.selectedDocument = document;
+  }
 }
