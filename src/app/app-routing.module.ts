@@ -5,6 +5,7 @@ import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
 import { MainComponent } from './main/main/main.component';
+import { ArtifactComponent } from './main/artifacts/artifact/artifact.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path : "signup", component : SignupComponent },
   { path : 'login', component : LoginComponent },
   { path : 'signup/action', component : SignupActionComponent },
-  { path : 'app', component : MainComponent }
+  { path : 'app', component : MainComponent },
+  { path : 'app/artifact/:id', component: ArtifactComponent }
 ];
 
 @NgModule({

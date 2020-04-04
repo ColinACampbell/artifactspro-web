@@ -21,6 +21,7 @@ import { OrganizationService } from './services/organization.service';
 import { ArtifactsComponent } from './main/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
 import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
+import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dia
     MainHeaderComponent,
     ArtifactsComponent,
     CreateDialogComponent,
+    ArtifactComponent
   ],
   imports: [
     BrowserModule,

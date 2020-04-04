@@ -1,6 +1,6 @@
 <div class="flex">
 
-    <mat-list style="width: 60%;" *ngIf="!isInDocView">
+    <mat-list style="width: 60%;" >
         <!--
         <div mat-subheader style="justify-content: center;">
             <form class="example-form">
@@ -51,34 +51,9 @@
                 <div class="btn-group">
                     <button mat-flat-button color="primary"> Edit Artifact </button>
                     <button mat-flat-button color="primary"> Download </button>
-                    <button mat-flat-button color="primary" (click)="viewDetails(artifact)"> View Documents &#8594; </button>
+                    <button mat-flat-button color="primary" (click)="viewDetails(selectedArtifact)"> View Documents &#8594; </button>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div style="width: 60%;" *ngIf="isInDocView">
-        <div class="artifact-view-absent" *ngIf="!isArtifactSelected">
-            <div>
-                <img width="300" src="./../../../assets/doc_search.svg">
-                <h3 style="text-align: center;"> No Artifact Selected </h3>
-            </div>
-        </div>
-        <div *ngIf="isArtifactSelected" class="artifact-view">
-            <div>
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <img src='./../../../assets/document_collection.svg' width="200"/>
-                </div>
-                <div>
-                    <h1 style="text-align: center;"> {{ selectedArtifact.name }}</h1>
-                </div>
-                <mat-divider></mat-divider>
-                <br/>
-                <button mat-raised-button color="primary"> View Documents </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal-bg">
-
 </div>

@@ -3,6 +3,7 @@ import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { MatDialog } from '@angular/material';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artifacts',
@@ -17,7 +18,9 @@ export class ArtifactsComponent implements OnInit {
   public selectedArtifact:Artifact;
   public isArtifactSelected: boolean = false;
 
-  constructor(private artServ:ArtifactsService,public dialog: MatDialog) { }
+  constructor(private artServ:ArtifactsService,
+    public dialog: MatDialog,
+    public router:Router) { }
 
   ngOnInit() {
     this.getAllArtifacts();
@@ -35,9 +38,10 @@ export class ArtifactsComponent implements OnInit {
     this.isArtifactSelected = true;
   }
 
-  public viewDetails(artifact)
+  public viewDetails(artifact:Artifact)
   {
-    this.isInDocView = true;
+    let artID = artifact.art_id;
+    this.router.navigate(['/app/artifact/',artID])
   }
 
   public openDialog()

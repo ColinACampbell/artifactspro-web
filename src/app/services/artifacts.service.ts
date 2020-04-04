@@ -24,10 +24,17 @@ export class ArtifactsService {
     });
   }
 
-  createArtifact(name:String,description:String,date:String) : Observable<void>
+  getArtifactFromID(artID:number) : Observable<Artifact>
+  {
+    return this.httpClient.get<Artifact>(this.url+`api/art/${artID}`,{
+      withCredentials : true,
+    });
+  }
+
+  createArtifact(name:String,description:String,date:String) : Observable<Artifact>
   {
     let date_created = date
-    return this.httpClient.post<void>(this.url+"api/art/create",{
+    return this.httpClient.post<Artifact>(this.url+"api/art/create",{
       name,
       description,
       date_created
