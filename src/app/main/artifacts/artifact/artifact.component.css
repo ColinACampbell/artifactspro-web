@@ -5,9 +5,19 @@
     width: 40%;
 }
 
+.artifact-view
+{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    height:calc(100vh - 189px);
+    overflow-y: scroll;
+}
+
+
 mat-list-item:hover
 {
-    color:red;
+    background-color: #e9e7e7f5;
 }
 
 .artifact-view-absent
@@ -17,6 +27,11 @@ mat-list-item:hover
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn-group > button
+{
+  margin-left: 10px;
 }
 
 .util-bar

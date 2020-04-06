@@ -22,6 +22,7 @@ import { ArtifactsComponent } from './main/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
 import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
 import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
+import { DocumentService } from './services/document.service';
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,
   ],
-  providers: [UserService, OrganizationService, ArtifactsService],
+  providers: [UserService, OrganizationService, ArtifactsService,DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

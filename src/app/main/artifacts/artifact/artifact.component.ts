@@ -3,6 +3,7 @@ import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { ActivatedRoute } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
+import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
   selector: 'app-artifact',
@@ -15,11 +16,18 @@ export class ArtifactComponent implements OnInit {
   public selectedDocument:ADocument = null;
   public documents:ADocument[];
   public docSelected:boolean = false;
-  constructor(private artServ:ArtifactsService,
-    private route:ActivatedRoute) { }
 
-  ngOnInit() {
-    this.getArtifact();
+  constructor(private artServ:ArtifactsService,
+    private route:ActivatedRoute,
+    private docServ: DocumentService) { }
+
+  ngOnInit() 
+  {
+    let artID = this.route.snapshot.paramMap.get('id');
+    let $artID = parseInt(artID);
+    this.getArtifact($artID);
+    this.getAllDocuments($artID);
+
     let doc = { doc_id : 1, comment : "SOO", version : "Hello", user_id : 2, data : null, data_modified : "", date_uploaded: "", art_id : 1}
 
     this.documents = [
@@ -28,11 +36,9 @@ export class ArtifactComponent implements OnInit {
     ]
   }
 
-  getArtifact()
+  getArtifact(artID:number)
   {
-    let artID = this.route.snapshot.paramMap.get('id');
-    let $artID = parseInt(artID);
-    this.artServ.getArtifactFromID($artID)
+    this.artServ.getArtifactFromID(artID)
     .subscribe((artifact)=>{
       this.artifact = artifact;
     })
@@ -42,5 +48,13 @@ export class ArtifactComponent implements OnInit {
   {
     this.docSelected = true;
     this.selectedDocument = document;
+  }
+
+  private getAllDocuments(artID:number)
+  {
+    this.docServ.getDocuments(artID)
+    .subscribe((documents:ADocument[])=>{
+      this.documents = documents;
+    });
   }
 }

@@ -1,13 +1,16 @@
 <app-main-header></app-main-header>
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
-    <span matTooltip='{1+1}'> / {{ artifact.name }} / <span *ngIf="selectedDocument"> {{ selectedDocument.version }}</span> </span>
+    <span> / {{ artifact.name }} / <span *ngIf="selectedDocument"> {{ selectedDocument.version }}</span> </span>
     <div class="util-bar">
       <button matTooltip="Upload Document" mat-flat-button color='primary'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
+      <button matTooltip='Search Options' mat-button>
+        <mat-icon>search</mat-icon>
+      </button>
       <button matTooltip='Artifact Info' mat-button>
-        <mat-icon>help_outline</mat-icon>
+        <mat-icon>info</mat-icon>
       </button>
     </div>
   </mat-toolbar-row>
@@ -36,5 +39,45 @@
         <h3 style="text-align: center;"> No Document Selected </h3>
       </div>
     </div>
+
+    <div *ngIf="docSelected" class="artifact-view">
+      <div style="width: 100%;">
+        <div style="text-align: left;">
+          <h1> {{ artifact.name }} / {{ selectedDocument.version }}</h1>
+          <h4> {{ selectedDocument.date_created }}</h4>
+        </div>
+        <div>
+          <b> Preview </b>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src='./../../../assets/document_collection.svg' width="150" />
+          </div>
+        </div>
+        <div>
+          <b> Date Uploaded </b>
+          <p>
+            {{ selectedDocument.date_uploaded }}
+          </p>
+        </div>
+        <div>
+          <b> Last Modified </b>
+          <p>
+            {{ selectedDocument.date_modified }}
+          </p>
+        </div>
+        <div>
+          <b> Comment </b>
+          <p>
+            {{ selectedDocument.comment }}
+          </p>
+        </div>
+        <mat-divider></mat-divider>
+        <br />
+        <div class="btn-group">
+          <button mat-flat-button color="primary"> Edit </button>
+          <button mat-flat-button color="primary"> Download </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
