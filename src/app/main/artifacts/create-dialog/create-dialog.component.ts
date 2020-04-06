@@ -21,7 +21,6 @@ interface DialogData {
 
 export class CreateDialogComponent implements OnInit {
 
-
   private fullDate: String;
 
   constructor(

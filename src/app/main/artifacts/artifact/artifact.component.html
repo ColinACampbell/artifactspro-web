@@ -3,7 +3,7 @@
   <mat-toolbar-row>
     <span> / {{ artifact.name }} / <span *ngIf="selectedDocument"> {{ selectedDocument.version }}</span> </span>
     <div class="util-bar">
-      <button matTooltip="Upload Document" mat-flat-button color='primary'>
+      <button matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
       <button matTooltip='Search Options' mat-button>

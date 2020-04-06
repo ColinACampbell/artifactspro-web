@@ -4,6 +4,9 @@ import { Artifact } from 'src/app/models/artifacts';
 import { ActivatedRoute } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
+import { MatDialog } from '@angular/material';
+import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
+import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 
 @Component({
   selector: 'app-artifact',
@@ -17,9 +20,12 @@ export class ArtifactComponent implements OnInit {
   public documents:ADocument[];
   public docSelected:boolean = false;
 
-  constructor(private artServ:ArtifactsService,
+  constructor(
+    private artServ:ArtifactsService,
     private route:ActivatedRoute,
-    private docServ: DocumentService) { }
+    private docServ: DocumentService,
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit() 
   {
@@ -56,5 +62,13 @@ export class ArtifactComponent implements OnInit {
     .subscribe((documents:ADocument[])=>{
       this.documents = documents;
     });
+  }
+
+  public openUploadDialog()
+  {
+    let dialogRef = this.dialog.open(UploadDialogComponent,
+      {
+        width: "400px"
+      })
   }
 }

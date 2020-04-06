@@ -1,0 +1,25 @@
+<div class="form">
+    <div style="display: flex; justify-content: center;">
+        <h2> Create Artifact</h2>
+    </div>
+    <mat-form-field class="fields">
+        <mat-label> Name the version of the document </mat-label>
+        <input matInput placeholder="Be sure to use a standard for every other document" value="" #name>
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label>Comment on the document</mat-label>
+        <textarea matInput placeholder="Eg. Changes made to the document, minor details etc" #description></textarea>
+    </mat-form-field>
+
+    <div class="fields">
+        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept=".png"/>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Choose Document</button>
+    </div>
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="createArtifact(name.value,description.value,picker)">Save & Upload Document</button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

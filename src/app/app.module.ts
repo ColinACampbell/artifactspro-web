@@ -23,6 +23,7 @@ import { ArtifactsService } from './services/artifacts.service';
 import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
 import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
+import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/upload-dialog.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { DocumentService } from './services/document.service';
     MainHeaderComponent,
     ArtifactsComponent,
     CreateDialogComponent,
-    ArtifactComponent
+    ArtifactComponent,
+    UploadDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { DocumentService } from './services/document.service';
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,
+    UploadDialogComponent
   ],
   providers: [UserService, OrganizationService, ArtifactsService,DocumentService],
   bootstrap: [AppComponent]
