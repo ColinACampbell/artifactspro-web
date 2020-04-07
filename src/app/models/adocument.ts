@@ -4,7 +4,7 @@ export interface ADocument {
     version:String;
     comment:String;
     user_id:number;
-    data:ArrayBuffer;
+    data:String | ArrayBuffer;
     date_uploaded:String;
     data_modified:String;
     art_id:number;

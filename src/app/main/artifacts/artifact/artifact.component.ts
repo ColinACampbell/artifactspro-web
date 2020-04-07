@@ -27,12 +27,15 @@ export class ArtifactComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
+  private artID:number;
   ngOnInit() 
   {
+
     let artID = this.route.snapshot.paramMap.get('id');
-    let $artID = parseInt(artID);
-    this.getArtifact($artID);
-    this.getAllDocuments($artID);
+    this.artID = parseInt(artID);
+
+    this.getArtifact(this.artID);
+    this.getAllDocuments(this.artID);
 
     let doc = { doc_id : 1, comment : "SOO", version : "Hello", user_id : 2, data : null, data_modified : "", date_uploaded: "", art_id : 1}
 
@@ -68,7 +71,10 @@ export class ArtifactComponent implements OnInit {
   {
     let dialogRef = this.dialog.open(UploadDialogComponent,
       {
-        width: "400px"
+        width: "400px",
+        data : {
+          art_id : this.artID
+        }
       })
   }
 }

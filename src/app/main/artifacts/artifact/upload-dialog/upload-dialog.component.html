@@ -1,24 +1,36 @@
 <div class="form">
     <div style="display: flex; justify-content: center;">
-        <h2> Create Artifact</h2>
+        <h2> Upload Document </h2>
     </div>
+    
     <mat-form-field class="fields">
-        <mat-label> Name the version of the document </mat-label>
-        <input matInput placeholder="Be sure to use a standard for every other document" value="" #name>
+        <mat-label> Name the version of the document <span *ngIf='progress'> {{progress}}</span> </mat-label>
+        <input matTooltip='The version name will be relfected to represent this file name' matInput placeholder="Be sure to use a version naming standard." value="" #versionName>
     </mat-form-field>
 
     <mat-form-field class="fields">
         <mat-label>Comment on the document</mat-label>
-        <textarea matInput placeholder="Eg. Changes made to the document, minor details etc" #description></textarea>
+        <textarea matInput placeholder="Eg. Changes made to the document, minor details etc" #comment></textarea>
     </mat-form-field>
 
-    <div class="fields">
-        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept=".png"/>
-        <button mat-raised-button color="primary" (click)="fileInput.click()">Choose Document</button>
+
+    <div *ngIf='selectedFile' class="fields" style="margin-top: 10px; margin-bottom: 10px;">
+        <mat-card style="display: flex; justify-content: space-between; align-items: center;">  
+            <div> 
+                <span>{{ selectedFile.name }}</span> 
+            </div>
+            <button mat-button (click)='removeFile()'> <mat-icon>delete</mat-icon> </button>
+        </mat-card>
     </div>
+
+    <div class="fields">
+        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept="image/*,.pdf,.csv"/>
+        <button mat-raised-button color="primary" (click)="fileInput.click()" [disabled]="selectedFile">Choose Document</button>
+    </div>
+   
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial (click)="createArtifact(name.value,description.value,picker)">Save & Upload Document</button>
+            <button mat-button cdkFocusInitial (click)="uploadFile(versionName.value,comment.value)" [disabled]="!selectedFile"> Upload Document</button>
             <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>

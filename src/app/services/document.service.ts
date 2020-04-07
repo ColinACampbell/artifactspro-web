@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpEventType, HttpClient, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ADocument } from '../models/adocument';
 
@@ -23,5 +23,15 @@ export class DocumentService {
     {
       withCredentials : true,
     })
+  }
+
+  public uploadDocument(artID:number,document) 
+  {
+    const request = new HttpRequest('POST',this.url+`api/docs/upload/${artID}`,document,{
+      reportProgress:true,
+      withCredentials:true,
+    });
+
+    return this.httpClient.request(request);
   }
 }
