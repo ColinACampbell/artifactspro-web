@@ -9,7 +9,7 @@ import { Organization } from '../models/organization';
 export class OrganizationService {
   
   private url: String = 'http://localhost:3000/';
-  private prod :boolean = false; // make this is always false when testing
+  private prod :boolean = true; // make this is always false when testing
   private organization : Organization;
 
   constructor(private httpClient: HttpClient) { 

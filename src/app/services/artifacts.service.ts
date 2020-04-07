@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ArtifactsService {
 
   private url: String = 'http://localhost:3000/';
-  private prod :boolean = false; // make this is always false when testing
+  private prod :boolean = true; // make this is always false when testing
 
   constructor(private httpClient: HttpClient) { 
     if (this.prod)

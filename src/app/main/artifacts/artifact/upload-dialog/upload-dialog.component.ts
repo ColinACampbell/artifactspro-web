@@ -68,19 +68,12 @@ export class UploadDialogComponent implements OnInit {
 
     let artID = this.dialogData.art_id;
     console.log(artID);
-    let date = new Date(this.selectedFile.lastModified); // place the time stamp in the date object's contructor
-    let year = date.getFullYear();
-    let day = date.getDate() + ""
-    let month = date.getMonth() + "";
 
-    // parse in full format dd/mm/yyyy instead of d/m/yyyy
-    if(day.length === 1)
-      day = "0"+day;
-    
-    if(month.length === 1)
-      month = "0"+month;
-    
-    let lastModified = `${day}/${month}/${year}`;
+    let lastModifiedDate = new Date(this.selectedFile.lastModified); // place the time stamp in the date object's contructor
+    let lastModified = this.formatDate(lastModifiedDate);
+
+    let uploadedDate = new Date();
+    let dateUploaded = this.formatDate(uploadedDate);
 
 
     if (name.length === 0 || comment.length === 0)
@@ -91,10 +84,13 @@ export class UploadDialogComponent implements OnInit {
 
     let document = {}
 
+    console.log(dateUploaded);
+
+
     document['version'] = name;
     document['comment'] = comment;
-    document['data_modified'] = lastModified;
-    document['date_uploaded'] = 'something here';
+    document['date_modified'] = lastModified;
+    document['date_uploaded'] = dateUploaded;
     document['data'] = this.fileData;
     document['file_type'] = this.selectedFile.type
 
@@ -102,7 +98,23 @@ export class UploadDialogComponent implements OnInit {
     this.docServ.uploadDocument(artID,document)
     .subscribe((event:HttpEvent<any>)=>{
       console.log(event)
-      this.progress = event.type;
+
+      this.progress = event['loaded'];
     })
+  }
+
+  private formatDate(date:Date) : String
+  {
+    let year = date.getFullYear();
+    let day = date.getDate() + ""
+    let month = (date.getMonth() + 1) + "";
+    // parse in full format dd/mm/yyyy instead of d/m/yyyy
+    if(day.length === 1)
+      day = "0"+day;
+    
+    if(month.length === 1)
+      month = "0"+month;
+    
+    return `${day}/${month}/${year}`;
   }
 }

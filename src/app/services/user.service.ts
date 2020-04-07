@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   private url: String = 'http://localhost:3000/';
-  private prod:boolean = false; // make this is always false when testing
+  private prod:boolean = true; // make this is always false when testing
 
   constructor(private httpClient: HttpClient) { 
     if (this.prod)
