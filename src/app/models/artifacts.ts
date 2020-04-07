@@ -5,4 +5,5 @@ export interface Artifact {
     user_id: number;
     date_created: String;
     age:String;
+    description:String;
 }

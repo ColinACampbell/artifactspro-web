@@ -8,4 +8,6 @@ export interface ADocument {
     date_uploaded:String;
     data_modified:String;
     art_id:number;
+    date_created:String;
+    date_modified:String;
 }
