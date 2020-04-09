@@ -24,7 +24,7 @@
     </div>
 
     <div class="fields">
-        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept="image/*,.pdf,.csv"/>
+        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept="image/*,.pdf,.csv,.doc,.docx"/>
         <button mat-raised-button color="primary" (click)="fileInput.click()" [disabled]="selectedFile">Choose Document</button>
     </div>
    
