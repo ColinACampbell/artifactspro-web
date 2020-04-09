@@ -24,6 +24,7 @@ import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dia
 import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
 import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/upload-dialog.component';
+import { Environment } from './models/environment';
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/u
     CreateDialogComponent,
     UploadDialogComponent
   ],
-  providers: [UserService, OrganizationService, ArtifactsService,DocumentService],
+  providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

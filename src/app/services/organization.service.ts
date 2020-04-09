@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Organization } from '../models/organization';
+import { Environment } from '../models/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +9,17 @@ import { Organization } from '../models/organization';
 
 export class OrganizationService {
   
-  private url: String = 'http://localhost:3000/';
-  private prod :boolean = false; // make this is always false when testing
   private organization : Organization;
 
-  constructor(private httpClient: HttpClient) { 
-    if (this.prod)
-      this.url = "https://artifactspro.herokuapp.com/"
+  constructor(
+    private httpClient: HttpClient,
+    private environment: Environment) { 
+    
   }
 
   public createOrganization(name,orgKey,orgPassKey)
   {
-    return this.httpClient.post(this.url+"api/org/create",{
+    return this.httpClient.post(this.environment.baseURL()+"api/org/create",{
       name,
       orgKey,
       orgPassKey,
@@ -36,7 +36,7 @@ export class OrganizationService {
 
   public getOrganization()
   {
-    return this.httpClient.get(this.url+'api/org/info',
+    return this.httpClient.get(this.environment.baseURL()+'api/org/info',
     {
       withCredentials : true,
     }).toPromise();

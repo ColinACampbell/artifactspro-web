@@ -2,31 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Artifact } from '../models/artifacts';
 import { Observable } from 'rxjs';
+import { Environment } from '../models/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtifactsService {
 
-  private url: String = 'http://localhost:3000/';
-  private prod :boolean = false; // make this is always false when testing
 
-  constructor(private httpClient: HttpClient) { 
-    if (this.prod)
-      this.url = "https://artifactspro.herokuapp.com/"
+  constructor(
+    private httpClient: HttpClient,
+    private environment: Environment
+    ) { 
+  
   }
 
   getAllArtifacts() : Observable<Artifact[]>
   {
     
-    return this.httpClient.get<Artifact[]>(this.url+"api/art",{
+    return this.httpClient.get<Artifact[]>(this.environment.baseURL()+"api/art",{
       withCredentials : true,
     });
   }
 
   getArtifactFromID(artID:number) : Observable<Artifact>
   {
-    return this.httpClient.get<Artifact>(this.url+`api/art/${artID}`,{
+    return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}`,{
       withCredentials : true,
     });
   }
@@ -34,7 +35,7 @@ export class ArtifactsService {
   createArtifact(name:String,description:String,date:String) : Observable<Artifact>
   {
     let date_created = date
-    return this.httpClient.post<Artifact>(this.url+"api/art/create",{
+    return this.httpClient.post<Artifact>(this.environment.baseURL()+"api/art/create",{
       name,
       description,
       date_created
