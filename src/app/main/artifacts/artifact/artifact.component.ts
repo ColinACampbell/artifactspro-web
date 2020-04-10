@@ -7,6 +7,7 @@ import { DocumentService } from 'src/app/services/document.service';
 import { MatDialog } from '@angular/material';
 import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artifact',
@@ -27,6 +28,7 @@ export class ArtifactComponent implements OnInit {
     private route:ActivatedRoute,
     private docServ: DocumentService,
     private dialog: MatDialog,
+    private sanitizer:DomSanitizer
   ) { }
 
   private artID:number;
@@ -67,6 +69,8 @@ export class ArtifactComponent implements OnInit {
     this.docServ.providePreviewLink(this.artID,docID)
     .subscribe((response)=>{
       this.previewlink = response['download']
+      let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
+      this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
     })
   }
 
