@@ -4,9 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DocumentService } from 'src/app/services/document.service';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
-
-
+import { HttpEvent } from '@angular/common/http';
 
 interface DialogData {
   name: String;
@@ -23,7 +21,8 @@ interface DialogData {
 export class UploadDialogComponent implements OnInit {
 
   public fileData : String | ArrayBuffer;
-  public progress : any;
+  public uploadProgress : number;
+  public hasUploaded:boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
@@ -33,8 +32,6 @@ export class UploadDialogComponent implements OnInit {
     private docServ: DocumentService,
     private route : ActivatedRoute) { }
  
-
-
   public selectedFile:File = null;
 
   ngOnInit() {
@@ -65,16 +62,11 @@ export class UploadDialogComponent implements OnInit {
 
   uploadFile(name:String,comment:String)
   {
-
     let artID = this.dialogData.art_id;
-    console.log(artID);
-
     let lastModifiedDate = new Date(this.selectedFile.lastModified); // place the time stamp in the date object's contructor
     let lastModified = this.formatDate(lastModifiedDate);
-
     let uploadedDate = new Date();
     let dateUploaded = this.formatDate(uploadedDate);
-
 
     if (name.length === 0 || comment.length === 0)
     {
@@ -84,9 +76,6 @@ export class UploadDialogComponent implements OnInit {
 
     let document = {}
 
-    //console.log(dateUploaded);
-
-
     document['version'] = name;
     document['comment'] = comment;
     document['date_modified'] = lastModified;
@@ -94,12 +83,29 @@ export class UploadDialogComponent implements OnInit {
     document['data'] = this.fileData;
     document['file_type'] = this.selectedFile.type
 
-
     this.docServ.uploadDocument(artID,document)
     .subscribe((event:HttpEvent<any>)=>{
-      //console.log(event)
 
-      this.progress = event['loaded'];
+      let totalData = event['total'];
+      let dataLoaded = event['loaded'];
+
+      let message = event['statusText'];
+
+      this.hasUploaded = true;
+
+      if (message === 'OK')
+      {
+        let snackbarRef = this.snackBar.open('Document uploaded successfuly','Okay',
+        {
+          duration : 5000
+        });
+        
+        snackbarRef.afterDismissed()
+        .subscribe(()=>{
+          this.dialogRef.close();
+        })
+      }
+      this.uploadProgress = (dataLoaded / totalData) * 100;
     })
   }
 

@@ -32,4 +32,12 @@ export class DocumentService {
 
     return this.httpClient.request(request);
   }
+
+  public providePreviewLink(artID:number,docID:number)
+  {
+    return this.httpClient.post(this.environment.baseURL()+`api/docs/link/${artID}/${docID}`,{},
+    {
+      withCredentials : true
+    });
+  }
 }

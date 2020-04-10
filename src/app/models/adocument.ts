@@ -10,4 +10,5 @@ export interface ADocument {
     art_id:number;
     date_created:String;
     date_modified:String;
+    type:String;
 }

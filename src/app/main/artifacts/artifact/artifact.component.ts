@@ -20,6 +20,8 @@ export class ArtifactComponent implements OnInit {
   public documents:ADocument[];
   public docSelected:boolean = false;
 
+  public previewlink:String;
+
   constructor(
     private artServ:ArtifactsService,
     private route:ActivatedRoute,
@@ -52,6 +54,20 @@ export class ArtifactComponent implements OnInit {
   {
     this.docSelected = true;
     this.selectedDocument = document;
+    let documentType = this.selectedDocument.type;
+
+    let docID = this.selectedDocument.doc_id;
+    
+    // check if document is image
+    if (documentType.split('/')[0] === 'image')
+    {
+      console.log('Is of type image')
+    }
+
+    this.docServ.providePreviewLink(this.artID,docID)
+    .subscribe((response)=>{
+      this.previewlink = response['download']
+    })
   }
 
   private getAllDocuments(artID:number)
