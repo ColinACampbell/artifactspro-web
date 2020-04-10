@@ -25,6 +25,7 @@ import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
 import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/upload-dialog.component';
 import { Environment } from './models/environment';
+import { NoaccessComponent } from './home/noaccess/noaccess.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { Environment } from './models/environment';
     ArtifactsComponent,
     CreateDialogComponent,
     ArtifactComponent,
-    UploadDialogComponent
+    UploadDialogComponent,
+    NoaccessComponent
   ],
   imports: [
     BrowserModule,
