@@ -14,7 +14,6 @@ export class UserService {
     private httpClient: HttpClient,
     private environment:Environment,
     private router: Router) { 
-  
   }
 
 
@@ -33,7 +32,7 @@ export class UserService {
       
       // if it contains anything with app in it
       if (status === 401 && activeUrl.includes('/app'))
-        this.router.navigate(['/error'])
+        this.router.navigate(['/error'],{replaceUrl:true})
 
     })
   }
