@@ -27,7 +27,7 @@ import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/u
 import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/team/team.component';
-
+import {NgxDocViewerModule} from 'ngx-doc-viewer'
 
 @NgModule({
   declarations: [
@@ -68,7 +68,8 @@ import { TeamComponent } from './main/team/team.component';
     MatNativeDateModule,
     MatCardModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    NgxDocViewerModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,

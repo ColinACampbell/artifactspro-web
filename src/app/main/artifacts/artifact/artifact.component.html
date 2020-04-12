@@ -48,11 +48,12 @@
         </div>
         <div>
           <b> Preview </b>
+          <!---
           <div style="display: flex; justify-content: center; align-items: center;">
             <img src='{{previewlink}}' width="400" />
           </div>
-          <iframe src='{{officeView}}' width='400' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
-
+          -->
+          <ngx-doc-viewer [url]="previewlink" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
         </div>
         <div>
           <b> Date Uploaded </b>
