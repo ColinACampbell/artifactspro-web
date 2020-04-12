@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule } from '@angular/material';
 import { MatButtonModule, MatListModule, MatDialogModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule, MatFormFieldModule, MatTabsModule } from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
@@ -26,6 +26,7 @@ import { DocumentService } from './services/document.service';
 import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/upload-dialog.component';
 import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
+import { TeamComponent } from './main/team/team.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { NoaccessComponent } from './home/noaccess/noaccess.component';
     CreateDialogComponent,
     ArtifactComponent,
     UploadDialogComponent,
-    NoaccessComponent
+    NoaccessComponent,
+    TeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { NoaccessComponent } from './home/noaccess/noaccess.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,

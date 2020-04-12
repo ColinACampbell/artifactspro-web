@@ -1,6 +1,6 @@
 <div class="flex">
 
-    <mat-list style="width: 60%;" >
+    <mat-list style="width: 100%;" >
         <!--
         <div mat-subheader style="justify-content: center;">
             <form class="example-form">
@@ -16,7 +16,7 @@
             <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
         </div>
         <mat-divider></mat-divider>
-        <mat-list-item *ngFor="let artifact of artifacts" (click)="selectArtifact(artifact)">
+        <mat-list-item *ngFor="let artifact of artifacts" (click)="selectArtifact(artifact)" (dblclick)="viewDetails(selectedArtifact)">
             <mat-icon mat-list-icon>folder</mat-icon>
             <div mat-line>{{ artifact.name }}</div>
             <div mat-line>{{ artifact.date_created }}</div>
@@ -25,6 +25,7 @@
         <mat-divider></mat-divider>
     </mat-list>
 
+    <!--
     <div style="width: 40%;" >
         <div class="artifact-view-absent" *ngIf="!isArtifactSelected">
             <div>
@@ -55,5 +56,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

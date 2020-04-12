@@ -1,0 +1,23 @@
+table 
+{
+    width: 100%;
+    margin-top: -30px;
+    box-shadow: none;
+}
+
+.btn-group > button
+{
+    margin-right: 10px;
+}
+
+.action-bar
+{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+  
+.filter-fields
+{
+    /* Put something here*/
+}
