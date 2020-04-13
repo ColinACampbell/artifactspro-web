@@ -5,6 +5,7 @@ export class Environment {
 
     constructor() {
         this.url = this.prod ? "https://artifactspro.herokuapp.com/" : 'http://localhost:3000/'; 
+        console.log(this.url)
     }
 
     public baseURL() : String
