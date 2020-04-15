@@ -1,60 +1,29 @@
 <div class="flex">
+    <div mat-subheader style="justify-content:flex-start;">
+        <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
+        <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
+    </div>
 
-    <mat-list style="width: 100%;" >
-        <!--
-        <div mat-subheader style="justify-content: center;">
-            <form class="example-form">
-                <mat-form-field class="artifact-search">
-                    <mat-label>Search Document</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="">
-                </mat-form-field>
-
-            </form>
-        </div>-->
-        <div mat-subheader style="justify-content:flex-start;">
-            <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
-            <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
-        </div>
-        <mat-divider></mat-divider>
-        <mat-list-item *ngFor="let artifact of artifacts" (click)="selectArtifact(artifact)" (dblclick)="viewDetails(selectedArtifact)">
-            <mat-icon mat-list-icon>folder</mat-icon>
-            <div mat-line>{{ artifact.name }}</div>
-            <div mat-line>{{ artifact.date_created }}</div>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-    </mat-list>
-
-    <!--
-    <div style="width: 40%;" >
-        <div class="artifact-view-absent" *ngIf="!isArtifactSelected">
-            <div>
-                <img width="300" src="./../../../assets/doc_search.svg">
-                <h3 style="text-align: center;"> No Artifact Selected </h3>
+    <div class="grid">
+        <mat-card class="artifact-card" *ngFor="let artifact of artifacts" style="width: 200px;">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title> {{ artifact.name }}</mat-card-title>
+            </mat-card-header>
+            <div style="display: flex; justify-content: center;">
+                <img mat-card-image src="./../../../assets/document_collection.svg" class="card-image"
+                    alt="Photo of a Shiba Inu">
             </div>
-        </div>
-        <div *ngIf="isArtifactSelected" class="artifact-view">
-            <div>
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <img src='./../../../assets/document_collection.svg' width="150"/>
-                </div>
-                <div style="text-align: left;">
-                    <h1 > {{ selectedArtifact.name }}</h1>
-                    <h4> {{ selectedArtifact.date_created }}</h4>
-                </div>
-                <div>
-                    <p>
-                        {{ selectedArtifact.description }}
-                    </p>
-                </div>
-                <mat-divider></mat-divider>
-                <br/>
-                <div class="btn-group">
-                    <button mat-flat-button color="primary"> Edit Artifact </button>
-                    <button mat-flat-button color="primary"> Download </button>
-                    <button mat-flat-button color="primary" (click)="viewDetails(selectedArtifact)"> View Documents &#8594; </button>
-                </div>
-            </div>
-        </div>
-    </div>-->
+            <mat-card-content>
+                <p>
+                    {{ artifact.description }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button (click)="selectArtifact(artifact)">Open</button>
+                <button mat-button (click)='console.log("Helo World")'>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
 </div>

@@ -21,8 +21,7 @@ mat-list
 
 .flex
 {
-    display: flex;
-    justify-content: center;
+    
 }
 
 .artifact-view
@@ -54,3 +53,22 @@ mat-list
   z-index: 10;
 }
 
+.card-image
+{
+  width: 100px;
+}
+
+.grid
+{
+  width: 97%; 
+  margin-top: 20px; 
+  padding: 10px;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.artifact-card
+{
+  margin: 5px;
+}
