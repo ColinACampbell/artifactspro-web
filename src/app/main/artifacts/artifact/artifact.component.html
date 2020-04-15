@@ -1,7 +1,8 @@
 <app-main-header></app-main-header>
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
-    <span *ngIf="artifact"> Artifact / {{ artifact.name }} / <span *ngIf="selectedDocument"> {{ selectedDocument.version }}</span> </span>
+    <span *ngIf="artifact"> Artifact / {{ artifact.name }} / <span *ngIf="selectedDocument">
+        {{ selectedDocument.version }}</span> </span>
     <div class="util-bar">
       <button matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
@@ -53,8 +54,15 @@
             <img src='{{previewlink}}' width="400" />
           </div>
           -->
-          <ngx-doc-viewer [url]="previewlink" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+          <div  >
+            <ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google" style="width:100%;height:50vh;">
+            </ngx-doc-viewer>
+            <img class='margin-vertical' *ngIf='isImage' src="{{previewlink}}" alt='image here' width="100%"/>
+          </div>
+         <div>
+         </div>
         </div>
+        
         <div>
           <b> Date Uploaded </b>
           <p>

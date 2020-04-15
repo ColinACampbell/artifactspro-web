@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from 'src/app/services/member.service';
+import { PartialObserver } from 'rxjs';
+import { Members } from 'src/app/models/members';
 
 @Component({
   selector: 'app-team',
@@ -7,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
+  public members:Members[];
    ELEMENT_DATA: any[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
     {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -16,13 +20,22 @@ export class TeamComponent implements OnInit {
   
   ];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['first_name', 'last_name', 'email', 'role'];
   dataSource = this.ELEMENT_DATA;
   
-  constructor() { }
+  constructor(private membersService:MemberService) { }
 
   ngOnInit() {
-    
+    this.getAllMembers();
+  }
+
+  private getAllMembers()
+  {
+    this.membersService.getAllMembers()
+    .subscribe((members:Members[])=>{
+      this.members = members;
+      console.log(this.members)
+    })
   }
 
 }

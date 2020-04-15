@@ -28,6 +28,7 @@ import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/team/team.component';
 import {NgxDocViewerModule} from 'ngx-doc-viewer'
+import { MemberService } from './services/member.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import {NgxDocViewerModule} from 'ngx-doc-viewer'
     CreateDialogComponent,
     UploadDialogComponent
   ],
-  providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment],
+  providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment,MemberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

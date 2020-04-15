@@ -20,6 +20,7 @@ export class ArtifactComponent implements OnInit {
   public selectedDocument:ADocument = null;
   public documents:ADocument[];
   public docSelected:boolean = false;
+  public isImage:boolean=false;
 
   public previewlink:String;
 
@@ -62,15 +63,16 @@ export class ArtifactComponent implements OnInit {
     
     // check if document is image
     if (documentType.split('/')[0] === 'image')
-    {
-      console.log('Is of type image')
-    }
+      this.isImage = true;
+    else 
+      this.isImage = false;
 
     this.docServ.providePreviewLink(this.artID,docID)
     .subscribe((response)=>{
-      this.previewlink = response['download']
-      let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
-      this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
+      this.previewlink = response['download'];
+      console.log(this.previewlink)
+      //let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
+      //this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
     })
   }
 
