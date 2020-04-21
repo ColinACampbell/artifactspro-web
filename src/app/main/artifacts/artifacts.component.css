@@ -21,7 +21,6 @@ mat-list
 
 .flex
 {
-    
 }
 
 .artifact-view
@@ -64,11 +63,22 @@ mat-list
   margin-top: 20px; 
   padding: 10px;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .artifact-card
 {
   margin: 5px;
+  cursor: default;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }

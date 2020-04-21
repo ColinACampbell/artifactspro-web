@@ -1,28 +1,26 @@
 <div class="flex">
-    <div mat-subheader style="justify-content:flex-start;">
+    <div mat-subheader style="justify-content:flex-start;padding: 16px;">
         <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
         <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
     </div>
 
     <div class="grid">
-        <mat-card class="artifact-card" *ngFor="let artifact of artifacts" style="width: 200px;">
+        <mat-card class="artifact-card noselect" *ngFor="let artifact of artifacts" style="width: 200px;">
+            <div style="display: flex; justify-content: center;padding: 20px;" (dblclick)="viewDetails(artifact)">
+                <img mat-card-image src="./../../../assets/document_collection.svg" class="card-image"
+                    alt="Photo of a Shiba Inu">
+            </div>
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title> {{ artifact.name }}</mat-card-title>
             </mat-card-header>
-            <div style="display: flex; justify-content: center;">
-                <img mat-card-image src="./../../../assets/document_collection.svg" class="card-image"
-                    alt="Photo of a Shiba Inu">
-            </div>
-            <mat-card-content>
+            
+            <mat-card-content style="justify-content: center; display: flex;">
                 <p>
                     {{ artifact.description }}
                 </p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button (click)="selectArtifact(artifact)">Open</button>
-                <button mat-button (click)='console.log("Helo World")'>SHARE</button>
-            </mat-card-actions>
+            
         </mat-card>
     </div>
 
