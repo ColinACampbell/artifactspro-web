@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
 import { MatDialog } from '@angular/material';
-import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
-import { DomSanitizer } from '@angular/platform-browser';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-artifact',
@@ -29,7 +28,8 @@ export class ArtifactComponent implements OnInit {
     private route:ActivatedRoute,
     private docServ: DocumentService,
     private dialog: MatDialog,
-    private sanitizer:DomSanitizer
+    private router:Router,
+    private _location: Location
   ) { }
 
   private artID:number;
@@ -93,5 +93,10 @@ export class ArtifactComponent implements OnInit {
           art_id : this.artID
         }
       })
+  }
+
+  public goBack()
+  {
+    this._location.back();
   }
 }

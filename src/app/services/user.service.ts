@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from '../models/environment';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,13 @@ export class UserService {
     .post(this.environment.baseURL()+"api/user/login",body,{
       withCredentials : true
     }).toPromise()
+  }
+
+  public getUserInfo() : Observable<User>
+  {
+    return this.httpClient.get<User>(this.environment.baseURL()+"api/user/info",
+    {
+      withCredentials: true
+    })
   }
 }
