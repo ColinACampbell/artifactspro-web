@@ -65,4 +65,13 @@ export class UserService {
       withCredentials: true
     })
   }
+
+  public verifyUser(accessCode:String)
+  {
+    return this.httpClient.post(this.environment.baseURL()+'api/user/verify',{
+      accessCode
+    },{
+      withCredentials : true
+    })
+  }
 }

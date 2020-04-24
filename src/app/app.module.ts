@@ -29,6 +29,7 @@ import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/team/team.component';
 import {NgxDocViewerModule} from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
+import { VerifyUserComponent } from './main/verify-user/verify-user.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MemberService } from './services/member.service';
     UploadDialogComponent,
     NoaccessComponent,
     TeamComponent,
+    VerifyUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,7 +28,6 @@ export class ArtifactComponent implements OnInit {
     private route:ActivatedRoute,
     private docServ: DocumentService,
     private dialog: MatDialog,
-    private router:Router,
     private _location: Location
   ) { }
 

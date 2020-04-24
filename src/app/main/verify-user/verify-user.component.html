@@ -1,0 +1,30 @@
+<div class="container">
+    
+    <div style="width: 500px;">
+        <div>
+            <h1 style="text-align: center;"> Verify My Account </h1>
+        </div>
+        <div>
+            <h4 style="text-align: center;"> Please Enter Your Login Credentials </h4>
+        </div>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500>
+                <mat-label>Enter Your Email Address</mat-label>
+                <input matInput placeholder="Please enter your email" [type]='email' #email>
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <mat-hint>Enter Email</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500 >
+                <mat-label>Please Enter a Password</mat-label>
+                <input matInput placeholder="Please enter a secure password" [type]="'password'" #password>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint>Enter Password</mat-hint>
+            </mat-form-field>
+        </p>
+        <p style="text-align:center">
+            <button mat-raised-button color="primary" (click)="login(email.value,password.value)"> Login </button>
+        </p>
+    </div>
+</div>
