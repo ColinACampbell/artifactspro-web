@@ -5,26 +5,27 @@
             <h1 style="text-align: center;"> Verify My Account </h1>
         </div>
         <div>
-            <h4 style="text-align: center;"> Please Enter Your Login Credentials </h4>
+            <h4 style="text-align: center;"> Please Enter The Information To Completed Set Up </h4>
         </div>
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500>
-                <mat-label>Enter Your Email Address</mat-label>
-                <input matInput placeholder="Please enter your email" [type]='email' #email>
-                <mat-icon matSuffix>account_circle</mat-icon>
-                <mat-hint>Enter Email</mat-hint>
+                <mat-label> Please Enter Your First Name</mat-label>
+                <input matInput placeholder="Please Your First Name" [type]='text' #firstName>
+                <mat-icon matSuffix>contacts</mat-icon>
+                <mat-hint>First Name</mat-hint>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500 >
-                <mat-label>Please Enter a Password</mat-label>
-                <input matInput placeholder="Please enter a secure password" [type]="'password'" #password>
-                <mat-icon matSuffix>lock</mat-icon>
-                <mat-hint>Enter Password</mat-hint>
+                <mat-label>Please Enter Your Last Name</mat-label>
+                <input matInput placeholder="Please Enter Your Last Name" [type]="text" #lastName>
+                <mat-icon matSuffix>contacts</mat-icon>
+                <mat-hint>Last Name</mat-hint>
             </mat-form-field>
         </p>
+        <mat-progress-bar mode="indeterminate" *ngIf='loginInProcess'></mat-progress-bar>
         <p style="text-align:center">
-            <button mat-raised-button color="primary" (click)="login(email.value,password.value)"> Login </button>
+            <button mat-raised-button color="primary" (click)="verifyAccount(firstName.value,lastName.value)"> Done </button>
         </p>
     </div>
 </div>

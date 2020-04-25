@@ -18,7 +18,7 @@ const routes: Routes = [
   { path : 'app', component : MainComponent },
   { path : 'app/artifact/:id', component: ArtifactComponent },
   { path : 'error', component : NoaccessComponent },
-  { path : 'user/verify/:id', component : VerifyUserComponent }
+  { path : 'account/verify/:id', component : VerifyUserComponent }
 ];
 
 @NgModule({
