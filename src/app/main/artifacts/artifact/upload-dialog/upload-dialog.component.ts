@@ -100,8 +100,8 @@ export class UploadDialogComponent implements OnInit {
           duration : 5000
         });
         
-        snackbarRef.afterDismissed()
-        .subscribe(()=>{
+        snackbarRef.onAction()
+        .subscribe((_)=>{
           this.dialogRef.close();
         })
       }
