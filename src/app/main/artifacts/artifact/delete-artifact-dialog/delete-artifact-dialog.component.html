@@ -1,0 +1,20 @@
+<div class="form">
+    <div style="display: flex; justify-content: center;">
+        <h2> Delete Document </h2>
+    </div>
+    <mat-form-field class="fields">
+        <mat-label> Please Enter The Name of The Artifact </mat-label>
+        <input matTooltip='This action cannot be undone' matInput placeholder="Verify The Process" value="" #artifactName maxlength="50" (keyup)='onType(artifactName.value)'>
+    </mat-form-field>
+   
+    <div>
+        <small style="color:red"> Note : This action cannot be undone </small>
+    </div>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-raised-button cdkFocusInitial (click)="deleteArtifact()" [disabled]="!isNameCorrect" color='warn'> Delete Artifact </button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

@@ -30,6 +30,7 @@ import { TeamComponent } from './main/team/team.component';
 import {NgxDocViewerModule} from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/verify-user/verify-user.component';
+import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { VerifyUserComponent } from './main/verify-user/verify-user.component';
     NoaccessComponent,
     TeamComponent,
     VerifyUserComponent,
+    DeleteArtifactDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,7 @@ import { VerifyUserComponent } from './main/verify-user/verify-user.component';
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,
     UploadDialogComponent,
-    
+    DeleteArtifactDialogComponent
   ],
   providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment,MemberService],
   bootstrap: [AppComponent]

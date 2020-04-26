@@ -19,7 +19,6 @@ export class ArtifactsService {
 
   getAllArtifacts() : Observable<Artifact[]>
   {
-    
     return this.httpClient.get<Artifact[]>(this.environment.baseURL()+"api/art",{
       withCredentials : true,
     });
@@ -44,4 +43,9 @@ export class ArtifactsService {
       withCredentials : true
     });
   }
+
+  deleteArtifact(artID:number)
+  {
+    return this.httpClient.delete(this.environment.baseURL()+`api/art/delete/${artID}`);
+  } 
 }

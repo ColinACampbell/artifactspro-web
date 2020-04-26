@@ -6,7 +6,8 @@ import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
 import { MatDialog } from '@angular/material';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
-import {Location} from '@angular/common';
+import { DeleteArtifactDialogComponent } from './delete-artifact-dialog/delete-artifact-dialog.component'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-artifact',
@@ -27,8 +28,9 @@ export class ArtifactComponent implements OnInit {
     private artServ:ArtifactsService,
     private route:ActivatedRoute,
     private docServ: DocumentService,
-    private dialog: MatDialog,
-    private _location: Location
+    private uploadDialog: MatDialog,
+    private deleteDialog: MatDialog,
+    private _location: Location,
   ) { }
 
   private artID:number;
@@ -85,11 +87,23 @@ export class ArtifactComponent implements OnInit {
 
   public openUploadDialog()
   {
-    let dialogRef = this.dialog.open(UploadDialogComponent,
+    let dialogRef = this.uploadDialog.open(UploadDialogComponent,
       {
         width: "400px",
         data : {
           art_id : this.artID
+        }
+      })
+  }
+
+  public openDeleteDialogue()
+  {
+    let dialogRef = this.deleteDialog.open(DeleteArtifactDialogComponent,
+      {
+        width : "480px",
+        data : {
+          artifact_name :  this.artifact.name,
+          art_id : this.artID,
         }
       })
   }

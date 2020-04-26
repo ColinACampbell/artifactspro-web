@@ -4,12 +4,12 @@
     </div>
 
     <mat-form-field class="fields">
-        <mat-label> Name the version of the document ({{ 50 - comment.length.value }}) </mat-label>
+        <mat-label> Name the version of the document ({{ 50 - versionName.value.length }}) </mat-label>
         <input matTooltip='The version name will be relfected to represent this file name' matInput placeholder="Be sure to use a version naming standard." value="" #versionName maxlength="50">
     </mat-form-field>
 
     <mat-form-field class="fields">
-        <mat-label>Comment on the document ({{ 500 - comment.length.value }})</mat-label>
+        <mat-label>Comment on the document ({{ 500 - comment.value.length }})</mat-label>
         <textarea matInput placeholder="Eg. Changes made to the document, minor details etc" #comment maxlength="500"></textarea>
     </mat-form-field>
 
