@@ -4,10 +4,11 @@ import { Artifact } from 'src/app/models/artifacts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 import { DeleteArtifactDialogComponent } from './delete-artifact-dialog/delete-artifact-dialog.component'
 import { Location } from '@angular/common';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-artifact',
@@ -31,6 +32,7 @@ export class ArtifactComponent implements OnInit {
     private uploadDialog: MatDialog,
     private deleteDialog: MatDialog,
     private _location: Location,
+    private snackBar:MatSnackBar
   ) { }
 
   private artID:number;
@@ -106,6 +108,19 @@ export class ArtifactComponent implements OnInit {
           art_id : this.artID,
         }
       })
+  }
+
+  public deleteDocument(document:ADocument)
+  {
+    const id = document.doc_id;
+    this.docServ.deleteDocument(id)
+    .subscribe((observable)=>{
+      console.log(observable)
+      const message = observable['message'];
+      if (message === 'done')
+        this.getAllDocuments(this.artID);
+        this.snackBar.open(`Document '${document.version}' was deleted, successfully`,'Okay')
+    });
   }
 
   public goBack()

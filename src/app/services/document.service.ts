@@ -40,4 +40,9 @@ export class DocumentService {
       withCredentials : true
     });
   }
+
+  public deleteDocument(docID:number)
+  {
+    return this.httpClient.delete(this.environment.baseURL()+`api/docs/delete/${docID}`)
+  }
 }
