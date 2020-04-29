@@ -31,6 +31,7 @@ import {NgxDocViewerModule} from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/verify-user/verify-user.component';
 import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
+import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-
     TeamComponent,
     VerifyUserComponent,
     DeleteArtifactDialogComponent,
+    InviteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,8 @@ import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,
     UploadDialogComponent,
-    DeleteArtifactDialogComponent
+    DeleteArtifactDialogComponent,
+    InviteDialogComponent
   ],
   providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment,MemberService],
   bootstrap: [AppComponent]

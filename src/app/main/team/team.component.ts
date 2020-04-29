@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
 import { PartialObserver } from 'rxjs';
 import { Members } from 'src/app/models/members';
+import { MatDialog } from '@angular/material';
+import { InviteDialogComponent } from './invite-dialog/invite-dialog.component';
 
 @Component({
   selector: 'app-team',
@@ -11,19 +13,11 @@ import { Members } from 'src/app/models/members';
 export class TeamComponent implements OnInit {
 
   public members:Members[];
-   ELEMENT_DATA: any[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  
-  ];
 
   displayedColumns: string[] = ['first_name', 'last_name', 'email', 'role'];
-  dataSource = this.ELEMENT_DATA;
   
-  constructor(private membersService:MemberService) { }
+  constructor(private membersService:MemberService,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
     this.getAllMembers();
@@ -36,6 +30,11 @@ export class TeamComponent implements OnInit {
       this.members = members;
       console.log(this.members)
     })
+  }
+
+  public openInviteTeamDialog()
+  {
+    this.dialog.open(InviteDialogComponent);
   }
 
 }
