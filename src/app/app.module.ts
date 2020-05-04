@@ -32,6 +32,7 @@ import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/verify-user/verify-user.component';
 import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
 import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.component';
+import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.c
     VerifyUserComponent,
     DeleteArtifactDialogComponent,
     InviteDialogComponent,
+    TeamInviteComponent,
   ],
   imports: [
     BrowserModule,

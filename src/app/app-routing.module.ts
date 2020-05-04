@@ -8,6 +8,7 @@ import { MainComponent } from './main/main/main.component';
 import { ArtifactComponent } from './main/artifacts/artifact/artifact.component';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { VerifyUserComponent } from './main/verify-user/verify-user.component'
+import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path : 'app', component : MainComponent },
   { path : 'app/artifact/:id', component: ArtifactComponent },
   { path : 'error', component : NoaccessComponent },
-  { path : 'account/verify/:id', component : VerifyUserComponent }
+  { path : 'account/verify/:id', component : VerifyUserComponent },
+  { path : 'team/invite/:id', component: TeamInviteComponent}
 ];
 
 @NgModule({

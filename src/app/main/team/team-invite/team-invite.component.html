@@ -1,0 +1,31 @@
+<div class="container">
+    
+    <div style="width: 500px;">
+        <div>
+            <h1 style="text-align: center;"> Join Team {{  organizationName  }} </h1>
+        </div>
+        <div>
+            <h4 style="text-align: center;"> Please enter your information. A verification mail will be sent to you. </h4>
+        </div>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500>
+                <mat-label> Please enter your email </mat-label>
+                <input matInput placeholder="Enter your email address" [type]="'email'" #email>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-hint> Email </mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500 >
+                <mat-label> Create a password</mat-label>
+                <input matInput placeholder="Create a password" [type]="'password'" #password>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint> Password </mat-hint>
+            </mat-form-field>
+        </p>
+        <mat-progress-bar mode="indeterminate" *ngIf='loginInProcess'></mat-progress-bar>
+        <p style="text-align:center">
+            <button mat-raised-button color="primary" (click)="signUpUser(email.value,password.value)"> Join </button>
+        </p>
+    </div>
+</div>

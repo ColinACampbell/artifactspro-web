@@ -41,4 +41,21 @@ export class OrganizationService {
       withCredentials : true,
     }).toPromise();
   }
+
+
+  public getOrganizyionFromAccessCode(accessCode:String)
+  {
+    return this.httpClient.get(this.environment.baseURL()+`api/org/info-from/access-code/${accessCode}`,
+    {
+      withCredentials : true
+    })
+  }
+
+  public addUserToOganization(accessCode:String)
+  {
+    return this.httpClient.post(this.environment.baseURL()+`api/org//invite-from-code/${accessCode}`,
+    {},{
+      withCredentials : true
+    });
+  }
 }
