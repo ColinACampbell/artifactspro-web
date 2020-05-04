@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from 'src/app/services/member.service';
+import { observable } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-invite-dialog',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InviteDialogComponent implements OnInit {
 
-  constructor() { }
+  private inviteUrl:String;
+  constructor(
+    public dialogRef: MatDialogRef<InviteDialogComponent>,
+    private memServ: MemberService
+  ) { }
 
   ngOnInit() {
+    this.getInviteURL();
+  }
+
+  private getInviteURL()
+  {
+    this.memServ.getInviteURL()
+    .subscribe((observable)=>{
+      this.inviteUrl = observable['invite_url'];
+      console.log(this.inviteUrl);
+    })
+  }
+
+  // TODO Work on cpy clipboard solution
+  public closeDialog()
+  {
+    this.dialogRef.close();
+  }
+
+  public copyLinkToClipBoard()
+  {
+
   }
 
 }

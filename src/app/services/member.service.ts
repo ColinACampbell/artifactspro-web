@@ -21,4 +21,12 @@ export class MemberService {
       withCredentials: true
     })
   }
+
+  public getInviteURL()
+  {
+    return this.httpClient.get(this.environment.baseURL()+'api/members/invite-code',
+    {
+      withCredentials:true,
+    })
+  }
 }
