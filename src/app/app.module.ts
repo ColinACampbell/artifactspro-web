@@ -27,7 +27,7 @@ import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/u
 import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/team/team.component';
-import {NgxDocViewerModule} from 'ngx-doc-viewer'
+import { NgxDocViewerModule } from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/verify-user/verify-user.component';
 import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
