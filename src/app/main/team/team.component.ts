@@ -14,7 +14,7 @@ export class TeamComponent implements OnInit {
 
   public members:Members[];
 
-  displayedColumns: string[] = ['first_name', 'last_name', 'email', 'role'];
+  displayedColumns: string[] = ['name', 'email', 'role','action'];
   
   constructor(private membersService:MemberService,
     private dialog:MatDialog) { }

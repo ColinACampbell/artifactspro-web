@@ -1,7 +1,14 @@
 <div class="flex">
-    <div mat-subheader style="justify-content:flex-start;padding: 16px;">
-        <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
-        <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
+    <div mat-subheader style="display:flex;justify-content:space-between;padding: 16px;">
+        <mat-form-field appearance="outline" style="width: 300px;">
+            <mat-label>Search Arifact</mat-label>
+            <input matInput placeholder="Enter Name of Version of Artifact">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <div style="margin-bottom: 50px;">
+            <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary"> Search Artifact </button>
+        </div>
     </div>
 
     <div class="grid">
@@ -14,13 +21,13 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title> {{ artifact.name }}</mat-card-title>
             </mat-card-header>
-            
+
             <mat-card-content style="justify-content: center; display: flex;">
                 <p>
                     {{ artifact.description }}
                 </p>
             </mat-card-content>
-            
+
         </mat-card>
     </div>
 
