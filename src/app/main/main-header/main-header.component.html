@@ -1,6 +1,14 @@
 <mat-toolbar style="background-color: #3597fa; color: white;">
     <mat-toolbar-row>
-        <span> {{ organization.getName() }} </span>
+        <div style="display:flex; justify-content: space-around;align-items: center;"> 
+            <span>            
+                <img src="./../../../assets/logo.png" width="90px" style="margin-left: 40px;"/> 
+            </span>
+            <span style="margin-left: 10px;">
+                | {{ organization.getName() }}
+            </span>
+        </div>
+        
         <!--
         <span style="float:right;">
             <button mat-button matTooltip="Hold on, we're not ready yet..."> Dummy 1 </button>
