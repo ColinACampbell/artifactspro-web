@@ -5,12 +5,12 @@
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500>
                 <mat-label> Invite Link </mat-label>
-                <input matInput placeholder="Please Your First Name" [type]='text'  value="{{inviteUrl}}">
+                <input matInput placeholder="Please Your First Name" [type]='text'  #inputElement value="{{inviteUrl}}">
             </mat-form-field>
         </p>
         <p style="display: flex; justify-content: end;">
-            <button mat-raised-button color='primary'> Copy </button>
-            <button mat-button> Close </button>
+            <button mat-raised-button color='primary' (click)='copyLinkToClipBoard(inputElement)'> Copy </button>
+            <button mat-button (click)='closeDialog()'> Close </button>
         </p>
         
     </div>

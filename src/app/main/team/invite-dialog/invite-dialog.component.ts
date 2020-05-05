@@ -35,9 +35,11 @@ export class InviteDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  public copyLinkToClipBoard()
-  {
 
+  public copyLinkToClipBoard(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
   }
 
 }
