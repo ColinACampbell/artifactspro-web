@@ -18,7 +18,6 @@ interface DialogData {
   styleUrls: ['./create-dialog.component.css']
 })
 
-
 export class CreateDialogComponent implements OnInit {
 
   private fullDate: String;
@@ -37,15 +36,16 @@ export class CreateDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDate(date: Date) {
+  createArtifact(name: String, description: String) {
 
-    if (date === null) {
-      this.snackBar.open("Date Cannot be empty", "Okay")
+    if (name === '' || description === '') {
+      this.snackBar.open('None of the fields should be empty', "Okay");
       return;
     }
 
+    const date = new Date();
     let day = date.getDate() + '';
-    let month = date.getMonth() + ''; // convert them to string by contacenating them to a string
+    let month = date.getMonth() + 1 + ''; // convert them to string by contacenating them to a string
 
     // convert the values to double digits if the are not
     if (day.length === 1)
@@ -55,19 +55,10 @@ export class CreateDialogComponent implements OnInit {
       month = "0" + month;
 
     let year = date.getFullYear();
-    let fullDate = `${month}/${day}/${year}`;
-    this.fullDate = fullDate;
-  }
+    let fullDate = `${day}/${month}/${year}`;
+    console.log(fullDate);
 
-
-  createArtifact(name: String, description: String) {
-
-    if (name === '' || description === '' || this.fullDate === '') {
-      this.snackBar.open('None of the fields should be empty', "Okay");
-      return;
-    }
-
-    this.artServ.createArtifact(name, description, this.fullDate)
+    this.artServ.createArtifact(name, description, fullDate)
       .subscribe((data) => {
         let artID = data.art_id;
 
@@ -84,8 +75,6 @@ export class CreateDialogComponent implements OnInit {
         else
           this.snackBar.open('Looks like there is an internal error', 'Okay')
       })
-    // TODO : Foward user to a screen where they can create a document
-
   }
 
 }
