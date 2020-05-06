@@ -3,6 +3,7 @@ import { OrganizationService } from 'src/app/services/organization.service';
 import { Organization } from 'src/app/models/organization';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-main-header',
@@ -31,6 +32,9 @@ export class MainHeaderComponent implements OnInit {
       this.fullName = `${this.user.first_name} ${this.user.last_name}`;
       console.log(this.fullName)
     })
+
+    //const socket = io('http://localhost:3000');
+    //socket.emit('foo',{helloworld:'Colin Campbell'})
   }
 
   private getOrganization() : Promise<any>

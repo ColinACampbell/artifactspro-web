@@ -73,7 +73,7 @@ export class ArtifactComponent implements OnInit {
     this.docServ.providePreviewLink(this.artID,docID)
     .subscribe((response)=>{
       this.previewlink = response['download'];
-      console.log(this.previewlink)
+      //console.log(this.previewlink)
       //let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
       //this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
     })
@@ -115,7 +115,7 @@ export class ArtifactComponent implements OnInit {
     const id = document.doc_id;
     this.docServ.deleteDocument(id)
     .subscribe((observable)=>{
-      console.log(observable)
+      //console.log(observable)
       const message = observable['message'];
       if (message === 'done')
         this.getAllDocuments(this.artID);

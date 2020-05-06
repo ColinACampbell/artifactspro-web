@@ -27,7 +27,7 @@ export class UserService {
       
     },(err)=>{
       let status = err['status'];
-      console.log(this.router.url);
+      //console.log(this.router.url);
 
       let activeUrl = this.router.url;
       
