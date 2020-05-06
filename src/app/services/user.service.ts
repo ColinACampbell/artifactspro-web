@@ -75,4 +75,11 @@ export class UserService {
       withCredentials : true
     })
   }
+
+  public signOut()
+  {
+    return this.httpClient.post(this.environment.baseURL()+'api/user/logout',{},{
+      withCredentials : true,
+    })
+  }
 }

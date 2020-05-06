@@ -4,6 +4,7 @@ import { Organization } from 'src/app/models/organization';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 import io from 'socket.io-client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-header',
@@ -18,7 +19,8 @@ export class MainHeaderComponent implements OnInit {
 
   constructor(
     private orgServe:OrganizationService,
-    private userServ:UserService
+    private userServ:UserService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -45,6 +47,15 @@ export class MainHeaderComponent implements OnInit {
   private getUser() : Observable<User>
   {
     return this.userServ.getUserInfo();
+  }
+
+  public logOut()
+  {
+    this.userServ.signOut()
+    .subscribe(observer=>{
+      if (observer['message'] === 'ok')
+        this.router.navigate(['/login'])
+    })
   }
 
 }
