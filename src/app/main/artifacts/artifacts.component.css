@@ -1,50 +1,42 @@
 .mat-list-icon {
-    color: rgba(0, 0, 0, 0.54);
-  }
+  color: rgba(0, 0, 0, 0.54);
+}
 
-mat-list
-{
+mat-list {
   height: calc(100vh - 125px);
   overflow-y: scroll;
 }
 
 
-.artifact-search
-{
-    width: 100%;
+.artifact-search {
+  width: 100%;
 }
 
-.mat-list-item:hover
-{
-      background-color: #e9e7e7f5;
+.mat-list-item:hover {
+  background-color: #e9e7e7f5;
 }
 
-.flex
-{
+.flex {}
+
+.artifact-view {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
 }
 
-.artifact-view
-{
-    display: flex;
-    justify-content: center;
-    padding: 30px;
+.artifact-view-absent {
+  height: calc(100vh - 115px);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.artifact-view-absent
-{
-    height: calc(100vh - 115px);
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-group > button
-{
+.btn-group>button {
   margin-left: 10px;
 }
-.modal-bg
-{
+
+.modal-bg {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.12);
@@ -52,33 +44,39 @@ mat-list
   z-index: 10;
 }
 
-.card-image
-{
-  width: 100px;
+.card-image {
+  width: 300px;
 }
 
-.grid
-{
-  width: 97%; 
-  margin-top: 20px; 
+.grid {
+  width: 97%;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
+
+  padding-bottom: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
-.artifact-card
-{
+.artifact-card {
   margin: 5px;
   cursor: default;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }

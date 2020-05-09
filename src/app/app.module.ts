@@ -34,6 +34,8 @@ import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-
 import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.component';
 import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
 import { FormsModule } from '@angular/forms';
+import { WorkSpaceComponent } from './main/work-space/work-space.component';
+import { WorkSpaceService } from './services/work-space.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { FormsModule } from '@angular/forms';
     DeleteArtifactDialogComponent,
     InviteDialogComponent,
     TeamInviteComponent,
+    WorkSpaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,15 @@ import { FormsModule } from '@angular/forms';
     DeleteArtifactDialogComponent,
     InviteDialogComponent
   ],
-  providers: [UserService, OrganizationService, ArtifactsService,DocumentService,Environment,MemberService],
+  providers: [
+    UserService, 
+    OrganizationService, 
+    ArtifactsService,
+    DocumentService,
+    Environment,
+    MemberService,
+    WorkSpaceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
