@@ -38,6 +38,7 @@ import { WorkSpaceComponent } from './main/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
 import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-space-dialog/create-work-space-dialog.component';
 import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
+import { UtilService } from './services/util.service';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-w
     DocumentService,
     Environment,
     MemberService,
-    WorkSpaceService
+    WorkSpaceService,
+    UtilService,
   ],
   bootstrap: [AppComponent]
 })

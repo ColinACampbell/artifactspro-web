@@ -2,15 +2,15 @@
     <div style="display: flex; justify-content: center;">
         <h2> Create Work Space </h2>
     </div>
-    
+
     <mat-form-field class="fields">
         <mat-label>Enter Name Of The Workspace ({{ 50 - name.value.length }})</mat-label>
-        <input matInput placeholder="Eg. Report 2020, Revision etc" value="" #name maxlength="50">
+        <input matInput placeholder="Enter Name of Your Work Space" value="" #name maxlength="50">
     </mat-form-field>
 
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial (click)="createArtifact(name.value,description.value)"> Create Work Space</button>
+            <button mat-button cdkFocusInitial (click)="createWorkSpace(name.value)"> Create Work Space</button>
             <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>

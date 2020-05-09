@@ -5,4 +5,5 @@
     padding-left: 9px;
     padding-right: 9px;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }

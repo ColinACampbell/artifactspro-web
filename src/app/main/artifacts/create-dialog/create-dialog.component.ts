@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { ArtifactsComponent } from '../artifacts.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 
 // TODO Work on the interface;
 
@@ -27,7 +28,8 @@ export class CreateDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private snackBar: MatSnackBar,
     private artServ: ArtifactsService,
-    private router : Router) { }
+    private router : Router,
+    private utilServ:UtilService) { }
 
   closeDialog(): void {
     this.dialogRef.close();
@@ -43,22 +45,9 @@ export class CreateDialogComponent implements OnInit {
       return;
     }
 
-    const date = new Date();
-    let day = date.getDate() + '';
-    let month = date.getMonth() + 1 + ''; // convert them to string by contacenating them to a string
-
-    // convert the values to double digits if the are not
-    if (day.length === 1)
-      day = "0" + day;
-
-    if (month.length === 1)
-      month = "0" + month;
-
-    let year = date.getFullYear();
-    let fullDate = `${day}/${month}/${year}`;
-    console.log(fullDate);
-
-    this.artServ.createArtifact(name, description, fullDate)
+    let currentDate = this.utilServ.getCurrentDate();
+    
+    this.artServ.createArtifact(name, description, currentDate)
       .subscribe((data) => {
         let artID = data.art_id;
 

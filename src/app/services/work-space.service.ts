@@ -21,4 +21,15 @@ export class WorkSpaceService {
       withCredentials: true
     })
   }
+
+  public createWorkSpace(name:String,dateCreated:String) : Observable<any>
+  {
+    return this.httpClient.post(this.environment.baseURL()+'api/workspace/create',{
+      workspace_name: name,
+      date_created:dateCreated
+    },
+    {
+      withCredentials : true
+    })
+  }
 }

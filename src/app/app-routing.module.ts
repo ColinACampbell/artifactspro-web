@@ -22,7 +22,7 @@ const routes: Routes = [
   { path : 'error', component : NoaccessComponent },
   { path : 'account/verify/:id', component : VerifyUserComponent },
   { path : 'team/invite/:id', component: TeamInviteComponent},
-  { path : 'app/workspce/:id', component : ViewWorkSpaceComponent }
+  { path : 'app/workspace/:id', component : ViewWorkSpaceComponent }
 ];
 
 @NgModule({
