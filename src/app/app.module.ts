@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
 import { WorkSpaceComponent } from './main/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
 import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-space-dialog/create-work-space-dialog.component';
+import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-sp
     TeamInviteComponent,
     WorkSpaceComponent,
     CreateWorkSpaceDialogComponent,
+    ViewWorkSpaceComponent,
   ],
   imports: [
     BrowserModule,
