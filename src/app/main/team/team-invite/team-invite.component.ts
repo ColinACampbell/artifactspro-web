@@ -31,10 +31,10 @@ export class TeamInviteComponent implements OnInit {
 
   public signUpUser(email:String,password:String)
   {
-    console.log(email,password);
+    //console.log(email,password);
     this.userServ.signup(email,password)
     .then((data)=>{
-      console.log(data['message']);
+      //console.log(data['message']);
       if (data['message'] === 'success')
       {
         this.orgServ.addUserToOganization(this.accessCode)
