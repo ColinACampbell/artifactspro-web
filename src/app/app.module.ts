@@ -91,7 +91,8 @@ import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-sp
     CreateDialogComponent,
     UploadDialogComponent,
     DeleteArtifactDialogComponent,
-    InviteDialogComponent
+    InviteDialogComponent,
+    CreateWorkSpaceDialogComponent
   ],
   providers: [
     UserService, 
