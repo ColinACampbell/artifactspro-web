@@ -4,6 +4,7 @@ import { WorkSpace } from 'src/app/models/workspace';
 import { ADocument } from 'src/app/models/adocument';
 import { MatDialog } from '@angular/material';
 import { CreateWorkSpaceDialogComponent } from './create-work-space-dialog/create-work-space-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-work-space',
@@ -16,7 +17,8 @@ export class WorkSpaceComponent implements OnInit {
 
   constructor(
     private workSpaceService: WorkSpaceService,
-    private createWSDialog: MatDialog
+    private createWSDialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -37,4 +39,9 @@ export class WorkSpaceComponent implements OnInit {
     this.createWSDialog.open(CreateWorkSpaceDialogComponent);
   }
 
+  public openWorkSpace(workSpace:WorkSpace)
+  {
+    let workSpaceID = workSpace.work_space_id;
+    this.router.navigate(['/app/workspace/',workSpaceID]);
+  }
 }
