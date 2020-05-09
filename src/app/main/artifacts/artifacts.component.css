@@ -16,8 +16,6 @@ mat-list {
   background-color: #e9e7e7f5;
 }
 
-.flex {}
-
 .artifact-view {
   display: flex;
   justify-content: center;
