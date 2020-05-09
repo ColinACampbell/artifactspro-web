@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { WorkSpace } from 'src/app/models/workspace';
+import { ADocument } from 'src/app/models/adocument';
 
 @Component({
   selector: 'app-work-space',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkSpaceComponent implements OnInit {
 
-  constructor() { }
+  public workSpaces:WorkSpace[];
+
+  constructor(
+    private workSpaceService: WorkSpaceService
+  ) { }
 
   ngOnInit() {
+    this.loadWorkSpaces();
+  }
+
+  private loadWorkSpaces()
+  {
+    this.workSpaceService.getWorkSpaces()
+    .subscribe((workSpaces:WorkSpace[])=>{
+      console.log(workSpaces)
+      this.workSpaces = workSpaces;
+    });
   }
 
 }

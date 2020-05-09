@@ -14,8 +14,11 @@ export class WorkSpaceService {
     private environment: Environment,
   ) { }
   
-  private getWorkSpaces() : Observable<WorkSpace[]>
+  public getWorkSpaces() : Observable<WorkSpace[]>
   {
-    return this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+"api/workspace/all")
+    return this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+"api/workspace/all",
+    {
+      withCredentials: true
+    })
   }
 }

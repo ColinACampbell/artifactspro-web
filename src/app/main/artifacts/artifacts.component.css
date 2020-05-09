@@ -52,7 +52,7 @@ mat-list {
   width: 97%;
   padding: 10px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   padding-bottom: 9px;
