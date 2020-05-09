@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
     private workspaceService:WorkSpaceService,
     private router: Router,
     private snackBar:MatSnackBar,
-    private utilService:UtilService
+    private utilService:UtilService,
+    private dialogRef: MatDialogRef<CreateWorkSpaceDialogComponent>
   ) { }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
       if (message === 'ok')
       {
         let workspaceID = observable['work_space_id'];
+        this.dialogRef.close();
         this.router.navigate([`/app/workspace/`,workspaceID])
       } else {
         // show error
