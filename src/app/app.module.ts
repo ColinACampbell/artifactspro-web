@@ -6,7 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule } from '@angular/material';
-import { MatButtonModule, MatListModule, MatGridListModule, MatDialogModule, MatToolbarModule, MatInputModule, MatTooltipModule, MatSelectModule, MatSnackBarModule, MatFormFieldModule, MatTabsModule } from "@angular/material";
+import { MatButtonModule, MatTreeModule,
+  MatListModule, MatGridListModule, MatDialogModule, 
+  MatToolbarModule, MatInputModule, MatTooltipModule, 
+  MatSelectModule, MatSnackBarModule, 
+  MatFormFieldModule, MatTabsModule } from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -88,7 +92,8 @@ import { UtilService } from './services/util.service';
     MatProgressBarModule,
     MatTableModule,
     NgxDocViewerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTreeModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,
