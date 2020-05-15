@@ -32,4 +32,15 @@ export class WorkSpaceService {
       withCredentials : true
     })
   }
+
+  public getWorkspaceInfo(workspaceID:number) : Observable<WorkSpace>
+  {
+    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/${workspaceID}`);
+  }
+
+  // TODO : Test this method
+  public getMembers(workspaceID:number) : Observable<any[]>
+  {
+    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/members`)
+  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { WorkSpace } from 'src/app/models/workspace';
 
 @Component({
   selector: 'app-view-work-space',
@@ -9,15 +11,30 @@ import { Router } from '@angular/router';
 export class ViewWorkSpaceComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    private activeRoute:ActivatedRoute,
+    private workspaceService: WorkSpaceService,
   ) { }
 
+  private workspaceID:number;
+  private workspace:WorkSpace;
+
   ngOnInit() {
+    this.workspaceID = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
+    this.loadWorkspaceInfo();
   }
 
   public goBack()
   {
     this.router.navigate(['/app'])
+  }
+
+  private loadWorkspaceInfo()
+  {
+    this.workspaceService.getWorkspaceInfo(this.workspaceID)
+    .subscribe((workspace:WorkSpace)=>{
+      this.workspace = workspace;
+    })
   }
 
 }
