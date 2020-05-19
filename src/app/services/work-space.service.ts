@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Environment } from '../models/environment';
 import { WorkSpace } from '../models/workspace';
 import { Observable } from 'rxjs/internal/Observable';
+import { Artifact } from '../models/artifacts';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,10 @@ export class WorkSpaceService {
   public getMembers(workspaceID:number) : Observable<any[]>
   {
     return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/members`)
+  }
+
+  public getArtifacts(workspaceID:number) : Observable<Artifact[]>
+  {
+    return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`);
   }
 }
