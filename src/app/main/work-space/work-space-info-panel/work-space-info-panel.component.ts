@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
+import { MatDialog } from '@angular/material';
+import { WorkSpaceAddMemberComponent } from './work-space-add-member/work-space-add-member.component';
 
 @Component({
   selector: 'app-work-space-info-panel',
@@ -15,7 +17,8 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   public artifacts: Artifact[];
 
   constructor(
-    private workspaceService:WorkSpaceService
+    private workspaceService:WorkSpaceService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -37,5 +40,11 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
     .subscribe((artifacts:Artifact[])=>{
       this.artifacts = artifacts;
     })
+  }
+
+  public openAddMemberDialog()
+  {
+    // Open dialog to add user
+    this.dialog.open(WorkSpaceAddMemberComponent);
   }
 }

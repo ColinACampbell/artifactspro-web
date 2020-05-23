@@ -44,6 +44,7 @@ import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-sp
 import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
 import { UtilService } from './services/util.service';
 import { WorkSpaceInfoPanelComponent } from './main/work-space/work-space-info-panel/work-space-info-panel.component';
+import { WorkSpaceAddMemberComponent } from './main/work-space/work-space-info-panel/work-space-add-member/work-space-add-member.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { WorkSpaceInfoPanelComponent } from './main/work-space/work-space-info-p
     CreateWorkSpaceDialogComponent,
     ViewWorkSpaceComponent,
     WorkSpaceInfoPanelComponent,
+    WorkSpaceAddMemberComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +104,8 @@ import { WorkSpaceInfoPanelComponent } from './main/work-space/work-space-info-p
     UploadDialogComponent,
     DeleteArtifactDialogComponent,
     InviteDialogComponent,
-    CreateWorkSpaceDialogComponent
+    CreateWorkSpaceDialogComponent,
+    WorkSpaceAddMemberComponent
   ],
   providers: [
     UserService, 

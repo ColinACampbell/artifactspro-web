@@ -2,7 +2,7 @@
     <mat-list #items>
         <div mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Members</span> 
-            <button mat-raised-button color="primary"> Add Member </button>
+            <button mat-raised-button color="primary" (click)='openAddMemberDialog()'> Add Member </button>
         </div>
         <mat-list-item *ngFor="let workspaceMember of workspaceMembers">
           <mat-icon mat-list-icon>account_circle</mat-icon>
