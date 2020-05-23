@@ -17,16 +17,13 @@ export class ViewWorkSpaceComponent implements OnInit {
     private workspaceService: WorkSpaceService,
   ) { }
 
+ 
   private workspaceID:number;
-  public workspace:WorkSpace;
-  public workspaceMembers:any[];
-  public artifacts: Artifact[];
+  public workspace:WorkSpace = null;
 
   ngOnInit() {
     this.workspaceID = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
     this.loadWorkspaceInfo();
-    this.loadMembers();
-    this.loadArtifacts();
   }
 
   public goBack()
@@ -42,22 +39,6 @@ export class ViewWorkSpaceComponent implements OnInit {
     })
   }
 
-  private loadMembers()
-  {
-    this.workspaceService.getMembers(this.workspaceID)
-    .subscribe(observer=>{
-      this.workspaceMembers = observer;
-      console.log(observer)
-    })
-  }
-
-  private loadArtifacts()
-  {
-    this.workspaceService.getArtifacts(this.workspaceID)
-    .subscribe((artiacts:Artifact[])=>{
-      this.artifacts = artiacts;
-      console.log(artiacts)
-    })
-  }
+  
 
 }

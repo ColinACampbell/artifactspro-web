@@ -43,7 +43,7 @@ import { WorkSpaceService } from './services/work-space.service';
 import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-space-dialog/create-work-space-dialog.component';
 import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
 import { UtilService } from './services/util.service';
-import { WorkSpaceMembersComponent } from './main/work-space/work-space-members/work-space-members.component';
+import { WorkSpaceInfoPanelComponent } from './main/work-space/work-space-info-panel/work-space-info-panel.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { WorkSpaceMembersComponent } from './main/work-space/work-space-members/
     WorkSpaceComponent,
     CreateWorkSpaceDialogComponent,
     ViewWorkSpaceComponent,
-    WorkSpaceMembersComponent,
+    WorkSpaceInfoPanelComponent,
   ],
   imports: [
     BrowserModule,
