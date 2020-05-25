@@ -10,7 +10,7 @@ import { MatButtonModule, MatTreeModule,
   MatListModule, MatGridListModule, MatDialogModule, 
   MatToolbarModule, MatInputModule, MatTooltipModule, 
   MatSelectModule, MatSnackBarModule, 
-  MatFormFieldModule, MatTabsModule } from "@angular/material";
+  MatFormFieldModule, MatTabsModule,MatAutocompleteModule } from "@angular/material";
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -37,7 +37,7 @@ import { VerifyUserComponent } from './main/verify-user/verify-user.component';
 import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
 import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.component';
 import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WorkSpaceComponent } from './main/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
 import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-space-dialog/create-work-space-dialog.component';
@@ -97,7 +97,9 @@ import { WorkSpaceAddMemberComponent } from './main/work-space/work-space-info-p
     MatTableModule,
     NgxDocViewerModule,
     MatGridListModule,
-    MatTreeModule
+    MatTreeModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     CreateDialogComponent,

@@ -45,6 +45,11 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   public openAddMemberDialog()
   {
     // Open dialog to add user
-    this.dialog.open(WorkSpaceAddMemberComponent);
+    this.dialog.open(WorkSpaceAddMemberComponent,
+      {
+        data : {
+          workspaceID : this.workspaceID
+        }
+      });
   }
 }

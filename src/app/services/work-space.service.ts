@@ -49,4 +49,22 @@ export class WorkSpaceService {
   {
     return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`);
   }
+
+  public emailSuggestion(email:string) : Observable<any[]>
+  {
+    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/suggestion/email?email=${email}`,
+    {
+      withCredentials:true
+    })
+  }
+
+  public addMember(workspaceID:number,email:string)
+  {
+    return this.httpClient.post(this.environment.baseURL()+`api/workspace/${workspaceID}/add`,
+    {
+      email
+    },{
+      withCredentials : true,
+    })
+  }
 }
