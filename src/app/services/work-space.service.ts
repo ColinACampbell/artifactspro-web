@@ -36,18 +36,24 @@ export class WorkSpaceService {
 
   public getWorkspaceInfo(workspaceID:number) : Observable<WorkSpace>
   {
-    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/${workspaceID}`);
+    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/${workspaceID}`,{
+      withCredentials:true
+    });
   }
 
   // TODO : Test this method
   public getMembers(workspaceID:number) : Observable<any[]>
   {
-    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/members`)
+    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/members`,{
+      withCredentials:true
+    })
   }
 
   public getArtifacts(workspaceID:number) : Observable<Artifact[]>
   {
-    return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`);
+    return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`,{
+      withCredentials:true
+    });
   }
 
   public emailSuggestion(email:string) : Observable<any[]>
