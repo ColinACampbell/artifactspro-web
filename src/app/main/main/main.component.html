@@ -1,5 +1,6 @@
 <app-main-header></app-main-header>
-<mat-tab-group mat-align-tabs="left">
+<mat-tab-group mat-align-tabs="left" [selectedIndex]='selectedTab.value'
+(selectedIndexChange)="setTabValue($event)">
     <mat-tab label="Artifacts">
         <app-artifacts></app-artifacts>
     </mat-tab>
