@@ -17,6 +17,8 @@ export class ViewWorkSpaceComponent implements OnInit {
     private workspaceService: WorkSpaceService,
   ) { }
 
+  list = [1,2,3,4,5,6,7,8,3,4,5,6,7]
+
  
   private workspaceID:number;
   public workspace:WorkSpace = null;

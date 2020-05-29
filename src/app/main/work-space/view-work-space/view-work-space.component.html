@@ -17,11 +17,24 @@
 
 <div style="display: flex; justify-content: stretch;height: 100%;">
     <div style="width: 25%;">
+        <!-- Show artifact and members -->
         <app-work-space-info-panel *ngIf='workspace' [workspaceID]='workspace.work_space_id' ></app-work-space-info-panel>
     </div>
     <div style="width: 75%;">
-        <div style="height: 400px; width: 100%;">
-
+        <div style="height: 400px; width: 100%;" style="padding: 30px;overflow-x: scroll;">
+            <mat-card style="display:flex; justify-content:flex-start; margin:10px" *ngFor="let i of list">
+                <div style="width: 80%;">
+                    <div>
+                        Top
+                    </div>
+                    <div>
+                        Bottom
+                    </div>
+                </div>
+                <div style="width: 20%;">
+                    Artifacts
+                </div>
+            </mat-card>
         </div>
     </div>
 </div>
