@@ -82,7 +82,8 @@ export class WorkSpaceService {
       content,
       time
     },{
-      withCredentials:true
+      withCredentials:true,
+      observe : 'response'
     });
   }
 }

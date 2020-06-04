@@ -1,0 +1,24 @@
+<div class="form">
+
+    <div style="display: flex; justify-content: center;">
+        <h2> Create Message </h2>
+    </div>
+
+    <mat-form-field class="fields">
+        <mat-label> Enter Title </mat-label>
+        <input matInput placeholder="What is this about ?" value="" #memberEmail maxlength="50">
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label> Enter Message </mat-label>
+        <textarea matInput placeholder="What do you want to say ?" value="" #memberEmail maxlength="200"> </textarea>
+    </mat-form-field>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="addToWorkspace(memberEmail.value)"> Add To Workspace </button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div>

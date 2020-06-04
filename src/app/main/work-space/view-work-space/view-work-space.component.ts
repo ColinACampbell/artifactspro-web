@@ -3,6 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { Artifact } from 'src/app/models/artifacts';
+import { MatDialog } from '@angular/material';
+import { CreateWorkSpaceDialogComponent } from '../create-work-space-dialog/create-work-space-dialog.component';
+import { CreateMessageDialogComponent } from '../create-message-dialog/create-message-dialog.component';
 
 @Component({
   selector: 'app-view-work-space',
@@ -15,6 +18,7 @@ export class ViewWorkSpaceComponent implements OnInit {
     private router:Router,
     private activeRoute:ActivatedRoute,
     private workspaceService: WorkSpaceService,
+    private dialog:MatDialog
   ) { }
 
   list = [1,2,3,4,5,6,7,8,3,4,5,6,7]
@@ -41,6 +45,10 @@ export class ViewWorkSpaceComponent implements OnInit {
     })
   }
 
+  public openCreateMessageDialog()
+  {
+    this.dialog.open(CreateMessageDialogComponent);
+  }
   
 
 }
