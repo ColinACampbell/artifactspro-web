@@ -73,4 +73,16 @@ export class WorkSpaceService {
       withCredentials : true,
     })
   }
+
+  public postMessage(workspaceID:number,title:String,content:String,time:String)
+  {
+    return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/message`,
+    {
+      title,
+      content,
+      time
+    },{
+      withCredentials:true
+    });
+  }
 }
