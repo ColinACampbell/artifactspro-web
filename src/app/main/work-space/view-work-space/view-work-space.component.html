@@ -21,13 +21,21 @@
         <app-work-space-info-panel *ngIf='workspace' [workspaceID]='workspace.work_space_id' ></app-work-space-info-panel>
     </div>
     <div style="width: 75%;">
-        <div style="height: 400px; width: 100%;" style="padding: 30px;overflow-x: scroll;">
+        <div style="height: 400px; width: 100%;" style="padding: 30px;overflow-x: scroll; height: calc(100vh - 190px);">
             <mat-card style="display:flex; justify-content:flex-start; margin:10px" *ngFor="let i of list">
                 <div style="width: 80%;">
-                    <div>
-                        Top
+                    <div style="display: flex;">
+                        <div>
+                            <img src="./../../../../assets/profile-placeholder.png" width="50px" style="border-radius: 50%;"/>
+                        </div>
+                        <div style="width: 100%; padding: 9px;">
+                            <div>
+                                <h4 style="margin:0"> Helllo World </h4>
+                                <small> Colin Campbell @ 11:00 pm Today </small>
+                            </div>
+                        </div>
                     </div>
-                    <div>
+                    <div style="min-height: 50px; padding: 20px;">
                         Bottom
                     </div>
                 </div>
