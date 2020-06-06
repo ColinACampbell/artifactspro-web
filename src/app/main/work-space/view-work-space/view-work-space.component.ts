@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
-import { Artifact } from 'src/app/models/artifacts';
 import { MatDialog } from '@angular/material';
-import { CreateWorkSpaceDialogComponent } from '../create-work-space-dialog/create-work-space-dialog.component';
 import { CreateMessageDialogComponent } from '../create-message-dialog/create-message-dialog.component';
 
 @Component({
@@ -23,13 +21,14 @@ export class ViewWorkSpaceComponent implements OnInit {
 
   list = [1,2,3,4,5,6,7,8,3,4,5,6,7]
 
- 
   private workspaceID:number;
   public workspace:WorkSpace = null;
+  public workspacePosts : WorkSpacePost[] = []
 
   ngOnInit() {
     this.workspaceID = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
     this.loadWorkspaceInfo();
+    this.loadPosts()
   }
 
   public goBack()
@@ -47,7 +46,21 @@ export class ViewWorkSpaceComponent implements OnInit {
 
   public openCreateMessageDialog()
   {
-    this.dialog.open(CreateMessageDialogComponent);
+    const workspaceID = this.workspaceID
+    this.dialog.open(CreateMessageDialogComponent,
+      {
+        data : {
+          workspaceID
+        }
+      });
+  }
+
+  public loadPosts()
+  {
+    this.workspaceService.getMessages(this.workspaceID)
+    .subscribe((messages:WorkSpacePost[])=>{
+      this.workspacePosts = messages
+    })
   }
   
 

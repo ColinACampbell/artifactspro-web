@@ -74,16 +74,25 @@ export class WorkSpaceService {
     })
   }
 
-  public postMessage(workspaceID:number,title:String,content:String,time:String)
+  public postMessage(workspaceID:number,title:String,content:String,time:number,date:String)
   {
     return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/message`,
     {
       title,
       content,
-      time
+      time,
+      date
     },{
       withCredentials:true,
       observe : 'response'
+    });
+  }
+
+  public getMessages(workspaceID:number) : Observable<WorkSpacePost[]>
+  {
+    return this.httpClient.get<WorkSpacePost[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/messages`,
+    {
+      withCredentials:true,
     });
   }
 }

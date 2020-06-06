@@ -6,17 +6,17 @@
 
     <mat-form-field class="fields">
         <mat-label> Enter Title </mat-label>
-        <input matInput placeholder="What is this about ?" value="" #memberEmail maxlength="50">
+        <input matInput placeholder="What is this about ?" value="" #title maxlength="50">
     </mat-form-field>
 
     <mat-form-field class="fields">
         <mat-label> Enter Message </mat-label>
-        <textarea matInput placeholder="What do you want to say ?" value="" #memberEmail maxlength="200"> </textarea>
+        <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="200"> </textarea>
     </mat-form-field>
 
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial (click)="addToWorkspace(memberEmail.value)"> Add To Workspace </button>
+            <button mat-button cdkFocusInitial (click)="postMessage(title.value,content.value)"> Post </button>
             <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>
