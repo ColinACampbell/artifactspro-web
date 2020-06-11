@@ -6,5 +6,8 @@ interface WorkSpacePost
     time: string,
     user_id: number,
     work_space_id: number,
-    work_space_msg_id: number
+    work_space_msg_id: number,
+    first_name: string,
+    last_name:string,
+    email:string,
 }

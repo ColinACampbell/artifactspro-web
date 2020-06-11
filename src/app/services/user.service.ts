@@ -25,9 +25,7 @@ export class UserService {
         console.log(observer.status)
         // Do nothing  
       }, (err) => {
-
         let status = err.status
-        console.log(status);
         let activeUrl = this.router.url;
         if (status === 401 && activeUrl.includes('/app'))
         this.router.navigate(['/error'], { replaceUrl: true })
