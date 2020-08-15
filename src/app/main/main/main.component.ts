@@ -20,7 +20,6 @@ export class MainComponent implements OnInit {
 
   // Persist the value of the tab index
   public setTabValue(index:number) {
-    console.log(index)
     localStorage.selectedMainTabIndex = index
     this.selectedTab.setValue(index);
   }
