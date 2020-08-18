@@ -3,7 +3,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
-import { WorkSpaceAddMemberComponent } from './work-space-add-member/work-space-add-member.component';
+import { WorkSpaceAddMemberComponent } from './../../../dialogs/work-space-add-member-dialog/work-space-add-member.component';
 
 @Component({
   selector: 'app-work-space-info-panel',

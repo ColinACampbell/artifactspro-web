@@ -5,11 +5,11 @@ import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
 import { MainComponent } from './main/main/main.component';
-import { ArtifactComponent } from './main/artifacts/artifact/artifact.component';
+import { ArtifactComponent } from './main/components/artifact/artifact.component';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
-import { VerifyUserComponent } from './main/verify-user/verify-user.component'
-import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
-import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
+import { VerifyUserComponent } from './main/components/verify-user/verify-user.component'
+import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
+import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
 
 
 const routes: Routes = [

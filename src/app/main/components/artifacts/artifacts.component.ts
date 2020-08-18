@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { MatDialog } from '@angular/material';
-import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { CreateDialogComponent } from './../../dialogs/create-artifact-dialog/create-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({

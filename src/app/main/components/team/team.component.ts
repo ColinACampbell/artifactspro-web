@@ -3,7 +3,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { PartialObserver } from 'rxjs';
 import { Members } from 'src/app/models/members';
 import { MatDialog } from '@angular/material';
-import { InviteDialogComponent } from './invite-dialog/invite-dialog.component';
+import { InviteDialogComponent } from './../../dialogs/team-invite-dialog/invite-dialog.component';
 
 @Component({
   selector: 'app-team',

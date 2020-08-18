@@ -20,33 +20,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
 import { MainComponent } from './main/main/main.component';
-import { MainHeaderComponent } from './main/main-header/main-header.component';
+import { MainHeaderComponent } from './main/components/main-header/main-header.component';
 import { OrganizationService } from './services/organization.service';
-import { ArtifactsComponent } from './main/artifacts/artifacts.component';
+import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
-import { CreateDialogComponent } from './main/artifacts/create-dialog/create-dialog.component';
-import {ArtifactComponent} from "./main/artifacts/artifact/artifact.component"
+import { CreateDialogComponent } from './main/dialogs/create-artifact-dialog/create-dialog.component';
+import {ArtifactComponent} from "./main/components/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
-import { UploadDialogComponent } from './main/artifacts/artifact/upload-dialog/upload-dialog.component';
+import { UploadDialogComponent } from './main/dialogs/upload-artifact-dialog/upload-dialog.component';
 import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
-import { TeamComponent } from './main/team/team.component';
+import { TeamComponent } from './main/components/team/team.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
-import { VerifyUserComponent } from './main/verify-user/verify-user.component';
-import { DeleteArtifactDialogComponent } from './main/artifacts/artifact/delete-artifact-dialog/delete-artifact-dialog.component';
-import { InviteDialogComponent } from './main/team/invite-dialog/invite-dialog.component';
-import { TeamInviteComponent } from './main/team/team-invite/team-invite.component';
+import { VerifyUserComponent } from './main/components/verify-user/verify-user.component';
+import { DeleteArtifactDialogComponent } from './main/dialogs/delete-artifact-dialog/delete-artifact-dialog.component';
+import { InviteDialogComponent } from './main/dialogs/team-invite-dialog/invite-dialog.component';
+import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { WorkSpaceComponent } from './main/work-space/work-space.component';
+import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
-import { CreateWorkSpaceDialogComponent } from './main/work-space/create-work-space-dialog/create-work-space-dialog.component';
-import { ViewWorkSpaceComponent } from './main/work-space/view-work-space/view-work-space.component';
+import { CreateWorkSpaceDialogComponent } from './main/dialogs/create-work-space-dialog/create-work-space-dialog.component';
+import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
 import { UtilService } from './services/util.service';
-import { WorkSpaceInfoPanelComponent } from './main/work-space/work-space-info-panel/work-space-info-panel.component';
-import { WorkSpaceAddMemberComponent } from './main/work-space/work-space-info-panel/work-space-add-member/work-space-add-member.component';
-import { MessageCardComponent } from './main/work-space/message-card/message-card.component';
-import { CreateMessageDialogComponent } from './main/work-space/create-message-dialog/create-message-dialog.component';
+import { WorkSpaceInfoPanelComponent } from './main/components/work-space/work-space-info-panel/work-space-info-panel.component';
+import { WorkSpaceAddMemberComponent } from './main/dialogs/work-space-add-member-dialog/work-space-add-member.component';
+import { MessageCardComponent } from './main/components/work-space/message-card/message-card.component';
+import { CreateMessageDialogComponent } from './main/dialogs/create-message-dialog/create-message-dialog.component';
 
 @NgModule({
   declarations: [

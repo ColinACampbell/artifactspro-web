@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
-import { CreateMessageDialogComponent } from '../create-message-dialog/create-message-dialog.component';
+import { CreateMessageDialogComponent } from './../../../dialogs/create-message-dialog/create-message-dialog.component';
 
 @Component({
   selector: 'app-view-work-space',

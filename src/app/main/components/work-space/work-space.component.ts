@@ -3,7 +3,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { ADocument } from 'src/app/models/adocument';
 import { MatDialog } from '@angular/material';
-import { CreateWorkSpaceDialogComponent } from './create-work-space-dialog/create-work-space-dialog.component';
+import { CreateWorkSpaceDialogComponent } from './../../dialogs/create-work-space-dialog/create-work-space-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
