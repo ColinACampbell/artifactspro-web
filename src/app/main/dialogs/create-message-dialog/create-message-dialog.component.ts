@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { ViewWorkSpaceComponent } from '../../components/work-space/view-work-space/view-work-space.component';
 
 @Component({
   selector: 'app-create-message-dialog',
@@ -14,7 +15,7 @@ export class CreateMessageDialogComponent implements OnInit {
     private matDialog : MatDialogRef<CreateMessageDialogComponent>,
     private utilService : UtilService,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
-    private workspaceServ:WorkSpaceService
+    private workspaceServ:WorkSpaceService,
   ) { }
 
   ngOnInit() {
@@ -29,11 +30,10 @@ export class CreateMessageDialogComponent implements OnInit {
 
     this.workspaceServ.postMessage(workspaceID,title,content,time,date)
     .subscribe((observer)=>{
-      console.log(observer.status)
+
     });
 
   }
-
 
   public closeDialog()
   {

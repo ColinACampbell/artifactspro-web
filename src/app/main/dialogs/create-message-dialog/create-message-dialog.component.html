@@ -1,7 +1,7 @@
 <div class="form">
 
     <div style="display: flex; justify-content: center;">
-        <h2> Create Message </h2>
+        <h2> Create Post </h2>
     </div>
 
     <mat-form-field class="fields">
@@ -16,7 +16,7 @@
 
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial (click)="postMessage(title.value,content.value)"> Post </button>
+            <button mat-raised-button color="primary" cdkFocusInitial (click)="postMessage(title.value,content.value)"> Post </button>
             <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>
