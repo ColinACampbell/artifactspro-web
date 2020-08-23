@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
+import { AddArtifactDialogComponent } from "./../../../dialogs/add-artifact-dialog/add-artifact-dialog.component"
 import { MatDialog } from '@angular/material';
 import { WorkSpaceAddMemberComponent } from './../../../dialogs/work-space-add-member-dialog/work-space-add-member.component';
 
@@ -52,4 +53,10 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
         }
       });
   }
+
+  public openAddArtifactsDialog()
+  {
+    this.dialog.open(AddArtifactDialogComponent);
+  }
+  
 }

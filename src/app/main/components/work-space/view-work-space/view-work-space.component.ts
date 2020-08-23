@@ -4,6 +4,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
 import { CreateMessageDialogComponent } from './../../../dialogs/create-message-dialog/create-message-dialog.component';
+import { AddArtifactDialogComponent } from 'src/app/main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
 
 @Component({
   selector: 'app-view-work-space',
@@ -62,6 +63,4 @@ export class ViewWorkSpaceComponent implements OnInit {
       this.workspacePosts = messages
     })
   }
-  
-
 }

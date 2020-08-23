@@ -12,7 +12,7 @@
         <mat-divider></mat-divider>
         <div mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Artifacts</span> 
-            <button mat-raised-button color="primary"> Add Artifact </button> 
+            <button mat-raised-button color="primary" (click)="openAddArtifactsDialog()"> Add Artifact </button> 
         </div>
         <mat-list-item *ngFor="let artifact of artifacts">
           <mat-icon mat-list-icon>note</mat-icon>

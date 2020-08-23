@@ -47,6 +47,7 @@ import { WorkSpaceInfoPanelComponent } from './main/components/work-space/work-s
 import { WorkSpaceAddMemberComponent } from './main/dialogs/work-space-add-member-dialog/work-space-add-member.component';
 import { MessageCardComponent } from './main/components/work-space/message-card/message-card.component';
 import { CreateMessageDialogComponent } from './main/dialogs/create-message-dialog/create-message-dialog.component';
+import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CreateMessageDialogComponent } from './main/dialogs/create-message-dial
     WorkSpaceAddMemberComponent,
     MessageCardComponent,
     CreateMessageDialogComponent,
+    AddArtifactDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +108,7 @@ import { CreateMessageDialogComponent } from './main/dialogs/create-message-dial
     ReactiveFormsModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
+    AddArtifactDialogComponent,
     CreateDialogComponent,
     UploadDialogComponent,
     DeleteArtifactDialogComponent,
