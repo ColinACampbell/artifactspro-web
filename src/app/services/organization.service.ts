@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Organization } from '../models/organization';
 import { Environment } from '../models/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { Environment } from '../models/environment';
 
 export class OrganizationService {
   
+  private jwtToken: string = localStorage.getItem("jwt_token")
+
   private organization : Organization;
 
   constructor(
@@ -17,16 +20,16 @@ export class OrganizationService {
     
   }
 
-  public createOrganization(name,orgKey,orgPassKey)
+  public createOrganization(name,orgKey,orgPassKey) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.post(this.environment.baseURL()+"api/org/create",{
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+"api/org/create",{
       name,
       orgKey,
       orgPassKey,
     },
     {
       withCredentials : true
-    }).toPromise();
+    })
   }
 
   public setOrganization(organization:Organization)

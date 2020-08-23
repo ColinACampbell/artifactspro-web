@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -20,25 +21,30 @@ export class SignupComponent implements OnInit {
 
   signup(email:String,password:String)
   {
-    
+    console.log("Clicked Sign Up")
     if (this.password === '' || this.email === '')
     {
       alert("None of the fields can be empty")
     }
 
-    this.userServ.signup(email,password).then((data)=>
-    {
-      let message = data['message'];
-      if (message === 'success')
+    this.userServ.signup(email,password)
+    .subscribe((response : HttpResponse<Object>)=>
+    {  
+      console.log(response)
+      let status = response.status;
+
+      if (status === 201)
       {
         let snackBarRef = this.snackBar.open("Sign Up Success","Next");
         snackBarRef.onAction().subscribe(()=>{
           this.router.navigate(['/signup/action'])
         })
       }
-      else {
+      else if (status === 409) {
         this.snackBar.open("It seems this email already exists","Okay");
       }
+    },(err)=>{
+      console.log(err)
     })
   }
 }

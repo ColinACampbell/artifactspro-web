@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Environment } from '../models/environment';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,10 +10,15 @@ import { Observable } from 'rxjs';
 
 export class UserService {
 
+  private jwtToken: string = localStorage.getItem("jwt_token")
+  private authHeader : Object = { "Authorization" : this.jwtToken }
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
     private router: Router) {
+
+
   }
 
   public authUser() {
@@ -32,22 +37,23 @@ export class UserService {
       });
   }
 
-  public signup(email: String, password: String) {
+  public signup(email: String, password: String) : Observable<HttpResponse<Object>> {
+
     let body = { email, password }
 
     return this.httpClient
-      .post(this.environment.baseURL() + "api/user/signup/process-1", body, {
-        withCredentials: true
-      }).toPromise()
+      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/signup/process-1", body,{observe:"response",withCredentials:true})
   }
 
-  public login(email: String, password: String) {
+  public login(email: String, password: String) : Observable<HttpResponse<Object>>
+   {
     let body = { email, password }
 
     return this.httpClient
-      .post(this.environment.baseURL() + "api/user/login", body, {
-        withCredentials: true
-      }).toPromise()
+      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/login", body, {
+        withCredentials: true,
+        observe : "response"
+      })
   }
 
   public getUserInfo(): Observable<User> {

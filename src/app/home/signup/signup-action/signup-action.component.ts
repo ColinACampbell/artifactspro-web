@@ -3,6 +3,7 @@ import { OrganizationService } from 'src/app/services/organization.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { Organization } from 'src/app/models/organization';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup-action',
@@ -22,18 +23,21 @@ export class SignupActionComponent implements OnInit {
   public createOrganization(name,orgKey,orgPassKey)
   {
     this.orgServ.createOrganization(name,orgKey,orgPassKey)
-    .then((data)=>{
-      let message = data['message'];
-      let organizationParams = data['organization']; // get information about the organization set in the request
-      if (message === 'success')
+    .subscribe((response: HttpResponse<Object>)=>{
+      
+      console.log(response)
+      let status = response.status;
+      
+      if (status === 201)
       {
+      
         let snackBarRef = this.snackBar.open("Creation Success","Next");
         snackBarRef.onAction().subscribe(()=>{
           this.router.navigate(['/app'])
         })
-
       }
-      else {
+      else if (status == 409)
+      {
         this.snackBar.open("It seems like the organization code already exists","Okay");
       }
     })
