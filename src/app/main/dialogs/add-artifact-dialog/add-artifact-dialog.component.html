@@ -1,16 +1,16 @@
 <div class="form">
-    <div style="display: flex; justify-content: center;">
-        <h2> Create Artifact</h2>
-    </div>
-
     <mat-form-field class="fields">
-        <mat-label>Enter Name Of Artifact ({{ 50 - name.value.length }})</mat-label>
-        <input matInput placeholder="Eg. Report 2020, Revision etc" value="" #name maxlength="50">
+        <mat-label> Search Artifact By Name </mat-label>
+        <input matInput placeholder="Enter Name of The Artifact" value="" #name maxlength="50">
     </mat-form-field>
 
-    
-    
-    <div>
+    <mat-selection-list #artifactOptions>
+        <mat-list-option *ngFor="let artifact of artifacts">
+          {{artifact.name}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    <div style="margin-top:95%">
         <div mat-dialog-actions>
             <button mat-button cdkFocusInitial>Save & Upload Document</button>
             <button mat-button>Close</button>

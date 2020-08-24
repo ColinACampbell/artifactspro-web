@@ -5,6 +5,7 @@ import { WorkSpace } from 'src/app/models/workspace';
 import { AddArtifactDialogComponent } from "./../../../dialogs/add-artifact-dialog/add-artifact-dialog.component"
 import { MatDialog } from '@angular/material';
 import { WorkSpaceAddMemberComponent } from './../../../dialogs/work-space-add-member-dialog/work-space-add-member.component';
+import { ArtifactsService } from 'src/app/services/artifacts.service';
 
 @Component({
   selector: 'app-work-space-info-panel',
@@ -19,7 +20,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
 
   constructor(
     private workspaceService:WorkSpaceService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -56,7 +57,11 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
 
   public openAddArtifactsDialog()
   {
-    this.dialog.open(AddArtifactDialogComponent);
+    this.dialog.open(AddArtifactDialogComponent,
+      {
+        width : "500px",
+        height : "90%"
+      });
   }
   
 }

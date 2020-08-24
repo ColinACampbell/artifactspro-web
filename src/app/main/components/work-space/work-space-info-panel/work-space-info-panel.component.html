@@ -4,11 +4,13 @@
             <span>Members</span> 
             <button mat-raised-button color="primary" (click)='openAddMemberDialog()'> Add Member </button>
         </div>
+        
         <mat-list-item *ngFor="let workspaceMember of workspaceMembers">
           <mat-icon mat-list-icon>account_circle</mat-icon>
           <div mat-line>{{ workspaceMember.first_name + ' ' + workspaceMember.last_name }}</div>
           <div mat-line> {{workspaceMember.email}} </div>
         </mat-list-item>
+
         <mat-divider></mat-divider>
         <div mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Artifacts</span> 
