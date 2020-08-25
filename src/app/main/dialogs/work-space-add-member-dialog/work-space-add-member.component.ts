@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({

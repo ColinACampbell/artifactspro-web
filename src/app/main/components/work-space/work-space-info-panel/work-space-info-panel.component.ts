@@ -59,8 +59,10 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   {
     this.dialog.open(AddArtifactDialogComponent,
       {
-        width : "500px",
-        height : "90%"
+        width : "300px",
+        data : {
+          workspaceID : this.workspaceID
+        }
       });
   }
   

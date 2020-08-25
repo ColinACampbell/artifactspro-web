@@ -1,19 +1,22 @@
 <div class="form">
     <mat-form-field class="fields">
         <mat-label> Search Artifact By Name </mat-label>
-        <input matInput placeholder="Enter Name of The Artifact" value="" #name maxlength="50">
+        <input matInput placeholder="Enter Name of The Artifact" value="" #artifactName maxlength="50"
+            (keyup)="search($event)" 
+            [matAutocomplete]="auto"
+            >
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of artifacts" [value]="option.name">
+                {{option.name}}
+            </mat-option>
+        </mat-autocomplete>
     </mat-form-field>
 
-    <mat-selection-list #artifactOptions>
-        <mat-list-option *ngFor="let artifact of artifacts">
-          {{artifact.name}}
-        </mat-list-option>
-    </mat-selection-list>
-
-    <div style="margin-top:95%">
+    <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial>Save & Upload Document</button>
+            <button mat-button cdkFocusInitial> Add Artifact </button>
             <button mat-button>Close</button>
         </div>
     </div>
+
 </div>
