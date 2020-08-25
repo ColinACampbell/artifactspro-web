@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { ViewWorkSpaceComponent } from '../../components/work-space/view-work-space/view-work-space.component';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-message-dialog',
@@ -12,7 +13,7 @@ import { ViewWorkSpaceComponent } from '../../components/work-space/view-work-sp
 export class CreateMessageDialogComponent implements OnInit {
 
   constructor(
-    private matDialog : MatDialogRef<CreateMessageDialogComponent>,
+    private dialogRef : MatDialogRef<CreateMessageDialogComponent>,
     private utilService : UtilService,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private workspaceServ:WorkSpaceService,
@@ -29,14 +30,15 @@ export class CreateMessageDialogComponent implements OnInit {
     const time = new Date().getTime();
 
     this.workspaceServ.postMessage(workspaceID,title,content,time,date)
-    .subscribe((observer)=>{
-
+    .subscribe((response :HttpResponse<Object>)=>{
+      if (response.status === 201)
+        this.dialogRef.close()
     });
 
   }
 
   public closeDialog()
   {
-    this.matDialog.close();
+    this.dialogRef.close();
   }
 }

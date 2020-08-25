@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Environment } from '../models/environment';
 import { WorkSpace } from '../models/workspace';
 import { Observable } from 'rxjs/internal/Observable';
@@ -75,7 +75,7 @@ export class WorkSpaceService {
 
   public addMember(workspaceID:number,email:string)
   {
-    return this.httpClient.post(this.environment.baseURL()+`api/workspace/${workspaceID}/add`,
+    return this.httpClient.post(this.environment.baseURL()+`api/workspace/${workspaceID}/add-member`,
     {
       email
     },{
@@ -83,9 +83,9 @@ export class WorkSpaceService {
     })
   }
 
-  public postMessage(workspaceID:number,title:String,content:String,time:number,date:String)
+  public postMessage(workspaceID:number,title:String,content:String,time:number,date:String) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/message`,
+    return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/add/message`,
     {
       title,
       content,
@@ -103,5 +103,14 @@ export class WorkSpaceService {
     {
       withCredentials:true,
     });
+  }
+
+  public addArtifact(workspaceID:number,artifactName:string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifact/add`,{artifactName},
+    {
+      withCredentials : true,
+      observe : "response"
+    })
   }
 }

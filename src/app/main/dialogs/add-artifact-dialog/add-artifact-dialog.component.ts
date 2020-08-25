@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-artifact-dialog',
@@ -18,7 +19,9 @@ export class AddArtifactDialogComponent implements OnInit {
 
   constructor(
     private workspaceService: WorkSpaceService,
-    @Inject(MAT_DIALOG_DATA) private dialogData: any
+    @Inject(MAT_DIALOG_DATA) private dialogData: any,
+    private snackBar : MatSnackBar,
+    private dialogRef : MatDialogRef<AddArtifactDialogComponent>
   ) { }
 
   // TODO : Work on fixing this error [formControl]="myControl"
@@ -60,5 +63,38 @@ export class AddArtifactDialogComponent implements OnInit {
       console.log(observable);
       this.artifacts = observable
     })
+  }
+
+  public addArtifactToWorkSpace(artifactName:string)
+  {
+    if (artifactName.length === 0)
+    {
+      this.snackBar.open("The Name of The Artifact Must Be Provided","Okay")
+    }
+
+    this.workspaceService.addArtifact(this.dialogData.workspaceID,artifactName)
+    .subscribe((response:HttpResponse<Object>)=>{
+      console.log(response.status)
+      if (response.status === 200)
+        {
+          this.snackBar.open("Artifact Was Added Successfully","Okay").onAction().subscribe(()=>{
+            this.dialogRef.close()
+          })
+      }
+      
+    },(err)=>{
+      const status = err.status
+      if (status === 409)
+      {
+        this.snackBar.open("It Seems This Artifact Already Exists in This Workspace","Okay")
+      }
+      else if (status === 422)
+        this.snackBar.open("Error, It Seems That Invalid Data Was Passed","Okay")
+    })
+  }
+
+  public closeDialog()
+  {
+    this.dialogRef.close()
   }
 }

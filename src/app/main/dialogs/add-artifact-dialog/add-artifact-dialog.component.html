@@ -14,8 +14,8 @@
 
     <div>
         <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial> Add Artifact </button>
-            <button mat-button>Close</button>
+            <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value)"> Add Artifact </button>
+            <button mat-button (click)="closeDialog()">Close</button>
         </div>
     </div>
 
