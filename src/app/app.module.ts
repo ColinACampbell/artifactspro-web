@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatButtonModule, MatTreeModule,
   MatListModule, MatGridListModule, MatDialogModule, 
   MatToolbarModule, MatInputModule, MatTooltipModule, 
@@ -48,6 +48,7 @@ import { WorkSpaceAddMemberComponent } from './main/dialogs/work-space-add-membe
 import { MessageCardComponent } from './main/components/work-space/message-card/message-card.component';
 import { CreateMessageDialogComponent } from './main/dialogs/create-message-dialog/create-message-dialog.component';
 import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
+import { WorkSpaceMessageThreadComponent } from './main/components/work-space-message-thread/work-space-message-thread.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/a
     MessageCardComponent,
     CreateMessageDialogComponent,
     AddArtifactDialogComponent,
+    WorkSpaceMessageThreadComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,8 @@ import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/a
     MatGridListModule,
     MatTreeModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,

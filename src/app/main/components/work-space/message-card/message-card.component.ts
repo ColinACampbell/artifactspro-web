@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UtilService } from 'src/app/services/util.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message-card',
@@ -9,7 +10,8 @@ import { UtilService } from 'src/app/services/util.service';
 export class MessageCardComponent implements OnInit {
 
   constructor(
-    private utilService : UtilService
+    private utilService : UtilService,
+    public router : Router
   ) { }
 
   @Input('workspacePost') workspacePost : WorkSpacePost;
@@ -22,7 +24,6 @@ export class MessageCardComponent implements OnInit {
     console.log(postDate);
 
     let time = this.timeDifference(new Date().getTime,postDate);
-    console.log(time)
   }
 
   timeDifference(current, previous) {
@@ -58,6 +59,13 @@ export class MessageCardComponent implements OnInit {
     else {
         return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
     }
-}
+  }
+
+  public goToMessageThread()
+  {
+    const workspaceID = this.workspacePost.work_space_id;
+    const threadID = this.workspacePost.work_space_msg_id;
+    this.router.navigate([`app/workspace/${workspaceID}/message/${threadID}`])
+  }
 
 }
