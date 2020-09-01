@@ -13,6 +13,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
   public workspaceID : number;
   private threadID : number; // thread is same as a message
   public workspacePost : WorkSpacePost;
+  public workspacePostReplies : WorkSpacePostReply[]
 
   constructor(
     private activatedRoute : ActivatedRoute,
@@ -24,6 +25,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     this.workspaceID = parseInt(this.activatedRoute.snapshot.paramMap.get("workspaceID"))
     this.threadID = parseInt(this.activatedRoute.snapshot.paramMap.get("messageID"));
     this.loadWorkspaceMessage()
+    this.loadWorkpaceReplies()
   }
 
 
@@ -32,6 +34,14 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     this.workspaceService.getWorkspacePost(this.workspaceID,this.threadID)
     .subscribe((workspacePost : WorkSpacePost)=>{
       this.workspacePost = workspacePost
+    })
+  }
+
+  private loadWorkpaceReplies()
+  {
+    this.workspaceService.getWorkspacePostReplies(this.workspaceID,this.threadID)
+    .subscribe((workspacePostReplies : WorkSpacePostReply[])=>{
+      this.workspacePostReplies = workspacePostReplies
     })
   }
 

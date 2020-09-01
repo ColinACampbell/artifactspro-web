@@ -49,6 +49,7 @@ import { MessageCardComponent } from './main/components/work-space/message-card/
 import { CreateMessageDialogComponent } from './main/dialogs/create-message-dialog/create-message-dialog.component';
 import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
 import { WorkSpaceMessageThreadComponent } from './main/components/work-space-message-thread/work-space-message-thread.component';
+import { WorkSpaceMessageThreadReplyCardComponent } from './main/components/work-space-message-thread/work-space-message-thread-reply-card/work-space-message-thread-reply-card.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { WorkSpaceMessageThreadComponent } from './main/components/work-space-me
     CreateMessageDialogComponent,
     AddArtifactDialogComponent,
     WorkSpaceMessageThreadComponent,
+    WorkSpaceMessageThreadReplyCardComponent,
   ],
   imports: [
     BrowserModule,

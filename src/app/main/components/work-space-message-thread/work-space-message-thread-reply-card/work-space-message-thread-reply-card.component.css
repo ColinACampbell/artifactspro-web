@@ -1,0 +1,7 @@
+.reply-card {
+    display:flex; 
+    justify-content:flex-start; 
+    margin:10px; 
+    flex-direction: column;
+    border-left: 2px solid #ff0000;
+}

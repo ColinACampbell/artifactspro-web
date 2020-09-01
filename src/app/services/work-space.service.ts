@@ -121,4 +121,11 @@ export class WorkSpaceService {
       withCredentials : true
     })
   }
+
+  public getWorkspacePostReplies(workspaceID:number,messageID:number) : Observable<WorkSpacePostReply[]> 
+  {
+    return this.httpClient.get<WorkSpacePostReply[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/replies`,{
+      withCredentials : true
+    });
+  }
 }

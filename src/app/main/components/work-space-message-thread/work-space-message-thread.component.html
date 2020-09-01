@@ -28,5 +28,8 @@
                 <mat-spinner [diameter]="50"></mat-spinner>
             </div>
         </div>
+        <div>
+            <app-work-space-message-thread-reply-card style="width: 60%;" *ngFor="let workspacePostReply of workspacePostReplies" [workspacePostReply]="workspacePostReply"> </app-work-space-message-thread-reply-card>
+        </div>
     </div>
 </div>
