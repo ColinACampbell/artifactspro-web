@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({
@@ -10,13 +10,14 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 export class WorkSpaceMessageThreadComponent implements OnInit {
 
 
-  private workspaceID : number;
+  public workspaceID : number;
   private threadID : number; // thread is same as a message
   public workspacePost : WorkSpacePost;
 
   constructor(
     private activatedRoute : ActivatedRoute,
-    private workspaceService : WorkSpaceService
+    private workspaceService : WorkSpaceService,
+    private router : Router,
   ) { }
 
   ngOnInit() {
@@ -34,5 +35,9 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     })
   }
 
+  public goBack()
+  {
+    this.router.navigate([`app/workspace/${this.workspaceID}`])
+  }
 
 }
