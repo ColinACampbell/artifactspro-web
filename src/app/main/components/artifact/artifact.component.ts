@@ -44,8 +44,10 @@ export class ArtifactComponent implements OnInit {
 
     this.getArtifact(this.artID);
     this.getAllDocuments(this.artID);
-
-    //let doc = { doc_id : 1, comment : "SOO", version : "Hello", user_id : 2, data : null, data_modified : "", date_uploaded: "", art_id : 1}
+    this.docServ.documentsObservable
+    .subscribe((documents : ADocument[])=>{
+      this.documents = documents;
+    })
   }
 
   getArtifact(artID:number)
@@ -82,9 +84,6 @@ export class ArtifactComponent implements OnInit {
   private getAllDocuments(artID:number)
   {
     this.docServ.getDocuments(artID)
-    .subscribe((documents:ADocument[])=>{
-      this.documents = documents;
-    });
   }
 
   public openUploadDialog()

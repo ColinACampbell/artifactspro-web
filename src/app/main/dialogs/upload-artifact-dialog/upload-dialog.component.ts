@@ -95,6 +95,7 @@ export class UploadDialogComponent implements OnInit {
 
       if (message === 'OK')
       {
+        this.docServ.getDocuments(this.dialogData.art_id)
         let snackbarRef = this.snackBar.open('Document uploaded successfuly','Okay',
         {
           duration : 5000

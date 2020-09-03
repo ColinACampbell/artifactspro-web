@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEventType, HttpClient, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ADocument } from '../models/adocument';
 import { Environment } from '../models/environment';
 
@@ -9,17 +9,29 @@ import { Environment } from '../models/environment';
 })
 export class DocumentService {
 
-  constructor(private httpClient: HttpClient,
-    private environment:Environment) { 
+
+  private document = new BehaviorSubject<ADocument>(null)
+  private documents = new BehaviorSubject<ADocument[]>(null)
+  public documentObservable = this.document.asObservable();
+  public documentsObservable = this.documents.asObservable();
+
+  constructor(
+    private httpClient: HttpClient,
+    private environment:Environment
+    ) { 
     
   }
 
 
-  public getDocuments(artID:number) : Observable<ADocument[]>
+  public getDocuments(artID:number)
   {
-    return this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/from-art/${artID}`,
+    const observer = this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/from-art/${artID}`,
     {
       withCredentials : true,
+    })
+
+    observer.subscribe((documents:ADocument[])=>{
+      this.documents.next(documents);
     })
   }
 

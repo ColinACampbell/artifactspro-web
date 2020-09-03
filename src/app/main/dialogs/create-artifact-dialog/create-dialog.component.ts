@@ -60,6 +60,8 @@ export class CreateDialogComponent implements OnInit {
             this.closeDialog();
             this.router.navigate(['/app/artifact/',artID])
           })
+
+          this.artServ.getAllArtifacts()
         }
         else
           this.snackBar.open('Looks like there is an internal error', 'Okay')

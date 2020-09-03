@@ -18,17 +18,27 @@ export class ArtifactsComponent implements OnInit {
   public selectedArtifact:Artifact;
   public isArtifactSelected: boolean = false;
 
-  constructor(private artServ:ArtifactsService,
+  constructor(
+    private artServ:ArtifactsService,
     public dialog: MatDialog,
     public router:Router) { }
 
+  
+
   ngOnInit() {
+    
+    this.artServ.artifactsObservable
+    .subscribe((artifacts: Artifact[])=>{
+      this.artifacts = artifacts;
+    })
+
     this.getAllArtifacts();
+
   }
 
   public getAllArtifacts()
   {
-    this.artServ.getAllArtifacts().subscribe(data => this.artifacts = data);
+    this.artServ.getAllArtifacts()
   }
 
   public selectArtifact(artifact:Artifact)
