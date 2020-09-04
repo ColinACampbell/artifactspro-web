@@ -25,6 +25,12 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.workspaceService.workspacePostRepliesObservable
+    .subscribe((workspacePostReplies : WorkSpacePostReply[])=>{
+      this.workspacePostReplies = workspacePostReplies
+    })
+
     this.workspaceID = parseInt(this.activatedRoute.snapshot.paramMap.get("workspaceID"))
     this.threadID = parseInt(this.activatedRoute.snapshot.paramMap.get("messageID"));
     this.loadWorkspaceMessage()
@@ -43,9 +49,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
   private loadWorkpaceReplies()
   {
     this.workspaceService.getWorkspacePostReplies(this.workspaceID,this.threadID)
-    .subscribe((workspacePostReplies : WorkSpacePostReply[])=>{
-      this.workspacePostReplies = workspacePostReplies
-    })
+    
   }
 
   public goBack()

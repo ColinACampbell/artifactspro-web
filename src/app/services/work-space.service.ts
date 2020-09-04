@@ -4,11 +4,19 @@ import { Environment } from '../models/environment';
 import { WorkSpace } from '../models/workspace';
 import { Observable } from 'rxjs/internal/Observable';
 import { Artifact } from '../models/artifacts';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkSpaceService {
+
+
+  private workspacePosts = new BehaviorSubject<WorkSpacePost[]>(null);
+  public workspacePostsObservable = this.workspacePosts.asObservable();
+
+  private workspacePostReplies = new BehaviorSubject<WorkSpacePostReply[]>(null);
+  public workspacePostRepliesObservable = this.workspacePostReplies.asObservable();
 
   constructor(
     private httpClient: HttpClient,
@@ -97,11 +105,13 @@ export class WorkSpaceService {
     });
   }
 
-  public getMessages(workspaceID:number) : Observable<WorkSpacePost[]>
+  public getMessages(workspaceID:number) 
   {
-    return this.httpClient.get<WorkSpacePost[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/messages`,
+    this.httpClient.get<WorkSpacePost[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/messages`,
     {
       withCredentials:true,
+    }).subscribe((workspacePosts : WorkSpacePost[])=>{
+      this.workspacePosts.next(workspacePosts)
     });
   }
 
@@ -122,10 +132,13 @@ export class WorkSpaceService {
     })
   }
 
-  public getWorkspacePostReplies(workspaceID:number,messageID:number) : Observable<WorkSpacePostReply[]> 
+  public getWorkspacePostReplies(workspaceID:number,messageID:number)
   {
-    return this.httpClient.get<WorkSpacePostReply[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/replies`,{
+    this.httpClient.get<WorkSpacePostReply[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/replies`,{
       withCredentials : true
+    })
+    .subscribe((workspacePostReplies : WorkSpacePostReply[])=>{
+      this.workspacePostReplies.next(workspacePostReplies)
     });
   }
 

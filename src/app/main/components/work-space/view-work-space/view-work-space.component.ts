@@ -29,6 +29,12 @@ export class ViewWorkSpaceComponent implements OnInit {
   ngOnInit() {
     this.workspaceID = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
     this.loadWorkspaceInfo();
+
+    this.workspaceService.workspacePostsObservable
+    .subscribe((workspacePosts : WorkSpacePost[])=>{
+      this.workspacePosts = workspacePosts;
+    })
+
     this.loadPosts()
   }
 
@@ -59,8 +65,6 @@ export class ViewWorkSpaceComponent implements OnInit {
   public loadPosts()
   {
     this.workspaceService.getMessages(this.workspaceID)
-    .subscribe((messages:WorkSpacePost[])=>{
-      this.workspacePosts = messages
-    })
+    
   }
 }

@@ -32,6 +32,7 @@ export class CreateMessageDialogComponent implements OnInit {
     this.workspaceServ.postMessage(workspaceID,title,content,time,date)
     .subscribe((response :HttpResponse<Object>)=>{
       if (response.status === 201)
+        this.workspaceServ.getMessages(workspaceID)
         this.dialogRef.close()
     });
 

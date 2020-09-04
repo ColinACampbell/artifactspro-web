@@ -28,10 +28,8 @@ export class CreateWorkspaceThreadDialogComponent implements OnInit {
     .subscribe(( response : HttpResponse<Object>)=>{
       if (response.status === 201 )
       {
-        const snackBarRef = this.snackBar.open("Message Added","Okay")
-        snackBarRef.onAction().subscribe((_)=>{
-          this.closeDialog()
-        })
+        this.workspaceService.getWorkspacePostReplies(this.workspacePost.work_space_id,this.workspacePost.work_space_msg_id)
+        this.closeDialog();
       }
     })
   }
