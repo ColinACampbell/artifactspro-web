@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-work-space-message-thread-reply-card',
@@ -8,12 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WorkSpaceMessageThreadReplyCardComponent implements OnInit {
 
   @Input("workspacePostReply") workspacePostReply : WorkSpacePostReply
-
-  constructor() { }
+  public timeLapse : String;
+  constructor(
+    private utilService : UtilService,
+  ) { }
 
   ngOnInit() {
-    const date = new Date(this.workspacePostReply.timestamp);
-    console.log(date)
+    const timeAgo = this.workspacePostReply.timestamp;
+    const timeNow = new Date().getTime();
+    this.timeLapse = this.utilService.timeDifference(timeNow,timeAgo);
   }
 
 
