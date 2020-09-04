@@ -28,7 +28,6 @@ export class WorkSpaceComponent implements OnInit {
   {
     this.workSpaceService.getWorkSpaces()
     .subscribe((workSpaces:WorkSpace[])=>{
-      //console.log(workSpaces)
       this.workSpaces = workSpaces;
     });
   }

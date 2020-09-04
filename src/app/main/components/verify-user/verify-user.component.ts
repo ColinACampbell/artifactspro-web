@@ -30,7 +30,6 @@ export class VerifyUserComponent implements OnInit {
     this.loginInProcess = true;
     this.userServ.verifyUser(firstName,lastName,this.verificationCode)
     .subscribe((observer)=>{
-      //console.log(observer)
       let message = observer['message']
       this.loginInProcess = false;
       if (message === 'code_not_exists')

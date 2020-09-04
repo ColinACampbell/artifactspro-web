@@ -32,7 +32,6 @@ export class MainHeaderComponent implements OnInit {
     this.getUser().subscribe((user)=>{
       this.user = user;
       this.fullName = `${this.user.first_name} ${this.user.last_name}`;
-      //console.log(this.fullName)
     })
 
     //const socket = io('http://localhost:3000');

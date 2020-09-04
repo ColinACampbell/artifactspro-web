@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
     this.userServ.login(email,password).subscribe((response:HttpResponse<Object>)=>
     {
-      console.log(response)
       let status = response.status
 
       if (status === 200)

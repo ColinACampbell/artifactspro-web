@@ -32,10 +32,8 @@ export class TeamInviteComponent implements OnInit {
   // TODO : Fix this later
   public signUpUser(email:String,password:String)
   {
-    //console.log(email,password);
     this.userServ.signup(email,password)
     .subscribe((data)=>{
-      //console.log(data['message']);
       if (data['message'] === 'success')
       {
         this.orgServ.addUserToOganization(this.accessCode)

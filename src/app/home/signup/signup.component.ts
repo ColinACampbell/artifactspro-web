@@ -21,7 +21,6 @@ export class SignupComponent implements OnInit {
 
   signup(email:String,password:String)
   {
-    console.log("Clicked Sign Up")
     if (this.password === '' || this.email === '')
     {
       alert("None of the fields can be empty")
@@ -30,7 +29,6 @@ export class SignupComponent implements OnInit {
     this.userServ.signup(email,password)
     .subscribe((response : HttpResponse<Object>)=>
     {  
-      console.log(response)
       let status = response.status;
 
       if (status === 201)

@@ -32,8 +32,9 @@ export class AddArtifactDialogComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
+
+      // TODO : Remove this if needed
     this.filteredOptions.subscribe((observer)=>{
-      console.log(observer)
     })
   }
 
@@ -74,7 +75,6 @@ export class AddArtifactDialogComponent implements OnInit {
 
     this.workspaceService.addArtifact(this.dialogData.workspaceID,artifactName)
     .subscribe((response:HttpResponse<Object>)=>{
-      console.log(response.status)
       if (response.status === 200)
         {
           this.snackBar.open("Artifact Was Added Successfully","Okay").onAction().subscribe(()=>{

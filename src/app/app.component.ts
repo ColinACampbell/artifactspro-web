@@ -17,9 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit()
   {
-    console.log("Method init")
     this.userServ.authUser()
-
   }
 
 }

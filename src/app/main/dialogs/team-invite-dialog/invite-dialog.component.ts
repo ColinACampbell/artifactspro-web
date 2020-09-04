@@ -25,7 +25,6 @@ export class InviteDialogComponent implements OnInit {
     this.memServ.getInviteURL()
     .subscribe((observable)=>{
       this.inviteUrl = observable['invite_url'];
-      //console.log(this.inviteUrl);
     })
   }
 

@@ -27,7 +27,6 @@ export class UserService {
         withCredentials: true,
         observe : 'response'
       }).subscribe((observer) => {
-        console.log(observer.status)
         // Do nothing  
       }, (err) => {
         let status = err.status

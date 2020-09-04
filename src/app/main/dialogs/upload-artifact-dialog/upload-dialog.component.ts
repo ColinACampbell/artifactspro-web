@@ -40,12 +40,10 @@ export class UploadDialogComponent implements OnInit {
   public fileInputChange(event)
   {
     this.selectedFile = event.target.files[0];
-    //console.log(this.selectedFile)
 
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = () => {
-        //console.log(reader.result);
         this.fileData = reader.result;
     };
   }

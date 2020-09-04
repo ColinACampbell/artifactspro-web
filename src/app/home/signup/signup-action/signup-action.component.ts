@@ -25,7 +25,6 @@ export class SignupActionComponent implements OnInit {
     this.orgServ.createOrganization(name,orgKey,orgPassKey)
     .subscribe((response: HttpResponse<Object>)=>{
       
-      console.log(response)
       let status = response.status;
       
       if (status === 201)

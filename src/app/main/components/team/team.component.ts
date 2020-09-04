@@ -28,7 +28,6 @@ export class TeamComponent implements OnInit {
     this.membersService.getAllMembers()
     .subscribe((members:Members[])=>{
       this.members = members;
-      //console.log(this.members)
     })
   }
 

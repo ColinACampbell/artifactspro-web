@@ -12,7 +12,8 @@ export class WorkSpaceMessageThreadReplyCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    const date = new Date(this.workspacePostReply.timestamp);
+    console.log(date)
   }
 
 

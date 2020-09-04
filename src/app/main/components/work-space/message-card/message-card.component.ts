@@ -17,12 +17,9 @@ export class MessageCardComponent implements OnInit {
   @Input('workspacePost') workspacePost : WorkSpacePost;
 
   ngOnInit() {
-    //console.log(new Date().getTime());
     const postTime = parseInt(this.workspacePost.time)
-    console.log(this.workspacePost.time);
     let postDate = new Date(postTime)
-    console.log(postDate);
-
+    // TODO : Work on getting time difference
     let time = this.timeDifference(new Date().getTime,postDate);
   }
 

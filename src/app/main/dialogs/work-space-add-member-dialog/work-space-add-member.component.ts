@@ -56,13 +56,10 @@ export class WorkSpaceAddMemberComponent implements OnInit {
   addToWorkspace(email:string)
   {
     const workspaceID = this.dialogData.workspaceID;
-    console.log(workspaceID);
     this.workspaceService.addMember(workspaceID,email)
     .subscribe((observable)=>{
 
       const message = observable['message'];
-
-      console.log(message);
 
       if (message === 'user_exists')
       {
