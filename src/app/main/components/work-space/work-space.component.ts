@@ -22,14 +22,16 @@ export class WorkSpaceComponent implements OnInit {
 
   ngOnInit() {
     this.loadWorkSpaces();
+    this.workSpaceService.workspacesObservable
+    .subscribe((workSpaces:WorkSpace[])=>{
+      this.workSpaces = workSpaces;
+    });
   }
 
   private loadWorkSpaces()
   {
     this.workSpaceService.getWorkSpaces()
-    .subscribe((workSpaces:WorkSpace[])=>{
-      this.workSpaces = workSpaces;
-    });
+    
   }
 
   public openCreateWorkSpaceDialog()

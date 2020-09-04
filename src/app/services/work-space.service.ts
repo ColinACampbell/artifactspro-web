@@ -18,16 +18,21 @@ export class WorkSpaceService {
   private workspacePostReplies = new BehaviorSubject<WorkSpacePostReply[]>(null);
   public workspacePostRepliesObservable = this.workspacePostReplies.asObservable();
 
+  private workspaces = new BehaviorSubject<WorkSpace[]>(null);
+  public workspacesObservable = this.workspaces.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
   ) { }
   
-  public getWorkSpaces() : Observable<WorkSpace[]>
+  public getWorkSpaces()
   {
-    return this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+"api/workspace/all",
+    this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+"api/workspace/all",
     {
       withCredentials: true
+    }).subscribe((workspaces: WorkSpace[])=>{
+      this.workspaces.next(workspaces)
     })
   }
 

@@ -32,13 +32,19 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
       if (message === 'ok')
       {
         let workspaceID = observable['work_space_id'];
-        this.dialogRef.close();
+        this.closeDialog()
         this.router.navigate([`/app/workspace/`,workspaceID])
+        this.workspaceService.getWorkSpaces();
       } else {
         // show error
         this.snackBar.open("Looks like something went wrong","Ok")
       }
       
     })
+  }
+
+  public closeDialog()
+  {
+    this.dialogRef.close();
   }
 }
