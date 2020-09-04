@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { MatDialog } from '@angular/material';
+import { CreateWorkspaceThreadDialogComponent } from '../../dialogs/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 
 @Component({
   selector: 'app-work-space-message-thread',
@@ -19,6 +21,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private workspaceService : WorkSpaceService,
     private router : Router,
+    private createReplyDialog : MatDialog
   ) { }
 
   ngOnInit() {
@@ -48,6 +51,16 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
   public goBack()
   {
     this.router.navigate([`app/workspace/${this.workspaceID}`])
+  }
+
+  public openAddReplyToPostDialog()
+  {
+    this.createReplyDialog.open(CreateWorkspaceThreadDialogComponent,
+      {
+        width : "400px",
+        height : "280px",
+        data : this.workspacePost
+      })
   }
 
 }

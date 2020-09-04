@@ -129,14 +129,15 @@ export class WorkSpaceService {
     });
   }
 
-  public postWorkspacePostReply(workspaceID:number,messageID:number, content : String, actionType : String, timestamp : String) : Observable<HttpResponse<Object>>
+  public postWorkspacePostReply(workspaceID:number,messageID:number, content : String, actionType : String, timestamp : number) : Observable<HttpResponse<Object>>
   {
     return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/reply`,{
       content,
       actionType,
       timestamp
     },{
-      observe : "response"
+      observe : "response",
+      withCredentials : true
     })
   }
 }

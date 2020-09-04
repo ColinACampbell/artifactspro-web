@@ -122,7 +122,8 @@ import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/create-work
     InviteDialogComponent,
     CreateWorkSpaceDialogComponent,
     WorkSpaceAddMemberComponent,
-    CreateMessageDialogComponent
+    CreateMessageDialogComponent,
+    CreateWorkspaceThreadDialogComponent
   ],
   providers: [
     UserService, 

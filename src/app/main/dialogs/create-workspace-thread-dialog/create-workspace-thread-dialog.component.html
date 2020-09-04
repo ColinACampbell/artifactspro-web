@@ -1,1 +1,19 @@
-<p>create-workspace-thread-dialog works!</p>
+<div class="form">
+
+    <div style="display: flex; justify-content: center;">
+        <h2> Add Thread </h2>
+    </div>
+
+    <mat-form-field class="fields">
+        <mat-label> Enter Message </mat-label>
+        <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="150"> </textarea>
+    </mat-form-field>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-raised-button color="primary" cdkFocusInitial (click)="postMessageThread(content.value)"> Post </button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div> 
