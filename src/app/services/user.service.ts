@@ -62,12 +62,14 @@ export class UserService {
       })
   }
 
-  public verifyUser(first_name: String, last_name: String, accessCode) {
+  public verifyUser(first_name: String, last_name: String, accessCode) : Observable<HttpResponse<Object>>
+  {
     return this.httpClient.post(this.environment.baseURL() + `api/user/verify/${accessCode}`, {
       first_name,
       last_name
     }, {
-      withCredentials: true
+      withCredentials: true,
+      observe : "response"
     })
   }
 

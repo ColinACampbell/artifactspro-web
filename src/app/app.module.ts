@@ -51,6 +51,7 @@ import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/a
 import { WorkSpaceMessageThreadComponent } from './main/components/work-space-message-thread/work-space-message-thread.component';
 import { WorkSpaceMessageThreadReplyCardComponent } from './main/components/work-space-message-thread/work-space-message-thread-reply-card/work-space-message-thread-reply-card.component';
 import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
+import { ChatComponent } from './main/components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/create-work
     WorkSpaceMessageThreadComponent,
     WorkSpaceMessageThreadReplyCardComponent,
     CreateWorkspaceThreadDialogComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

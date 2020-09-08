@@ -1,0 +1,11 @@
+.btn-group > button
+{
+    margin-right: 10px;
+}
+
+.action-bar
+{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}

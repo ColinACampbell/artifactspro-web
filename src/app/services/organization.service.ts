@@ -55,11 +55,12 @@ export class OrganizationService {
     })
   }
 
-  public addUserToOganization(accessCode:String)
+  public addUserToOganization(accessCode:String) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.post(this.environment.baseURL()+`api/org//invite-from-code/${accessCode}`,
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/org//invite-from-code/${accessCode}`,
     {},{
-      withCredentials : true
+      withCredentials : true,
+      observe : "response"
     });
   }
 }
