@@ -1,12 +1,27 @@
 <div style="display: flex; height: calc( 100vh - 112px );">
-    <div style="width: 65%; border:1px solid green">
 
+    <div class="chat-section">
+      <div class="messages">
+        <div *ngFor="let chatMessage of chatMessages" [ngStyle]="determineFloat(chatMessage)">
+          <p id="chat-bubble" > {{ chatMessage.chat_text }} </p>
+        </div>
+      </div>
+      <div class="text-input">
+
+        <mat-form-field  appearance="outline" style="width: 60%; margin-right: 10px;" >
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Enter Message" #messageField>
+        </mat-form-field>
+        <button mat-raised-button [color]="'primary'" style="height: 63px;" (click)="sendMessage(messageField.value)"> <mat-icon> send </mat-icon> </button>
+
+      </div>
     </div>
+
     <div style="width: 35%; display: flex; padding: 10px;">
         <mat-card style="width: 100%;">
             <mat-list>
                 <div mat-subheader>Chats</div>
-                <mat-list-item *ngFor="let chat of activeChats">
+                <mat-list-item *ngFor="let chat of activeChats" (click)="loadMessages(chat)">
                   <mat-icon mat-list-icon>account_circle</mat-icon>
                   <div mat-line> {{ user.user_id == chat.sender_id ? chat.reciever_name : chat.sender_name }} </div>
                   <div mat-line> {{ chat.chat_text }} </div>

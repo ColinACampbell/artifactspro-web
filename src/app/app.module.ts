@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -116,6 +117,7 @@ import { ChatService } from './services/chat.service';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    NgxExtendedPdfViewerModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,

@@ -8,4 +8,46 @@
     display: flex;
     padding: 10px;
     justify-content: space-between;
+    flex-direction: column;
+}
+
+.text-input {
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+
+.chat-section 
+{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages
+{
+    height: calc( 100% - 53px);
+}
+
+#chat-bubble{
+    background:blue;
+    color:white;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    min-width: 20px;
+    max-width: 40%;
+}
+#chat-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: #00aabb;
+	border-right: 0;
+	margin-top: -20px;
+	margin-right: -20px;
 }

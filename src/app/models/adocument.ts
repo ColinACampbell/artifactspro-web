@@ -11,4 +11,5 @@ export interface ADocument {
     date_created:String;
     date_modified:String;
     type:String;
+    modified: String;
 }

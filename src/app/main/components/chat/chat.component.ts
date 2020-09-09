@@ -4,8 +4,10 @@ import { Environment } from 'src/app/models/environment';
 import { MatSelectionList, MatListOption } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ChatService } from 'src/app/services/chat.service';
-import { ActiveChats } from 'src/app/models/activeChats';
+import { ActiveChat } from 'src/app/models/activeChat';
 import { UserService } from 'src/app/services/user.service';
+import { ChatMessage } from 'src/app/models/chatMessage';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-chat',
@@ -22,33 +24,70 @@ export class ChatComponent implements OnInit {
 
   private socket: any;
   public user : User;
-  public activeChats : ActiveChats[]
-  
+  public activeChats : ActiveChat[]
+  public chatMessages : ChatMessage[]
+  private internalChatID : number;
+  private senderID : number;  
+
   async ngOnInit() {
 
     await this.userService.getUserInfo().subscribe((user :User)=>{
       this.user = user;
+      this.user.full_name = user.first_name + " " + user.last_name
+      console.log(this.user)
     })
 
-    this.chatService.getActiveChats();
-    this.chatService.activeChatsObservable
-    .subscribe((activeChats : ActiveChats[])=>{
+    await this.chatService.getActiveChats();
+    await this.chatService.activeChatsObservable
+    .subscribe((activeChats : ActiveChat[])=>{
       this.activeChats = activeChats
-
+      console.log(this.activeChats)
     })
     
     this.socket = io(this.environment.baseURL())
-    this.socket.emit("foo","Hello World")
-    this.socket.on("demo_event",(value)=>{
-      console.log(value);
-    })
+   
   }
 
   public sendMessage(content:String)
   {
-    console.log(content)
+
+    this.chatService.sendMessage(content,this.internalChatID,"",this.senderID,this.user.user_id)
+    .subscribe((response:HttpResponse<Object>)=>{
+      console.log(response.status)
+      this.chatService.getMessagesFromChat(this.internalChatID)
+      this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[])=>{
+      this.chatMessages = chatMessages;
+      })
+    })
+
+    /**this.socket.emit("internal_message",{
+      internalChatID : this.internalChatID,
+      message : content})**/
   }
 
+
+  public loadMessages(activeChat : ActiveChat)
+  {
+    this.senderID = activeChat.sender_id
+    this.internalChatID = activeChat.internal_chat_id
+    this.socket.emit("join_room",this.internalChatID) // join for that chat
+    this.chatService.getMessagesFromChat(this.internalChatID)
+    this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[])=>{
+      this.chatMessages = chatMessages;
+    })
+  }
+
+
+  determineFloat(chatMessage : ChatMessage)
+  {
+    return this.user.user_id == chatMessage.from_user ? { 
+      'justify-content' : 'end',
+      'display' : 'flex'
+    } : {
+      'justify-content' : 'start',
+      'display' : 'flex'
+    }
+  }
   openStartNewChatDialog()
   {
     

@@ -58,8 +58,9 @@
           </div>
           -->
           <div  >
-            <ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google" style="width:100%;height:50vh;">
-            </ngx-doc-viewer>
+            <!--<ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google" style="width:100%;height:50vh;">
+            </ngx-doc-viewer>-->
+            <ngx-extended-pdf-viewer [src]="previewlink" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>
             <img class='margin-vertical' *ngIf='isImage' src="{{previewlink}}" alt='image here' width="100%"/>
           </div>
          <div>
