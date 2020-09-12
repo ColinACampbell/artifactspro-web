@@ -48,6 +48,7 @@ export class ChatService {
     timestamp : String, toUser : number, fromUser : number
     ) : Observable<HttpResponse<Object>>
   {
+    
     return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/chats/send-message`,{chatText, internalChatID, timestamp, toUser, fromUser },
     {
       withCredentials : true,

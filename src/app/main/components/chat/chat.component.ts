@@ -41,6 +41,7 @@ export class ChatComponent implements OnInit {
     await this.chatService.activeChatsObservable
     .subscribe((activeChats : ActiveChat[])=>{
       this.activeChats = activeChats
+      console.log("Active Chats")
       console.log(this.activeChats)
     })
     
@@ -68,7 +69,9 @@ export class ChatComponent implements OnInit {
 
   public loadMessages(activeChat : ActiveChat)
   {
-    this.senderID = activeChat.sender_id
+    console.log(activeChat)
+    this.senderID = activeChat.sender_id === this.user.user_id ? activeChat.reciever_id : activeChat.sender_id
+    console.log(this.senderID)
     this.internalChatID = activeChat.internal_chat_id
     this.socket.emit("join_room",this.internalChatID) // join for that chat
     this.chatService.getMessagesFromChat(this.internalChatID)
