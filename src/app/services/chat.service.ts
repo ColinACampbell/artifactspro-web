@@ -18,6 +18,7 @@ export class ChatService {
   private chatMessages = new BehaviorSubject<ChatMessage[]>(null);
   public chatMessagesObservable = this.chatMessages.asObservable();
 
+
   constructor(
     private environment : Environment,
     private httpClient : HttpClient

@@ -34,20 +34,38 @@ export class ChatComponent implements OnInit {
 
   async ngOnInit() {
 
+    this.chatService.activeChatsObservable
+    .subscribe((activeChats : ActiveChat[])=>{
+      this.activeChats = activeChats
+      console.log(this.activeChats)
+    })
+
+    this.chatService.chatMessagesObservable
+    .subscribe((chatMessages: ChatMessage[])=>{
+      this.chatMessages = chatMessages
+    })
+
     await this.userService.getUserInfo().subscribe((user :User)=>{
       this.user = user;
       this.user.full_name = user.first_name + " " + user.last_name
       console.log(this.user)
     })
 
-    await this.chatService.getActiveChats();
-    await this.chatService.activeChatsObservable
-    .subscribe((activeChats : ActiveChat[])=>{
-      this.activeChats = activeChats
-      console.log(this.activeChats)
-    })
-    
+    this.getActiveChats();
+  
     this.socket = io(this.environment.baseURL())
+    this.socket.on("update_chat_room",(val)=>{
+      console.log(val)
+      if (val.chatRoomID === this.selectedChatRoomID)
+      {
+        this.getMessages(val.chatRoomID)
+        this.getActiveChats()
+      } else
+      {
+        this.getActiveChats()
+      }
+        
+    })
    
   }
 
@@ -57,12 +75,14 @@ export class ChatComponent implements OnInit {
     this.selectedActiveChat = this.selectedActiveChat;
     this.selectedChatRoomID = activeChat.chat_room_id;
     this.recieverID = this.user.user_id === activeChat.sender_id ? activeChat.reciever_id : activeChat.sender_id
+    this.getMessages(activeChat.chat_room_id)
+    this.socket.emit("join_room",this.selectedChatRoomID)
+  }
 
-    this.chatService.getMessagesFromChat(activeChat.chat_room_id)
-    this.chatService.chatMessagesObservable
-    .subscribe((chatMessages: ChatMessage[])=>{
-      this.chatMessages = chatMessages
-    })
+  private getMessages(chatRoomID:number)
+  {
+    this.chatService.getMessagesFromChat(chatRoomID)
+    
   }
 
   public sendMessage(content:String)
@@ -86,9 +106,15 @@ export class ChatComponent implements OnInit {
       })
     })
 
-    /**this.socket.emit("internal_message",{
-      internalChatID : this.internalChatID,
-      message : content})**/
+    this.socket.emit("internal_message",{
+      chatRoomID : this.selectedChatRoomID,
+      message : content})
+  }
+
+  private async getActiveChats()
+  {
+    await this.chatService.getActiveChats();
+    
   }
 
   determineFloat(chatMessage:ChatMessage)

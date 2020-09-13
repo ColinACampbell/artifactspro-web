@@ -27,6 +27,7 @@
 .messages
 {
     height: calc( 100% - 53px);
+    overflow: scroll;
 }
 
 #chat-bubble{
