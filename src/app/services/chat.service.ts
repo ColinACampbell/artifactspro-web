@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ActiveChat } from '../models/activeChat';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { ChatMessage } from '../models/chatMessage';
+import { ChatHeader } from '../models/chatHeader';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class ChatService {
     })
   }
 
-  public getMessagesFromChat(internalChatID : number)
+  public getMessagesFromChat(chatRoomID : number)
   {
-    this.httpClient.get<ChatMessage[]>(this.environment.baseURL()+`api/chats/${internalChatID}/load-messages`,
+    this.httpClient.get<ChatMessage[]>(this.environment.baseURL()+`api/chats/${chatRoomID}/load-messages`,
     {
       withCredentials : true
     })
@@ -44,12 +45,12 @@ export class ChatService {
   }
 
   public sendMessage(
-    chatText : String, internalChatID : number, 
+    chatText : String, chatRoomID : number, 
     timestamp : String, toUser : number, fromUser : number
     ) : Observable<HttpResponse<Object>>
   {
     
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/chats/send-message`,{chatText, internalChatID, timestamp, toUser, fromUser },
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/chats/send-message`,{chatText, chatRoomID, timestamp, toUser, fromUser },
     {
       withCredentials : true,
       observe : 'response'

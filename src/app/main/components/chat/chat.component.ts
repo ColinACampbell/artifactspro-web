@@ -8,6 +8,8 @@ import { ActiveChat } from 'src/app/models/activeChat';
 import { UserService } from 'src/app/services/user.service';
 import { ChatMessage } from 'src/app/models/chatMessage';
 import { HttpResponse } from '@angular/common/http';
+import { ChatHeader } from 'src/app/models/chatHeader';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -26,8 +28,9 @@ export class ChatComponent implements OnInit {
   public user : User;
   public activeChats : ActiveChat[]
   public chatMessages : ChatMessage[]
-  private internalChatID : number;
-  private senderID : number;  
+  private selectedChatRoomID : number
+  private recieverID : number;  
+  private selectedActiveChat : ActiveChat;
 
   async ngOnInit() {
 
@@ -41,7 +44,6 @@ export class ChatComponent implements OnInit {
     await this.chatService.activeChatsObservable
     .subscribe((activeChats : ActiveChat[])=>{
       this.activeChats = activeChats
-      console.log("Active Chats")
       console.log(this.activeChats)
     })
     
@@ -49,15 +51,38 @@ export class ChatComponent implements OnInit {
    
   }
 
+
+  loadMessages(activeChat : ActiveChat)
+  {
+    this.selectedActiveChat = this.selectedActiveChat;
+    this.selectedChatRoomID = activeChat.chat_room_id;
+    this.recieverID = this.user.user_id === activeChat.sender_id ? activeChat.reciever_id : activeChat.sender_id
+
+    this.chatService.getMessagesFromChat(activeChat.chat_room_id)
+    this.chatService.chatMessagesObservable
+    .subscribe((chatMessages: ChatMessage[])=>{
+      this.chatMessages = chatMessages
+    })
+  }
+
   public sendMessage(content:String)
   {
-
-    this.chatService.sendMessage(content,this.internalChatID,"",this.senderID,this.user.user_id)
+    let timestamp = new Date().getTime()
+    // Sends message to be created in the database
+    this.chatService.sendMessage(content,this.selectedChatRoomID,`${timestamp}`,this.recieverID,this.user.user_id)
     .subscribe((response:HttpResponse<Object>)=>{
       console.log(response.status)
-      this.chatService.getMessagesFromChat(this.internalChatID)
+
+      // Reload messages for selected chat
+      this.chatService.getMessagesFromChat(this.selectedChatRoomID)
       this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[])=>{
       this.chatMessages = chatMessages;
+
+      let audioFile = "./../../../../assets/sound_fx/msg_sent.mp3"
+      let audio = new Audio();
+      audio.src = audioFile;
+      audio.load()
+      audio.play()
       })
     })
 
@@ -66,33 +91,15 @@ export class ChatComponent implements OnInit {
       message : content})**/
   }
 
-
-  public loadMessages(activeChat : ActiveChat)
+  determineFloat(chatMessage:ChatMessage)
   {
-    console.log(activeChat)
-    this.senderID = activeChat.sender_id === this.user.user_id ? activeChat.reciever_id : activeChat.sender_id
-    console.log(this.senderID)
-    this.internalChatID = activeChat.internal_chat_id
-    this.socket.emit("join_room",this.internalChatID) // join for that chat
-    this.chatService.getMessagesFromChat(this.internalChatID)
-    this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[])=>{
-      this.chatMessages = chatMessages;
-    })
-  }
-
-
-  determineFloat(chatMessage : ChatMessage)
-  {
-    return this.user.user_id == chatMessage.from_user ? { 
-      'justify-content' : 'end',
+    return this.user.user_id === chatMessage.sender_id ? { 
+      'justify-content' : 'flex-end',
       'display' : 'flex'
     } : {
-      'justify-content' : 'start',
+      'justify-content' : 'flex-start',
       'display' : 'flex'
     }
   }
-  openStartNewChatDialog()
-  {
-    
-  }
+
 }
