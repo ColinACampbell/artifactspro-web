@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as io from "socket.io-client";
 import { Environment } from 'src/app/models/environment';
 import { MatSelectionList, MatListOption } from '@angular/material';
@@ -31,6 +31,9 @@ export class ChatComponent implements OnInit {
   private selectedChatRoomID : number
   private recieverID : number;  
   private selectedActiveChat : ActiveChat;
+
+
+  @ViewChild('scrollMe',null) private myScrollContainer: ElementRef;
 
   async ngOnInit() {
 
@@ -68,7 +71,6 @@ export class ChatComponent implements OnInit {
     })
    
   }
-
 
   loadMessages(activeChat : ActiveChat)
   {
