@@ -19,123 +19,127 @@ import { SocketService } from 'src/app/services/socket.service';
 export class ChatComponent implements OnInit {
 
   constructor(
-    private environment : Environment,
-    private chatService : ChatService,
-    private userService : UserService,
-    private socketService : SocketService
+    private environment: Environment,
+    private chatService: ChatService,
+    private userService: UserService,
+    private socketService: SocketService
   ) { }
 
-  public user : User;
-  public activeChats : ActiveChat[]
-  public chatMessages : ChatMessage[]
-  private selectedChatRoomID : number
-  private recieverID : number;  
-  private selectedActiveChat : ActiveChat;
-  public isChatSelected : Boolean = false;
+  public user: User;
+  public activeChats: ActiveChat[]
+  public chatMessages: ChatMessage[]
+  private selectedChatRoomID: number
+  private recieverID: number;
+  private selectedActiveChat: ActiveChat;
+  public isChatSelected: Boolean = false;
 
   private audioFile = new Audio("./../../../../assets/sound_fx/msg_sent.mp3");
 
 
-  @ViewChild('scrollMe',null) private myScrollContainer: ElementRef;
+  @ViewChild('scrollMe', null) private myScrollContainer: ElementRef;
 
   async ngOnInit() {
 
+    this.scrollToBottom();
     //this.audioFile.load();
-
     this.chatService.activeChatsObservable
-    .subscribe((activeChats : ActiveChat[])=>{
-      this.activeChats = activeChats
-      console.log(this.activeChats)
-    })
+      .subscribe((activeChats: ActiveChat[]) => {
+        this.activeChats = activeChats
+        console.log(this.activeChats)
+      })
 
     this.chatService.chatMessagesObservable
-    .subscribe((chatMessages: ChatMessage[])=>{
-      this.chatMessages = chatMessages
-    })
+      .subscribe((chatMessages: ChatMessage[]) => {
+        this.chatMessages = chatMessages
+      })
 
-    await this.userService.getUserInfo().subscribe((user :User)=>{
+    await this.userService.getUserInfo().subscribe((user: User) => {
       this.user = user;
       this.user.full_name = user.first_name + " " + user.last_name
     })
 
     this.getActiveChats();
-  
-    this.socketService.socket.on("update_chat_room",(val)=>{
+
+    this.socketService.socket.on("update_chat_room", (val) => {
       console.log(val)
-      if (val.chatRoomID === this.selectedChatRoomID)
-      {
+      if (val.chatRoomID === this.selectedChatRoomID) {
         this.getMessages(val.chatRoomID)
         this.getActiveChats()
-      } else
-      {
+      } else {
         this.getActiveChats()
       }
-        
+
     })
-   
+
   }
 
-  loadMessages(activeChat : ActiveChat)
-  {
+  /** 
+  loadMessages(activeChat: ActiveChat) {
     this.selectedActiveChat = this.selectedActiveChat;
     this.isChatSelected = true;
     this.selectedChatRoomID = activeChat.chat_room_id;
     this.recieverID = this.user.user_id === activeChat.sender_id ? activeChat.reciever_id : activeChat.sender_id
     this.getMessages(activeChat.chat_room_id)
-    this.socketService.socket.emit("join_room",this.selectedChatRoomID)
-  }
+    this.socketService.socket.emit("join_room", this.selectedChatRoomID)
+  }**/
 
 
-  public onAcitveChatSelected(event:any)
-  {
+  public onAcitveChatSelected(event: any) {
     this.isChatSelected = event.isChatSelected
     this.selectedChatRoomID = event.selectedChatRoomID;
     this.recieverID = event.recieverID;
   }
 
-  private getMessages(chatRoomID:number)
-  {
+  private getMessages(chatRoomID: number) {
     this.chatService.getMessagesFromChat(chatRoomID)
   }
 
-  public sendMessage(content:String)
-  {
+  public sendMessage(content: String) {
     let timestamp = new Date().getTime()
     // Sends message to be created in the database
-    this.chatService.sendMessage(content,this.selectedChatRoomID,`${timestamp}`,this.recieverID,this.user.user_id)
-    .subscribe((response:HttpResponse<Object>)=>{
-      console.log(response.status)
+    this.chatService.sendMessage(content, this.selectedChatRoomID, `${timestamp}`, this.recieverID, this.user.user_id)
+      .subscribe((response: HttpResponse<Object>) => {
+        console.log(response.status)
 
-      // Reload messages for selected chat
-      this.chatService.getMessagesFromChat(this.selectedChatRoomID)
-      this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[])=>{
-      this.chatMessages = chatMessages;
+        // Reload messages for selected chat
+        this.chatService.getMessagesFromChat(this.selectedChatRoomID)
+        this.chatService.chatMessagesObservable.subscribe((chatMessages: ChatMessage[]) => {
+          this.chatMessages = chatMessages;
+        })
       })
-    })
 
-    this.socketService.socket.emit("internal_message",{
-      chatRoomID : this.selectedChatRoomID,
-      message : content
+    this.socketService.socket.emit("internal_message", {
+      chatRoomID: this.selectedChatRoomID,
+      message: content
     })
     this.audioFile.play()
 
   }
 
-  private async getActiveChats()
-  {
+  private async getActiveChats() {
     await this.chatService.getActiveChats();
-    
+
   }
 
-  determineFloat(chatMessage:ChatMessage)
-  {
-    return this.user.user_id === chatMessage.sender_id ? { 
-      'justify-content' : 'flex-end',
-      'display' : 'flex'
+  determineFloat(chatMessage: ChatMessage) {
+    return this.user.user_id === chatMessage.sender_id ? {
+      'justify-content': 'flex-end',
+      'display': 'flex'
     } : {
-      'justify-content' : 'flex-start',
-      'display' : 'flex'
-    }
+        'justify-content': 'flex-start',
+        'display': 'flex'
+      }
+
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
   }
 
 }

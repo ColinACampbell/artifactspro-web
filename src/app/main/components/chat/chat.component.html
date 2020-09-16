@@ -2,7 +2,7 @@
 
     <div class="chat-section hide-scroll-bar">
 
-      <div class="messages hide-scroll-bar">
+      <div class="messages hide-scroll-bar" #scrollMep>
         <div *ngFor="let chatMessage of chatMessages" [ngStyle]="determineFloat(chatMessage)">
           <p id="chat-bubble" > 
             <span> {{ chatMessage.chat_message_text }}  </span>
