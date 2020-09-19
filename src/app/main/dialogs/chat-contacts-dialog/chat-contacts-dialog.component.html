@@ -1,1 +1,10 @@
-<p>chat-contacts-dialog works!</p>
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let member of members" class="list-sub-item">
+       
+            <div>
+                <p> {{ member.first_name + ' ' + member.last_name }}  </p> 
+            </div>
+            <button mat-flat-button color="primary"> Send Message </button> 
+        
+    </mat-list-item> 
+</mat-list>

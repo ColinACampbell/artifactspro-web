@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
-import { PartialObserver } from 'rxjs';
-import { Members } from 'src/app/models/members';
+import { Member } from 'src/app/models/member';
 import { MatDialog } from '@angular/material';
 import { InviteDialogComponent } from './../../dialogs/team-invite-dialog/invite-dialog.component';
 
@@ -12,7 +11,7 @@ import { InviteDialogComponent } from './../../dialogs/team-invite-dialog/invite
 })
 export class TeamComponent implements OnInit {
 
-  public members:Members[];
+  public members:Member[];
 
   displayedColumns: string[] = ['name', 'email', 'role','action'];
   
@@ -20,17 +19,14 @@ export class TeamComponent implements OnInit {
     private dialog:MatDialog) { }
 
   ngOnInit() {
-    this.getAllMembers();
-  }
-
-  private getAllMembers()
-  {
     this.membersService.getAllMembers()
-    .subscribe((members:Members[])=>{
+    this.membersService.membersObservable.
+    subscribe((members : Member[])=>{
       this.members = members;
     })
   }
 
+ 
   public openInviteTeamDialog()
   {
     this.dialog.open(InviteDialogComponent);

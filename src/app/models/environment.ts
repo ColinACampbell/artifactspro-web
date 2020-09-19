@@ -4,7 +4,9 @@ export class Environment {
     private prod: boolean = false; // make this is always false when testing
 
     constructor() {
-        this.url = this.prod ? "https://artifactspro.herokuapp.com/" : 'http://localhost:3000/'; 
+        let isNextworked = true;
+        const urlLocal = isNextworked ? "http://192.168.100.192:3000/" : 'http://localhost:3000/' 
+        this.url = this.prod ? "https://artifactspro.herokuapp.com/" : urlLocal; 
     }
 
     public baseURL() : String
