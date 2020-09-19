@@ -3,6 +3,11 @@
     margin-right: 10px;
 }
 
+.chat-component
+{
+    display: flex; height: calc( 100vh - 112px );
+}
+
 .action-bar
 {
     display: flex;

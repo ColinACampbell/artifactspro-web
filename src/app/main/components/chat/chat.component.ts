@@ -10,6 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ChatHeader } from 'src/app/models/chatHeader';
 import { Observable } from 'rxjs';
 import { SocketService } from 'src/app/services/socket.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-chat',
@@ -22,7 +23,8 @@ export class ChatComponent implements OnInit {
     private environment: Environment,
     private chatService: ChatService,
     private userService: UserService,
-    private socketService: SocketService
+    private socketService: SocketService,
+    public utilService : UtilService // used in template
   ) { }
 
   public user: User;
@@ -30,7 +32,7 @@ export class ChatComponent implements OnInit {
   public chatMessages: ChatMessage[]
   private selectedChatRoomID: number
   private recieverID: number;
-  private selectedActiveChat: ActiveChat;
+  //private selectedActiveChat: ActiveChat;
   public isChatSelected: Boolean = false;
 
   private audioFile = new Audio("./../../../../assets/sound_fx/msg_sent.mp3");
@@ -142,4 +144,10 @@ export class ChatComponent implements OnInit {
     } catch (err) { }
   }
 
+
+  getTimeDifference(timestamp : number)
+  {
+    const current = new Date().getTime();
+    return this.utilService.timeDifference(current,timestamp);
+  }
 }

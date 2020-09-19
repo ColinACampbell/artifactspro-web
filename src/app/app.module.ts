@@ -55,6 +55,7 @@ import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/create-work
 import { ChatComponent } from './main/components/chat/chat.component';
 import { ChatService } from './services/chat.service';
 import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms.component';
+import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog/chat-contacts-dialog.component";
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms
     CreateWorkspaceThreadDialogComponent,
     ChatComponent,
     ChatRoomsComponent,
+    ChatContactsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +132,8 @@ import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms
     CreateWorkSpaceDialogComponent,
     WorkSpaceAddMemberComponent,
     CreateMessageDialogComponent,
-    CreateWorkspaceThreadDialogComponent
+    CreateWorkspaceThreadDialogComponent,
+    ChatContactsDialogComponent
   ],
   providers: [
     UserService, 

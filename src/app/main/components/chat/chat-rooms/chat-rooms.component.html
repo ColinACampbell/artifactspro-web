@@ -1,6 +1,10 @@
 <mat-card style="width: 100%;">
+    <div>
+      <button mat-raised-button color="primary"
+      (click)="openContactList()"> <mat-icon> add </mat-icon> </button>
+    </div>
     <mat-list>
-        <div mat-subheader>Chats</div>
+        <!--<div mat-subheader>Chats</div>-->
         <mat-list-item *ngFor="let chat of activeChats" (click)="loadMessages(chat)">
           <!--<mat-icon mat-list-icon>account_circle</mat-icon>-->
           <img src="../../../../assets//profile-placeholder.png" width="50px" style="margin-right: 10px; border-radius: 50%;"/>
