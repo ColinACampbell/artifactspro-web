@@ -1,10 +1,54 @@
+<div>
+    <h1 class="text-center"> Start Chat </h1>
+</div>
 <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let member of members" class="list-sub-item">
-       
-            <div>
-                <p> {{ member.first_name + ' ' + member.last_name }}  </p> 
-            </div>
-            <button mat-flat-button color="primary"> Send Message </button> 
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
         
-    </mat-list-item> 
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let member"> {{member.first_name}} {{member.last_name}} </td>
+            </ng-container>
+        
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let member"> {{member.email}} </td>
+            </ng-container>
+        
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let member"> 
+                    <div style="float: right;">
+                        <button mat-button color='primary'> Send Message </button> 
+                    </div>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <div class="text-input" *ngIf="true">
+
+        <mat-form-field  appearance="outline" style="width: 60%; margin-right: 10px;" >
+          <mat-label>Enter Message</mat-label>
+          <input matInput placeholder="Enter Message" #messageField>
+        </mat-form-field>
+
+        <button mat-raised-button [color]="'primary'" style="height: 63px;">
+           <mat-icon> send </mat-icon> 
+        </button>
+    </div>
+
 </mat-list>

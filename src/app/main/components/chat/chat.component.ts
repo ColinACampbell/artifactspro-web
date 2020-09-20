@@ -1,14 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Environment } from 'src/app/models/environment';
-import { MatSelectionList, MatListOption } from '@angular/material';
-import { SelectionModel } from '@angular/cdk/collections';
 import { ChatService } from 'src/app/services/chat.service';
 import { ActiveChat } from 'src/app/models/activeChat';
 import { UserService } from 'src/app/services/user.service';
 import { ChatMessage } from 'src/app/models/chatMessage';
 import { HttpResponse } from '@angular/common/http';
-import { ChatHeader } from 'src/app/models/chatHeader';
-import { Observable } from 'rxjs';
 import { SocketService } from 'src/app/services/socket.service';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -20,7 +16,6 @@ import { UtilService } from 'src/app/services/util.service';
 export class ChatComponent implements OnInit {
 
   constructor(
-    private environment: Environment,
     private chatService: ChatService,
     private userService: UserService,
     private socketService: SocketService,

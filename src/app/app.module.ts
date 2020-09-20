@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
 import { MatButtonModule, MatTreeModule,
   MatListModule, MatGridListModule, MatDialogModule, 
   MatToolbarModule, MatInputModule, MatTooltipModule, 
@@ -121,7 +121,8 @@ import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    MatPaginatorModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,
