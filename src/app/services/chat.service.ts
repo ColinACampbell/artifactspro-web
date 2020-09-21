@@ -57,4 +57,17 @@ export class ChatService {
       observe : 'response'
     })
   }
+
+  public createChatAndChatRoom(senderID:number,recieverID:number,messageContent:string,timestamp:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post(this.environment.baseURL()+`api/chats/create-chat`,{
+      senderID,
+      recieverID,
+      messageContent,
+      timestamp
+    },{
+      withCredentials : true,
+      observe: "response"
+    })
+  }
 }

@@ -32,11 +32,12 @@ export class LoginComponent implements OnInit {
       {
         this.router.navigate(['/app'])
       }
-      else {
+      else if (status === 401){
         this.snackBar.open("Looks like your email or password is incorrect","Okay");
       }
     },(err)=>{
       console.log(err)
+      this.snackBar.open("Looks like your email or password is incorrect","Okay");
     })
   }
 
