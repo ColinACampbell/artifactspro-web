@@ -29,7 +29,10 @@
       </div>
     </div>
 
-    <div style="width: 35%; display: flex; padding: 10px;" class="hide-scroll-bar">
+    <div style="width: 35%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;" class="hide-scroll-bar">
         <app-chat-rooms [user]="user" [activeChats]="activeChats" (onActiveChat)="onAcitveChatSelected($event)"></app-chat-rooms>
     </div>
 </div>
