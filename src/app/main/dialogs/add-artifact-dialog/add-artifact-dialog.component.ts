@@ -77,6 +77,7 @@ export class AddArtifactDialogComponent implements OnInit {
     .subscribe((response:HttpResponse<Object>)=>{
       if (response.status === 200)
         {
+          this.workspaceService.getArtifacts(this.dialogData.workspaceID)
           this.snackBar.open("Artifact Was Added Successfully","Okay").onAction().subscribe(()=>{
             this.dialogRef.close()
           })

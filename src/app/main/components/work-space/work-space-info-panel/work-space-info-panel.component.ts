@@ -39,7 +39,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   private loadArtifacts()
   {
     this.workspaceService.getArtifacts(this.workspaceID)
-    .subscribe((artifacts:Artifact[])=>{
+    this.workspaceService.artifactsObservable.subscribe((artifacts:Artifact[])=>{
       this.artifacts = artifacts;
     })
   }

@@ -21,6 +21,9 @@ export class WorkSpaceService {
   private workspaces = new BehaviorSubject<WorkSpace[]>(null);
   public workspacesObservable = this.workspaces.asObservable();
 
+  private artifacts = new BehaviorSubject<Artifact[]>(null)
+  public artifactsObservable = this.artifacts.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
@@ -62,10 +65,12 @@ export class WorkSpaceService {
     })
   }
 
-  public getArtifacts(workspaceID:number) : Observable<Artifact[]>
+  public getArtifacts(workspaceID:number)
   {
     return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`,{
       withCredentials:true
+    }).subscribe((artifacts: Artifact[])=>{
+      this.artifacts.next(artifacts)
     });
   }
 

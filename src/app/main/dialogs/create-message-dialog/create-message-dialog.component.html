@@ -1,7 +1,7 @@
 <div class="form">
 
     <div style="display: flex; justify-content: center;">
-        <h2> Create Post </h2>
+        <h2> Start A Discussion </h2>
     </div>
 
     <mat-form-field class="fields">
@@ -14,10 +14,39 @@
         <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="200"> </textarea>
     </mat-form-field>
 
+    <mat-chip-list aria-label="Fish selection">
+        <mat-chip>One fish</mat-chip>
+        <mat-chip>Two fish</mat-chip>
+        <mat-chip color="primary" selected>Primary fish</mat-chip>
+        <mat-chip color="accent" selected>Accent fish</mat-chip>
+    </mat-chip-list>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Select Artifacts
+                </mat-panel-title>
+                <mat-panel-description>
+                    No Artifacts Selected {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-selection-list #selectedArtifacts>
+                <mat-list-option *ngFor="let artifact of artifacts">
+                    {{artifact.name}}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
     <div>
         <div mat-dialog-actions>
-            <button mat-raised-button color="primary" cdkFocusInitial (click)="postMessage(title.value,content.value)"> Post </button>
+            <button mat-raised-button color="primary" cdkFocusInitial (click)="postMessage(title.value,content.value)">
+                Post </button>
             <button mat-button (click)="closeDialog()">Close</button>
+            <button (click)="runTest(selectedArtifacts)"> Run Test </button>
+
         </div>
     </div>
 

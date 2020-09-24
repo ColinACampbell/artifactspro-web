@@ -12,6 +12,8 @@ import { MatButtonModule, MatTreeModule,
   MatToolbarModule, MatInputModule, MatTooltipModule, 
   MatSelectModule, MatSnackBarModule, 
   MatFormFieldModule, MatTabsModule,MatAutocompleteModule } from "@angular/material";
+  import {MatChipsModule} from '@angular/material/chips';
+import {MatExpansionModule} from '@angular/material/expansion'; 
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -122,7 +124,9 @@ import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     NgxExtendedPdfViewerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatChipsModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,
