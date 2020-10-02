@@ -49,6 +49,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
     // Open dialog to add user
     this.dialog.open(WorkSpaceAddMemberComponent,
       {
+        width : "350px",
         data : {
           workspaceID : this.workspaceID
         }
@@ -59,7 +60,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   {
     this.dialog.open(AddArtifactDialogComponent,
       {
-        width : "300px",
+        width : "350px",
         data : {
           workspaceID : this.workspaceID
         }

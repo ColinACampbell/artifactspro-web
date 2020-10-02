@@ -56,6 +56,7 @@ export class ViewWorkSpaceComponent implements OnInit {
     const workspaceID = this.workspaceID
     this.dialog.open(CreateMessageDialogComponent,
       {
+        width : "400px",
         data : {
           workspaceID
         }

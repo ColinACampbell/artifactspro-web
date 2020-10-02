@@ -14,31 +14,14 @@
         <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="200"> </textarea>
     </mat-form-field>
 
-    <mat-chip-list aria-label="Fish selection">
-        <mat-chip>One fish</mat-chip>
-        <mat-chip>Two fish</mat-chip>
-        <mat-chip color="primary" selected>Primary fish</mat-chip>
-        <mat-chip color="accent" selected>Accent fish</mat-chip>
-    </mat-chip-list>
-
-    <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Select Artifacts
-                </mat-panel-title>
-                <mat-panel-description>
-                    No Artifacts Selected {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-selection-list #selectedArtifacts>
-                <mat-list-option *ngFor="let artifact of artifacts">
-                    {{artifact.name}}
-                </mat-list-option>
-            </mat-selection-list>
-        </mat-expansion-panel>
-    </mat-accordion>
-
+    <mat-form-field appearance="fill">
+        <mat-label>Select Artifact</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let artifact of artifacts" [value]="artifact.art_id">
+                {{artifact.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
     <div>
         <div mat-dialog-actions>
