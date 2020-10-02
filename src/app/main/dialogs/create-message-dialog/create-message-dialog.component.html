@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Select Artifact</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="onArtifactSelected($event)">
             <mat-option *ngFor="let artifact of artifacts" [value]="artifact.art_id">
                 {{artifact.name}}
             </mat-option>
@@ -28,7 +28,7 @@
             <button mat-raised-button color="primary" cdkFocusInitial (click)="postMessage(title.value,content.value)">
                 Post </button>
             <button mat-button (click)="closeDialog()">Close</button>
-            <button (click)="runTest(selectedArtifacts)"> Run Test </button>
+            <button> Run Test </button>
 
         </div>
     </div>

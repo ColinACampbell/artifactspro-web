@@ -28,139 +28,126 @@ export class WorkSpaceService {
     private httpClient: HttpClient,
     private environment: Environment,
   ) { }
-  
-  public getWorkSpaces()
-  {
-    this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+"api/workspace/all",
-    {
-      withCredentials: true
-    }).subscribe((workspaces: WorkSpace[])=>{
-      this.workspaces.next(workspaces)
-    })
+
+  public getWorkSpaces() {
+    this.httpClient.get<WorkSpace[]>(this.environment.baseURL() + "api/workspace/all",
+      {
+        withCredentials: true
+      }).subscribe((workspaces: WorkSpace[]) => {
+        this.workspaces.next(workspaces)
+      })
   }
 
-  public createWorkSpace(name:String,dateCreated:String) : Observable<any>
-  {
-    return this.httpClient.post(this.environment.baseURL()+'api/workspace/create',{
+  public createWorkSpace(name: String, dateCreated: String): Observable<any> {
+    return this.httpClient.post(this.environment.baseURL() + 'api/workspace/create', {
       workspace_name: name,
-      date_created:dateCreated
+      date_created: dateCreated
     },
-    {
-      withCredentials : true
-    })
+      {
+        withCredentials: true
+      })
   }
 
-  public getWorkspaceInfo(workspaceID:number) : Observable<WorkSpace>
-  {
-    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/${workspaceID}`,{
-      withCredentials:true
+  public getWorkspaceInfo(workspaceID: number): Observable<WorkSpace> {
+    return this.httpClient.get<WorkSpace>(this.environment.baseURL() + `api/workspace/${workspaceID}`, {
+      withCredentials: true
     });
   }
 
   // TODO : Test this method
-  public getMembers(workspaceID:number) : Observable<any[]>
-  {
-    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/members`,{
-      withCredentials:true
+  public getMembers(workspaceID: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/members`, {
+      withCredentials: true
     })
   }
 
-  public getArtifacts(workspaceID:number)
-  {
-    return this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifacts`,{
-      withCredentials:true
-    }).subscribe((artifacts: Artifact[])=>{
+  public getArtifacts(workspaceID: number) {
+    return this.httpClient.get<Artifact[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifacts`, {
+      withCredentials: true
+    }).subscribe((artifacts: Artifact[]) => {
       this.artifacts.next(artifacts)
     });
   }
 
-  public emailSuggestion(email:string) : Observable<any[]>
-  {
-    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/suggestion/email?email=${email}`,
-    {
-      withCredentials:true
-    })
+  public emailSuggestion(email: string): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.environment.baseURL() + `api/workspace/suggestion/email?email=${email}`,
+      {
+        withCredentials: true
+      })
   }
 
-  public artifactsSuggestion(artifactName:string,workspaceID:number) : Observable<any[]>
-  {
-    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/suggestion/artifacts?artifactName=${artifactName}`,
-    {
-      withCredentials : true,
-    }
+  public artifactsSuggestion(artifactName: string, workspaceID: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/suggestion/artifacts?artifactName=${artifactName}`,
+      {
+        withCredentials: true,
+      }
     )
   }
 
-  public addMember(workspaceID:number,email:string)
-  {
-    return this.httpClient.post(this.environment.baseURL()+`api/workspace/${workspaceID}/add-member`,
-    {
-      email
-    },{
-      withCredentials : true,
+  public addMember(workspaceID: number, email: string) {
+    return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/add-member`,
+      {
+        email
+      }, {
+      withCredentials: true,
     })
   }
 
-  public postMessage(workspaceID:number,title:String,content:String,time:number,date:String) : Observable<HttpResponse<Object>>
-  {
+  public postMessage(workspaceID: number, title: String, content: String, time: number, date: String, artifactName: String): Observable<HttpResponse<Object>> {
     return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/add/message`,
-    {
-      title,
-      content,
-      time,
-      date
-    },{
-      withCredentials:true,
-      observe : 'response'
+      {
+        title,
+        content,
+        time,
+        date,
+        artifactName
+      }, {
+      withCredentials: true,
+      observe: 'response'
     });
   }
 
-  public getMessages(workspaceID:number) 
-  {
+  public getMessages(workspaceID: number) {
     this.httpClient.get<WorkSpacePost[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/messages`,
-    {
-      withCredentials:true,
-    }).subscribe((workspacePosts : WorkSpacePost[])=>{
-      this.workspacePosts.next(workspacePosts)
-    });
+      {
+        withCredentials: true,
+      }).subscribe((workspacePosts: WorkSpacePost[]) => {
+        this.workspacePosts.next(workspacePosts)
+      });
   }
 
-  public addArtifact(workspaceID:number,artifactName:string) : Observable<HttpResponse<Object>>
-  {
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifact/add`,{artifactName},
-    {
-      withCredentials : true,
-      observe : "response"
-    })
+  public addArtifact(workspaceID: number, artifactName: string): Observable<HttpResponse<Object>> {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifact/add`, { artifactName },
+      {
+        withCredentials: true,
+        observe: "response"
+      })
   }
 
-  public getWorkspacePost(workspaceID:number,messageID:number) : Observable<WorkSpacePost>
-  {
+  public getWorkspacePost(workspaceID: number, messageID: number): Observable<WorkSpacePost> {
     return this.httpClient.get<WorkSpacePost>(this.environment.baseURL() + `api/workspace/${workspaceID}/message/${messageID}`,
-    {
-      withCredentials : true
-    })
+      {
+        withCredentials: true
+      })
   }
 
-  public getWorkspacePostReplies(workspaceID:number,messageID:number)
-  {
-    this.httpClient.get<WorkSpacePostReply[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/replies`,{
-      withCredentials : true
+  public getWorkspacePostReplies(workspaceID: number, messageID: number) {
+    this.httpClient.get<WorkSpacePostReply[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/message/${messageID}/replies`, {
+      withCredentials: true
     })
-    .subscribe((workspacePostReplies : WorkSpacePostReply[])=>{
-      this.workspacePostReplies.next(workspacePostReplies)
-    });
+      .subscribe((workspacePostReplies: WorkSpacePostReply[]) => {
+        this.workspacePostReplies.next(workspacePostReplies)
+      });
   }
 
-  public postWorkspacePostReply(workspaceID:number,messageID:number, content : String, actionType : String, timestamp : number) : Observable<HttpResponse<Object>>
-  {
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/workspace/${workspaceID}/message/${messageID}/reply`,{
+  public postWorkspacePostReply(workspaceID: number, messageID: number, content: String, actionType: String, timestamp: number): Observable<HttpResponse<Object>> {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/message/${messageID}/reply`, {
       content,
       actionType,
       timestamp
-    },{
-      observe : "response",
-      withCredentials : true
+    }, {
+      observe: "response",
+      withCredentials: true
     })
   }
 }

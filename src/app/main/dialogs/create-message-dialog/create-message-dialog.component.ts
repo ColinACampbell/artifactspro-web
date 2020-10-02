@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, AfterViewInit, ElementRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatOption, MatSelectChange, MAT_DIALOG_DATA } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { ViewWorkSpaceComponent } from '../../components/work-space/view-work-space/view-work-space.component';
@@ -17,6 +17,7 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
 
   public panelOpenState : Boolean;
   public artifacts : Artifact[];
+  public artifactName : String = ""
   @ViewChild("selectedArtifacts", { static: true }) public selectedArtifacts: ElementRef;
 
   constructor(
@@ -44,7 +45,7 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
     const workspaceID = this.dialogData.workspaceID;
     const time = new Date().getTime();
 
-    this.workspaceService.postMessage(workspaceID,title,content,time,date)
+    this.workspaceService.postMessage(workspaceID,title,content,time,date,this.artifactName)
     .subscribe((response :HttpResponse<Object>)=>{
       if (response.status === 201)
         this.workspaceService.getMessages(workspaceID)
@@ -56,6 +57,11 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
   public closeDialog()
   {
     this.dialogRef.close();
+  }
+
+  public onArtifactSelected(event:MatSelectChange)
+  {
+    this.artifactName = (event.source.selected as MatOption).viewValue
   }
 
   public runTest(selectedArtifacts:any)
