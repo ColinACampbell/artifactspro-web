@@ -35,4 +35,8 @@ export class MessageCardComponent implements OnInit {
     this.router.navigate([`app/workspace/${workspaceID}/message/${threadID}`])
   }
 
+  public viewDetails(artID:number)
+  {
+    this.router.navigate(['/app/artifact/',artID])
+  }
 }

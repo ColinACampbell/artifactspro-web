@@ -16,7 +16,7 @@
         </div>
         <div>
             <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection" *ngIf="workspacePost.artifact_id" >
-                <mat-chip selected [color]="'primary'" style="margin-bottom:20px" matTooltip={{workspacePost.artifact_description}}>
+                <mat-chip selected [color]="'primary'" style="margin-bottom:20px" matTooltip={{workspacePost.artifact_description}} (click)="viewDetails(workspacePost.artifact_id)">
                     {{workspacePost.artifact_name}}
                 </mat-chip>
             </mat-chip-list>
