@@ -2,7 +2,7 @@
     <div style="width: 100%;">
         <div style="display: flex;">
             <div>
-                <img src="./../../../../assets/profile-placeholder.png" width="50px" style="border-radius: 50%;"/>
+                <img src="./../../../../assets/profile-placeholder.png" width="50px" style="border-radius: 50%;" />
             </div>
             <div style="width: 100%; padding: 9px;">
                 <div>
@@ -11,14 +11,29 @@
                 </div>
             </div>
         </div>
-        <div style="min-height: 50px; padding: 20px;">
+        <div style="padding: 20px;">
             {{ workspacePost.message_content }}
+        </div>
+        <div>
+            <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection" *ngIf="workspacePost.artifact_id" >
+                <mat-chip selected [color]="'primary'" style="margin-bottom:20px" matTooltip={{workspacePost.artifact_description}}>
+                    {{workspacePost.artifact_name}}
+                </mat-chip>
+            </mat-chip-list>
         </div>
     </div>
     <div style="width: 100%; display: flex; justify-content: space-around;">
-        <button mat-button color="primary"> <mat-icon> history_edu </mat-icon>  </button>
-        <button mat-button color="primary"> <mat-icon> favorite_border </mat-icon> </button>
-        <button mat-button color="primary" (click)="goToMessageThread()"> <mat-icon> preview </mat-icon></button>
-        <button mat-button color="primary"> <mat-icon> note_add </mat-icon> </button>
+        <button mat-button color="primary">
+            <mat-icon> history_edu </mat-icon>
+        </button>
+        <button mat-button color="primary">
+            <mat-icon> favorite_border </mat-icon>
+        </button>
+        <button mat-button color="primary" (click)="goToMessageThread()">
+            <mat-icon> preview </mat-icon>
+        </button>
+        <button mat-button color="primary">
+            <mat-icon> note_add </mat-icon>
+        </button>
     </div>
 </mat-card>

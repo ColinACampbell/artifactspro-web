@@ -10,4 +10,8 @@ interface WorkSpacePost
     first_name: string,
     last_name:string,
     email:string,
+    artifact_name: string,
+    artifact_id: number,
+    artifact_user: number,
+    artifact_description : string
 }

@@ -18,6 +18,8 @@ export class MessageCardComponent implements OnInit {
 
   @Input('workspacePost') workspacePost : WorkSpacePost;
 
+  public availableColors : string[] = ['red']
+
   ngOnInit() {
     const postTime = parseInt(this.workspacePost.time)
     let postDate = new Date(postTime)
