@@ -150,4 +150,14 @@ export class WorkSpaceService {
       withCredentials: true
     })
   }
+
+  public nameSearch(key:string,) 
+  {
+    this.httpClient.get<WorkSpace[]>(this.environment.baseURL()+`api/workspace/search?key=${key}`,{
+      withCredentials : true
+    })
+    .subscribe((workspaces : WorkSpace[])=>{
+      this.workspaces.next(workspaces)
+    })
+  }
 }

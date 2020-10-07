@@ -44,4 +44,10 @@ export class WorkSpaceComponent implements OnInit {
     let workSpaceID = workSpace.work_space_id;
     this.router.navigate(['/app/workspace/',workSpaceID]);
   }
+
+  public nameSearch(event:Event)
+  {
+    const key = event.target['value']
+    this.workSpaceService.nameSearch(key)
+  }
 }
