@@ -63,4 +63,14 @@ export class ArtifactsService {
     });
   } 
 
+  nameSearch(key:string)
+  {
+    this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/art/search?key=${key}`,{
+      withCredentials : true
+    })
+    .subscribe((artifacts:Artifact[])=>{
+      this.artifacts.next(artifacts)
+    })
+  }
+
 }

@@ -1,8 +1,9 @@
 <div class="flex">
+
     <div mat-subheader style="display:flex;justify-content:space-between;padding: 16px;">
         <mat-form-field appearance="outline" style="width: 300px;">
             <mat-label>Search Arifact</mat-label>
-            <input matInput placeholder="Enter Name of Version of Artifact">
+            <input matInput placeholder="Enter Name of Version of Artifact" (keyup)="nameSearch($event)">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <div style="margin-bottom: 50px;">

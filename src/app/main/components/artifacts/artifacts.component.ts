@@ -60,5 +60,11 @@ export class ArtifactsComponent implements OnInit {
         width: "400px"
       })
   }
+
+  public nameSearch(event:Event)
+  {
+    let key = event.target['value']
+    this.artServ.nameSearch(key)
+  }
   
 }
