@@ -6,6 +6,8 @@ import { AddArtifactDialogComponent } from "./../../../dialogs/add-artifact-dial
 import { MatDialog } from '@angular/material';
 import { WorkSpaceAddMemberComponent } from './../../../dialogs/work-space-add-member-dialog/work-space-add-member.component';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
+import { Member } from 'src/app/models/member';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'app-work-space-info-panel',
@@ -17,15 +19,26 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   @Input() workspaceID:number;
   public workspaceMembers:any[];
   public artifacts: Artifact[];
+  public userAsMember : Member;
 
   constructor(
     private workspaceService:WorkSpaceService,
     private dialog: MatDialog,
+    private memberService : MemberService
   ) { }
 
   ngOnInit() {
     this.loadArtifacts();
     this.loadMembers();
+    this.getUserAsMember()
+  }
+
+  private getUserAsMember()
+  {
+    this.memberService.getMemberAsUser()
+    .subscribe((member:Member)=>{
+      this.userAsMember = member
+    })
   }
 
   private loadMembers()
