@@ -11,17 +11,28 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private snackBar: MatSnackBar,private userServ:UserService,private router:Router) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private userServ:UserService,
+    private router:Router
+    ) { }
 
   ngOnInit() {
   }
 
-  login(email:String,password:String)
+  login(email:string,password:string)
   {
-    
+  
     if (password === '' || email === '')
     {
-      alert("None of the fields can be empty")
+      this.snackBar.open("Please enter a your username and password",'Okay')
+      return
+    }
+
+    if(!this.userServ.isEmailValid(email))
+    {
+      this.snackBar.open("Please enter a valid email");
+      return
     }
 
     this.userServ.login(email,password).subscribe((response:HttpResponse<Object>)=>

@@ -19,11 +19,18 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup(email:String,password:String)
+  signup(email:string,password:string)
   {
     if (this.password === '' || this.email === '')
     {
-      alert("None of the fields can be empty")
+      this.snackBar.open("None of the fields can be empty","Okay")
+      return;
+    }
+
+    if (!this.userServ.isEmailValid(email))
+    {
+      this.snackBar.open("Please enter a valid email")
+      return
     }
 
     this.userServ.signup(email,password)
