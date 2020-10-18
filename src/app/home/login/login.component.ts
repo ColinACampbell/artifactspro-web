@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
     if(!this.userServ.isEmailValid(email))
     {
-      this.snackBar.open("Please enter a valid email");
+      this.snackBar.open("Please enter a valid email","Okay");
       return
     }
 
