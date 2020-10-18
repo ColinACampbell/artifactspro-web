@@ -19,7 +19,7 @@ export class DeleteArtifactDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialogData: any
   ) { }
 
-  private isNameCorrect:Boolean = false;
+  public isNameCorrect:Boolean = false;
   private artifactName:String;
   private artID: number;
 

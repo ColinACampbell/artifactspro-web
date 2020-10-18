@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class InviteDialogComponent implements OnInit {
 
-  private inviteUrl:String;
+  public inviteUrl:String;
   constructor(
     public dialogRef: MatDialogRef<InviteDialogComponent>,
     private memServ: MemberService
