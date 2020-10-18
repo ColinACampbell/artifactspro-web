@@ -6,8 +6,8 @@
             <input matInput placeholder="Enter Name of Workspace" (keyup)="nameSearch($event)">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
-        <div style="margin-bottom: 50px;">
-            <button mat-raised-button color="primary" (click)="openCreateWorkSpaceDialog()"> Create Workspace </button>
+        <div style="margin-bottom: 50px;" *ngIf="this.userAsMember">
+            <button *ngIf="this.userAsMember.role === 'owner'" mat-raised-button color="primary" (click)="openCreateWorkSpaceDialog()"> Create Workspace </button>
         </div>
     </div>
 

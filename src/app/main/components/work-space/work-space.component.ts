@@ -4,6 +4,8 @@ import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
 import { CreateWorkSpaceDialogComponent } from './../../dialogs/create-work-space-dialog/create-work-space-dialog.component';
 import { Router } from '@angular/router';
+import { Member } from 'src/app/models/member';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'app-work-space',
@@ -13,9 +15,11 @@ import { Router } from '@angular/router';
 export class WorkSpaceComponent implements OnInit {
 
   public workSpaces:WorkSpace[];
+  public userAsMember : Member;
 
   constructor(
     private workSpaceService: WorkSpaceService,
+    private memberService : MemberService,
     private createWSDialog: MatDialog,
     private router: Router
   ) { }
@@ -26,6 +30,11 @@ export class WorkSpaceComponent implements OnInit {
     .subscribe((workSpaces:WorkSpace[])=>{
       this.workSpaces = workSpaces;
     });
+
+    this.memberService.getMemberAsUser()
+    .subscribe((member : Member)=>{
+      this.userAsMember = member
+    })
   }
 
   private loadWorkSpaces()
