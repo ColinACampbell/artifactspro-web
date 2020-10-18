@@ -6,9 +6,9 @@
         </mat-form-field>
     </div>
 
-    <div class="btn-group">
+    <div class="btn-group" *ngIf="this.userAsMember">
         <button mat-raised-button color='primary'> Search </button>
-        <button mat-raised-button color='primary' (click)='openInviteTeamDialog()'> Invite User </button>
+        <button *ngIf="this.userAsMember.role === 'owner'" mat-raised-button color='primary' (click)='openInviteTeamDialog()'> Invite User </button>
     </div>
 </div>
 <table mat-table [dataSource]="members" class="mat-elevation-z8">

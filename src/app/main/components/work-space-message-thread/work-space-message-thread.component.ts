@@ -43,7 +43,6 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     this.workspaceService.getWorkspacePost(this.workspaceID,this.threadID)
     .subscribe((workspacePost : WorkSpacePost)=>{
       this.workspacePost = workspacePost
-      console.log(workspacePost)
     })
   }
 

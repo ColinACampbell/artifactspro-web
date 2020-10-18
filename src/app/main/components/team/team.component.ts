@@ -12,6 +12,7 @@ import { InviteDialogComponent } from './../../dialogs/team-invite-dialog/invite
 export class TeamComponent implements OnInit {
 
   public members:Member[];
+  public userAsMember : Member;
 
   displayedColumns: string[] = ['name', 'email', 'role','action'];
   
@@ -24,8 +25,13 @@ export class TeamComponent implements OnInit {
     subscribe((members : Member[])=>{
       this.members = members;
     })
-  }
 
+    this.membersService.getMemberAsUser()
+    .subscribe((member : Member)=>{
+      this.userAsMember = member;
+    })
+
+  }
  
   public openInviteTeamDialog()
   {

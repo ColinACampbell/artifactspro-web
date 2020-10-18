@@ -35,4 +35,11 @@ export class MemberService {
     })
   }
 
+  public getMemberAsUser() : Observable<Member>
+  {
+    return this.httpClient.get<Member>(this.environment.baseURL()+'api/members/user-as-member',{
+      withCredentials : true
+    })
+  }
+
 }

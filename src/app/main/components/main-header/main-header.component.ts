@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 import io from 'socket.io-client';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-header',
@@ -51,8 +52,8 @@ export class MainHeaderComponent implements OnInit {
   public logOut()
   {
     this.userServ.signOut()
-    .subscribe(observer=>{
-      if (observer['message'] === 'ok')
+    .subscribe((response : HttpResponse<Object>)=>{
+      if (response.status == 200)
         this.router.navigate(['/login'])
     })
   }

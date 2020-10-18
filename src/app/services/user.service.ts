@@ -73,9 +73,11 @@ export class UserService {
     })
   }
 
-  public signOut() {
-    return this.httpClient.post(this.environment.baseURL() + 'api/user/logout', {}, {
+  // TODO : Look at this
+  public signOut() : Observable<HttpResponse<Object>>{
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + 'api/user/logout', {}, {
       withCredentials: true,
+      observe : 'response'
     })
   }
 }
