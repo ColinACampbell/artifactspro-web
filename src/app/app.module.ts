@@ -28,7 +28,7 @@ import { OrganizationService } from './services/organization.service';
 import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
 import { CreateDialogComponent } from './main/dialogs/create-artifact-dialog/create-dialog.component';
-import {ArtifactComponent} from "./main/components/artifact/artifact.component"
+import { ArtifactComponent } from "./main/components/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
 import { UploadDialogComponent } from './main/dialogs/upload-artifact-dialog/upload-dialog.component';
 import { Environment } from './models/environment';
@@ -58,6 +58,7 @@ import { ChatComponent } from './main/components/chat/chat.component';
 import { ChatService } from './services/chat.service';
 import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms.component';
 import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog/chat-contacts-dialog.component";
+import { ChangeUserPermissionsDialogComponent } from './main/dialogs/change-user-permissions-dialog/change-user-permissions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog
     ChatComponent,
     ChatRoomsComponent,
     ChatContactsDialogComponent,
+    ChangeUserPermissionsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,7 +140,8 @@ import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog
     WorkSpaceAddMemberComponent,
     CreateMessageDialogComponent,
     CreateWorkspaceThreadDialogComponent,
-    ChatContactsDialogComponent
+    ChatContactsDialogComponent,
+    ChangeUserPermissionsDialogComponent
   ],
   providers: [
     UserService, 

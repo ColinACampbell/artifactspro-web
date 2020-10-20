@@ -42,4 +42,11 @@ export class MemberService {
     })
   }
 
+  public getMember(userID: number) : Observable<Member>
+  {
+    return this.httpClient.get<Member>(this.environment.baseURL()+`api/members/member-from-id?id=${userID}`,{
+      withCredentials : true,
+    })
+  }
+
 }

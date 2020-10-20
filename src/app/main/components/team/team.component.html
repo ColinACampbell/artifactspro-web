@@ -39,7 +39,7 @@
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let member"> 
             <div style="float: right;" *ngIf="userAsMember">
-                <button *ngIf="userAsMember.role === 'owner'" mat-button color='primary'> Change Priveliges </button> 
+                <button *ngIf="userAsMember.role === 'owner'" mat-button color='primary' (click)="openChangeUserPermissionsDialog(member)"> Change Priveliges </button> 
             </div>
         </td>
     </ng-container>

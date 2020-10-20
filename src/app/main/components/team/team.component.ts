@@ -3,6 +3,7 @@ import { MemberService } from 'src/app/services/member.service';
 import { Member } from 'src/app/models/member';
 import { MatDialog } from '@angular/material';
 import { InviteDialogComponent } from './../../dialogs/team-invite-dialog/invite-dialog.component';
+import { ChangeUserPermissionsDialogComponent } from '../../dialogs/change-user-permissions-dialog/change-user-permissions-dialog.component';
 
 @Component({
   selector: 'app-team',
@@ -36,6 +37,18 @@ export class TeamComponent implements OnInit {
   public openInviteTeamDialog()
   {
     this.dialog.open(InviteDialogComponent);
+  }
+
+  public openChangeUserPermissionsDialog(member: Member)
+  {
+    this.dialog.open(ChangeUserPermissionsDialogComponent,
+      {
+        width : "400px",
+        height : "400px",
+        data : {
+          userID : member.user_id
+        }
+      })
   }
 
 }
