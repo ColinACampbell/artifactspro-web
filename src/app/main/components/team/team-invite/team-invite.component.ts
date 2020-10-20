@@ -22,6 +22,7 @@ export class TeamInviteComponent implements OnInit {
 
   public accessCode : String;
   public organizationName:String;
+  public loginInProcess: Boolean = false;
 
   ngOnInit() {
     this.accessCode = this.route.snapshot.paramMap.get('id');
@@ -34,8 +35,10 @@ export class TeamInviteComponent implements OnInit {
   // TODO : Fix this later
   public signUpUser(email:String,password:String)
   {
+    this.loginInProcess = true;
     this.userServ.signup(email,password)
     .subscribe((response : HttpResponse<Object>)=>{
+      this.loginInProcess = false;
       let status = response.status
       if (status === 201)
       {
