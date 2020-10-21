@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, AfterViewInit, ElementRef } from '@angular/c
 import { MatDialogRef, MatOption, MatSelectChange, MAT_DIALOG_DATA } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
-import { ViewWorkSpaceComponent } from '../../components/work-space/view-work-space/view-work-space.component';
 import { HttpResponse } from '@angular/common/http';
 import { Artifact } from 'src/app/models/artifacts';
 import { ViewChild } from '@angular/core';

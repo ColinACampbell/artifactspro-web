@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ChatContactsDialogComponent } from 'src/app/main/dialogs/chat-contacts-dialog/chat-contacts-dialog.component';
+import { ChatContactsDialogComponent } from 'src/app/main/dialogs/chat/chat-contacts-dialog/chat-contacts-dialog.component';
 import { ActiveChat } from 'src/app/models/activeChat';
 import { ChatService } from 'src/app/services/chat.service';
 
