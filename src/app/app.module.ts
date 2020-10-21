@@ -59,6 +59,7 @@ import { ChatService } from './services/chat.service';
 import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms.component';
 import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog/chat-contacts-dialog.component";
 import { ChangeUserPermissionsDialogComponent } from './main/dialogs/change-user-permissions-dialog/change-user-permissions-dialog.component';
+import { WorkpaceDetailsComponent } from './main/dialogs/workspace/workpace-details/workpace-details.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { ChangeUserPermissionsDialogComponent } from './main/dialogs/change-user
     ChatRoomsComponent,
     ChatContactsDialogComponent,
     ChangeUserPermissionsDialogComponent,
+    WorkpaceDetailsComponent,
   ],
   imports: [
     BrowserModule,
