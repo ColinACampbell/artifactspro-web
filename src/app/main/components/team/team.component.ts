@@ -43,8 +43,7 @@ export class TeamComponent implements OnInit {
   {
     this.dialog.open(ChangeUserPermissionsDialogComponent,
       {
-        width : "400px",
-        height : "400px",
+       
         data : {
           userID : member.user_id
         }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Environment } from '../models/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Member } from '../models/member';
 
@@ -42,10 +42,23 @@ export class MemberService {
     })
   }
 
+  // User ID of user, important to get org details
   public getMember(userID: number) : Observable<Member>
   {
     return this.httpClient.get<Member>(this.environment.baseURL()+`api/members/member-from-id?id=${userID}`,{
       withCredentials : true,
+    })
+  }
+
+  // user ID is the user id of member whose role is being changed
+  public changeMemberRole(role:string,userID:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/members/change-member-role`,{
+      role,
+      userID
+    },{
+      withCredentials : true,
+      observe : 'response'
     })
   }
 
