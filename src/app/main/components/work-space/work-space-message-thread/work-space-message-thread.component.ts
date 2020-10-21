@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { MatDialog } from '@angular/material';
-import { CreateWorkspaceThreadDialogComponent } from '../../dialogs/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
+import { CreateWorkspaceThreadDialogComponent } from 'src/app/main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 
 @Component({
   selector: 'app-work-space-message-thread',
