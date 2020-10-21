@@ -145,7 +145,8 @@ import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space
     CreateMessageDialogComponent,
     CreateWorkspaceThreadDialogComponent,
     ChatContactsDialogComponent,
-    ChangeUserPermissionsDialogComponent
+    ChangeUserPermissionsDialogComponent,
+    WorkpaceDetailsComponent
   ],
   providers: [
     UserService, 

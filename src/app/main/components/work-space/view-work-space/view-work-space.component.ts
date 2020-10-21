@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
 import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
+import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workpace-details/workpace-details.component';
 
 @Component({
   selector: 'app-view-work-space',
@@ -60,6 +61,19 @@ export class ViewWorkSpaceComponent implements OnInit {
           workspaceID
         }
       });
+  }
+
+  public openWorkspaceDetailsDialog()
+  {
+    const workspaceID = this.workspaceID;
+    this.dialog.open(WorkpaceDetailsComponent,
+      {
+        width: "95%",
+        height: "80%",
+        data : {
+          workspaceID
+        }
+      })
   }
 
   public loadPosts()
