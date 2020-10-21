@@ -1,0 +1,24 @@
+<div class="form">
+
+    <div style="display: flex; justify-content: center;">
+        <h2> Create Artifact</h2>
+    </div>
+
+    <mat-form-field class="fields">
+        <mat-label>Enter Name Of Artifact ({{ 50 - name.value.length }})</mat-label>
+        <input matInput placeholder="Eg. Report 2020, Revision etc" value="" #name maxlength="50">
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label>Enter the description of this artifact ({{ 500 - description.value.length }})</mat-label>
+        <textarea matInput placeholder="Eg. What this artifact mainly entails and its purpose" #description maxlength="200"></textarea>
+    </mat-form-field>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="createArtifact(name.value,description.value)">Save & Upload Document</button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div>

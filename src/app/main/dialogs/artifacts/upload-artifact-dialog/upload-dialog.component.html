@@ -1,0 +1,38 @@
+<div class="form">
+    <div style="display: flex; justify-content: center;">
+        <h2> Upload Document </h2>
+    </div>
+
+    <mat-form-field class="fields">
+        <mat-label> Name the version of the document ({{ 50 - versionName.value.length }}) </mat-label>
+        <input matTooltip='The version name will be relfected to represent this file name' matInput placeholder="Be sure to use a version naming standard." value="" #versionName maxlength="50">
+    </mat-form-field>
+
+    <mat-form-field class="fields">
+        <mat-label>Comment on the document ({{ 500 - comment.value.length }})</mat-label>
+        <textarea matInput placeholder="Eg. Changes made to the document, minor details etc" #comment maxlength="500"></textarea>
+    </mat-form-field>
+
+    <mat-progress-bar *ngIf='selectedFile' mode="determinate" value="{{ uploadProgress }}"></mat-progress-bar>
+
+    <div *ngIf='selectedFile' class="fields" style="margin-top: 10px; margin-bottom: 10px;">
+        <mat-card style="display: flex; justify-content: space-between; align-items: center;">  
+            <div> 
+                <span>{{ selectedFile.name }}</span> 
+            </div>
+            <button mat-button (click)='removeFile()' [disabled]='hasUploaded'> <mat-icon>delete</mat-icon> </button>
+        </mat-card>
+    </div>
+
+    <div class="fields">
+        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" accept="image/*,.pdf,.csv,.doc,.docx,.ppt,.xlsx,.xls"/>
+        <button mat-raised-button color="primary" (click)="fileInput.click()" [disabled]="selectedFile || hasUploaded">Choose Document</button>
+    </div>
+   
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="uploadFile(versionName.value,comment.value)" [disabled]="!selectedFile || hasUploaded"> Upload Document</button>
+            <button mat-button (click)="closeDialog()" [disabled]='hasUploaded'>Close</button>
+        </div>
+    </div>
+</div>
