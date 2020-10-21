@@ -1,0 +1,22 @@
+<div class="form">
+    <mat-form-field class="fields">
+        <mat-label> Search Artifact By Name </mat-label>
+        <input matInput placeholder="Enter Name of The Artifact" value="" #artifactName maxlength="50"
+            (keyup)="search($event)" 
+            [matAutocomplete]="auto"
+            >
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of artifacts" [value]="option.name">
+                {{option.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value)"> Add Artifact </button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div>
