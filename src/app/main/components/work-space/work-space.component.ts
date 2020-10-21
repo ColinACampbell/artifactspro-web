@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
-import { CreateWorkSpaceDialogComponent } from './../../dialogs/create-work-space-dialog/create-work-space-dialog.component';
 import { Router } from '@angular/router';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
+import { CreateWorkSpaceDialogComponent } from '../../dialogs/workspace/create-work-space-dialog/create-work-space-dialog.component';
 
 @Component({
   selector: 'app-work-space',

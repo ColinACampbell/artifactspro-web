@@ -5,10 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { UploadDialogComponent } from './../../dialogs/upload-artifact-dialog/upload-dialog.component';
-import { DeleteArtifactDialogComponent } from './../../dialogs/delete-artifact-dialog/delete-artifact-dialog.component'
 import { Location } from '@angular/common';
 import { observable } from 'rxjs';
+import { DeleteArtifactDialogComponent } from '../../dialogs/artifacts/delete-artifact-dialog/delete-artifact-dialog.component';
+import { UploadDialogComponent } from '../../dialogs/artifacts/upload-artifact-dialog/upload-dialog.component';
 
 @Component({
   selector: 'app-artifact',

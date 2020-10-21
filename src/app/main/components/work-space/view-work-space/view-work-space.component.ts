@@ -3,10 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material';
-import { CreateMessageDialogComponent } from './../../../dialogs/create-message-dialog/create-message-dialog.component';
-import { AddArtifactDialogComponent } from 'src/app/main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
+import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
 
 @Component({
   selector: 'app-view-work-space',

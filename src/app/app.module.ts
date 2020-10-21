@@ -27,39 +27,41 @@ import { MainHeaderComponent } from './main/components/main-header/main-header.c
 import { OrganizationService } from './services/organization.service';
 import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
 import { ArtifactsService } from './services/artifacts.service';
-import { CreateDialogComponent } from './main/dialogs/create-artifact-dialog/create-dialog.component';
 import { ArtifactComponent } from "./main/components/artifact/artifact.component"
 import { DocumentService } from './services/document.service';
-import { UploadDialogComponent } from './main/dialogs/upload-artifact-dialog/upload-dialog.component';
 import { Environment } from './models/environment';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/components/team/team.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/components/verify-user/verify-user.component';
-import { DeleteArtifactDialogComponent } from './main/dialogs/delete-artifact-dialog/delete-artifact-dialog.component';
-import { InviteDialogComponent } from './main/dialogs/team-invite-dialog/invite-dialog.component';
 import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
-import { CreateWorkSpaceDialogComponent } from './main/dialogs/create-work-space-dialog/create-work-space-dialog.component';
 import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
 import { UtilService } from './services/util.service';
 import { WorkSpaceInfoPanelComponent } from './main/components/work-space/work-space-info-panel/work-space-info-panel.component';
-import { WorkSpaceAddMemberComponent } from './main/dialogs/work-space-add-member-dialog/work-space-add-member.component';
 import { MessageCardComponent } from './main/components/work-space/message-card/message-card.component';
-import { CreateMessageDialogComponent } from './main/dialogs/create-message-dialog/create-message-dialog.component';
-import { AddArtifactDialogComponent } from './main/dialogs/add-artifact-dialog/add-artifact-dialog.component';
-import { WorkSpaceMessageThreadComponent } from './main/components/work-space-message-thread/work-space-message-thread.component';
-import { WorkSpaceMessageThreadReplyCardComponent } from './main/components/work-space-message-thread/work-space-message-thread-reply-card/work-space-message-thread-reply-card.component';
-import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
+
 import { ChatComponent } from './main/components/chat/chat.component';
 import { ChatService } from './services/chat.service';
 import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms.component';
-import { ChatContactsDialogComponent } from "./main/dialogs/chat-contacts-dialog/chat-contacts-dialog.component";
-import { ChangeUserPermissionsDialogComponent } from './main/dialogs/change-user-permissions-dialog/change-user-permissions-dialog.component';
+
 import { WorkpaceDetailsComponent } from './main/dialogs/workspace/workpace-details/workpace-details.component';
+import { WorkSpaceMessageThreadReplyCardComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread-reply-card/work-space-message-thread-reply-card.component';
+import { WorkSpaceMessageThreadComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread.component';
+import { CreateDialogComponent } from './main/dialogs/artifacts/create-artifact-dialog/create-dialog.component';
+import { DeleteArtifactDialogComponent } from './main/dialogs/artifacts/delete-artifact-dialog/delete-artifact-dialog.component';
+import { UploadDialogComponent } from './main/dialogs/artifacts/upload-artifact-dialog/upload-dialog.component';
+import { ChatContactsDialogComponent } from './main/dialogs/chat/chat-contacts-dialog/chat-contacts-dialog.component';
+import { ChangeUserPermissionsDialogComponent } from './main/dialogs/team/change-user-permissions-dialog/change-user-permissions-dialog.component';
+import { InviteDialogComponent } from './main/dialogs/team/team-invite-dialog/invite-dialog.component';
+import { AddArtifactDialogComponent } from './main/dialogs/workspace/add-artifact-dialog/add-artifact-dialog.component';
+import { CreateMessageDialogComponent } from './main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
+import { CreateWorkSpaceDialogComponent } from './main/dialogs/workspace/create-work-space-dialog/create-work-space-dialog.component';
+import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
+import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space-add-member-dialog/work-space-add-member.component';
 
 @NgModule({
   declarations: [
