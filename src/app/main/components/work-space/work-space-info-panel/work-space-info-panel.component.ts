@@ -44,6 +44,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   private loadMembers()
   {
     this.workspaceService.getMembers(this.workspaceID)
+    this.workspaceService.membersObservable
     .subscribe(observer=>{
       this.workspaceMembers = observer;
     })

@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-work-space-add-member',
@@ -57,20 +58,20 @@ export class WorkSpaceAddMemberComponent implements OnInit {
   {
     const workspaceID = this.dialogData.workspaceID;
     this.workspaceService.addMember(workspaceID,email)
-    .subscribe((observable)=>{
+    .subscribe((response:HttpResponse<Object>)=>{
 
-      const message = observable['message'];
-
-      if (message === 'user_exists')
-      {
-        this.snackBar.open("Member exsits","Okay")
-      } else if (message === 'success')
+      if (response.status === 201)
       {
         const snackBarRef = this.snackBar.open("Member added to workspace","Okay");
         snackBarRef.afterDismissed()
         .subscribe((_)=>{
+          this.workspaceService.getMembers(workspaceID)
           this.dialogRef.close();
         })
+        
+      } else 
+      {
+        this.snackBar.open("Member exsits","Okay")
       }
     })
     

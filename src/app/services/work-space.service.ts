@@ -5,6 +5,7 @@ import { WorkSpace } from '../models/workspace';
 import { Observable } from 'rxjs/internal/Observable';
 import { Artifact } from '../models/artifacts';
 import { BehaviorSubject } from 'rxjs';
+import { Member } from '../models/member';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class WorkSpaceService {
 
   private workspaces = new BehaviorSubject<WorkSpace[]>(null);
   public workspacesObservable = this.workspaces.asObservable();
+
+  private members = new BehaviorSubject<Member[]>(null);
+  public membersObservable = this.members.asObservable();
 
   private artifacts = new BehaviorSubject<Artifact[]>(null)
   public artifactsObservable = this.artifacts.asObservable();
@@ -55,9 +59,12 @@ export class WorkSpaceService {
   }
 
   // TODO : Test this method
-  public getMembers(workspaceID: number): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/members`, {
+  public getMembers(workspaceID: number)
+  {
+    return this.httpClient.get<Member[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/members`, {
       withCredentials: true
+    }).subscribe((members: Member[])=>{
+      this.members.next(members)
     })
   }
 
@@ -84,12 +91,14 @@ export class WorkSpaceService {
     )
   }
 
-  public addMember(workspaceID: number, email: string) {
-    return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/add-member`,
+  public addMember(workspaceID: number, email: string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/add-member`,
       {
         email
       }, {
       withCredentials: true,
+      observe : "response"
     })
   }
 
