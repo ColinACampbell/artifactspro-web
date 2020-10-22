@@ -169,4 +169,12 @@ export class WorkSpaceService {
       this.workspaces.next(workspaces)
     })
   }
+
+  public getWorkSpaceInfo(workspaceID : number) : Observable<WorkSpace>
+  {
+    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/info?id=${workspaceID}`,{
+      withCredentials : true
+    })
+  }
+
 }
