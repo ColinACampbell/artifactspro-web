@@ -47,8 +47,7 @@ import { MessageCardComponent } from './main/components/work-space/message-card/
 import { ChatComponent } from './main/components/chat/chat.component';
 import { ChatService } from './services/chat.service';
 import { ChatRoomsComponent } from './main/components/chat/chat-rooms/chat-rooms.component';
-
-import { WorkpaceDetailsComponent } from './main/dialogs/workspace/workpace-details/workpace-details.component';
+import { WorkpaceDetailsComponent } from './main/dialogs/workspace/workspace-details/workpace-details.component'
 import { WorkSpaceMessageThreadReplyCardComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread-reply-card/work-space-message-thread-reply-card.component';
 import { WorkSpaceMessageThreadComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread.component';
 import { CreateDialogComponent } from './main/dialogs/artifacts/create-artifact-dialog/create-dialog.component';
@@ -62,6 +61,7 @@ import { CreateMessageDialogComponent } from './main/dialogs/workspace/create-me
 import { CreateWorkSpaceDialogComponent } from './main/dialogs/workspace/create-work-space-dialog/create-work-space-dialog.component';
 import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space-add-member-dialog/work-space-add-member.component';
+import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/wsdetail-overview.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +98,9 @@ import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space
     ChatRoomsComponent,
     ChatContactsDialogComponent,
     ChangeUserPermissionsDialogComponent,
+    WsdetailOverviewComponent,
     WorkpaceDetailsComponent,
+    WsdetailOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -132,7 +134,8 @@ import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space
     NgxExtendedPdfViewerModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    FormsModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,

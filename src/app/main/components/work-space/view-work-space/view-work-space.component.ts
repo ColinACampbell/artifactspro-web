@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
 import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
-import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workpace-details/workpace-details.component';
+import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workspace-details/workpace-details.component';
 
 @Component({
   selector: 'app-view-work-space',
@@ -46,8 +46,9 @@ export class ViewWorkSpaceComponent implements OnInit {
   private loadWorkspaceInfo()
   {
     this.workspaceService.getWorkspaceInfo(this.workspaceID)
-    .subscribe((workspace:WorkSpace)=>{
-      this.workspace = workspace;
+    this.workspaceService.principalWorkspaceObservable.
+    subscribe((workspace:WorkSpace)=>{
+      this.workspace = workspace
     })
   }
 

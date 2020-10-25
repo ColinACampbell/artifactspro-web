@@ -28,6 +28,9 @@ export class WorkSpaceService {
   private artifacts = new BehaviorSubject<Artifact[]>(null)
   public artifactsObservable = this.artifacts.asObservable();
 
+  private principalWorkspace = new BehaviorSubject<WorkSpace>(null);
+  public principalWorkspaceObservable = this.principalWorkspace.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
@@ -54,11 +57,6 @@ export class WorkSpaceService {
       })
   }
 
-  public getWorkspaceInfo(workspaceID: number): Observable<WorkSpace> {
-    return this.httpClient.get<WorkSpace>(this.environment.baseURL() + `api/workspace/${workspaceID}`, {
-      withCredentials: true
-    });
-  }
 
   // TODO : Test this method
   public getMembers(workspaceID: number)
@@ -172,11 +170,27 @@ export class WorkSpaceService {
     })
   }
 
-  public getWorkSpaceInfo(workspaceID : number) : Observable<WorkSpace>
+  public getWorkspaceInfo(workspaceID: number) 
   {
-    return this.httpClient.get<WorkSpace>(this.environment.baseURL()+`api/workspace/info?id=${workspaceID}`,{
+    this.httpClient.get<WorkSpace>(this.environment.baseURL() + `api/workspace/${workspaceID}`, {
+      withCredentials: true
+    }).subscribe((workspace : WorkSpace)=>{
+      this.principalWorkspace.next(workspace);
+    });
+
+  }
+
+  public updateWorkspaceInfo(workspaceID: number, workspaceName: String, workspaceDsc: String)
+  {
+    this.httpClient.put(this.environment.baseURL()+`api/workspace/${workspaceID}/submit-change`,{
+      workspaceName,
+      workspaceDsc
+    },{
       withCredentials : true
+    }).subscribe((_)=>{
+      this.getWorkspaceInfo(workspaceID)
     })
+    
   }
 
 }

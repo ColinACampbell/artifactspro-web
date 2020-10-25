@@ -1,0 +1,27 @@
+<div style="width: 300px;" style="display: flex; justify-content: center; padding: 10px; flex-direction: column;">
+
+    <mat-form-field appearance="outline">
+      <mat-label> Workspace Name </mat-label>
+      <input matInput placeholder="Enter Name of Workspace" [disabled]='!fieldsEditable'
+      [(ngModel)]='this.workspace.work_space_name'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Workspace Name </mat-label>
+      <textarea 
+        style="max-height: 180px;height: 165px;"
+        matInput placeholder="Enter Name of Workspace" [disabled]='!fieldsEditable'
+        [(ngModel)]='this.workspace.work_space_description'>
+      </textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Date Created </mat-label>
+      <input matInput placeholder="Enter Name of Workspace" [disabled]='true' [(ngModel)]='this.workspace.date_created'>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" *ngIf="!this.fieldsEditable" (click)="makeFieldsEditable()"> Edit Information </button>
+        <button mat-raised-button color="primary" *ngIf="this.fieldsEditable" (click)="saveEdit()"> Save Information </button>
+        <button style="margin-left: 10px;" mat-flat-button color="primary" *ngIf="this.fieldsEditable" (click)="cancelEdit()"> Cancel </button>
+    </div>
+  </div>
