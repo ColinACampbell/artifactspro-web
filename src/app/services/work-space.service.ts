@@ -42,13 +42,15 @@ export class WorkSpaceService {
       })
   }
 
-  public createWorkSpace(name: String, dateCreated: String): Observable<any> {
-    return this.httpClient.post(this.environment.baseURL() + 'api/workspace/create', {
+  public createWorkSpace(name: String, description: String,dateCreated: String): Observable<HttpResponse<Object>> {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + 'api/workspace/create', {
       workspace_name: name,
-      date_created: dateCreated
+      date_created: dateCreated,
+      description
     },
       {
-        withCredentials: true
+        withCredentials: true,
+        observe : "response",
       })
   }
 

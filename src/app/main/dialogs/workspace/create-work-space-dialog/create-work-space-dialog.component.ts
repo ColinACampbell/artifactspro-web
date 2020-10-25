@@ -3,6 +3,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-work-space-dialog',
@@ -22,16 +23,19 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  public createWorkSpace(name:String)
+  public createWorkSpace(name:String, description:String)
   {
     let currentDate = this.utilService.getCurrentDate();
 
-    this.workspaceService.createWorkSpace(name,currentDate)
-    .subscribe((observable)=>{
-      let message = observable['message'];
-      if (message === 'ok')
+    this.workspaceService.createWorkSpace(name,description,currentDate,)
+    .subscribe((response : HttpResponse<Object>)=>{
+
+      console.log(response.body)
+      let status = response.status;
+      if (status === 201)
       {
-        let workspaceID = observable['work_space_id'];
+        let workspaceID = response.body['workspaceID'];
+        console.log(workspaceID)
         this.closeDialog()
         this.router.navigate([`/app/workspace/`,workspaceID])
         this.workspaceService.getWorkSpaces();
