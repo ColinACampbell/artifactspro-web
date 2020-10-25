@@ -14,14 +14,16 @@
         <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="200"> </textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Select Artifact</mat-label>
-        <mat-select (selectionChange)="onArtifactSelected($event)">
-            <mat-option *ngFor="let artifact of artifacts" [value]="artifact.art_id">
-                {{artifact.name}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div style="display: flex; justify-content: center;">
+        <mat-form-field appearance="fill" style="width: 300px;">
+            <mat-label>Select Artifact (Optional)</mat-label>
+            <mat-select (selectionChange)="onArtifactSelected($event)">
+                <mat-option *ngFor="let artifact of artifacts" [value]="artifact.art_id">
+                    {{artifact.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 
     <div>
         <div mat-dialog-actions>
