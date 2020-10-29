@@ -18,7 +18,7 @@
         <mat-form-field appearance="fill" style="width: 300px;">
             <mat-label>Select Artifact (Optional)</mat-label>
             <mat-select (selectionChange)="onArtifactSelected($event)">
-                <mat-option *ngFor="let artifact of artifacts" [value]="artifact.art_id">
+                <mat-option  *ngFor="let artifact of artifacts" [value]="artifact.art_id">
                     {{artifact.name}}
                 </mat-option>
             </mat-select>

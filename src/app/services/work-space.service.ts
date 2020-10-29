@@ -193,4 +193,12 @@ export class WorkSpaceService {
     
   }
 
+  // TODO : Work on getting participants
+  public getParticipants(workspaceID : number)
+  {
+    return this.httpClient.get(this.environment.baseURL()+`api/workspace/${workspaceID}/all-participants`,{
+      withCredentials : true
+    })
+  }
+
 }

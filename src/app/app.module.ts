@@ -62,6 +62,7 @@ import { CreateWorkSpaceDialogComponent } from './main/dialogs/workspace/create-
 import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space-add-member-dialog/work-space-add-member.component';
 import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/wsdetail-overview.component';
+import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-de
     ChangeUserPermissionsDialogComponent,
     WsdetailOverviewComponent,
     WorkpaceDetailsComponent,
-    WsdetailOverviewComponent
+    WsdetailOverviewComponent,
+    WsdetailParticipantsComponent
   ],
   imports: [
     BrowserModule,
