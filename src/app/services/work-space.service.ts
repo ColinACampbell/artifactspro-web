@@ -31,6 +31,9 @@ export class WorkSpaceService {
   private principalWorkspace = new BehaviorSubject<WorkSpace>(null);
   public principalWorkspaceObservable = this.principalWorkspace.asObservable();
 
+  private workspaceParticipants = new BehaviorSubject<WorkspaceParticipant[]>(null);
+  public workspaceParticipantsObservable = this.workspaceParticipants.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
@@ -193,11 +196,12 @@ export class WorkSpaceService {
     
   }
 
-  // TODO : Work on getting participants
   public getParticipants(workspaceID : number)
   {
-    return this.httpClient.get(this.environment.baseURL()+`api/workspace/${workspaceID}/all-participants`,{
+    this.httpClient.get<WorkspaceParticipant[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/all-participants`,{
       withCredentials : true
+    }).subscribe((workspaceParticipants : WorkspaceParticipant[])=>{
+      this.workspaceParticipants.next(workspaceParticipants)
     })
   }
 
