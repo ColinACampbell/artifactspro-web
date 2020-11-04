@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { CreateDialogComponent } from '../../../artifacts/create-artifact-dialog/create-dialog.component';
+import { WsdetailParticipantsActionDialogComponent } from './wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';
 
 @Component({
   selector: 'app-wsdetail-participants',
@@ -26,14 +27,19 @@ export class WsdetailParticipantsComponent implements OnInit {
     this.getWorkspaceParticipants()
     this.workspaceService.workspaceParticipantsObservable
     .subscribe((workspaceParticipants : WorkspaceParticipant[])=>{
-      console.log(workspaceParticipants)
       this.workspaceParticipants = workspaceParticipants
     })
   }
 
   changeParticipantPermission(workspaceParticipant: WorkspaceParticipant) 
   { 
-    // TODO Work on changing the user permission
+    this.dialog.open(WsdetailParticipantsActionDialogComponent,
+      {
+        data : {
+          participantID : workspaceParticipant.work_space_member_id,
+          workspaceID : this.workspace.work_space_id
+        }
+      })
   }
 
   public getWorkspaceParticipants()

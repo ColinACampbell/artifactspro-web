@@ -1,0 +1,10 @@
+<mat-spinner [diameter]="50" *ngIf="requestInProcess"></mat-spinner>
+<br/>
+<mat-form-field appearance="fill">
+  <mat-label> Select Role </mat-label>
+    <mat-select [(value)]="selectedRole" (valueChange)="changeRole()">
+      <mat-option *ngFor="let role of roles" [value]="role">
+        {{role}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
