@@ -205,4 +205,12 @@ export class WorkSpaceService {
     })
   }
 
+  public getParticipant(workspaceID : number, participantID : number) : Observable<WorkspaceParticipant>
+  {
+    return this.httpClient.get<WorkspaceParticipant>(this.environment.baseURL()+`api/workspace/${workspaceID}/get-participant?id=${participantID}`,
+    {
+      withCredentials : true
+    })
+  }
+
 }

@@ -27,12 +27,13 @@ export class ChangeUserPermissionsDialogComponent implements OnInit {
     // Note, the user ID is the ID of the selected member
     this.memberService.getMember(this.dialogData.userID)
     .subscribe((member: Member)=>{
+      // TODO : In the future, merge this component with wsdetail-participants-action-dialog
       this.potentialRoles.forEach((role)=>{
         if (role !== member.role)
           this.roles.push(role)
       })
-      this.selectedRole = member.role
-      this.roles.unshift(member.role)
+      this.selectedRole = member.role // set the user role on default
+      this.roles.unshift(member.role) // add it to the start on the array
     })
   }
 

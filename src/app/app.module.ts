@@ -63,6 +63,7 @@ import { CreateWorkspaceThreadDialogComponent } from './main/dialogs/workspace/c
 import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space-add-member-dialog/work-space-add-member.component';
 import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/wsdetail-overview.component';
 import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants.component';
+import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspac
     WsdetailOverviewComponent,
     WorkpaceDetailsComponent,
     WsdetailOverviewComponent,
-    WsdetailParticipantsComponent
+    WsdetailParticipantsComponent,
+    WsdetailParticipantsActionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +153,8 @@ import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspac
     CreateWorkspaceThreadDialogComponent,
     ChatContactsDialogComponent,
     ChangeUserPermissionsDialogComponent,
-    WorkpaceDetailsComponent
+    WorkpaceDetailsComponent,
+    WsdetailParticipantsActionDialogComponent
   ],
   providers: [
     UserService, 
@@ -166,4 +169,5 @@ import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspac
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
