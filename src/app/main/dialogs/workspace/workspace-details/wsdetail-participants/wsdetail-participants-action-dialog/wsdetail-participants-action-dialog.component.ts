@@ -33,9 +33,7 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
     })
   }
 
-
-
-
+  // TODO Implement this method
   changeRole() 
   {
 
