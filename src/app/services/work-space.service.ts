@@ -213,4 +213,18 @@ export class WorkSpaceService {
     })
   }
 
+
+  public changeParticipantPermission(workspaceID : number, participantID : number, newRole : string)
+  {
+    this.httpClient.put(this.environment.baseURL() + `api/workspace/${workspaceID}/change-participant-role`,
+    {
+      participantID,
+      newRole
+    },{
+      withCredentials : true
+    }).subscribe(()=>{
+      this.getParticipants(workspaceID)
+    })
+  }
+
 }

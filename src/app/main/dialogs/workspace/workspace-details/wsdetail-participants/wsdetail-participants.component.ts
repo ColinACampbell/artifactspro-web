@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Member } from 'src/app/models/member';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { CreateDialogComponent } from '../../../artifacts/create-artifact-dialog/create-dialog.component';
@@ -16,6 +17,8 @@ export class WsdetailParticipantsComponent implements OnInit {
 
   public workspaceParticipants : WorkspaceParticipant[]
   public displayedColumns: string[] = ['name', 'email', 'role','action'];
+  public memberAsUser : Member // get the role of the user in the context of the workspace
+
   @Input('workspace') public workspace : WorkSpace;
 
   constructor(
@@ -40,6 +43,11 @@ export class WsdetailParticipantsComponent implements OnInit {
           workspaceID : this.workspace.work_space_id
         }
       })
+  }
+
+  public getUserAsAMember()
+  {
+    //this.workspaceService.
   }
 
   public getWorkspaceParticipants()

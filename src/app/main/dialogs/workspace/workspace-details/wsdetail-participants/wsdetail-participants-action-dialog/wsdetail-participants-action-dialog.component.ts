@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({
@@ -14,9 +14,13 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
   public requestInProcess : Boolean = false
   public roles : string[] = [];
 
+  public isSureToDelete : Boolean = false 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData : any,
-    private workspaceService : WorkSpaceService
+    private workspaceService : WorkSpaceService,
+    private matSnackBar : MatSnackBar,
+    private dialogRef : MatDialogRef<WsdetailParticipantsActionDialogComponent>
   ) { }
 
   ngOnInit() {
@@ -33,10 +37,32 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
     })
   }
 
-  // TODO Implement this method
   changeRole() 
   {
+    this.workspaceService.changeParticipantPermission(
+      this.dialogData.workspaceID,
+      this.dialogData.participantID,
+      this.selectedRole
+      )
 
+      this.matSnackBar.open("Participant's Permission Was Changed","Okay")
+      .onAction()
+      .subscribe((_)=>{
+        this.dialogRef.close()
+        this.matSnackBar.dismiss()
+      })
   }
 
+
+  public initRemoveParticipant()
+  {
+    this.isSureToDelete = true
+  }
+
+  // TODO Handle removing user from the a workspace
+  public differDelete()
+  {
+    this.dialogRef.close()
+    this.isSureToDelete = false;
+  }
 }

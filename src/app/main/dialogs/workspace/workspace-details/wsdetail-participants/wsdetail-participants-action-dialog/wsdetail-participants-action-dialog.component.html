@@ -1,10 +1,25 @@
 <mat-spinner [diameter]="50" *ngIf="requestInProcess"></mat-spinner>
-<br/>
+<br />
 <mat-form-field appearance="fill">
   <mat-label> Select Role </mat-label>
-    <mat-select [(value)]="selectedRole" (valueChange)="changeRole()">
-      <mat-option *ngFor="let role of roles" [value]="role">
-        {{role}}
-      </mat-option>
-    </mat-select>
+  <mat-select [(value)]="selectedRole" (valueChange)="changeRole()">
+    <mat-option *ngFor="let role of roles" [value]="role">
+      {{role}}
+    </mat-option>
+  </mat-select>
 </mat-form-field>
+<div style="text-align: center;">
+  <button mat-raised-button color="warning" style="background-color: red; color: white;
+  text-align: center;"
+    *ngIf="!isSureToDelete"
+    (click)="initRemoveParticipant()">
+    Remove This Participant
+  </button>
+  <div *ngIf="isSureToDelete" style="text-align: center;">
+    <h3> Are You Sure ?</h3>
+    <div>
+      <button mat-flat-button> Yes </button>
+      <button mat-raised-button color="primary" (click)="differDelete()"> No </button>
+    </div>
+  </div>
+</div>
