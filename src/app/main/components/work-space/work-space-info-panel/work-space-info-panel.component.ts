@@ -35,6 +35,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
 
   private getUserAsMember()
   {
+    // TODO Change this... what applies in the overall application does not apply for the workspace
     this.memberService.getMemberAsUser()
     .subscribe((member:Member)=>{
       this.userAsMember = member
