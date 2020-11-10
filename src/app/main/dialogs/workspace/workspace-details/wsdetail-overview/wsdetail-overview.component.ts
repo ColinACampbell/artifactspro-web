@@ -18,7 +18,7 @@ export class WsdetailOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.workspaceService.getWorkspaceInfo(this.workspace.work_space_id);
+    //this.workspaceService.getWorkspaceInfo(this.workspace.work_space_id);
     this.workspaceService.principalWorkspaceObservable
     .subscribe((workspace:WorkSpace)=>{
       this.workspace = workspace;

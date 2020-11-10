@@ -26,15 +26,13 @@ export class ViewWorkSpaceComponent implements OnInit {
   public workspace:WorkSpace = null;
   public workspacePosts : WorkSpacePost[] = []
 
+  // TODO : Fix the issue with this
+  
   ngOnInit() {
+
     this.workspaceID = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
+    //console.log( this.workspace.work_space_id || "WSID is not set yet")
     this.loadWorkspaceInfo();
-
-    this.workspaceService.workspacePostsObservable
-    .subscribe((workspacePosts : WorkSpacePost[])=>{
-      this.workspacePosts = workspacePosts;
-    })
-
     this.loadPosts()
   }
 
@@ -49,6 +47,15 @@ export class ViewWorkSpaceComponent implements OnInit {
     this.workspaceService.principalWorkspaceObservable.
     subscribe((workspace:WorkSpace)=>{
       this.workspace = workspace
+    })
+  }
+
+  public loadPosts()
+  {
+    this.workspaceService.getMessages(this.workspaceID)
+    this.workspaceService.workspacePostsObservable
+    .subscribe((workspacePosts : WorkSpacePost[])=>{
+      this.workspacePosts = workspacePosts;
     })
   }
 
@@ -75,11 +82,5 @@ export class ViewWorkSpaceComponent implements OnInit {
           workspaceID
         }
       })
-  }
-
-  public loadPosts()
-  {
-    this.workspaceService.getMessages(this.workspaceID)
-    
-  }
+  }  
 }

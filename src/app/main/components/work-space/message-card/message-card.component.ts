@@ -25,7 +25,6 @@ export class MessageCardComponent implements OnInit {
     let postDate = new Date(postTime)
     // TODO : Work on getting time difference
     this.timeLapse =  this.utilService.timeDifference(new Date().getTime(),postDate);
-    console.log(this.timeLapse)
   }
 
   public goToMessageThread()

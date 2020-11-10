@@ -31,7 +31,7 @@ export class WorkpaceDetailsComponent implements OnInit, AfterViewInit {
 
   public getWorkspaceInfo() 
   {
-    this.workspaceService.getWorkspaceInfo(this.workspaceID)
+    //this.workspaceService.getWorkspaceInfo(this.workspaceID)
     this.workspaceService.principalWorkspaceObservable
     .subscribe((workspace: WorkSpace)=>{
       this.workspace = workspace

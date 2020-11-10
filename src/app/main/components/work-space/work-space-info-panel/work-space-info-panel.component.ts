@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
@@ -14,9 +14,8 @@ import { WorkSpaceAddMemberComponent } from 'src/app/main/dialogs/workspace/work
   templateUrl: './work-space-info-panel.component.html',
   styleUrls: ['./work-space-info-panel.component.css']
 })
-export class WorkSpaceInfoPanelComponent implements OnInit {
-
-  @Input() workspaceID:number;
+export class WorkSpaceInfoPanelComponent implements OnInit, AfterViewInit {
+  public workspace : WorkSpace;
   public workspaceMembers:any[];
   public artifacts: Artifact[];
   public userAsMember : Member;
@@ -28,9 +27,22 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadArtifacts();
-    this.loadMembers();
+
+    this.workspaceService.principalWorkspaceObservable
+    .subscribe((workspace:WorkSpace)=>{
+        this.workspace = workspace
+        // Passing these values through here are just a quick fix
+        this.loadArtifacts();
+        this.loadMembers();
+    })
+
+    
     this.getUserAsMember()
+  }
+
+  ngAfterViewInit()
+  {
+    
   }
 
   private getUserAsMember()
@@ -44,7 +56,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
 
   private loadMembers()
   {
-    this.workspaceService.getMembers(this.workspaceID)
+    this.workspaceService.getMembers(this.workspace.work_space_id)
     this.workspaceService.membersObservable
     .subscribe(observer=>{
       this.workspaceMembers = observer;
@@ -53,7 +65,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
 
   private loadArtifacts()
   {
-    this.workspaceService.getArtifacts(this.workspaceID)
+    this.workspaceService.getArtifacts(this.workspace.work_space_id)
     this.workspaceService.artifactsObservable.subscribe((artifacts:Artifact[])=>{
       this.artifacts = artifacts;
     })
@@ -66,7 +78,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
       {
         width : "350px",
         data : {
-          workspaceID : this.workspaceID
+          workspaceID : this.workspace.work_space_id
         }
       });
   }
@@ -77,7 +89,7 @@ export class WorkSpaceInfoPanelComponent implements OnInit {
       {
         width : "350px",
         data : {
-          workspaceID : this.workspaceID
+          workspaceID : this.workspace.work_space_id
         }
       });
   }
