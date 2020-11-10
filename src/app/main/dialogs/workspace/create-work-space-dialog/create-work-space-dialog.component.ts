@@ -27,7 +27,7 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
   {
     let currentDate = this.utilService.getCurrentDate();
 
-    this.workspaceService.createWorkSpace(name,description,currentDate,)
+    this.workspaceService.createWorkSpace(name.trim(),description.trim(),currentDate,)
     .subscribe((response : HttpResponse<Object>)=>{
 
       console.log(response.body)

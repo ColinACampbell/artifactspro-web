@@ -39,6 +39,15 @@ export class WorkSpaceService {
     private environment: Environment,
   ) { }
 
+
+  public getWorkspaceNames() : Observable<any[]>
+  {
+    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/names`,
+    {
+      withCredentials : true
+    })
+  }
+
   public getWorkSpaces() {
     this.httpClient.get<WorkSpace[]>(this.environment.baseURL() + "api/workspace/all",
       {

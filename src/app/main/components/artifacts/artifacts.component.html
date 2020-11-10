@@ -1,11 +1,21 @@
 <div class="flex">
 
     <div mat-subheader style="display:flex;justify-content:space-between;padding: 16px;">
-        <mat-form-field appearance="outline" style="width: 300px;">
-            <mat-label>Search Arifact</mat-label>
-            <input matInput placeholder="Enter Name of Version of Artifact" (keyup)="nameSearch($event)">
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+        <div style="padding: 10px;">
+            <mat-form-field appearance="fill">
+                <mat-label> Show Artifacts From </mat-label>
+                <mat-select [(ngModel)]="selectedWorkspace" name="workspace" (selectionChange)="onSelectWorkspace($event)">
+                    <mat-option *ngFor="let workspace of availableWorkspaces" [value]="workspace" >
+                        {{workspace}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 300px; margin-left: 10px;">
+                <mat-label>Search Artifact</mat-label>
+                <input matInput placeholder="Enter Name of Version of Artifact" (keyup)="searchArtifact($event)">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
         <div style="margin-bottom: 50px;">
             <button mat-raised-button color="primary" (click)="openDialog()"> Create New Artifact </button>
         </div>

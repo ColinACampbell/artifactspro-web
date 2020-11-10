@@ -35,6 +35,19 @@ export class ArtifactsService {
     return observer;
   }
 
+  public getAllArtifactsByWorkspace(workspaceName:string) : Observable<Artifact[]>
+  {
+    const observer = this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/art/get-by-workspace?workspaceName=${workspaceName}`,{
+      withCredentials : true,
+    });
+
+    observer.subscribe((artifacts : Artifact[])=>{
+      this.artifacts.next(artifacts)
+    })
+
+    return observer;
+  }
+
   getArtifactFromID(artID:number) : Observable<Artifact>
   {
     return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}`,{
@@ -66,6 +79,16 @@ export class ArtifactsService {
   nameSearch(key:string)
   {
     this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/art/search?key=${key}`,{
+      withCredentials : true
+    })
+    .subscribe((artifacts:Artifact[])=>{
+      this.artifacts.next(artifacts)
+    })
+  }
+
+  public workspaceSearch(key:string,workspaceName:string)
+  {
+    this.httpClient.get<Artifact[]>(this.environment.baseURL()+`api/art/search-by-workspace?key=${key}&workspaceName=${workspaceName}`,{
       withCredentials : true
     })
     .subscribe((artifacts:Artifact[])=>{
