@@ -1,6 +1,5 @@
 <div style="height: 400px; width: 100%; border-right: 1px solid rgba(0, 0, 0, 0.12); height: calc(100vh - 130px);">
     <mat-list #items>
-        <span> {{ this.workspace.work_space_id }}</span>
         <div *ngIf="this.userAsMember" mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Members</span> 
             <button *ngIf="this.userAsMember.role == 'owner'" mat-raised-button color="accent" (click)='openAddMemberDialog()'> Add Member </button>
