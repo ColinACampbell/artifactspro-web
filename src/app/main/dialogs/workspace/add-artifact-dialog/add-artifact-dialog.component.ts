@@ -17,6 +17,8 @@ export class AddArtifactDialogComponent implements OnInit {
   public myControl = new FormControl();
   filteredOptions: Observable<string[]>;
 
+  public isSecured : Boolean = false
+
   constructor(
     private workspaceService: WorkSpaceService,
     @Inject(MAT_DIALOG_DATA) private dialogData: any,

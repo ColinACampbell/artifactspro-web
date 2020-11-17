@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
-import { MatButtonModule, MatTreeModule,
-  MatListModule, MatGridListModule, MatDialogModule, 
-  MatToolbarModule, MatInputModule, MatTooltipModule, 
-  MatSelectModule, MatSnackBarModule, 
-  MatFormFieldModule, MatTabsModule,MatAutocompleteModule } from "@angular/material";
-  import {MatChipsModule} from '@angular/material/chips';
-import {MatExpansionModule} from '@angular/material/expansion'; 
+import {
+  MatButtonModule, MatTreeModule,
+  MatListModule, MatGridListModule, MatDialogModule,
+  MatToolbarModule, MatInputModule, MatTooltipModule,
+  MatSelectModule, MatSnackBarModule,
+  MatFormFieldModule, MatTabsModule, MatAutocompleteModule
+} from "@angular/material";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
@@ -36,7 +39,7 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
 import { VerifyUserComponent } from './main/components/verify-user/verify-user.component';
 import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
 import { WorkSpaceService } from './services/work-space.service';
 import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
@@ -104,7 +107,8 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
     WorkpaceDetailsComponent,
     WsdetailOverviewComponent,
     WsdetailParticipantsComponent,
-    WsdetailParticipantsActionDialogComponent
+    WsdetailParticipantsActionDialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -139,7 +143,8 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
     MatPaginatorModule,
     MatExpansionModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,
@@ -157,8 +162,8 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
     WsdetailParticipantsActionDialogComponent
   ],
   providers: [
-    UserService, 
-    OrganizationService, 
+    UserService,
+    OrganizationService,
     ArtifactsService,
     DocumentService,
     Environment,
