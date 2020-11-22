@@ -67,6 +67,7 @@ import { WorkSpaceAddMemberComponent } from './main/dialogs/workspace/work-space
 import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/wsdetail-overview.component';
 import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants.component';
 import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';
+import { AddPeopleToArtifactAccessDialogComponent } from './main/dialogs/workspace/add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
     WsdetailOverviewComponent,
     WsdetailParticipantsComponent,
     WsdetailParticipantsActionDialogComponent,
+    AddPeopleToArtifactAccessDialogComponent,
 
   ],
   imports: [
@@ -159,7 +161,8 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
     ChatContactsDialogComponent,
     ChangeUserPermissionsDialogComponent,
     WorkpaceDetailsComponent,
-    WsdetailParticipantsActionDialogComponent
+    WsdetailParticipantsActionDialogComponent,
+    AddPeopleToArtifactAccessDialogComponent
   ],
   providers: [
     UserService,

@@ -1,35 +1,39 @@
-<div class="form">
-    <mat-form-field class="fields">
-        <mat-label> Search Artifact By Name </mat-label>
-        <input matInput placeholder="Enter Name of The Artifact" value="" #artifactName maxlength="50"
-            (keyup)="search($event)" [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of artifacts" [value]="option.name">
-                {{option.name}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-    <mat-form-field class="fields" *ngIf="isSecured && (artifactName.value.length > 0)">
-        <mat-label> Enter Password To Secure Artifact </mat-label>
-        <input 
-            type="password" 
-            matInput placeholder="Enter Password To Secure Artifact" 
-            value="" 
-            #artifactPassword 
-            maxlength="70"
-            autocomplete="off"/>
-    </mat-form-field>
-    <button mat-raised-button color="primary"> Add Who Has Access </button>
-
-    <section class="example-section" >
-        <mat-checkbox class="example-margin" [(ngModel)]="isSecured" > Secure This Document </mat-checkbox>
-    </section>
-    <div>
-        <div mat-dialog-actions>
-            <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value)"> Add Artifact
-            </button>
-            <button mat-button (click)="closeDialog()">Close</button>
+<div style="display: flex; flex-direction: row;">
+    <div class="form">
+        <mat-form-field class="fields">
+            <mat-label> Search Artifact By Name </mat-label>
+            <input matInput placeholder="Enter Name of The Artifact" value="" #artifactName maxlength="50"
+                (keyup)="search($event)" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of artifacts" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="fields" *ngIf="isSecured && (artifactName.value.length > 0)">
+            <mat-label> Enter Password To Secure Artifact </mat-label>
+            <input 
+                type="password" 
+                matInput placeholder="Enter Password To Secure Artifact" 
+                value="" 
+                #artifactPassword 
+                maxlength="70"
+                autocomplete="off"/>
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="margin-bottom:10px"
+            *ngIf="isSecured && (artifactName.value.length > 0)"
+            (click)="openAddPeopleDialog()"> Add People </button>
+    
+        <section class="example-section" >
+            <mat-checkbox class="example-margin" [(ngModel)]="isSecured" > Secure This Document </mat-checkbox>
+        </section>
+        <div>
+            <div mat-dialog-actions>
+                <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value)"> Add Artifact
+                </button>
+                <button mat-button (click)="closeDialog()">Close</button>
+            </div>
         </div>
     </div>
-
+    
 </div>

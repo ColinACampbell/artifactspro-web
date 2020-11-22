@@ -1,0 +1,11 @@
+<mat-form-field class="fields">
+    <mat-label> Enter Email </mat-label>
+    <input matInput placeholder="Enter Email of Member" value="" #memberEmail maxlength="50"
+        (keyup)="search($event)" [formControl]="myControl"
+        [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of emailOptions" [value]="option.email">
+            {{option.email}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

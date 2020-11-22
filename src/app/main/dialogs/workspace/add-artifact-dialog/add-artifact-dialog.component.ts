@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef, MatDialog } from '@angular/material';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
+import { AddPeopleToArtifactAccessDialogComponent } from '../add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 
 @Component({
   selector: 'app-add-artifact-dialog',
@@ -23,7 +24,8 @@ export class AddArtifactDialogComponent implements OnInit {
     private workspaceService: WorkSpaceService,
     @Inject(MAT_DIALOG_DATA) private dialogData: any,
     private snackBar : MatSnackBar,
-    private dialogRef : MatDialogRef<AddArtifactDialogComponent>
+    private dialogRef : MatDialogRef<AddArtifactDialogComponent>,
+    private matDialog : MatDialog
   ) { }
 
   // TODO : Work on fixing this error [formControl]="myControl"
@@ -94,6 +96,11 @@ export class AddArtifactDialogComponent implements OnInit {
       else if (status === 422)
         this.snackBar.open("Error, It Seems That Invalid Data Was Passed","Okay")
     })
+  }
+
+  public openAddPeopleDialog()
+  {
+    this.matDialog.open(AddPeopleToArtifactAccessDialogComponent)
   }
 
   public closeDialog()
