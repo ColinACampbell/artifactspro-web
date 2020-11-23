@@ -1,26 +1,45 @@
 <div style="display:flex; justify-content: space-between; flex-direction:column;">
+    <h1 style="text-align: center;"> Add People </h1>
+
     <div style="display:flex;justify-content: center;flex-direction: column;">
-        <mat-form-field >
+        <mat-form-field>
             <mat-label> Enter Email </mat-label>
-            <input matInput placeholder="Enter Email of Member" value="" #memberEmail maxlength="50" (keyup)="search($event)"
-                [formControl]="myControl" [matAutocomplete]="auto">
+            <input matInput placeholder="Enter Email of Member" value="" #memberEmail maxlength="50"
+                (keyup)="search($event)" [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                 <mat-option *ngFor="let option of emailOptions" [value]="option.email">
                     {{option.email}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        
+
         <mat-form-field appearance="fill">
             <mat-label> Permission </mat-label>
-            <mat-select [(ngModel)]="selectedRole" name="food">
-                <mat-option *ngFor="let permission of ['view','upload']" [value]="permission">
+            <mat-select [(ngModel)]="selectedPermission" name="food">
+                <mat-option *ngFor="let permission of ['View Only','View and Upload']" [value]="permission">
                     {{ permission }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <!--<button mat-flat-button color="primary" (click)="addPerson(memberEmail.value)"> Add </button>-->
     </div>
-    <div>
-        <h1> Hello World</h1>
+
+    <mat-chip-list *ngIf="usersList.length > 0" class="mat-chip-list-stacked" aria-label="Color selection" style="margin-bottom: 20px;">
+        <mat-chip *ngFor="let person of usersList" selected [color]="'accent'" 
+        [matTooltip]="'Click to remove this user from the list'"
+        (click)="removeUser(person.email)">
+            <span *ngIf="person.permission == 'View Only'"> <mat-icon > visibility </mat-icon> &#160; </span>
+            <span *ngIf="person.permission == 'View and Upload'"> <mat-icon > cloud_upload </mat-icon> &#160; </span>
+            {{ person.email}} 
+        </mat-chip>
+    </mat-chip-list>
+
+    <div style="display:flex;justify-content: center;flex-direction: column;">
+        <button mat-flat-button color="primary" (click)="addPerson(memberEmail.value)"> Add </button>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <button mat-raised-button color="primary" style="margin-right: 10px;"> Finish </button>
+        <button mat-button color="primary" (click)="closeDialog()"> Cancel </button>
     </div>
 </div>
