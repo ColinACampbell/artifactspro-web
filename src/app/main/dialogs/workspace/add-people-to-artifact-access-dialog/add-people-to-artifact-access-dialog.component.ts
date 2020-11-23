@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
+interface AccessUser {
+  email : string,
+  role : string,
+}
+
 // TODO : Work on getting email from the workspace to add user to access the aritifact
 @Component({
   selector: 'app-add-people-to-artifact-access-dialog',
@@ -14,9 +19,13 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  //options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
   emailOptions:any[];
+
+  public selectedRole : string;
+
+  public usersList = []
   
   constructor(
     //private dialogRef:MatDialogRef<WorkSpaceAddMemberComponent>,
@@ -30,7 +39,6 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    console.log(this.dialogData);
   }
 
   private _filter(value: any): any[] {
@@ -43,7 +51,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   {
     let email = event.target.value;
 
-    this.workspaceService.emailSuggestion(email)
+    this.workspaceService.suggestEmailForUserInWorkspace(this.dialogData.workspaceID,email)
     .subscribe((observable:any[])=>{
       this.emailOptions = observable;
     })

@@ -100,7 +100,12 @@ export class AddArtifactDialogComponent implements OnInit {
 
   public openAddPeopleDialog()
   {
-    this.matDialog.open(AddPeopleToArtifactAccessDialogComponent)
+    this.matDialog.open(AddPeopleToArtifactAccessDialogComponent,{
+      width : "400px",
+      data : {
+        workspaceID : this.dialogData.workspaceID
+      }
+    })
   }
 
   public closeDialog()

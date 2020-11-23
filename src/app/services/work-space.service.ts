@@ -95,6 +95,14 @@ export class WorkSpaceService {
       })
   }
 
+  public suggestEmailForUserInWorkspace(workspaceID : number, email: string) : Observable<any[]>
+  {
+    return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/user-emails-in-workspace?email=${email}`,
+    {
+      withCredentials: true
+    })
+  }
+
   public artifactsSuggestion(artifactName: string, workspaceID: number): Observable<any[]> {
     return this.httpClient.get<any[]>(this.environment.baseURL() + `api/workspace/${workspaceID}/suggestion/artifacts?artifactName=${artifactName}`,
       {

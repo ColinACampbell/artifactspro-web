@@ -1,11 +1,26 @@
-<mat-form-field class="fields">
-    <mat-label> Enter Email </mat-label>
-    <input matInput placeholder="Enter Email of Member" value="" #memberEmail maxlength="50"
-        (keyup)="search($event)" [formControl]="myControl"
-        [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of emailOptions" [value]="option.email">
-            {{option.email}}
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
+<div style="display:flex; justify-content: space-between; flex-direction:column;">
+    <div style="display:flex;justify-content: center;flex-direction: column;">
+        <mat-form-field >
+            <mat-label> Enter Email </mat-label>
+            <input matInput placeholder="Enter Email of Member" value="" #memberEmail maxlength="50" (keyup)="search($event)"
+                [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of emailOptions" [value]="option.email">
+                    {{option.email}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label> Permission </mat-label>
+            <mat-select [(ngModel)]="selectedRole" name="food">
+                <mat-option *ngFor="let permission of ['view','upload']" [value]="permission">
+                    {{ permission }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <h1> Hello World</h1>
+    </div>
+</div>
