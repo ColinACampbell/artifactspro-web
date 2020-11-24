@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Member } from 'src/app/models/member';
+import { WorkspaceManagerService } from 'src/app/services/util/workspace-manager.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 interface AccessUser {
@@ -34,7 +35,8 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     private workspaceService:WorkSpaceService,
     @Inject(MAT_DIALOG_DATA) private dialogData: any,
     private snackBar:MatSnackBar,
-    private dialog : MatDialogRef<AddPeopleToArtifactAccessDialogComponent>
+    private dialog : MatDialogRef<AddPeopleToArtifactAccessDialogComponent>,
+    private workspaceManager : WorkspaceManagerService
   ) { }
 
   ngOnInit() {
@@ -95,5 +97,11 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   public closeDialog()
   {
     this.dialog.close()
+  }
+
+  public finish()
+  {
+    this.workspaceManager.updateUsersToAddToArtifactAccess(this.usersList);
+    this.closeDialog()
   }
 }

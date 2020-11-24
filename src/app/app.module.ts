@@ -68,6 +68,7 @@ import { WsdetailOverviewComponent } from './main/dialogs/workspace/workspace-de
 import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants.component';
 import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';
 import { AddPeopleToArtifactAccessDialogComponent } from './main/dialogs/workspace/add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
+import { WorkspaceManagerService } from './services/util/workspace-manager.service';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import { AddPeopleToArtifactAccessDialogComponent } from './main/dialogs/workspa
     MemberService,
     WorkSpaceService,
     UtilService,
-    ChatService
+    ChatService,
+    WorkspaceManagerService
   ],
   bootstrap: [AppComponent]
 })

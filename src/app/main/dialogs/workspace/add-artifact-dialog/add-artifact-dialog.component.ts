@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { AddPeopleToArtifactAccessDialogComponent } from '../add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
+import { WorkspaceManagerService } from 'src/app/services/util/workspace-manager.service';
 
 @Component({
   selector: 'app-add-artifact-dialog',
@@ -16,16 +17,19 @@ export class AddArtifactDialogComponent implements OnInit {
 
   public artifacts : any[] = [];
   public myControl = new FormControl();
+  
   filteredOptions: Observable<string[]>;
 
-  public isSecured : Boolean = false
+  public isSecured : Boolean = false;
+  public usersToAdd : any[] = [];
 
   constructor(
     private workspaceService: WorkSpaceService,
     @Inject(MAT_DIALOG_DATA) private dialogData: any,
     private snackBar : MatSnackBar,
     private dialogRef : MatDialogRef<AddArtifactDialogComponent>,
-    private matDialog : MatDialog
+    private matDialog : MatDialog,
+    private workspaceManager : WorkspaceManagerService
   ) { }
 
   // TODO : Work on fixing this error [formControl]="myControl"
@@ -40,6 +44,12 @@ export class AddArtifactDialogComponent implements OnInit {
       // TODO : Remove this if needed
     this.filteredOptions.subscribe((observer)=>{
     })
+
+    this.workspaceManager.usersToAddToArtifactAccessObservable
+    .subscribe((users)=>{
+      this.usersToAdd = users
+    })
+
   }
 
   private _filter(value: any): any[] {

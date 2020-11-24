@@ -12,6 +12,7 @@ import { Member } from '../models/member';
 })
 export class WorkSpaceService {
 
+  
 
   private workspacePosts = new BehaviorSubject<WorkSpacePost[]>(null);
   public workspacePostsObservable = this.workspacePosts.asObservable();
@@ -38,7 +39,6 @@ export class WorkSpaceService {
     private httpClient: HttpClient,
     private environment: Environment,
   ) { }
-
 
   public getWorkspaceNames() : Observable<any[]>
   {
