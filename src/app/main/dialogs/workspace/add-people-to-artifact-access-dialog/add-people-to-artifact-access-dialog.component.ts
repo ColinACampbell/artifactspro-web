@@ -102,6 +102,8 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   public finish()
   {
     this.workspaceManager.updateUsersToAddToArtifactAccess(this.usersList);
+    this.usersList = [];
+    localStorage.setItem('usersList',JSON.stringify(this.usersList))
     this.closeDialog()
   }
 }

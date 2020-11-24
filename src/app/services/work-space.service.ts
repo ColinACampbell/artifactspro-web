@@ -145,8 +145,10 @@ export class WorkSpaceService {
       });
   }
 
-  public addArtifact(workspaceID: number, artifactName: string): Observable<HttpResponse<Object>> {
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifact/add`, { artifactName },
+  public addArtifact(workspaceID: number, artifactName: string, 
+    isSecured: Boolean, password : string, usersList : any[]): Observable<HttpResponse<Object>> {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/artifact/add`, 
+    { artifactName, isSecured, password, usersList },
       {
         withCredentials: true,
         observe: "response"

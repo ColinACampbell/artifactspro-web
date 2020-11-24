@@ -22,6 +22,7 @@ export class AddArtifactDialogComponent implements OnInit {
 
   public isSecured : Boolean = false;
   public usersToAdd : any[] = [];
+  public artifactPassword : string = ''
 
   constructor(
     private workspaceService: WorkSpaceService,
@@ -80,14 +81,16 @@ export class AddArtifactDialogComponent implements OnInit {
     })
   }
 
-  public addArtifactToWorkSpace(artifactName:string)
+  public addArtifactToWorkSpace(artifactName:string,artifactPassword:string)
   {
+    
     if (artifactName.length === 0)
     {
       this.snackBar.open("The Name of The Artifact Must Be Provided","Okay")
     }
-
-    this.workspaceService.addArtifact(this.dialogData.workspaceID,artifactName)
+    this.workspaceManager.clearUsersToAddToArtifactAccess()
+    this.workspaceService.addArtifact(this.dialogData.workspaceID,artifactName,
+      this.isSecured,artifactPassword,this.usersToAdd)
     .subscribe((response:HttpResponse<Object>)=>{
       if (response.status === 200)
         {

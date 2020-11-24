@@ -16,7 +16,7 @@
                 type="password" 
                 matInput placeholder="Enter Password To Secure Artifact" 
                 value="" 
-                #artifactPassword 
+                [(ngModel)]="artifactPassword" 
                 maxlength="70"
                 autocomplete="off"/>
         </mat-form-field>
@@ -30,7 +30,7 @@
         </section>
         <div>
             <div mat-dialog-actions>
-                <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value)"> Add Artifact
+                <button mat-button cdkFocusInitial (click)="addArtifactToWorkSpace(artifactName.value,artifactPassword)"> Add Artifact
                 </button>
                 <button mat-button (click)="closeDialog()">Close</button>
             </div>
