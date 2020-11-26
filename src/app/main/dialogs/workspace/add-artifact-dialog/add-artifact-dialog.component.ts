@@ -88,7 +88,6 @@ export class AddArtifactDialogComponent implements OnInit {
     {
       this.snackBar.open("The Name of The Artifact Must Be Provided","Okay")
     }
-    this.workspaceManager.clearUsersToAddToArtifactAccess()
     this.workspaceService.addArtifact(this.dialogData.workspaceID,artifactName,
       this.isSecured,artifactPassword,this.usersToAdd)
     .subscribe((response:HttpResponse<Object>)=>{
@@ -97,6 +96,7 @@ export class AddArtifactDialogComponent implements OnInit {
           this.workspaceService.getArtifacts(this.dialogData.workspaceID)
           this.snackBar.open("Artifact Was Added Successfully","Okay").onAction().subscribe(()=>{
             this.dialogRef.close()
+            this.workspaceManager.clearUsersToAddToArtifactAccess()
           })
       }
       
