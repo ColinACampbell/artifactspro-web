@@ -48,9 +48,9 @@ export class ArtifactsService {
     return observer;
   }
 
-  getArtifactFromID(artID:number) : Observable<Artifact>
+  getArtifactFromID(artID:number,workspaceName : string) : Observable<Artifact>
   {
-    return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}`,{
+    return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}?ref='${workspaceName}'`,{
       withCredentials : true,
     });
   }

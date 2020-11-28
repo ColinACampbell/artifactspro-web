@@ -23,7 +23,9 @@ export class ArtifactComponent implements OnInit {
   public docSelected:boolean = false;
   public isImage:boolean=false;
 
-  public previewlink:String;
+  public previewlink:String; // change this later
+
+  private workspaceReference : string = ''
 
   constructor(
     private artServ:ArtifactsService,
@@ -39,20 +41,27 @@ export class ArtifactComponent implements OnInit {
   ngOnInit() 
   {
 
-    let artID = this.route.snapshot.paramMap.get('id');
+    let artID = this.route.snapshot.paramMap.get('id');    
     this.artID = parseInt(artID);
 
-    this.getArtifact(this.artID);
+    this.route.queryParams
+    .subscribe((params)=>{
+      this.workspaceReference = params.ref
+    })
+
+    this.getArtifact(this.artID,this.workspaceReference);
     this.getAllDocuments(this.artID);
     this.docServ.documentsObservable
     .subscribe((documents : ADocument[])=>{
       this.documents = documents;
     })
+
+    
   }
 
-  getArtifact(artID:number)
+  getArtifact(artID:number,workspaceReference:string)
   {
-    this.artServ.getArtifactFromID(artID)
+    this.artServ.getArtifactFromID(artID,workspaceReference)
     .subscribe((artifact)=>{
       this.artifact = artifact;
     })

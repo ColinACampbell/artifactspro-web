@@ -69,7 +69,11 @@ export class ArtifactsComponent implements OnInit {
   public viewDetails(artifact:Artifact)
   {
     let artID = artifact.art_id;
-    this.router.navigate(['/app/artifact/',artID])
+    if (this.selectedWorkspace == 'My Documents')
+      this.router.navigate(['/app/artifact/',artID])
+    else 
+      this.router.navigate(['/app/artifact/',artID],{queryParams : { ref : this.selectedWorkspace }})
+    
   }
 
   public openDialog()
