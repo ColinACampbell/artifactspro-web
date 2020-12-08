@@ -99,7 +99,6 @@ export class ArtifactsComponent implements OnInit {
   
   public onSelectWorkspace()
   {
-    console.log(this.selectedWorkspace)
     if ( this.selectedWorkspace !== 'My Documents' ) 
     {
       this.artServ.getAllArtifactsByWorkspace(this.selectedWorkspace)
