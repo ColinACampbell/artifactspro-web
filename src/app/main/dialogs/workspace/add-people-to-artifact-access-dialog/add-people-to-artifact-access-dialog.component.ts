@@ -36,7 +36,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private dialogData: any,
     private snackBar:MatSnackBar,
     private dialog : MatDialogRef<AddPeopleToArtifactAccessDialogComponent>,
-    private workspaceManager : WorkspaceManagerService
+    private workspaceManager : WorkspaceManagerService,
   ) { }
 
   ngOnInit() {
@@ -49,7 +49,6 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     .subscribe((members:Member[])=>{
       this.existingMembers = members
     })
-    console.log(JSON.parse(localStorage.getItem('usersList')))
   }
 
   private _filter(value: any): any[] {
@@ -75,7 +74,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
       permission : this.selectedPermission,
     }
 
-    // TODO : Make this more specific
+    // Check if the user already exists in the array
     if (!this.usersList.some(user=>user.email == email) && this.existingMembers.some((member)=>member.email == email))
     {
       this.usersList.push(person)
