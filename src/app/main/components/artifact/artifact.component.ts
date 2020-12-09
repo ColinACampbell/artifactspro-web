@@ -22,6 +22,7 @@ export class ArtifactComponent implements OnInit {
   public documents:ADocument[];
   public docSelected:boolean = false;
   public isImage:boolean=false;
+  public userForbidden: boolean = false
 
   public previewlink:String; // change this later
 
@@ -64,6 +65,10 @@ export class ArtifactComponent implements OnInit {
     this.artServ.getArtifactFromID(artID,workspaceReference)
     .subscribe((artifact)=>{
       this.artifact = artifact;
+    },(error : any)=>{
+      const forbidden = 401
+      if (error.status === forbidden) 
+        this.userForbidden = true
     })
   }
 

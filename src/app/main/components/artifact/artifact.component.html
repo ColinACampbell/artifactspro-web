@@ -1,8 +1,13 @@
 <app-main-header></app-main-header>
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
-    <span *ngIf="artifact"> <button mat-button (click)='goBack()'> <mat-icon>keyboard_arrow_left</mat-icon> </button> Artifact / {{ artifact.name }} / <span *ngIf="selectedDocument">
-        {{ selectedDocument.version }}</span> </span>
+    <span > <button mat-button (click)='goBack()'> <mat-icon>keyboard_arrow_left</mat-icon> </button> 
+      <span *ngIf="artifact || this.userForbidden">
+        Artifact / {{ artifact.name }} / 
+      </span>
+      <span *ngIf="selectedDocument">
+        {{ selectedDocument.version }}</span> 
+      </span>
     <div class="util-bar">
       <button matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
@@ -20,7 +25,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div style="display: flex; justify-content: center;" *ngIf="false">
+<div style="display: flex; justify-content: center;" *ngIf="!userForbidden">
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
