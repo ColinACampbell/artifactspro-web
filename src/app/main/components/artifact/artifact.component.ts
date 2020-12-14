@@ -23,10 +23,11 @@ export class ArtifactComponent implements OnInit {
   public docSelected:boolean = false;
   public isImage:boolean=false;
   public userForbidden: boolean = false
+  public responseMessage : string = undefined;
 
   public previewlink:String; // change this later
 
-  private workspaceReference : string = ''
+  public workspaceReference : string = ''
 
   constructor(
     private artServ:ArtifactsService,
@@ -65,10 +66,14 @@ export class ArtifactComponent implements OnInit {
     this.artServ.getArtifactFromID(artID,workspaceReference)
     .subscribe((artifact)=>{
       this.artifact = artifact;
-    },(error : any)=>{
+    },(response : any)=>{
       const forbidden = 401
-      if (error.status === forbidden) 
+      const message = undefined || response.error['message'] // Give it undefined if the user just don't have access
+      if (response.status === forbidden) 
+      {
         this.userForbidden = true
+        this.responseMessage = message
+      }
     })
   }
 

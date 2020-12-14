@@ -2,7 +2,7 @@
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
     <span > <button mat-button (click)='goBack()'> <mat-icon>keyboard_arrow_left</mat-icon> </button> 
-      <span *ngIf="artifact || this.userForbidden">
+      <span *ngIf="artifact || !this.userForbidden">
         Artifact / {{ artifact.name }} / 
       </span>
       <span *ngIf="selectedDocument">
@@ -102,3 +102,5 @@
 
   </div>
 </div>
+
+<app-artifact-authorization *ngIf="userForbidden" [responseMessage]="this.responseMessage" [workspaceRef]="this.workspaceReference"></app-artifact-authorization>
