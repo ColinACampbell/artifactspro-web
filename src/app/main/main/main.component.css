@@ -1,0 +1,9 @@
+.icon
+{
+    color : #007bff
+}
+
+/* Remove auto focus from button */
+button:focus {
+    outline: none !important;
+}
