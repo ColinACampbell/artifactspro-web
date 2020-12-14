@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import io from 'socket.io-client';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
+import { NavigationService } from 'src/app/services/util/navigation.service';
 
 @Component({
   selector: 'app-main-header',
@@ -16,12 +17,13 @@ export class MainHeaderComponent implements OnInit {
 
   public organization : Organization = new Organization({});
   public user: User;
-  public fullName:String = '';
+  public fullName:string = '';
 
   constructor(
     private orgServe:OrganizationService,
     private userServ:UserService,
-    private router: Router
+    private navigationService : NavigationService,
+    private router: Router,
     ) { }
 
   ngOnInit() {
@@ -49,6 +51,12 @@ export class MainHeaderComponent implements OnInit {
     return this.userServ.getUserInfo();
   }
 
+
+  public toggleDrawer()
+  {
+    this.navigationService.toggleMainNavDrawer()
+  }
+  
   public logOut()
   {
     this.userServ.signOut()

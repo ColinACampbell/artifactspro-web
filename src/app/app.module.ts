@@ -69,6 +69,10 @@ import { WsdetailParticipantsComponent } from './main/dialogs/workspace/workspac
 import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/workspace/workspace-details/wsdetail-participants/wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';
 import { AddPeopleToArtifactAccessDialogComponent } from './main/dialogs/workspace/add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 import { WorkspaceManagerService } from './services/util/workspace-manager.service';
+import { ArtifactAuthorizationComponent } from './main/components/artifact/artifact-authorization/artifact-authorization.component';
+
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import { NavigationService } from './services/util/navigation.service';
 
 @NgModule({
   declarations: [
@@ -111,6 +115,7 @@ import { WorkspaceManagerService } from './services/util/workspace-manager.servi
     WsdetailParticipantsComponent,
     WsdetailParticipantsActionDialogComponent,
     AddPeopleToArtifactAccessDialogComponent,
+    ArtifactAuthorizationComponent,
 
   ],
   imports: [
@@ -147,7 +152,8 @@ import { WorkspaceManagerService } from './services/util/workspace-manager.servi
     MatExpansionModule,
     MatChipsModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,
@@ -175,7 +181,8 @@ import { WorkspaceManagerService } from './services/util/workspace-manager.servi
     WorkSpaceService,
     UtilService,
     ChatService,
-    WorkspaceManagerService
+    WorkspaceManagerService,
+    NavigationService
   ],
   bootstrap: [AppComponent]
 })

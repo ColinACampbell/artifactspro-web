@@ -1,18 +1,20 @@
 <app-main-header></app-main-header>
-<mat-tab-group mat-align-tabs="left" [selectedIndex]='selectedTab.value'
-(selectedIndexChange)="setTabValue($event)">
-    <mat-tab label="Artifacts">
-        <app-artifacts></app-artifacts>
-    </mat-tab>
-    <mat-tab label="Work Spaces">
-        <app-work-space></app-work-space>
-    </mat-tab>
-    <mat-tab label="My Team">
-        <app-team></app-team>
-    </mat-tab>
-    <!--
-    <mat-tab label="Chat">
-        <app-chat></app-chat>
-    </mat-tab>
--->
-</mat-tab-group>
+
+<mat-drawer-container class="example-container" autosize 
+    style="height: calc(100vh - 64px)">
+    <mat-drawer #drawer class="example-sidenav" mode="over" style="width: 300px;">
+        <mat-list>
+            <mat-list-item> Pepper </mat-list-item>
+            <mat-list-item> Salt </mat-list-item>
+            <mat-list-item> Paprika </mat-list-item>
+           </mat-list>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+        <button type="button" mat-button (click)="toggle()">
+            Toggle sidenav {{ drawer.mode }}
+        </button>
+    </div>
+
+</mat-drawer-container>

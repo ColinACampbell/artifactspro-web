@@ -1,13 +1,18 @@
 <mat-toolbar style="background-color: #3597fa; color: white;">
-    <mat-toolbar-row>
-        <div style="display:flex; justify-content: space-around;align-items: center;">
-            <span>
-                <img src="./../../../assets/logo.png" width="90px" style="margin-left: 40px;" />
-            </span>
-            <span style="margin-left: 10px;">
-                | {{ organization.getName() }}
-            </span>
-        </div>
+    <mat-toolbar-row style=" box-shadow: 1px 1px 10px black;">
+        <span style="display: flex; align-items: center;">
+            <button mat-icon-button aria-label="Menu Icon" (click)="toggleDrawer()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div style="display:flex; justify-content: space-around;align-items: center;">
+                <span>
+                    <img src="./../../../assets/logo.png" width="90px" style="margin-left: 40px;" />
+                </span>
+                <span style="margin-left: 10px;">
+                    | {{ organization.getName() }}
+                </span>
+            </div>
+        </span>
 
         <!--
         <span style="float:right;">

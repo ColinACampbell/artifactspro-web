@@ -11,6 +11,9 @@ import { VerifyUserComponent } from './main/components/verify-user/verify-user.c
 import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
 import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
 import { WorkSpaceMessageThreadComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread.component';
+import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
+import { TeamComponent } from './main/components/team/team.component';
+import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
 
 
 const routes: Routes = [
@@ -22,9 +25,13 @@ const routes: Routes = [
   { path : 'account/verify/:id', component : VerifyUserComponent },
   { path : 'team/invite/:id', component: TeamInviteComponent},
   { path : 'app/workspace/:id', component : ViewWorkSpaceComponent },
-  { path : 'app', component : MainComponent },
+  { path : 'app', component : MainComponent, children : [
+    { path :'', component : ArtifactsComponent},
+    { path :'my-workspaces', component : WorkSpaceComponent},
+    { path :'my-team', component : TeamComponent }
+  ]},
   { path : 'app/artifact/:id', component: ArtifactComponent },
-  { path : 'app/workspace/:workspaceID/message/:messageID', component : WorkSpaceMessageThreadComponent }
+  { path : 'app/workspace/:workspaceID/message/:messageID', component : WorkSpaceMessageThreadComponent },
 ];
 
 @NgModule({
