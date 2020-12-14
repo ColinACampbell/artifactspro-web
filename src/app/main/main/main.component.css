@@ -3,7 +3,7 @@
     color : #007bff
 }
 
-/* Remove auto focus from button */
+/* Remove auto focus from buttons */
 button:focus {
     outline: none !important;
 }
