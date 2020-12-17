@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "artifactpro"
+  "defaultProject": "artifactpro",
+  "cli": {
+    "analytics": false
+  }
 }
