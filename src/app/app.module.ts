@@ -83,9 +83,9 @@ import { WsdetailParticipantsActionDialogComponent } from './main/dialogs/worksp
 import { AddPeopleToArtifactAccessDialogComponent } from './main/dialogs/workspace/add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 import { WorkspaceManagerService } from './services/util/workspace-manager.service';
 import { ArtifactAuthorizationComponent } from './main/components/artifact/artifact-authorization/artifact-authorization.component';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationService } from './services/util/navigation.service';
+import { ArtifactManagerService } from "./services/util/artifact-manager.service"
 
 @NgModule({
   declarations: [
@@ -196,7 +196,8 @@ import { NavigationService } from './services/util/navigation.service';
     UtilService,
     ChatService,
     WorkspaceManagerService,
-    NavigationService
+    NavigationService,
+    ArtifactManagerService
   ],
   bootstrap: [AppComponent]
 })

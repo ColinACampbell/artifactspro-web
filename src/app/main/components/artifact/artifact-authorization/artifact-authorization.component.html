@@ -1,3 +1,24 @@
-<h1>
-    Please Enter Password Set For This Artifact For Workspace {{ workspaceReference }}
-</h1>
+<div class="container">
+    <div style="width: 500px;">
+        <div>
+            <h1 style="text-align: center;"> No Access </h1>
+        </div>
+        <div>
+            <h3 style="text-align: center;"> Please Enter The Password That Was Set </h3>
+        </div>
+        <div>
+            <h3 style="text-align: center;"> For Workspace {{ this.workspaceReference }} </h3>
+        </div>
+        <p>
+            <mat-form-field appearance="outline" [style.width.px]=500 >
+                <mat-label>Please Enter a Password</mat-label>
+                <input matInput placeholder="Please enter a secure password" [type]="'password'" #password>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint>Enter Password</mat-hint>
+            </mat-form-field>
+        </p>
+        <p style="text-align:center">
+            <button mat-raised-button color="primary" (click)="this.authorizePasswordForArtifact(password.value)"> Access Document </button>
+        </p>
+    </div>
+</div>

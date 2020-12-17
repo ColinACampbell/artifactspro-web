@@ -246,4 +246,15 @@ export class WorkSpaceService {
     })
   }
 
+
+  public authorizePasswordForArtifact(workspaceReference: string, password: string, artifactID : number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/workspace/authorize-password/workspace-artifact?ref=${workspaceReference}`,{
+      password,
+      artifactID
+    },{
+      withCredentials : true,
+      observe : "response"
+    })
+  }
 }

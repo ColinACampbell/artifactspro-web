@@ -7,9 +7,9 @@ import { DocumentService } from 'src/app/services/document.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar' 
 import { Location } from '@angular/common';
-import { observable } from 'rxjs';
 import { DeleteArtifactDialogComponent } from '../../dialogs/artifacts/delete-artifact-dialog/delete-artifact-dialog.component';
 import { UploadDialogComponent } from '../../dialogs/artifacts/upload-artifact-dialog/upload-dialog.component';
+import { ArtifactManagerService } from 'src/app/services/util/artifact-manager.service';
 
 @Component({
   selector: 'app-artifact',
@@ -29,6 +29,8 @@ export class ArtifactComponent implements OnInit {
   public previewlink:String; // change this later
 
   public workspaceReference : string = ''
+  public artID: number;
+
 
   constructor(
     private artServ:ArtifactsService,
@@ -37,10 +39,10 @@ export class ArtifactComponent implements OnInit {
     private uploadDialog: MatDialog,
     private deleteDialog: MatDialog,
     private _location: Location,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    public artifactManager : ArtifactManagerService
   ) { }
 
-  private artID:number;
   ngOnInit() 
   {
 

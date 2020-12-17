@@ -8,7 +8,7 @@
       <span *ngIf="selectedDocument">
         {{ selectedDocument.version }}</span> 
       </span>
-    <div class="util-bar">
+    <div class="util-bar" *ngIf="artifact || !this.userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
       <button matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
@@ -25,7 +25,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div style="display: flex; justify-content: center;" *ngIf="!userForbidden">
+<div style="display: flex; justify-content: center;" *ngIf="!userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
@@ -103,4 +103,4 @@
   </div>
 </div>
 
-<app-artifact-authorization *ngIf="userForbidden" [responseMessage]="this.responseMessage" [workspaceRef]="this.workspaceReference"></app-artifact-authorization>
+<app-artifact-authorization *ngIf="userForbidden" [responseMessage]="this.responseMessage" [workspaceRef]="this.workspaceReference" [artifactID]="this.artID"></app-artifact-authorization>
