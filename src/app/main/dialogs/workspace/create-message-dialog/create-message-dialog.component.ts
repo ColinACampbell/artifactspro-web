@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject, AfterViewInit, ElementRef } from '@angular/core';
-import { MatDialogRef, MatOption, MatSelectChange, MAT_DIALOG_DATA } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { HttpResponse } from '@angular/common/http';
 import { Artifact } from 'src/app/models/artifacts';
 import { ViewChild } from '@angular/core';
+import { MatOption } from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-create-message-dialog',

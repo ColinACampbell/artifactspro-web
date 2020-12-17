@@ -2,7 +2,7 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';

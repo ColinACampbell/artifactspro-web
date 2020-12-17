@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
 import { Member } from 'src/app/models/member';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { InviteDialogComponent } from './../../dialogs/team/team-invite-dialog/invite-dialog.component';
 import { ChangeUserPermissionsDialogComponent } from '../../dialogs/team/change-user-permissions-dialog/change-user-permissions-dialog.component';
 

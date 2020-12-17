@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { UtilService } from 'src/app/services/util.service';
 import { HttpResponse } from '@angular/common/http';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-work-space-dialog',

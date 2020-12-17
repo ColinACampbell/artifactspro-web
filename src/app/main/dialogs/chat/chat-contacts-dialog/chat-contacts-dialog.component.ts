@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
-import {MatPaginator} from '@angular/material/paginator';
-import { MatSnackBar, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import {  MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { HttpResponse } from '@angular/common/http';

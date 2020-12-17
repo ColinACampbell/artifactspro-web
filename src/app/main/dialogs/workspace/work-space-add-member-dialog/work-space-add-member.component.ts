@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { HttpResponse } from '@angular/common/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-work-space-add-member',

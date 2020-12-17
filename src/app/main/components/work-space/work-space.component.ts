@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { WorkSpace } from 'src/app/models/workspace';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';

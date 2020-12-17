@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateWorkspaceThreadDialogComponent } from 'src/app/main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 
 @Component({

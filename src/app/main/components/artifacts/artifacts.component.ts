@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CreateDialogComponent } from '../../dialogs/artifacts/create-artifact-dialog/create-dialog.component';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
