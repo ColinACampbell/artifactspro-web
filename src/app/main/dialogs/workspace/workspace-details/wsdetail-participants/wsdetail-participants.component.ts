@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkSpaceService } from 'src/app/services/work-space.service';

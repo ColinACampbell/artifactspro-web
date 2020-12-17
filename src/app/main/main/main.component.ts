@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer, MatTabGroup } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { MatDrawer } from '@angular/material/sidenav/public-api';
 import { NavigationService } from 'src/app/services/util/navigation.service';
 
 @Component({

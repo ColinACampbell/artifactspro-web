@@ -4,7 +4,8 @@ import { Artifact } from 'src/app/models/artifacts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ADocument } from 'src/app/models/adocument';
 import { DocumentService } from 'src/app/services/document.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar' 
 import { Location } from '@angular/common';
 import { observable } from 'rxjs';
 import { DeleteArtifactDialogComponent } from '../../dialogs/artifacts/delete-artifact-dialog/delete-artifact-dialog.component';

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef,  } from '@angular/material/dialog';
+import { MatSnackBar } from "@angular/material/snack-bar"
 import { ArtifactsService } from 'src/app/services/artifacts.service';
-import { observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({

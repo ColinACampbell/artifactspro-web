@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from "@angular/material/snack-bar"
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
