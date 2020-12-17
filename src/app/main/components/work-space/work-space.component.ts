@@ -31,6 +31,7 @@ export class WorkSpaceComponent implements OnInit {
       this.workSpaces = workSpaces;
     });
 
+    // Get The Member to restrict controls they might have over this workspace
     this.memberService.getMemberAsUser()
     .subscribe((member : Member)=>{
       this.userAsMember = member

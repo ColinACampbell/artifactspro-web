@@ -1,8 +1,8 @@
 <div style="height: 400px; width: 100%; border-right: 1px solid rgba(0, 0, 0, 0.12); height: calc(100vh - 130px);">
     <mat-list #items>
-        <div *ngIf="this.userAsMember" mat-subheader style="display: flex; justify-content: space-between;"> 
+        <div *ngIf="this.userAsWorkspaceParticipant" mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Members</span> 
-            <button *ngIf="this.userAsMember.role == 'owner'" mat-raised-button color="accent" (click)='openAddMemberDialog()'> Add Member </button>
+            <button *ngIf="this.userAsWorkspaceParticipant.role == 'admin'" mat-raised-button color="accent" (click)='openAddMemberDialog()'> Add Member </button>
         </div>
         
         <mat-list-item *ngFor="let workspaceMember of workspaceMembers">
@@ -12,9 +12,9 @@
         </mat-list-item>
 
         <mat-divider></mat-divider>
-        <div *ngIf="this.userAsMember" mat-subheader style="display: flex; justify-content: space-between;"> 
+        <div *ngIf="this.userAsWorkspaceParticipant" mat-subheader style="display: flex; justify-content: space-between;"> 
             <span>Artifacts</span> 
-            <button *ngIf="this.userAsMember.role == 'owner'" mat-raised-button color="accent" (click)="openAddArtifactsDialog()"> Add Artifact </button> 
+            <button *ngIf="this.userAsWorkspaceParticipant.role == 'admin'" mat-raised-button color="accent" (click)="openAddArtifactsDialog()"> Add Artifact </button> 
         </div>
         <mat-list-item *ngFor="let artifact of artifacts">
           <mat-icon mat-list-icon>note</mat-icon>

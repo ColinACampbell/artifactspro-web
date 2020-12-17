@@ -35,6 +35,9 @@ export class WorkSpaceService {
   private workspaceParticipants = new BehaviorSubject<WorkspaceParticipant[]>(null);
   public workspaceParticipantsObservable = this.workspaceParticipants.asObservable();
 
+  private workspaceUserAsParticipant = new BehaviorSubject<WorkspaceParticipant>(null)
+  public workspaceUserAsParticipantObservable = this.workspaceUserAsParticipant.asObservable();
+
   constructor(
     private httpClient: HttpClient,
     private environment: Environment,
@@ -232,6 +235,14 @@ export class WorkSpaceService {
     })
   }
 
+  public getParticipantAsCurrentUser(workspaceID: number)
+  { 
+    this.httpClient.get<WorkspaceParticipant>(this.environment.baseURL()+`api/workspace/${workspaceID}/get-user-as-participant`,{
+      withCredentials : true
+    }).subscribe((user : WorkspaceParticipant)=>{
+      this.workspaceUserAsParticipant.next(user)
+    })
+  }
 
   public changeParticipantPermission(workspaceID : number, participantID : number, newRole : string)
   {

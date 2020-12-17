@@ -28,6 +28,8 @@ export class ViewWorkSpaceComponent implements OnInit {
   public workspace:WorkSpace = null;
   public workspacePosts : WorkSpacePost[] = []
 
+  public workspaceParticipantAsUser : WorkspaceParticipant
+
   // TODO : Fix the issue with this
   
   ngOnInit() {
@@ -36,6 +38,9 @@ export class ViewWorkSpaceComponent implements OnInit {
     //console.log( this.workspace.work_space_id || "WSID is not set yet")
     this.loadWorkspaceInfo();
     this.loadPosts()
+    this.getUserAsWorkspaceParticipant()
+    this.getUserAsWorkspaceParticipant()
+    
   }
 
   public goBack()
@@ -85,4 +90,14 @@ export class ViewWorkSpaceComponent implements OnInit {
         }
       })
   }  
+
+  public getUserAsWorkspaceParticipant()
+  {
+    this.workspaceService.getParticipantAsCurrentUser(this.workspaceID)
+    // Will Be accessible from anywhere else without issues
+    this.workspaceService.workspaceUserAsParticipantObservable
+    .subscribe((user : WorkspaceParticipant)=>{
+      this.workspaceParticipantAsUser = user
+    })
+  }
 }

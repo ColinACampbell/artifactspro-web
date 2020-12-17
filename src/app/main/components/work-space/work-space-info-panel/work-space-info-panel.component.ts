@@ -14,16 +14,15 @@ import { WorkSpaceAddMemberComponent } from 'src/app/main/dialogs/workspace/work
   templateUrl: './work-space-info-panel.component.html',
   styleUrls: ['./work-space-info-panel.component.css']
 })
-export class WorkSpaceInfoPanelComponent implements OnInit, AfterViewInit {
+export class WorkSpaceInfoPanelComponent implements OnInit {
   public workspace : WorkSpace;
   public workspaceMembers:any[];
   public artifacts: Artifact[];
-  public userAsMember : Member;
+  public userAsWorkspaceParticipant : WorkspaceParticipant;
 
   constructor(
     private workspaceService:WorkSpaceService,
     private dialog: MatDialog,
-    private memberService : MemberService
   ) { }
 
   ngOnInit() {
@@ -31,26 +30,19 @@ export class WorkSpaceInfoPanelComponent implements OnInit, AfterViewInit {
     this.workspaceService.principalWorkspaceObservable
     .subscribe((workspace:WorkSpace)=>{
         this.workspace = workspace
-        // Passing these values through here are just a quick fix
+        // Let the workspace load first then these are loaded
         this.loadArtifacts();
         this.loadMembers();
+        this.getUserAsWorkspaceParticipant()
     })
 
-    
-    this.getUserAsMember()
   }
 
-  ngAfterViewInit()
+  private getUserAsWorkspaceParticipant()
   {
-    
-  }
-
-  private getUserAsMember()
-  {
-    // TODO Change this... what applies in the overall application does not apply for the workspace
-    this.memberService.getMemberAsUser()
-    .subscribe((member:Member)=>{
-      this.userAsMember = member
+    this.workspaceService.workspaceUserAsParticipantObservable
+    .subscribe((user : WorkspaceParticipant)=>{
+      this.userAsWorkspaceParticipant = user
     })
   }
 
