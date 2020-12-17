@@ -15,6 +15,7 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
   public requestInProcess : Boolean = false
   public roles : string[] = [];
 
+  public userRole : string;
   public isSureToDelete : Boolean = false 
 
   constructor(
@@ -34,7 +35,7 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
       })
       this.selectedRole = participant.role // set the user role on default
       this.roles.unshift(participant.role) // add it to the start on the array
-      console.log(this.roles)
+      
     })
   }
 

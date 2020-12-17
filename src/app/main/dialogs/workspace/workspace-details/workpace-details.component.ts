@@ -14,6 +14,7 @@ export class WorkpaceDetailsComponent implements OnInit, AfterViewInit {
 
   private workspaceID : number;
   public workspace : WorkSpace
+  public workspaceParticipantAsUser : WorkspaceParticipant
 
   constructor(
     private workspaceService : WorkSpaceService,
@@ -23,6 +24,7 @@ export class WorkpaceDetailsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.workspaceID = this.dialogData.workspaceID;
     this.getWorkspaceInfo()
+    this.getWorkspaceParticipantAsUser()
   }
 
   ngAfterViewInit(){
@@ -38,4 +40,11 @@ export class WorkpaceDetailsComponent implements OnInit, AfterViewInit {
     })
   }
 
+  getWorkspaceParticipantAsUser()
+  {
+    this.workspaceService.workspaceUserAsParticipantObservable
+    .subscribe((user : WorkspaceParticipant)=>{
+      this.workspaceParticipantAsUser = user
+    })
+  }
 }

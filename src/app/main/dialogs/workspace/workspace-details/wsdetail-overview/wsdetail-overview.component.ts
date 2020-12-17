@@ -10,6 +10,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 export class WsdetailOverviewComponent implements OnInit {
 
   @Input('workspace') public workspace : WorkSpace;
+  @Input('workspaceParticipantAsUser') public workspaceParticipantAsUser : WorkspaceParticipant
  
   public fieldsEditable : Boolean = false;
 
@@ -46,5 +47,4 @@ export class WsdetailOverviewComponent implements OnInit {
     this.fieldsEditable = false;
     this.workspaceService.getWorkspaceInfo(this.workspace.work_space_id);
   }
-
 }

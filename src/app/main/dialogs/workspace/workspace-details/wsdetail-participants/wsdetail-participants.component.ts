@@ -20,6 +20,7 @@ export class WsdetailParticipantsComponent implements OnInit {
   public memberAsUser : Member // get the role of the user in the context of the workspace
 
   @Input('workspace') public workspace : WorkSpace;
+  @Input('workspaceParticipantAsUser') public workspaceParticipantAsUser: WorkspaceParticipant
 
   constructor(
     private workspaceService : WorkSpaceService,
@@ -40,7 +41,8 @@ export class WsdetailParticipantsComponent implements OnInit {
       {
         data : {
           participantID : workspaceParticipant.work_space_member_id,
-          workspaceID : this.workspace.work_space_id
+          workspaceID : this.workspace.work_space_id,
+          userRole : this.workspaceParticipantAsUser.role
         }
       })
   }

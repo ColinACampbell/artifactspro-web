@@ -19,7 +19,7 @@
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let workspaceParticipant"> 
             <div style="float: right;">
-                <button mat-button color='primary' (click)="changeParticipantPermission(workspaceParticipant)"> Actions </button> 
+                <button mat-button [disabled]="this.workspaceParticipantAsUser.role !== 'admin'" color='primary' (click)="changeParticipantPermission(workspaceParticipant)"> Actions </button> 
             </div>
         </td>
     </ng-container>

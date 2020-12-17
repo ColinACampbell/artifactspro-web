@@ -1,11 +1,11 @@
 <mat-tab-group *ngIf="this.workspace">
   <mat-tab label="Overview">
     <div>
-      <app-wsdetail-overview [workspace]='this.workspace'></app-wsdetail-overview>
+      <app-wsdetail-overview [workspace]='this.workspace' [workspaceParticipantAsUser]="this.workspaceParticipantAsUser"></app-wsdetail-overview>
     </div>
   </mat-tab>
   <mat-tab label="Participants"> 
-    <app-wsdetail-participants [workspace]='this.workspace'></app-wsdetail-participants> 
+    <app-wsdetail-participants [workspace]='this.workspace' [workspaceParticipantAsUser]="this.workspaceParticipantAsUser"></app-wsdetail-participants> 
   </mat-tab>
   <mat-tab label="Artifacts"> </mat-tab>
   <mat-tab label="Danger Area"> </mat-tab>
