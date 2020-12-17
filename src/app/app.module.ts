@@ -9,11 +9,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDatepickerModule, MatNativeDateModule, MatCardModule, MatProgressBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
 import {
   MatButtonModule, MatTreeModule,
-  MatListModule, MatGridListModule, MatDialogModule,
+  MatGridListModule, MatDialogModule,
   MatToolbarModule, MatInputModule, MatTooltipModule,
   MatSelectModule, MatSnackBarModule,
   MatFormFieldModule, MatTabsModule, MatAutocompleteModule
 } from "@angular/material";
+
+import { MatListModule } from '@angular/material/list'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
