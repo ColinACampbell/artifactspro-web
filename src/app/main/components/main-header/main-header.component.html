@@ -1,7 +1,7 @@
 <mat-toolbar style="background-color: #3597fa; color: white;">
     <mat-toolbar-row style=" box-shadow: 1px 1px 5px #3597fa;">
         <span style="display: flex; align-items: center;">
-            <button mat-icon-button aria-label="Menu Icon" (click)="toggleDrawer()">
+            <button mat-icon-button aria-label="Menu Icon" (click)="toggleDrawer()" *ngIf="showDrawerIcon">
                 <mat-icon>menu</mat-icon>
             </button>
             <div style="display:flex; justify-content: space-around;align-items: center;">

@@ -5,6 +5,7 @@ import { WorkSpace } from 'src/app/models/workspace';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
+import { Location } from '@angular/common'
 import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
 import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workspace-details/workpace-details.component';
 
@@ -20,6 +21,7 @@ export class ViewWorkSpaceComponent implements OnInit {
     private activeRoute:ActivatedRoute,
     private workspaceService: WorkSpaceService,
     private dialog:MatDialog,
+    private location: Location
   ) { }
 
   private workspaceID:number;
@@ -38,7 +40,7 @@ export class ViewWorkSpaceComponent implements OnInit {
 
   public goBack()
   {
-    this.router.navigate(['/app'])
+    this.location.back()
   }
 
   private loadWorkspaceInfo()

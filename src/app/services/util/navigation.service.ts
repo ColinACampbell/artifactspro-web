@@ -9,18 +9,16 @@ export class NavigationService {
 
   constructor() { }
 
-  private mainNavDrawer = new BehaviorSubject<MatDrawer>(null)
-  public mainNavDrawerObservable = this.mainNavDrawer.asObservable();
+  private mainNavDrawer : MatDrawer
 
   public setMainNavDrawer(drawer : MatDrawer) 
   {
-    this.mainNavDrawer.next(drawer)
+    this.mainNavDrawer = drawer
   }
 
   public toggleMainNavDrawer()
   {
-    this.mainNavDrawerObservable.subscribe((drawer:MatDrawer)=>{
-      drawer.toggle()
-    })
+    console.log(this.mainNavDrawer)
+    this.mainNavDrawer.toggle()
   }
 }

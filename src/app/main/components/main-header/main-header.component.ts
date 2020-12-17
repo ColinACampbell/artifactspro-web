@@ -7,6 +7,7 @@ import io from 'socket.io-client';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { NavigationService } from 'src/app/services/util/navigation.service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-header',
@@ -14,6 +15,9 @@ import { NavigationService } from 'src/app/services/util/navigation.service';
   styleUrls: ['./main-header.component.css']
 })
 export class MainHeaderComponent implements OnInit {
+
+
+  @Input("show-drawer-icon") public showDrawerIcon : Boolean = false;
 
   public organization : Organization = new Organization({});
   public user: User;
