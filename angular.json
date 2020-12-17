@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "artifactpro"
+  "defaultProject": "artifactpro",
+  "cli": {
+    "analytics": "588c83d6-43e8-4846-aecb-112e0b7932c6"
+  }
 }
