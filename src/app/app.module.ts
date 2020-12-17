@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRippleModule } from '@angular/material/core'; 
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
@@ -165,7 +166,8 @@ import { NavigationService } from './services/util/navigation.service';
     MatChipsModule,
     FormsModule,
     MatCheckboxModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatRippleModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,

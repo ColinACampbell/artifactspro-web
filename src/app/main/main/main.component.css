@@ -1,9 +1,36 @@
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
 .icon
 {
-    color : #007bff
+    color : #007bff;
+    margin-left: 10px;
+}
+
+
+.label 
+{
+    margin-left: 25px;
 }
 
 /* Remove auto focus from buttons */
 button:focus {
     outline: none !important;
+}
+
+
+mat-list {
+    padding-top: 0px;
+}
+
+mat-list-item:hover
+{
+    background-color: #f3f3f3;
 }

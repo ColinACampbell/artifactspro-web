@@ -1,7 +1,16 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDrawer } from '@angular/material/sidenav/public-api';
+import { MatListOption, MatSelectionList } from '@angular/material/list';
+import { MatDrawer } from '@angular/material/sidenav';
 import { NavigationService } from 'src/app/services/util/navigation.service';
+
+interface LinkToPage
+{
+  label : string,
+  routerLink : string,
+  icon : string
+}
 
 @Component({
   selector: 'app-main',
@@ -10,11 +19,32 @@ import { NavigationService } from 'src/app/services/util/navigation.service';
 })
 export class MainComponent implements OnInit, AfterViewInit{
 
+
+  public links : LinkToPage[] = [
+    {
+      label: "Artifacts",
+      routerLink: "/app",
+      icon: "folder"
+    },
+    {
+      label: "Workspaces",
+      routerLink: "my-workspaces",
+      icon: "work"
+    },
+    {
+      label: "Team",
+      routerLink: "my-team",
+      icon: "groups"
+    }
+  ]
+
   constructor(
     private navigationService : NavigationService
   ) { }
 
   @ViewChild('drawer',{static : true}) public mainNavDrawer : MatDrawer
+  //@ViewChild("drawerLinks", {static: true}) private drawerLinks: MatSelectionList;
+
   public selectedTab :any;
   public showFiller : boolean = true
 
@@ -26,7 +56,8 @@ export class MainComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit()
   {
-    console.log(this.mainNavDrawer)
+    //this.drawerLinks.selectedOptions = new SelectionModel<MatListOption>(false);
+    //console.log(this.drawerLinks.selectedOptions)
     this.navigationService.setMainNavDrawer(this.mainNavDrawer)
   }
 

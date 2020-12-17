@@ -3,26 +3,12 @@
 <mat-drawer-container autosize 
     style="height: calc(100vh - 64px)">
     <mat-drawer #drawer mode="over" style="width: 300px;">
-        <mat-list>
-            <mat-list-item> 
-                <mat-icon mat-list-icon class="icon">folder</mat-icon>
-                <span> Artifacts </span>
-            </mat-list-item>
-            <mat-list-item> 
-                <mat-icon mat-list-icon class="icon">groups</mat-icon>
-                <span> Workpace </span>
-            </mat-list-item>
-            <mat-list-item> 
-                <button mat-button> My Team </button>
-            </mat-list-item>
-            <mat-list-item> Setting </mat-list-item>
+        <mat-list class="noselect" >
+            <mat-list-item matRipple *ngFor="let link of links" [routerLink]="link.routerLink"> 
+                <mat-icon mat-list-icon class="icon">{{link.icon}}</mat-icon>
+                <span class="label"> {{link.label}} </span>
+            </mat-list-item>    
         </mat-list>
-
-        <mat-selection-list #shoes>
-            <mat-list-option [value]="'foo'">
-              Hello world
-            </mat-list-option>
-          </mat-selection-list>
     </mat-drawer>
 
     <div >
