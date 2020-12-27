@@ -26,7 +26,7 @@
     </div>
     <div style="width: 75%;">
         <div style="height: 400px; width: 100%;" style="padding: 30px;overflow-x: scroll; height: calc(100vh - 190px);">
-            <app-message-card *ngFor="let workspacePost of workspacePosts" [workspacePost]="workspacePost"></app-message-card>
+            <app-message-card *ngFor="let workspacePost of workspacePosts" [workspacePost]="workspacePost" [workspaceName]="workspace.work_space_name"></app-message-card>
         </div>
     </div>
 </div>

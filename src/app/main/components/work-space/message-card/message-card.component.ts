@@ -17,6 +17,7 @@ export class MessageCardComponent implements OnInit {
   public timeLapse : String;
 
   @Input('workspacePost') workspacePost : WorkSpacePost;
+  @Input('workspaceName') workspaceName : string
 
   public availableColors : string[] = ['red']
 
@@ -36,6 +37,7 @@ export class MessageCardComponent implements OnInit {
 
   public viewDetails(artID:number)
   {
-    this.router.navigate(['/app/artifact/',artID])
+    // TODO : Work on getting the workspace name
+    this.router.navigate(['/app/artifact/',artID],{queryParams : { ref : this.workspaceName  }})
   }
 }
