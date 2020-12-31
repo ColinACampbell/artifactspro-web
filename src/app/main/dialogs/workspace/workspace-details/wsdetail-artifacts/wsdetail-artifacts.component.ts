@@ -13,6 +13,7 @@ export class WsdetailArtifactsComponent implements OnInit {
   @Input('workspace') private workspace : WorkSpace
 
   public artifacts : Artifact[];
+  public showDetails : Boolean = false
 
   constructor(
     private workspaceService : WorkSpaceService
@@ -30,7 +31,7 @@ export class WsdetailArtifactsComponent implements OnInit {
     })
   }
 
-  public viewDetails(artifact : Artifact)
+  public viewInfo(artifact : Artifact)
   {
 
   }
