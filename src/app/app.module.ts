@@ -85,7 +85,8 @@ import { WorkspaceManagerService } from './services/util/workspace-manager.servi
 import { ArtifactAuthorizationComponent } from './main/components/artifact/artifact-authorization/artifact-authorization.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationService } from './services/util/navigation.service';
-import { ArtifactManagerService } from "./services/util/artifact-manager.service"
+import { ArtifactManagerService } from "./services/util/artifact-manager.service";
+import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-artifacts/wsdetail-artifacts.component'
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { ArtifactManagerService } from "./services/util/artifact-manager.service
     WsdetailParticipantsActionDialogComponent,
     AddPeopleToArtifactAccessDialogComponent,
     ArtifactAuthorizationComponent,
+    WsdetailArtifactsComponent,
 
   ],
   imports: [

@@ -7,6 +7,8 @@
   <mat-tab label="Participants"> 
     <app-wsdetail-participants [workspace]='this.workspace' [workspaceParticipantAsUser]="this.workspaceParticipantAsUser"></app-wsdetail-participants> 
   </mat-tab>
-  <mat-tab label="Artifacts"> </mat-tab>
-  <mat-tab label="Danger Area"> </mat-tab>
+  <mat-tab label="Artifacts"> 
+    <app-wsdetail-artifacts [workspace]='this.workspace'></app-wsdetail-artifacts>
+  </mat-tab>
+  <mat-tab label="Danger Area">  </mat-tab>
 </mat-tab-group>
