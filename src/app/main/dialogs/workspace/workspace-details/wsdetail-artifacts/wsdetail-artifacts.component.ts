@@ -15,6 +15,8 @@ export class WsdetailArtifactsComponent implements OnInit {
   public artifacts : Artifact[];
   public showDetails : Boolean = false
 
+  public selectedArtifact : Artifact = null
+
   constructor(
     private workspaceService : WorkSpaceService
   ) { }
@@ -32,8 +34,9 @@ export class WsdetailArtifactsComponent implements OnInit {
   }
 
   public viewInfo(artifact : Artifact)
-  {
-
+  { 
+    this.showDetails = true
+    this.selectedArtifact = artifact
   }
 
 }

@@ -1,24 +1,44 @@
-<div style="display: flex; justify-content: space-evenly;">
-    <div style="display: flex; justify-content: start; width: 65%; padding: 10px;">
-        <mat-card class="example-card" *ngFor="let artifact of artifacts" style="width: 200px;margin:5px">
-            <mat-card-content>
-                <div style="height: 70px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                    <h1 style="text-align: center;"> {{ artifact.name }} </h1>
-                    <small style="text-align: center;"> {{ artifact.date_created }}</small>
-                </div>
-            </mat-card-content>
-            <mat-card-actions
-                style="justify-content: center; display: flex;">
-                <button mat-raised-button (click)="viewInfo(artifact)" color='primary'> View Info </button>
-            </mat-card-actions>
+<div style="display: flex; justify-content: center;">
+    <div class="grid">
+        <mat-card 
+            class="artifact-card"
+            *ngFor="let artifact of artifacts" 
+            (click)="viewInfo(artifact)"
+            matRipple
+            >
+            <span>
+                <mat-icon> description </mat-icon>
+            </span>
+            <span>
+                {{artifact.name}}
+            </span>
         </mat-card>
     </div>
-    <div style="width: 35%; padding: 10px;">
+    <div style="width: 50%; padding: 10px;">
        <div *ngIf="!showDetails">
-           Select Artifact To Learn More Info
+           <img src="./../../../../../../assets/doc_search.svg" width="200">
        </div>
        <div *ngIf="showDetails">
-            {{ }}
+           <div>
+               <h1> General </h1>
+           </div>
+            <div>
+                <h3> Name </h3> 
+                {{ this.selectedArtifact.name }}
+            </div>
+            <div>
+                <h3> Description </h3> 
+                {{ this.selectedArtifact.description }}
+            </div>
+            <div>
+                <h3> Security </h3> 
+                <div>
+                    <h4> Who Has Access </h4>
+                </div>
+                <div>
+                    <h4> Password </h4>
+                </div>
+            </div>
        </div>
     </div>
 </div>
