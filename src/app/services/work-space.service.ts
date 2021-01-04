@@ -6,13 +6,12 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Artifact } from '../models/artifacts';
 import { BehaviorSubject } from 'rxjs';
 import { Member } from '../models/member';
+import { WorkspaceArtifact } from "../models/workspaceArtifact"
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkSpaceService {
-
-  
 
   private workspacePosts = new BehaviorSubject<WorkSpacePost[]>(null);
   public workspacePostsObservable = this.workspacePosts.asObservable();
@@ -268,4 +267,29 @@ export class WorkSpaceService {
       observe : "response"
     })
   }
+
+  private workspaceArtifactAccessUsers = new BehaviorSubject<WorkspaceArtifactAccessUser[]>(null);
+  public workspaceArtifactAccessUsersObservable = this.workspaceArtifactAccessUsers.asObservable();
+
+  /**
+   * getWorkspaceArtifactAccessUsers
+   */
+  public getWorkspaceArtifactAccessUsers(workspaceID : number, artifactID : number) {
+    this.httpClient.get<WorkspaceArtifactAccessUser[]>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifact/access-users-collection?artID=${artifactID}`,
+    {
+      withCredentials : true
+    })
+    .subscribe((accessUsers : WorkspaceArtifactAccessUser[])=>{
+      this.workspaceArtifactAccessUsers.next(accessUsers)
+    })
+  }
+
+   // Gets specific info about an artifact that belongs to a workspace
+   public getWorkspaceArtifact(workspaceID : number, artifactID : number) : Observable<WorkspaceArtifact>
+   {
+    return this.httpClient.get<WorkspaceArtifact>(this.environment.baseURL()+`api/workspace/${workspaceID}/artifact/as-workspace-artifact?artID=${artifactID}`,
+    {
+      withCredentials : true
+    })
+   }
 }

@@ -1,11 +1,7 @@
-<div style="display: flex; justify-content: center;">
-    <div class="grid">
-        <mat-card 
-            class="artifact-card"
-            *ngFor="let artifact of artifacts" 
-            (click)="viewInfo(artifact)"
-            matRipple
-            >
+<div style="display: flex; justify-content: space-around; height: 500px">
+    <div class="">
+        <mat-card style="height:31px" class="artifact-card" *ngFor="let artifact of artifacts"
+            (click)="viewInfo(artifact)" matRipple>
             <span>
                 <mat-icon> description </mat-icon>
             </span>
@@ -15,30 +11,64 @@
         </mat-card>
     </div>
     <div style="width: 50%; padding: 10px;">
-       <div *ngIf="!showDetails">
-           <img src="./../../../../../../assets/doc_search.svg" width="200">
-       </div>
-       <div *ngIf="showDetails">
-           <div>
-               <h1> General </h1>
-           </div>
-            <div>
-                <h3> Name </h3> 
-                {{ this.selectedArtifact.name }}
-            </div>
-            <div>
-                <h3> Description </h3> 
-                {{ this.selectedArtifact.description }}
-            </div>
-            <div>
-                <h3> Security </h3> 
-                <div>
-                    <h4> Who Has Access </h4>
-                </div>
-                <div>
-                    <h4> Password </h4>
-                </div>
-            </div>
-       </div>
+        <div *ngIf="!showDetails">
+            <img src="./../../../../../../assets/doc_search.svg" width="200">
+        </div>
+        <div *ngIf="showDetails">
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            General
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Information About This Artifact
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div>
+                        <h3> Name </h3>
+                        {{ this.selectedArtifact.name }}
+                    </div>
+                    <div>
+                        <h3> Description </h3>
+                        {{ this.selectedArtifact.description }}
+                    </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Security
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Password and Access
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div>
+                        <h3> Restrictions </h3>
+                        {{ this.workspaceArtifact.is_secured === 1 ? "Only to who has access" : "None, Everyone has access" }}
+                    </div>
+                    <div>
+                        <h3> Who Has Access </h3>
+                        <table mat-table [dataSource]="this.accessUsers" style="width:100%">
+
+                            <ng-container matColumnDef="Email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="Permissions">
+                                <th mat-header-cell *matHeaderCellDef> Permissions </th>
+                                <td mat-cell *matCellDef="let element"> {{element.permissions}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                        </table>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
     </div>
 </div>

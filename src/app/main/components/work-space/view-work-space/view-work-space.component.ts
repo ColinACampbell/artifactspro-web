@@ -84,7 +84,7 @@ export class ViewWorkSpaceComponent implements OnInit {
     this.dialog.open(WorkpaceDetailsComponent,
       {
         width: "95%",
-        height: "80%",
+        height: "600px",
         data : {
           workspaceID
         }
