@@ -34,3 +34,8 @@ mat-list-item:hover
 {
     background-color: #f3f3f3;
 }
+
+center-text
+{
+    text-align: center;
+}

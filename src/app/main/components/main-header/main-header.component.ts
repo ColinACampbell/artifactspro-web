@@ -19,7 +19,7 @@ export class MainHeaderComponent implements OnInit {
 
   @Input("show-drawer-icon") public showDrawerIcon : Boolean = false;
 
-  public organization : Organization = new Organization({});
+  public organization : Organization
   public user: User;
   public fullName:string = '';
 
@@ -31,23 +31,11 @@ export class MainHeaderComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getOrganization().then((data)=>
-    {
-      this.organization = new Organization(data);
-    })
-
     this.getUser().subscribe((user)=>{
       this.user = user;
       this.fullName = `${this.user.first_name} ${this.user.last_name}`;
     })
 
-    //const socket = io('http://localhost:3000');
-    //socket.emit('foo',{helloworld:'Colin Campbell'})
-  }
-
-  private getOrganization() : Promise<any>
-  {
-    return this.orgServe.getOrganization();
   }
 
   private getUser() : Observable<User>

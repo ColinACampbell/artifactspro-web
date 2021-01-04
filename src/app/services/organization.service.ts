@@ -38,12 +38,12 @@ export class OrganizationService {
     this.organization = organization;
   }
 
-  public getOrganization()
+  public getOrganization() : Observable<Organization>
   {
-    return this.httpClient.get(this.environment.baseURL()+'api/org/info',
+    return this.httpClient.get<Organization>(this.environment.baseURL()+'api/org/info',
     {
       withCredentials : true,
-    }).toPromise();
+    })
   }
 
 

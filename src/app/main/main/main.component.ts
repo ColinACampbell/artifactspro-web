@@ -3,6 +3,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormControl } from '@angular/forms';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Organization } from 'src/app/models/organization';
+import { OrganizationService } from 'src/app/services/organization.service';
 import { NavigationService } from 'src/app/services/util/navigation.service';
 
 interface LinkToPage
@@ -39,7 +41,8 @@ export class MainComponent implements OnInit, AfterViewInit{
   ]
 
   constructor(
-    private navigationService : NavigationService
+    private navigationService : NavigationService,
+    private organizationService: OrganizationService
   ) { }
 
   @ViewChild('drawer',{static : true}) public mainNavDrawer : MatDrawer
@@ -47,18 +50,28 @@ export class MainComponent implements OnInit, AfterViewInit{
 
   public selectedTab :any;
   public showFiller : boolean = true
+  public organization : Organization;
+  public fullYear : number = new Date().getFullYear()
 
   ngOnInit() {
     let selectedIndex = localStorage.selectedMainTabIndex || 0
     this.selectedTab = new FormControl(selectedIndex);
-    
+    this.getOrganization()
   }
 
   ngAfterViewInit()
   {
-    //this.drawerLinks.selectedOptions = new SelectionModel<MatListOption>(false);
-    //console.log(this.drawerLinks.selectedOptions)
     this.navigationService.setMainNavDrawer(this.mainNavDrawer)
+  }
+
+
+  private getOrganization()
+  {
+    this.organizationService.getOrganization()
+    .subscribe(( organization : Organization)=>
+    {
+      this.organization = organization
+    });
   }
 
   // Persist the value of the tab index
