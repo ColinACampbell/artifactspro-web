@@ -26,6 +26,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   emailOptions:any[];
 
+  public generalState = null;
   public selectedPermission : string;
   public usersList : any[] = JSON.parse(localStorage.getItem('usersList')) || []
 
@@ -41,6 +42,16 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    console.log(JSON.parse(localStorage.getItem('usersList')))
+
+    // Check the reference 
+    if (this.dialogData.reference === 'wsdetail-artifacts-component')
+    {
+      this.generalState = "update-artifact-details"
+      this.usersList = this.dialogData.accessUsers
+    }
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -72,7 +83,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   {
     const person = {
       email,
-      permission : this.selectedPermission,
+      permissions : this.selectedPermission,
     }
 
     // Check if the user already exists in the array
@@ -80,6 +91,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     {
       this.usersList.push(person)
       localStorage.setItem('usersList',JSON.stringify(this.usersList))
+      console.log(localStorage)
     }
     else 
       this.snackBar.open("This user is already in the list","Okay")

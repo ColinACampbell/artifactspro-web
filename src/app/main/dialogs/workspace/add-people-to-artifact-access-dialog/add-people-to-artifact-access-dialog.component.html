@@ -28,9 +28,10 @@
         <mat-chip *ngFor="let person of usersList" selected [color]="'accent'" 
         [matTooltip]="'Click to remove this user from the list'"
         (click)="removeUser(person.email)">
-            <span *ngIf="person.permission == 'View Only'"> <mat-icon > visibility </mat-icon> &#160; </span>
-            <span *ngIf="person.permission == 'View and Upload'"> <mat-icon > cloud_upload </mat-icon> &#160; </span>
-            {{ person.email}} 
+            <span *ngIf="person.permissions == 'Admin'"> <mat-icon > admin_panel_settings </mat-icon> &#160; </span>
+            <span *ngIf="person.permissions == 'View Only'"> <mat-icon > visibility </mat-icon> &#160; </span>
+            <span *ngIf="person.permissions == 'View and Upload'"> <mat-icon > cloud_upload </mat-icon> &#160; </span>
+            {{ person.email }} 
         </mat-chip>
     </mat-chip-list>
 

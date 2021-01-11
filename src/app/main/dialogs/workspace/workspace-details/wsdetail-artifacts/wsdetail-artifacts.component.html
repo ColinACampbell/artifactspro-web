@@ -43,12 +43,14 @@
                             Password and Access
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <div>
+                    <div *ngIf="this.workspaceArtifact">
                         <h3> Restrictions </h3>
                         {{ this.workspaceArtifact.is_secured === 1 ? "Only to who has access" : "None, Everyone has access" }}
                     </div>
                     <div>
-                        <h3> Who Has Access </h3>
+                        <div>
+                            <h3> Who Has Access </h3> <button (click)="openManageUserDialog()" mat-flat-button color="primary">  Manage Access And Restrictions </button>
+                        </div>
                         <table mat-table [dataSource]="this.accessUsers" style="width:100%">
 
                             <ng-container matColumnDef="Email">

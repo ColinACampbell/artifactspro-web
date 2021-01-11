@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkspaceArtifact } from 'src/app/models/workspaceArtifact';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { AddPeopleToArtifactAccessDialogComponent } from '../../add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 
 @Component({
   selector: 'app-wsdetail-artifacts',
@@ -12,6 +14,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 export class WsdetailArtifactsComponent implements OnInit {
 
   @Input('workspace') private workspace : WorkSpace
+  @Input('workspaceParticipantAsUser') public workspaceParticipantAsUser : WorkspaceParticipant
 
   public artifacts : Artifact[];
   public showDetails : Boolean = false
@@ -21,11 +24,13 @@ export class WsdetailArtifactsComponent implements OnInit {
   public workspaceArtifact : WorkspaceArtifact = null
 
   constructor(
-    private workspaceService : WorkSpaceService
+    private workspaceService : WorkSpaceService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit() {
     this.getArtifacts()
+    console.log(this.workspaceParticipantAsUser)
   }
 
   private getArtifacts()
@@ -59,6 +64,19 @@ export class WsdetailArtifactsComponent implements OnInit {
     .subscribe((workspaceArtifact : WorkspaceArtifact)=>{
       console.log(workspaceArtifact)
       this.workspaceArtifact = workspaceArtifact
+    })
+  }
+
+  public openManageUserDialog()
+  {
+    this.dialog.open(AddPeopleToArtifactAccessDialogComponent,{
+      data : {
+        workspaceID : this.workspace.work_space_id,
+        reference : "wsdetail-artifacts-component",
+        accessUsers : this.accessUsers
+      },
+      width : "400px",
+      height : "400px"
     })
   }
 }
