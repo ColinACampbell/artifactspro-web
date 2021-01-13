@@ -7,6 +7,10 @@ import { Artifact } from '../models/artifacts';
 import { BehaviorSubject } from 'rxjs';
 import { Member } from '../models/member';
 import { WorkspaceArtifact } from "../models/workspaceArtifact"
+import { WorkspaceArtifactAccessUser } from '../models/workspaceArtifactAccessUser';
+import { WorkspaceParticipant } from '../models/workspaceParticipant';
+import { WorkSpacePost } from '../models/workspacePost';
+import { WorkSpacePostReply } from '../models/workspacePostReply';
 
 @Injectable({
   providedIn: 'root'

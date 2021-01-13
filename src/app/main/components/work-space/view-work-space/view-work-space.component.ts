@@ -8,6 +8,8 @@ import { MemberService } from 'src/app/services/member.service';
 import { Location } from '@angular/common'
 import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/create-message-dialog/create-message-dialog.component';
 import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workspace-details/workpace-details.component';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
+import { WorkSpacePost } from 'src/app/models/workspacePost';
 
 @Component({
   selector: 'app-view-work-space',

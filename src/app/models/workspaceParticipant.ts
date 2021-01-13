@@ -1,4 +1,4 @@
-interface WorkspaceParticipant
+export interface WorkspaceParticipant
 {
     user_id : number,
     work_space_member_id: number,

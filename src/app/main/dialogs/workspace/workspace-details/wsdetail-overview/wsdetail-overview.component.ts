@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WorkSpace } from 'src/app/models/workspace';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({

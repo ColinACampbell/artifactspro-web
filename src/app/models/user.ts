@@ -1,4 +1,4 @@
-interface User
+export interface User
 {
     user_id : number
     full_name:String;

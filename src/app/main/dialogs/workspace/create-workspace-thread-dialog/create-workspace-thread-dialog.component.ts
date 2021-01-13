@@ -3,6 +3,7 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { HttpResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { WorkSpacePost } from 'src/app/models/workspacePost';
 
 @Component({
   selector: 'app-create-workspace-thread-dialog',

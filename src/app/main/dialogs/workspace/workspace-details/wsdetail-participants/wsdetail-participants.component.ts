@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
 import { WorkSpace } from 'src/app/models/workspace';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { CreateDialogComponent } from '../../../artifacts/create-artifact-dialog/create-dialog.component';
 import { WsdetailParticipantsActionDialogComponent } from './wsdetail-participants-action-dialog/wsdetail-participants-action-dialog.component';

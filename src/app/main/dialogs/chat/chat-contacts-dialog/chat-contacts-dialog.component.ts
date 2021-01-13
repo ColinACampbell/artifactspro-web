@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
-import { MatPaginator } from '@angular/material/paginator';
 import {  MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { HttpResponse } from '@angular/common/http';
+import { User } from 'src/app/models/user';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-chat-contacts-dialog',
@@ -21,7 +22,7 @@ export class ChatContactsDialogComponent implements OnInit, AfterViewInit {
   public displayedColumns: string[] = ['name', 'email', 'action'];
   public dataSource : MatTableDataSource<Member>;
   private user : User;
-  @ViewChild(MatPaginator,null) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{}) paginator: MatPaginator;
   
 
   constructor(

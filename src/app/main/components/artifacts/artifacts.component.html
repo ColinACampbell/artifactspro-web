@@ -4,7 +4,7 @@
         <div style="padding: 10px;">
             <mat-form-field appearance="fill">
                 <mat-label> Show Artifacts From </mat-label>
-                <mat-select [(ngModel)]="selectedWorkspace" name="workspace" (selectionChange)="onSelectWorkspace($event)">
+                <mat-select [(ngModel)]="selectedWorkspace" name="workspace" (selectionChange)="onSelectWorkspace()">
                     <mat-option *ngFor="let workspace of availableWorkspaces" [value]="workspace" >
                         {{workspace}}
                     </mat-option>

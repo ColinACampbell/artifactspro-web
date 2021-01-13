@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Artifact } from 'src/app/models/artifacts';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkspaceArtifact } from 'src/app/models/workspaceArtifact';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { WorkspaceParticipant } from "src/app/models/workspaceParticipant";
+import { WorkspaceArtifactAccessUser } from "src/app/models/workspaceArtifactAccessUser"
 import { AddPeopleToArtifactAccessDialogComponent } from '../../add-people-to-artifact-access-dialog/add-people-to-artifact-access-dialog.component';
 
 @Component({

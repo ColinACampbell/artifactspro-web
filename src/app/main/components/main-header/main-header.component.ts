@@ -3,11 +3,11 @@ import { OrganizationService } from 'src/app/services/organization.service';
 import { Organization } from 'src/app/models/organization';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
-import io from 'socket.io-client';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { NavigationService } from 'src/app/services/util/navigation.service';
 import { Input } from '@angular/core';
+import { User } from "./../../../models/user"
 
 @Component({
   selector: 'app-main-header',

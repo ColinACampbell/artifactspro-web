@@ -7,6 +7,7 @@ import { ChatMessage } from 'src/app/models/chatMessage';
 import { HttpResponse } from '@angular/common/http';
 import { SocketService } from 'src/app/services/socket.service';
 import { UtilService } from 'src/app/services/util.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-chat',
@@ -33,7 +34,7 @@ export class ChatComponent implements OnInit {
   private audioFile = new Audio("./../../../../assets/sound_fx/msg_sent.mp3");
 
 
-  @ViewChild('scrollMe', null) private myScrollContainer: ElementRef;
+  @ViewChild('scrollMe', {}) private myScrollContainer: ElementRef;
 
   async ngOnInit() {
 

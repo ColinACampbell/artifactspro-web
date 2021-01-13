@@ -8,6 +8,7 @@ import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
 import { AddArtifactDialogComponent } from 'src/app/main/dialogs/workspace/add-artifact-dialog/add-artifact-dialog.component';
 import { WorkSpaceAddMemberComponent } from 'src/app/main/dialogs/workspace/work-space-add-member-dialog/work-space-add-member.component';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 
 @Component({
   selector: 'app-work-space-info-panel',

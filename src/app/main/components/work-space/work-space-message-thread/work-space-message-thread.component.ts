@@ -4,6 +4,8 @@ import { WorkSpaceService } from 'src/app/services/work-space.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateWorkspaceThreadDialogComponent } from 'src/app/main/dialogs/workspace/create-workspace-thread-dialog/create-workspace-thread-dialog.component';
 import { Location } from '@angular/common';
+import { WorkSpacePost } from 'src/app/models/workspacePost';
+import { WorkSpacePostReply } from 'src/app/models/workspacePostReply';
 
 @Component({
   selector: 'app-work-space-message-thread',

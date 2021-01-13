@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WorkSpacePostReply } from 'src/app/models/workspacePostReply';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({

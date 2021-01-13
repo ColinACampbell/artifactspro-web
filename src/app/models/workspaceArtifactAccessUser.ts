@@ -1,4 +1,4 @@
-interface WorkspaceArtifactAccessUser
+export interface WorkspaceArtifactAccessUser
 {
     ws_art_access_users_id: number,
     first_name: string,

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { WorkSpace } from 'src/app/models/workspace';
+import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
 
 @Component({

@@ -1,4 +1,4 @@
-interface WorkSpacePost
+export interface WorkSpacePost
 {
     date: string,
     message_content: string,

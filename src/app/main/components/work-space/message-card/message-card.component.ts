@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UtilService } from 'src/app/services/util.service';
 import { Router } from '@angular/router';
+import { WorkSpacePost } from 'src/app/models/workspacePost';
 
 @Component({
   selector: 'app-message-card',

@@ -3,6 +3,7 @@ import { EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatContactsDialogComponent } from 'src/app/main/dialogs/chat/chat-contacts-dialog/chat-contacts-dialog.component';
 import { ActiveChat } from 'src/app/models/activeChat';
+import { User } from 'src/app/models/user';
 import { ChatService } from 'src/app/services/chat.service';
 
 @Component({

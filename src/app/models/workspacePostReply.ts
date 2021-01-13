@@ -1,4 +1,4 @@
-interface WorkSpacePostReply
+export interface WorkSpacePostReply
 {
     work_space_msg_reply_id: number;
     description: string,

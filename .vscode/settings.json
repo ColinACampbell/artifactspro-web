@@ -1,10 +1,7 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#0E3239",
-        "titleBar.activeBackground": "#144650",
-        "titleBar.activeForeground": "#F6FCFD"
-    },
-    "kanban": {
-        "openOnStartup": true
+        "activityBar.background": "#13341F",
+        "titleBar.activeBackground": "#1A492B",
+        "titleBar.activeForeground": "#F7FCF9"
     }
 }
