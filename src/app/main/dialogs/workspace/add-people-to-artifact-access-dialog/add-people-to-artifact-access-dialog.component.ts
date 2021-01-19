@@ -31,6 +31,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
   public usersList : any[] = JSON.parse(localStorage.getItem('usersList')) || []
 
   private existingMembers : Member[] = []
+  public modalTitle : String = "";
   
   constructor(
     //private dialogRef:MatDialogRef<WorkSpaceAddMemberComponent>,
@@ -43,8 +44,6 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(JSON.parse(localStorage.getItem('usersList')))
-
     // Check the reference 
     if (this.dialogData.reference === 'wsdetail-artifacts-component')
     {
@@ -52,6 +51,9 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
       this.usersList = this.dialogData.accessUsers
     }
 
+    this.modalTitle = this.generalState === "update-artifact-details" ? "Who Can Access" : "Add People"
+    console.log(this.modalTitle);
+    
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -90,8 +92,8 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     if (!this.usersList.some(user=>user.email == email) && this.existingMembers.some((member)=>member.email == email))
     {
       this.usersList.push(person)
-      localStorage.setItem('usersList',JSON.stringify(this.usersList))
-      console.log(localStorage)
+      //localStorage.setItem('usersList',JSON.stringify(this.usersList))
+      //console.log(localStorage)
     }
     else 
       this.snackBar.open("This user is already in the list","Okay")
@@ -103,20 +105,25 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     this.usersList = this.usersList.filter((user)=>{
       return user.email != email
     })
-    localStorage.setItem('usersList',JSON.stringify(this.usersList))
+    //localStorage.setItem('usersList',JSON.stringify(this.usersList))
   }
 
   public closeDialog()
   {
-    localStorage.setItem('usersList',JSON.stringify(this.usersList))
+    //localStorage.setItem('usersList',JSON.stringify(this.usersList))
     this.dialog.close()
   }
 
   public finish()
   {
-    this.workspaceManager.updateUsersToAddToArtifactAccess(this.usersList);
+    
     //this.usersList = [];
-    localStorage.setItem('usersList',JSON.stringify(this.usersList))
+    if (this.generalState !== "update-artifact-details")
+    {
+      localStorage.setItem('usersList',JSON.stringify(this.usersList))
+      this.workspaceManager.updateUsersToAddToArtifactAccess(this.usersList);
+    }
+
     this.closeDialog()
   }
 }
