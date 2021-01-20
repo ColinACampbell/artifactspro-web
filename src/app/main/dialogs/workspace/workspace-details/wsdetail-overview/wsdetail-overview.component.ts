@@ -39,7 +39,6 @@ export class WsdetailOverviewComponent implements OnInit {
 
   makeFieldsEditable()
   {
-    console.log(!this.fieldsEditable)
     this.fieldsEditable = this.fieldsEditable ? false : true
   }
 

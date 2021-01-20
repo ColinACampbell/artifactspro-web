@@ -31,7 +31,6 @@ export class WorkSpaceAddMemberComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    console.log(this.dialogData);
   }
 
   private _filter(value: any): any[] {

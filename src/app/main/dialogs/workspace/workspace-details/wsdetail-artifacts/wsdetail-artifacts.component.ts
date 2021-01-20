@@ -32,7 +32,6 @@ export class WsdetailArtifactsComponent implements OnInit {
 
   ngOnInit() {
     this.getArtifacts()
-    console.log(this.workspaceParticipantAsUser)
   }
 
   private getArtifacts()
@@ -64,7 +63,6 @@ export class WsdetailArtifactsComponent implements OnInit {
   {
     this.workspaceService.getWorkspaceArtifact(workspaceID,artifactID)
     .subscribe((workspaceArtifact : WorkspaceArtifact)=>{
-      console.log(workspaceArtifact)
       this.workspaceArtifact = workspaceArtifact
     })
   }

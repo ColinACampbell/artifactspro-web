@@ -55,7 +55,6 @@ export class AddArtifactDialogComponent implements OnInit {
   }
 
   private _filter(value: any): any[] {
-    console.log(value)
     const filterValue = value.toLowerCase();
 
     return this.artifacts.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
@@ -67,7 +66,6 @@ export class AddArtifactDialogComponent implements OnInit {
     const artifactName = event.target['value']
     this.workspaceService.artifactsSuggestion(artifactName,this.dialogData.workspaceID)
     .subscribe((observable)=>{
-      console.log(observable);
       this.artifacts = observable
     })
   }
@@ -77,14 +75,12 @@ export class AddArtifactDialogComponent implements OnInit {
     const artifactName = ""
     this.workspaceService.artifactsSuggestion(artifactName,this.dialogData.workspaceID)
     .subscribe((observable)=>{
-      console.log(observable);
       this.artifacts = observable
     })
   }
 
   public addArtifactToWorkSpace(artifactName:string,artifactPassword:string)
   {
-    
     if (artifactName.length === 0)
     {
       this.snackBar.open("The Name of The Artifact Must Be Provided","Okay")
@@ -110,6 +106,7 @@ export class AddArtifactDialogComponent implements OnInit {
       else if (status === 422)
         this.snackBar.open("Error, It Seems That Invalid Data Was Passed","Okay")
     })
+    localStorage.setItem('usersList',JSON.stringify([]))
   }
 
   public openAddPeopleDialog()

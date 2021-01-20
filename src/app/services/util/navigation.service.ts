@@ -18,7 +18,6 @@ export class NavigationService {
 
   public toggleMainNavDrawer()
   {
-    console.log(this.mainNavDrawer)
     this.mainNavDrawer.toggle()
   }
 }

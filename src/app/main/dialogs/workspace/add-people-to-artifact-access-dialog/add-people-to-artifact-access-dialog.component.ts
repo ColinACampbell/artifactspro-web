@@ -52,7 +52,6 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     }
 
     this.modalTitle = this.generalState === "update-artifact-details" ? "Who Can Access" : "Add People"
-    console.log(this.modalTitle);
     
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -92,7 +91,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     if (!this.usersList.some(user=>user.email == email) && this.existingMembers.some((member)=>member.email == email))
     {
       this.usersList.push(person)
-      //localStorage.setItem('usersList',JSON.stringify(this.usersList))
+      localStorage.setItem('usersList',JSON.stringify(this.usersList))
       //console.log(localStorage)
     }
     else 
@@ -105,7 +104,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     this.usersList = this.usersList.filter((user)=>{
       return user.email != email
     })
-    //localStorage.setItem('usersList',JSON.stringify(this.usersList))
+    localStorage.setItem('usersList',JSON.stringify(this.usersList))
   }
 
   public closeDialog()

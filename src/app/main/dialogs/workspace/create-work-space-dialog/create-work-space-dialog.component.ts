@@ -31,12 +31,10 @@ export class CreateWorkSpaceDialogComponent implements OnInit {
     this.workspaceService.createWorkSpace(name.trim(),description.trim(),currentDate,)
     .subscribe((response : HttpResponse<Object>)=>{
 
-      console.log(response.body)
       let status = response.status;
       if (status === 201)
       {
         let workspaceID = response.body['workspaceID'];
-        console.log(workspaceID)
         this.closeDialog()
         this.router.navigate([`/app/workspace/`,workspaceID])
         this.workspaceService.getWorkSpaces();

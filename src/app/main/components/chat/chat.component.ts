@@ -59,7 +59,6 @@ export class ChatComponent implements OnInit {
     this.getActiveChats();
 
     this.socketService.socket.on("update_chat_room", (val) => {
-      console.log(val)
       if (val.chatRoomID === this.selectedChatRoomID) {
         this.getMessages(val.chatRoomID)
         this.getActiveChats()
