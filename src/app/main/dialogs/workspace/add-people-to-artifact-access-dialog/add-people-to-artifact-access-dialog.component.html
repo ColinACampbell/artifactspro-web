@@ -40,7 +40,7 @@
     </div>
 
     <div style="margin-top: 10px;">
-        <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="finish()"> Finish </button>
+        <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="finish()">  {{ this.generalState === "update-artifact-details" ? "Update" : "Finish"}} </button>
         <button mat-button color="primary" (click)="closeDialog()"> Cancel </button>
     </div>
 </div>

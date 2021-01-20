@@ -47,6 +47,7 @@ export class WsdetailArtifactsComponent implements OnInit {
     this.showDetails = true
     this.selectedArtifact = artifact
     this.getAccessUsersFromSelectedArtifact(this.workspace.work_space_id,this.selectedArtifact.art_id)
+    // Get detailed info about artifact as it pertains to the workspace
     this.getArtifactAsWorkspaceArtifact(this.workspace.work_space_id,this.selectedArtifact.art_id)
   }
 
@@ -72,6 +73,7 @@ export class WsdetailArtifactsComponent implements OnInit {
     this.dialog.open(AddPeopleToArtifactAccessDialogComponent,{
       data : {
         workspaceID : this.workspace.work_space_id,
+        workspaceArtifactID: this.workspaceArtifact.work_space_artifacts_id,
         reference : "wsdetail-artifacts-component",
         accessUsers : this.accessUsers
       },

@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -113,6 +114,20 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     this.dialog.close()
   }
 
+  public updateArtifactUsers(workspaceArtifactID, workspaceID, usersList)
+  {
+    this.workspaceService.updateWorkspaceArtifactAccessUsers(workspaceID,workspaceArtifactID,usersList)
+    .subscribe((response : HttpResponse<Object>)=>{
+      if(response.status === 200)
+      {
+        const snackBarRef = this.snackBar.open("Information Was Successfully Updated","Okay")
+        snackBarRef.afterDismissed().subscribe((_)=>{
+          this.closeDialog()
+        })
+      }
+    })
+  }
+
   public finish()
   {
     
@@ -121,8 +136,14 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     {
       localStorage.setItem('usersList',JSON.stringify(this.usersList))
       this.workspaceManager.updateUsersToAddToArtifactAccess(this.usersList);
+    } else 
+    { 
+      // if the mode is to update the list 
+      this.updateArtifactUsers(this.dialogData.workspaceArtifactID,this.dialogData.workspaceID,this.usersList)
     }
 
     this.closeDialog()
   }
+
+  
 }

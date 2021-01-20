@@ -288,6 +288,17 @@ export class WorkSpaceService {
     })
   }
 
+  public updateWorkspaceArtifactAccessUsers(workspaceID : number, workspaceArtifactID : number, usersList : any[]) 
+  {
+    return this.httpClient.put<HttpResponse<Object>>( this.environment.baseURL()+`api/workspace/${workspaceID}/artifact/update-access-users`,{
+      workspaceArtifactID,
+      usersList
+    },{
+      withCredentials : true,
+      observe: "response"
+    })
+  }
+
    // Gets specific info about an artifact that belongs to a workspace
    public getWorkspaceArtifact(workspaceID : number, artifactID : number) : Observable<WorkspaceArtifact>
    {
