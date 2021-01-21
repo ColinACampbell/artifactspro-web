@@ -29,6 +29,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core'; 
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle"
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LoginComponent } from './home/login/login.component';
@@ -169,7 +170,8 @@ import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-d
     FormsModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSlideToggleModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,

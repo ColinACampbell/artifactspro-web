@@ -299,6 +299,22 @@ export class WorkSpaceService {
     })
   }
 
+  public toggleWorkspaceArtifactSecurity(isSecured : Boolean,workspaceArtifactID : number) : Observable<HttpResponse<Object>>
+  {
+    let newIsSecured = 0
+    if (isSecured)
+      newIsSecured = 1
+
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+"api/workspace/${workspaceID}/artifact/toggle-password-protection",{
+      newIsSecured,
+      workspaceArtifactID
+    },{
+      withCredentials : true,
+      observe : "response"
+    });
+
+  }
+
    // Gets specific info about an artifact that belongs to a workspace
    public getWorkspaceArtifact(workspaceID : number, artifactID : number) : Observable<WorkspaceArtifact>
    {

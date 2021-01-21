@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: space-around; height: 500px">
+<div style="display: flex; justify-content: space-around; height: 500px; padding: 50px;">
     <div class="">
         <mat-card style="height:31px" class="artifact-card" *ngFor="let artifact of artifacts"
             (click)="viewInfo(artifact)" matRipple>
@@ -43,11 +43,21 @@
                             Password and Access
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <div *ngIf="this.workspaceArtifact">
-                        <h3> Restrictions </h3>
-                        {{ this.workspaceArtifact.is_secured === 1 ? "Only to who has access" : "None, Everyone has access" }}
+                    <div *ngIf="this.workspaceArtifact"
+                        style="margin-bottom: 30px;">
+                        <h3> Restrictions</h3>
+                        <span>
+                
+                            <mat-chip-list aria-label="Password On Check Box">
+                                <mat-chip color="accent"> {{ this.workspaceArtifact.is_secured === 1 ? "Only to who have access" : "None, Everyone has access" }} </mat-chip>
+                            </mat-chip-list>
+                            <div style="margin-top: 15px;">
+                                <mat-slide-toggle [checked]="this.workspaceArtifact.is_secured === 1"
+                                    (toggleChange)="togglePasswordProtection()"> Password Protected </mat-slide-toggle>
+                            </div>
+                        </span>
                     </div>
-                    <div>
+                    <div *ngIf="this.workspaceArtifact.is_secured === 1">
                         <div>
                             <h3> Who Has Access </h3> <button (click)="openManageUserDialog()" mat-flat-button color="primary">  Manage Access And Restrictions </button>
                         </div>
@@ -69,6 +79,7 @@
 
                         </table>
                     </div>
+                    
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
