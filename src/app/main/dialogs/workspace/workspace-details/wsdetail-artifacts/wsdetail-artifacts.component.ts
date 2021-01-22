@@ -78,7 +78,8 @@ export class WsdetailArtifactsComponent implements OnInit {
         workspaceID : this.workspace.work_space_id,
         workspaceArtifactID: this.workspaceArtifact.work_space_artifacts_id,
         reference : "wsdetail-artifacts-component",
-        accessUsers : this.accessUsers
+        accessUsers : this.accessUsers,
+        artifactID : this.workspaceArtifact.art_id
       },
       width : "400px",
       height : "400px"

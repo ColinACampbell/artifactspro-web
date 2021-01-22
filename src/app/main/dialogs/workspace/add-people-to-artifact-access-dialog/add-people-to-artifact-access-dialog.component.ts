@@ -114,12 +114,13 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     this.dialog.close()
   }
 
-  public updateArtifactUsers(workspaceArtifactID, workspaceID, usersList)
+  public updateArtifactUsers(workspaceArtifactID, artifactID,workspaceID, usersList)
   {
     this.workspaceService.updateWorkspaceArtifactAccessUsers(workspaceID,workspaceArtifactID,usersList)
     .subscribe((response : HttpResponse<Object>)=>{
       if(response.status === 200)
       {
+        this.workspaceService.getWorkspaceArtifactAccessUsers(workspaceID,artifactID)
         const snackBarRef = this.snackBar.open("Information Was Successfully Updated","Okay")
         snackBarRef.afterDismissed().subscribe((_)=>{
           this.closeDialog()
@@ -139,7 +140,7 @@ export class AddPeopleToArtifactAccessDialogComponent implements OnInit {
     } else 
     { 
       // if the mode is to update the list 
-      this.updateArtifactUsers(this.dialogData.workspaceArtifactID,this.dialogData.workspaceID,this.usersList)
+      this.updateArtifactUsers(this.dialogData.workspaceArtifactID,this.dialogData.artifactID,this.dialogData.workspaceID,this.usersList)
     }
 
     this.closeDialog()
