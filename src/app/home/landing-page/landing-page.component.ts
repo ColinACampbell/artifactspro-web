@@ -29,7 +29,7 @@ export class LandingPageComponent implements OnInit {
       let node = document.createElement('script');
       node.src = this.scriptFiles[i];
       node.type = 'text/javascript';
-      node.async = true;
+      //node.async = true;
       node.charset = 'utf-8';
       document.getElementsByTagName('body')[0].appendChild(node);
     }
