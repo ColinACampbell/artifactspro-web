@@ -45,11 +45,11 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/signup/action'])
         })
       }
-      else if (status === 409) {
+     
+    },(err : HttpResponse<Object>)=>{
+      if (err.status === 409) {
         this.snackBar.open("It seems this email already exists","Okay");
       }
-    },(err)=>{
-      console.log(err)
     })
   }
 }

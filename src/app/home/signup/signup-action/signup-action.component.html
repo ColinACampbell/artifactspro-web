@@ -1,75 +1,26 @@
 <app-header></app-header>
 <div class="container">
 
-    <div style="width: 90%;">
-        <div class="container">
-
+    <div style="width: 90%;height: 500px;">
+        <div class="container" style="position:relative">
             <div style="width: 80%;">
                 <div>
-                    <h1 style="text-align: center;"> I would like to </h1>
+                    <h1 style="text-align: center;"> Add Your Business / Organization </h1>
                 </div>
-                <mat-tab-group mat-align-tabs="center">
-                    <mat-tab label="Create Organization/Business">
-                        <div class="tab-item">
-                            <div>
-                                <p>
-                                    <mat-form-field appearance="outline" [style.width.px]=500>
-                                        <mat-label> Enter Name of Organization/Business</mat-label>
-                                        <input matInput placeholder="Name of Organization" [type]="'text'" #name>
-                                        <mat-icon matSuffix>apartment</mat-icon>
-                                        <mat-hint>Enter Email</mat-hint>
-                                    </mat-form-field>
-                                </p>
-                                <p>
-                                    <mat-form-field appearance="outline" [style.width.px]=500>
-                                        <mat-label> Create Organization Key *</mat-label>
-                                        <input matInput placeholder="Please enter a Organization key" [type]="'text'" #key>
-                                        <mat-icon matSuffix>vpn_key</mat-icon>
-                                        <mat-hint> This is a unique username for your business</mat-hint>
-                                    </mat-form-field>
-                                </p>
-                                <p>
-                                    <mat-form-field appearance="outline" [style.width.px]=500>
-                                        <mat-label> Create Organization Pass key *</mat-label>
-                                        <input matInput placeholder="Please enter a secure password" [type]="'password'" #passKey>
-                                        <mat-icon matSuffix>lock</mat-icon>
-                                        <mat-hint> This is the password for your business. Keep it safe</mat-hint>
-                                    </mat-form-field>
-                                </p>
-                                <div class="container">
-                                    <button mat-raised-button color="primary" (click)="createOrganization(name.value,key.value,passKey.value)"> Create Organization </button>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Join Organization (Using Code)">
-                        <div class="tab-item">
-                            <div>
-                                <p>
-                                    <mat-form-field appearance="outline" [style.width.px]=500>
-                                        <mat-label> Create Organization Key *</mat-label>
-                                        <input matInput placeholder="Please enter a Organization key" [type]="'text'"
-                                            #password>
-                                        <mat-icon matSuffix>vpn_key</mat-icon>
-                                        <mat-hint> This is a unique username for your business</mat-hint>
-                                    </mat-form-field>
-                                </p>
-                                <p>
-                                    <mat-form-field appearance="outline" [style.width.px]=500>
-                                        <mat-label> Create Organization Pass key *</mat-label>
-                                        <input matInput placeholder="Please enter a secure password" [type]="'password'"
-                                            #password>
-                                        <mat-icon matSuffix>lock</mat-icon>
-                                        <mat-hint> This is the password for your business. Keep it safe</mat-hint>
-                                    </mat-form-field>
-                                </p>
-                                <div class="container">
-                                    <button mat-raised-button color="primary"> Login To Organization </button>
-                                </div>
-                            </div>
-                        </div>
-                    </mat-tab>
-                </mat-tab-group>
+                <div style="text-align: center;">
+                    <div>
+                        <img src="./../../../../assets/undraw_Building_re_xfcm.png" alt="Business" width="300"/>
+                    </div>
+                    <mat-form-field appearance="outline" style="width: 350px; max-width: 500px;">
+                        <mat-label> Enter Name of Organization/Business</mat-label>
+                        <input matInput placeholder="Name of Organization" [type]="'text'" #name>
+                        <mat-icon matSuffix>apartment</mat-icon>
+                        <mat-hint>Enter Name Or Business Or Organization</mat-hint>
+                    </mat-form-field>
+                    <div class="container">
+                        <button mat-raised-button color="primary" (click)="createOrganization(name.value,'','')"> Create Organization </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
