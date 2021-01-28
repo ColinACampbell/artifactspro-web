@@ -46,6 +46,15 @@ export class WorkSpaceService {
     private environment: Environment,
   ) { }
 
+
+  public deleteWorkspace(workspaceID : number) : Observable<HttpResponse<{}>>
+  {
+    return this.httpClient.delete(this.environment.baseURL()+`api/workspace/${workspaceID}/delete`,{
+      withCredentials : true,
+      observe : "response"
+    })
+  }
+
   public getWorkspaceNames() : Observable<any[]>
   {
     return this.httpClient.get<any[]>(this.environment.baseURL()+`api/workspace/names`,
