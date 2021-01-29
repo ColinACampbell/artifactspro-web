@@ -34,7 +34,7 @@ export class ConfirmDeleteWorkspaceComponent implements OnInit {
   }
 
 
-  @Output() deleteWorkspace()
+  deleteWorkspace()
   {
     this.workspaceService.deleteWorkspace(this.dialogData.workspaceID)
     .subscribe((response : HttpResponse<Object>)=>{
