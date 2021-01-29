@@ -20,7 +20,11 @@
       <input matInput placeholder="Enter Name of Workspace" [disabled]='true' [(ngModel)]='this.workspace.date_created'>
     </mat-form-field>
     <div>
+      
+    </div>
+    <div>
         <button mat-raised-button [disabled]="this.workspaceParticipantAsUser.role !== 'admin'" color="primary" *ngIf="!this.fieldsEditable" (click)="makeFieldsEditable()"> Edit Information </button>
+        <button mat-raised-button [disabled]="this.workspaceParticipantAsUser.role !== 'admin'" color="warn" *ngIf="!this.fieldsEditable" (click)="showDeleteWorkspaceDialog()"> Delete This Workspace </button>
         <button mat-raised-button color="primary" *ngIf="this.fieldsEditable" (click)="saveEdit()"> Save Information </button>
         <button style="margin-left: 10px;" mat-flat-button color="primary" *ngIf="this.fieldsEditable" (click)="cancelEdit()"> Cancel </button>
     </div>

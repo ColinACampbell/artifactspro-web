@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { WorkSpace } from 'src/app/models/workspace';
 import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { ConfirmDeleteWorkspaceComponent } from './confirm-delete-workspace/confirm-delete-workspace.component';
 
 @Component({
   selector: 'app-wsdetail-overview',
@@ -16,7 +18,8 @@ export class WsdetailOverviewComponent implements OnInit {
   public fieldsEditable : Boolean = false;
 
   constructor(
-    private workspaceService : WorkSpaceService
+    private workspaceService : WorkSpaceService,
+    private matDailog : MatDialog,
   ) { }
 
   ngOnInit() {
@@ -25,6 +28,17 @@ export class WsdetailOverviewComponent implements OnInit {
     .subscribe((workspace:WorkSpace)=>{
       this.workspace = workspace;
     })
+  }
+
+  showDeleteWorkspaceDialog()
+  {
+    this.matDailog.open(ConfirmDeleteWorkspaceComponent,{
+      data : {
+        workspaceID : this.workspace.work_space_id,
+        workspaceName : this.workspace.work_space_name
+      },
+      width : "400px"
+    });
   }
 
   saveEdit()
