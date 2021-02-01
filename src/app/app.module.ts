@@ -87,7 +87,9 @@ import { ArtifactAuthorizationComponent } from './main/components/artifact/artif
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationService } from './services/util/navigation.service';
 import { ArtifactManagerService } from "./services/util/artifact-manager.service";
-import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-artifacts/wsdetail-artifacts.component'
+import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-artifacts/wsdetail-artifacts.component';
+import { ConfirmDeleteWorkspaceComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/confirm-delete-workspace/confirm-delete-workspace.component';
+import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component'
 
 @NgModule({
   declarations: [
@@ -132,6 +134,8 @@ import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-d
     AddPeopleToArtifactAccessDialogComponent,
     ArtifactAuthorizationComponent,
     WsdetailArtifactsComponent,
+    ConfirmDeleteWorkspaceComponent,
+    DocumentSearchComponent,
 
   ],
   imports: [
@@ -187,7 +191,9 @@ import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-d
     ChangeUserPermissionsDialogComponent,
     WorkpaceDetailsComponent,
     WsdetailParticipantsActionDialogComponent,
-    AddPeopleToArtifactAccessDialogComponent
+    AddPeopleToArtifactAccessDialogComponent,
+    ConfirmDeleteWorkspaceComponent,
+    DocumentSearchComponent
   ],
   providers: [
     UserService,

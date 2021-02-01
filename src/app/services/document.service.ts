@@ -22,7 +22,6 @@ export class DocumentService {
     
   }
 
-
   public getDocuments(artID:number)
   {
     const observer = this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/from-art/${artID}`,
@@ -34,6 +33,19 @@ export class DocumentService {
       this.documents.next(documents);
     })
   }
+
+  public searchDocuments(artID : number, documentName : string, documentComments : string)
+  {
+    const observer = this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/search/${artID}?documentName=${documentName}&documentComments=${documentComments}`,
+    {
+      withCredentials : true,
+    })
+
+    observer.subscribe((documents:ADocument[])=>{
+      this.documents.next(documents);
+    })
+  }
+
 
   public uploadDocument(artID:number,document) 
   {

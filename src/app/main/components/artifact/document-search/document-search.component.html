@@ -1,0 +1,25 @@
+<div class="form">
+
+    <div style="display: flex; justify-content: center;">
+        <h2> Find Document</h2>
+    </div>
+
+    <mat-form-field class="fields" appearance="outline">
+        <mat-label> Search Version By Name</mat-label>
+        <input matInput placeholder="Search Version By Name" maxlength="50" [(ngModel)]="documentName" (keyup)="keyUpSearch()">
+        <mat-icon matSuffix>label</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fields" appearance="outline">
+        <mat-label> Search By Comment</mat-label>
+        <textarea matInput placeholder="Search By Comment" maxlength="200" [(ngModel)]="documentComments" (keyup)="keyUpSearch()"></textarea>
+    </mat-form-field>
+
+    <div>
+        <div mat-dialog-actions>
+            <button mat-button cdkFocusInitial (click)="closeDialog()"> Done </button>
+            <button mat-button (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div>

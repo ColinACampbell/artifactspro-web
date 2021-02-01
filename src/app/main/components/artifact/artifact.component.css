@@ -34,6 +34,12 @@ mat-list-item:hover
   margin-left: 10px;
 }
 
+.btn-group 
+{
+  margin-bottom: 20px;
+}
+
+
 .util-bar
 {
   display: flex;

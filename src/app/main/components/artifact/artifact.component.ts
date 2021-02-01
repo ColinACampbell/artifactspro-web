@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { DeleteArtifactDialogComponent } from '../../dialogs/artifacts/delete-artifact-dialog/delete-artifact-dialog.component';
 import { UploadDialogComponent } from '../../dialogs/artifacts/upload-artifact-dialog/upload-dialog.component';
 import { ArtifactManagerService } from 'src/app/services/util/artifact-manager.service';
+import { DocumentSearchComponent } from './document-search/document-search.component';
 
 @Component({
   selector: 'app-artifact',
@@ -38,6 +39,7 @@ export class ArtifactComponent implements OnInit {
     private docServ: DocumentService,
     private uploadDialog: MatDialog,
     private deleteDialog: MatDialog,
+    private searchDialog : MatDialog,
     private _location: Location,
     private snackBar:MatSnackBar,
     public artifactManager : ArtifactManagerService
@@ -141,6 +143,16 @@ export class ArtifactComponent implements OnInit {
         this.getAllDocuments(this.artID);
         this.snackBar.open(`Document '${document.version}' was deleted, successfully`,'Okay')
     });
+  }
+
+  openDocumentSearchDialog()
+  {
+    this.searchDialog.open(DocumentSearchComponent,
+      {
+        data : {
+          artID : this.artID
+        }
+      })
   }
 
   public goBack()
