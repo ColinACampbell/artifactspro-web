@@ -15,6 +15,7 @@ table
     display: flex;
     padding: 10px;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
   
 .filter-fields
