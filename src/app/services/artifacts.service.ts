@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Artifact } from '../models/artifacts';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Environment } from '../models/environment';
+import { ArtifactPermission } from '../models/artifactPermissionsts';
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,13 @@ export class ArtifactsService {
     })
     .subscribe((artifacts:Artifact[])=>{
       this.artifacts.next(artifacts)
+    })
+  }
+
+  public getPermissionForArtifact(artID : number, workspaceName : string) : Observable<ArtifactPermission>
+  {
+    return this.httpClient.get<ArtifactPermission>(this.environment.baseURL()+`api/art/${artID}/permissions?workspaceName=${workspaceName}`,{
+      withCredentials : true
     })
   }
 

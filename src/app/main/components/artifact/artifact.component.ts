@@ -11,6 +11,7 @@ import { DeleteArtifactDialogComponent } from '../../dialogs/artifacts/delete-ar
 import { UploadDialogComponent } from '../../dialogs/artifacts/upload-artifact-dialog/upload-dialog.component';
 import { ArtifactManagerService } from 'src/app/services/util/artifact-manager.service';
 import { DocumentSearchComponent } from './document-search/document-search.component';
+import { ArtifactPermission } from 'src/app/models/artifactPermissionsts';
 
 @Component({
   selector: 'app-artifact',
@@ -31,6 +32,8 @@ export class ArtifactComponent implements OnInit {
 
   public workspaceReference : string = ''
   public artID: number;
+
+  public artifactPermission : string;
 
 
   constructor(
@@ -63,14 +66,24 @@ export class ArtifactComponent implements OnInit {
       this.documents = documents;
     })
 
-    
   }
 
+  // TODO Finish proper implementation later
   getArtifact(artID:number,workspaceReference:string)
   {
     this.artServ.getArtifactFromID(artID,workspaceReference)
     .subscribe((artifact)=>{
-      this.artifact = artifact;
+      this.artServ.getPermissionForArtifact(artID,workspaceReference)
+      .subscribe((artifactPermission : ArtifactPermission)=>{
+        
+        if (artifactPermission !== null)
+          this.artifactPermission = artifactPermission.permissions
+        else 
+          this.artifactPermission = "Admin" // if it is null it implies the user owns it
+
+        this.artifact = artifact;
+      })
+      
     },(response : any)=>{
       const forbidden = 401
       const message = undefined || response.error['message'] // Give it undefined if the user just don't have access

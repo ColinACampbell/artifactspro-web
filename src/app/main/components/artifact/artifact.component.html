@@ -9,7 +9,7 @@
         {{ selectedDocument.version }}</span> 
       </span>
     <div class="util-bar" *ngIf="artifact || !this.userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
-      <button matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
+      <button *ngIf="artifactPermission == 'View and Upload' || artifactPermission == 'Admin'" matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
       <button matTooltip='Search Options' mat-button (click)="openDocumentSearchDialog()">
