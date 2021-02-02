@@ -7,6 +7,7 @@ import { ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-create-message-dialog',
@@ -26,6 +27,7 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
     private utilService : UtilService,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     private workspaceService:WorkSpaceService,
+    private socketService : SocketService
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,9 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
       if (response.status === 201)
         this.workspaceService.getMessages(workspaceID)
         this.dialogRef.close()
+        this.socketService.socket.emit('start_discussion',{
+          workspaceID : this.dialogData.workspaceID
+        })
     });
 
   }

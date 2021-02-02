@@ -10,6 +10,7 @@ import { CreateMessageDialogComponent } from 'src/app/main/dialogs/workspace/cre
 import { WorkpaceDetailsComponent } from 'src/app/main/dialogs/workspace/workspace-details/workpace-details.component';
 import { WorkspaceParticipant } from 'src/app/models/workspaceParticipant';
 import { WorkSpacePost } from 'src/app/models/workspacePost';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-view-work-space',
@@ -23,7 +24,8 @@ export class ViewWorkSpaceComponent implements OnInit {
     private activeRoute:ActivatedRoute,
     private workspaceService: WorkSpaceService,
     private dialog:MatDialog,
-    private location: Location
+    private location: Location,
+    private socketService : SocketService
   ) { }
 
   private workspaceID:number;
@@ -43,6 +45,14 @@ export class ViewWorkSpaceComponent implements OnInit {
     this.getUserAsWorkspaceParticipant()
     this.getUserAsWorkspaceParticipant()
     
+    this.socketService.socket.emit('join_workspace',this.workspaceID)
+    this.socketService.socket.on(`update_messages`,(workspaceID)=>{
+      if ( workspaceID === this.workspaceID)
+      {
+        console.log('Message Posted')
+        this.workspaceService.getMessages(this.workspaceID)
+      }
+    })
   }
 
   public goBack()
