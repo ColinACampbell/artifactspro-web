@@ -53,9 +53,7 @@ export class CreateMessageDialogComponent implements OnInit, AfterViewInit {
       if (response.status === 201)
         this.workspaceService.getMessages(workspaceID)
         this.dialogRef.close()
-        this.socketService.socket.emit('start_discussion',{
-          workspaceID : this.dialogData.workspaceID
-        })
+        this.socketService.socket.emit('start_discussion',this.dialogData.workspaceID)
     });
 
   }

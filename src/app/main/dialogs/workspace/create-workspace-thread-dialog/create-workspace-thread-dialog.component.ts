@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WorkSpacePost } from 'src/app/models/workspacePost';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-create-workspace-thread-dialog',
@@ -16,7 +17,8 @@ export class CreateWorkspaceThreadDialogComponent implements OnInit {
      @Inject(MAT_DIALOG_DATA) public workspacePost: WorkSpacePost,
      private workspaceService : WorkSpaceService,
      private snackBar : MatSnackBar,
-     private dialogRef : MatDialogRef<CreateWorkspaceThreadDialogComponent>
+     private dialogRef : MatDialogRef<CreateWorkspaceThreadDialogComponent>,
+     private socketService : SocketService,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class CreateWorkspaceThreadDialogComponent implements OnInit {
       {
         this.workspaceService.getWorkspacePostReplies(this.workspacePost.work_space_id,this.workspacePost.work_space_msg_id)
         this.closeDialog();
+        this.socketService.socket.emit("send_message_reply_to_discussion",this.workspacePost.work_space_msg_id)
       }
     })
   }

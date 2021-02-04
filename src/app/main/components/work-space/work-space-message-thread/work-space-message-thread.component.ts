@@ -6,6 +6,7 @@ import { CreateWorkspaceThreadDialogComponent } from 'src/app/main/dialogs/works
 import { Location } from '@angular/common';
 import { WorkSpacePost } from 'src/app/models/workspacePost';
 import { WorkSpacePostReply } from 'src/app/models/workspacePostReply';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-work-space-message-thread',
@@ -25,7 +26,8 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     private workspaceService : WorkSpaceService,
     private router : Router,
     private createReplyDialog : MatDialog,
-    private location : Location
+    private location : Location,
+    private socketService : SocketService,
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,13 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     this.workspaceID = parseInt(this.activatedRoute.snapshot.paramMap.get("workspaceID"))
     this.threadID = parseInt(this.activatedRoute.snapshot.paramMap.get("messageID"));
     this.loadWorkspaceMessage()
-    this.loadWorkpaceReplies()
+    this.loadWorkspaceReplies()
+
+    this.socketService.socket.emit('join_discussion_thread',this.threadID);
+    this.socketService.socket.on('update_discussion_message_thread',(_)=>{
+      console.log("Updated Message Thread")
+      this.loadWorkspaceReplies();
+    })
   }
 
 
@@ -50,7 +58,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     })
   }
 
-  private loadWorkpaceReplies()
+  private loadWorkspaceReplies()
   {
     this.workspaceService.getWorkspacePostReplies(this.workspaceID,this.threadID)
     

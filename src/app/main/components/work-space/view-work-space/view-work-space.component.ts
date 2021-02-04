@@ -46,12 +46,8 @@ export class ViewWorkSpaceComponent implements OnInit {
     this.getUserAsWorkspaceParticipant()
     
     this.socketService.socket.emit('join_workspace',this.workspaceID)
-    this.socketService.socket.on(`update_messages`,(workspaceID)=>{
-      if ( workspaceID === this.workspaceID)
-      {
-        console.log('Message Posted')
-        this.workspaceService.getMessages(this.workspaceID)
-      }
+    this.socketService.socket.on(`update_workspace_discussion`,(workspaceID)=>{
+      this.workspaceService.getMessages(this.workspaceID)
     })
   }
 
