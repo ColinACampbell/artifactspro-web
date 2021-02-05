@@ -89,7 +89,8 @@ import { NavigationService } from './services/util/navigation.service';
 import { ArtifactManagerService } from "./services/util/artifact-manager.service";
 import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-details/wsdetail-artifacts/wsdetail-artifacts.component';
 import { ConfirmDeleteWorkspaceComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/confirm-delete-workspace/confirm-delete-workspace.component';
-import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component'
+import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component';
+import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component'
 
 @NgModule({
   declarations: [
@@ -136,6 +137,7 @@ import { DocumentSearchComponent } from './main/components/artifact/document-sea
     WsdetailArtifactsComponent,
     ConfirmDeleteWorkspaceComponent,
     DocumentSearchComponent,
+    ShowArtifactInfoDialogComponent,
 
   ],
   imports: [
@@ -193,7 +195,8 @@ import { DocumentSearchComponent } from './main/components/artifact/document-sea
     WsdetailParticipantsActionDialogComponent,
     AddPeopleToArtifactAccessDialogComponent,
     ConfirmDeleteWorkspaceComponent,
-    DocumentSearchComponent
+    DocumentSearchComponent,
+    ShowArtifactInfoDialogComponent
   ],
   providers: [
     UserService,

@@ -12,6 +12,7 @@ import { UploadDialogComponent } from '../../dialogs/artifacts/upload-artifact-d
 import { ArtifactManagerService } from 'src/app/services/util/artifact-manager.service';
 import { DocumentSearchComponent } from './document-search/document-search.component';
 import { ArtifactPermission } from 'src/app/models/artifactPermissionsts';
+import { ShowArtifactInfoDialogComponent } from '../../dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component';
 
 @Component({
   selector: 'app-artifact',
@@ -43,6 +44,7 @@ export class ArtifactComponent implements OnInit {
     private uploadDialog: MatDialog,
     private deleteDialog: MatDialog,
     private searchDialog : MatDialog,
+    private artifactInfoDialog : MatDialog,
     private _location: Location,
     private snackBar:MatSnackBar,
     public artifactManager : ArtifactManagerService
@@ -68,11 +70,23 @@ export class ArtifactComponent implements OnInit {
 
   }
 
+  openArtifactInfoDialog()
+  {
+    this.artifactInfoDialog.open(ShowArtifactInfoDialogComponent,{
+      data : {
+        artID : this.artID,
+        workspaceReference : this.workspaceReference
+      },
+      width : "400px",
+    })
+  }
+
   // TODO Finish proper implementation later
   getArtifact(artID:number,workspaceReference:string)
   {
     this.artServ.getArtifactFromID(artID,workspaceReference)
-    .subscribe((artifact)=>{
+    
+    this.artServ.artifactObservable.subscribe((artifact)=>{
       this.artServ.getPermissionForArtifact(artID,workspaceReference)
       .subscribe((artifactPermission : ArtifactPermission)=>{
         

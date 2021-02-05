@@ -15,7 +15,7 @@
       <button matTooltip='Search Options' mat-button (click)="openDocumentSearchDialog()">
         <mat-icon>search</mat-icon>
       </button>
-      <button matTooltip='Artifact Info' mat-button>
+      <button matTooltip='Artifact Info' mat-button (click)="openArtifactInfoDialog()">
         <mat-icon>info</mat-icon>
       </button>
       <button matTooltip='Delete Artifact' mat-raised-button color='warn' (click)='openDeleteDialogue()'>
@@ -29,7 +29,7 @@
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
-      Documents
+      Versions
     </div>
     <mat-divider></mat-divider>
     <mat-list-item *ngFor="let document of documents" (click)="selectDocument(document)">

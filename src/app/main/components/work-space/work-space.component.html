@@ -18,13 +18,13 @@
             <img mat-card-image src="../../../assets/work-space.png"
                 alt="Work Space Image">
             <mat-card-content>
-                <div style="height: 70px; display: flex; justify-content: center;align-content: center;">
+                <div style="">
                     <h1 style="text-align: center;"> {{workSpace.work_space_name}} </h1>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions
+                style="text-align: center;">
                 <button mat-button color='primary' (click)='openWorkSpace(workSpace)'>Open</button>
-                <button mat-button>More Info</button>
             </mat-card-actions>
 
         </mat-card>

@@ -49,10 +49,12 @@ export class ArtifactsService {
     return observer;
   }
 
-  getArtifactFromID(artID:number,workspaceName : string) : Observable<Artifact>
+  getArtifactFromID(artID:number,workspaceName : string)
   {
-    return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}?ref='${workspaceName}'`,{
+    this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}?ref='${workspaceName}'`,{
       withCredentials : true,
+    }).subscribe((artifact : Artifact)=>{
+      this.artifact.next(artifact)
     });
   }
 
