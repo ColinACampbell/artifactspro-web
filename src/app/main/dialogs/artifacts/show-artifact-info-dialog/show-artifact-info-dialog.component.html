@@ -1,7 +1,7 @@
-<div *ngIf="this.user === undefined">
+<div *ngIf="!this.user || !this.artifact">
     <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="this.user !== undefined">
+<div *ngIf="this.user !== undefined && this.artifact !== undefined">
     <h1 style="text-align: center;"> Artifact Information </h1>
     <div style="margin-top: 20px;">
         <p>
@@ -26,11 +26,21 @@
               </mat-form-field>
           </p>
          <div>
+           <button color="primary"
+              *ngIf="isEditable" 
+              mat-raised-button
+              (click)="saveChanges()">
+              Save Information
+           </button>
             <button color="primary" mat-raised-button
-                [disabled]="this.artifact.user_id !== this.user.user_id">  
+                *ngIf="!isEditable"
+                [disabled]="this.artifact.user_id !== this.user.user_id"
+                (click)="makeFieldsEditable()">  
                 Edit Information
             </button>
-            <button mat-button>
+            <button mat-button
+                *ngIf="isEditable"
+                (click)="canceEdit()">
                 Cancel
             </button>
          </div>

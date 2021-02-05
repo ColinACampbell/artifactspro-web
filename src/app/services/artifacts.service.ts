@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Artifact } from '../models/artifacts';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Environment } from '../models/environment';
@@ -49,13 +49,22 @@ export class ArtifactsService {
     return observer;
   }
 
-  getArtifactFromID(artID:number,workspaceName : string)
+  changeNameAndDescription(artifactName:string, artifactDescription: string,artifactID : number) : Observable<HttpResponse<Object>>
   {
-    this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}?ref='${workspaceName}'`,{
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/art/${artifactID}/change-name-and-description`,{
+      artifactName,
+      artifactDescription
+    },{
       withCredentials : true,
-    }).subscribe((artifact : Artifact)=>{
-      this.artifact.next(artifact)
-    });
+      observe : 'response'
+    })
+  }
+
+  getArtifactFromID(artID:number,workspaceName : string) : Observable<Artifact>
+  {
+    return this.httpClient.get<Artifact>(this.environment.baseURL()+`api/art/${artID}?ref='${workspaceName}'`,{
+      withCredentials : true,
+    })
   }
 
   createArtifact(name:String,description:String,date:String) : Observable<Artifact>

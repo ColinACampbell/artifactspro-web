@@ -1,9 +1,9 @@
 export interface Artifact {
     art_id: number;
-    name: String;
+    name: string;
     org_id: number;
     user_id: number;
-    date_created: String;
-    age:String;
-    description:String;
+    date_created: string;
+    age:string;
+    description:string;
 }

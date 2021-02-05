@@ -1,5 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Artifact } from 'src/app/models/artifacts';
 import { User } from 'src/app/models/user';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
@@ -19,7 +21,9 @@ export class ShowArtifactInfoDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)  private data,
     private artifactService : ArtifactsService,
-    private userService : UserService
+    private userService : UserService,
+    private dialogRef : MatDialogRef<ShowArtifactInfoDialogComponent>,
+    private snackBar : MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -29,10 +33,33 @@ export class ShowArtifactInfoDialogComponent implements OnInit {
       this.user = user
     })
 
-    this.artifactService.artifactObservable
+    this.artifactService.getArtifactFromID(this.data.artID,this.data.workspaceReference)
     .subscribe((artifact : Artifact)=>{
       this.artifact = artifact
     })
+  }
+
+  makeFieldsEditable()
+  {
+    this.isEditable = true
+  }
+
+  canceEdit()
+  {
+    this.isEditable = false
+  }
+
+  saveChanges()
+  {
+    // TODO : Fix this issue of subscribe not triggering
+    console.log("Some changes were made")
+    this.artifactService.changeNameAndDescription(this.artifact.name,this.artifact.description,this.data.artID)
+    .subscribe((response : HttpResponse<Object>)=>{
+      console.log(response)
+    },(err)=>{
+      console.log(err)
+    })
+
   }
 
 }

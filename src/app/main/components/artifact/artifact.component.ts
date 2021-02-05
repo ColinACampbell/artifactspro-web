@@ -84,9 +84,9 @@ export class ArtifactComponent implements OnInit {
   // TODO Finish proper implementation later
   getArtifact(artID:number,workspaceReference:string)
   {
-    this.artServ.getArtifactFromID(artID,workspaceReference)
     
-    this.artServ.artifactObservable.subscribe((artifact)=>{
+    
+    this.artServ.getArtifactFromID(artID,workspaceReference).subscribe((artifact)=>{
       this.artServ.getPermissionForArtifact(artID,workspaceReference)
       .subscribe((artifactPermission : ArtifactPermission)=>{
         
