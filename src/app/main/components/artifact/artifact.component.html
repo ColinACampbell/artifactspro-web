@@ -1,5 +1,5 @@
 <app-main-header></app-main-header>
-<mat-toolbar color='primary'>
+<mat-toolbar color='primary' *ngIf="artifact">
   <mat-toolbar-row>
     <span > <button mat-button (click)='goBack()'> <mat-icon>keyboard_arrow_left</mat-icon> </button> 
       <span *ngIf="artifact || !this.userForbidden">
