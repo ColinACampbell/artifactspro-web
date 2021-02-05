@@ -1,0 +1,38 @@
+<div *ngIf="this.user === undefined">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="this.user !== undefined">
+    <h1 style="text-align: center;"> Artifact Information </h1>
+    <div style="margin-top: 20px;">
+        <p>
+            <mat-form-field appearance="outline"
+                style="width: 350px;">
+              <mat-label>Arifact Name</mat-label>
+              <input matInput placeholder="Enter Artifact Name"
+                [(ngModel)]="this.artifact.name"
+                [disabled]="!isEditable">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline"
+                style="width: 350px;">
+                <mat-label> Artifacts Description </mat-label>
+                <textarea 
+                  style="max-height: 180px;height: 165px;"
+                  matInput placeholder="Enter Artifact Description"
+                  [(ngModel)]="this.artifact.description"
+                  [disabled]="!isEditable">
+                </textarea>
+              </mat-form-field>
+          </p>
+         <div>
+            <button color="primary" mat-raised-button
+                [disabled]="this.artifact.user_id !== this.user.user_id">  
+                Edit Information
+            </button>
+            <button mat-button>
+                Cancel
+            </button>
+         </div>
+    </div>
+</div>
