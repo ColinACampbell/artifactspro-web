@@ -52,10 +52,19 @@ export class ShowArtifactInfoDialogComponent implements OnInit {
   saveChanges()
   {
     // TODO : Fix this issue of subscribe not triggering
-    console.log("Some changes were made")
     this.artifactService.changeNameAndDescription(this.artifact.name,this.artifact.description,this.data.artID)
     .subscribe((response : HttpResponse<Object>)=>{
-      console.log(response)
+  
+      if (response.status === 200)
+      {
+        this.isEditable = false
+        const ref = this.snackBar.open("Changes Made Successfully","Okay");
+        ref.onAction()
+        .subscribe(()=>{
+          this.dialogRef.close();
+        })
+      }
+        
     },(err)=>{
       console.log(err)
     })

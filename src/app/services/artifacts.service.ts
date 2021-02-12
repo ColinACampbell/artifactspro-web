@@ -49,7 +49,7 @@ export class ArtifactsService {
     return observer;
   }
 
-  changeNameAndDescription(artifactName:string, artifactDescription: string,artifactID : number) : Observable<HttpResponse<Object>>
+  changeNameAndDescription(artifactName:string, artifactDescription: string, artifactID : number) : Observable<HttpResponse<Object>>
   {
     return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/art/${artifactID}/change-name-and-description`,{
       artifactName,
