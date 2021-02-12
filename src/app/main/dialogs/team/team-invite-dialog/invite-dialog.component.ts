@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MemberService } from 'src/app/services/member.service';
 import { observable } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-invite-dialog',
@@ -13,7 +14,8 @@ export class InviteDialogComponent implements OnInit {
   public inviteUrl:String;
   constructor(
     public dialogRef: MatDialogRef<InviteDialogComponent>,
-    private memServ: MemberService
+    private memServ: MemberService,
+    private snackBar : MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -24,7 +26,9 @@ export class InviteDialogComponent implements OnInit {
   {
     this.memServ.getInviteURL()
     .subscribe((observable)=>{
-      this.inviteUrl = observable['invite_url'];
+      this.inviteUrl = observable['invite_url']; // change the way this is handled
+      
+
     })
   }
 
@@ -39,6 +43,11 @@ export class InviteDialogComponent implements OnInit {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
+    const ref = this.snackBar.open("Link Was Copied To Clip Board","Okay");
+      ref.onAction()
+      .subscribe((_)=>{
+        this.dialogRef.close();
+      })
   }
 
 }

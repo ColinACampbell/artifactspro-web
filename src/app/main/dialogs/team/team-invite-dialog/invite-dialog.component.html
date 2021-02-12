@@ -1,15 +1,16 @@
 <div class="container">
     
     <div style="width: 500px;">
-        
+        <h1 style="text-align: center;"> Use Link To Invite Member</h1>
+        <br/>
         <p>
             <mat-form-field appearance="outline" [style.width.px]=500>
                 <mat-label> Invite Link </mat-label>
-                <input matInput placeholder="Please Your First Name" [type]="'text'"  #inputElement value="{{inviteUrl}}">
+                <input matInput placeholder="Please Your First Name" [type]="'text'"  #inputElement value="{{inviteUrl}}" readonly>
             </mat-form-field>
         </p>
         <p style="display: flex; justify-content: end;">
-            <button mat-raised-button color='primary' (click)='copyLinkToClipBoard(inputElement)'> Copy </button>
+            <button mat-raised-button color='primary' (click)='copyLinkToClipBoard(inputElement)'> Copy To Clipboard</button>
             <button mat-button (click)='closeDialog()'> Close </button>
         </p>
         
