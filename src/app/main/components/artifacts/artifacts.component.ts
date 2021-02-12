@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CreateDialogComponent } from '../../dialogs/artifacts/create-artifact-dialog/create-dialog.component';
 import { WorkSpaceService } from 'src/app/services/work-space.service';
+import { ShowArtifactInfoDialogComponent } from '../../dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component';
 
 interface IterableWorkspaceNames {
   work_space_name : string
@@ -107,5 +108,30 @@ export class ArtifactsComponent implements OnInit {
       this.artServ.getAllArtifacts();
     }
     localStorage.selectedWorkspace = this.selectedWorkspace
+  }
+
+  public openArtifactsInfoDialog(artifact : Artifact)
+  {
+  
+    if (this.selectedWorkspace == 'My Documents')
+    {
+      this.dialog.open(ShowArtifactInfoDialogComponent,{
+        width : "400px",
+        data : {
+          artID : artifact.art_id,
+          workspaceReference : undefined
+        }
+      })
+    }
+    else 
+    {
+      this.dialog.open(ShowArtifactInfoDialogComponent,{
+        width : "500px",
+        data : {
+          artID : artifact.art_id,
+          workspaceReference : this.selectedWorkspace
+        }
+      })
+    }
   }
 }

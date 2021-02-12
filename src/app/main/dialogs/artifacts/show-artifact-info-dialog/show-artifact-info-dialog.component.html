@@ -1,5 +1,5 @@
-<div *ngIf="!this.user || !this.artifact">
-    <mat-spinner></mat-spinner>
+<div *ngIf="!this.user || !this.artifact" style="justify-content:center;display: flex;padding: 20px;">
+    <mat-spinner [diameter]="100"></mat-spinner>
 </div>
 <div *ngIf="this.user !== undefined && this.artifact !== undefined">
     <h1 style="text-align: center;"> Artifact Information </h1>
