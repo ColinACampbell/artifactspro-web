@@ -12,4 +12,5 @@ export interface ADocument {
     date_modified:String;
     type:String;
     modified: String;
+    file_size: number;
 }

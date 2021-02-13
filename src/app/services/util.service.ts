@@ -58,4 +58,13 @@ export class UtilService {
         return Math.round(elapsed/msPerYear ) + ' years ago';   
     }
   }
+
+  assessFileSize(fileSize:number) : string
+  {
+    if ((fileSize / 1000) > 1000)
+      return Math.floor(fileSize/1000000) + " Megabytes"
+    else if (fileSize > 1000)
+      return Math.floor(fileSize/1000) + " Kilobytes"
+    
+  }
 }

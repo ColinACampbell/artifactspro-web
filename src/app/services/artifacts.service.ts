@@ -115,4 +115,14 @@ export class ArtifactsService {
     })
   }
 
+  public getArtifactSize(artID : number) : Observable<{sum:string}>
+  {
+    return this.httpClient.get<{
+      sum : string
+    }>(this.environment.baseURL()+`api/art/${artID}/total-size`,{
+      withCredentials : true
+    });
+  }
+
+
 }

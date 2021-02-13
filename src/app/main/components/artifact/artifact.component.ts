@@ -25,8 +25,9 @@ export class ArtifactComponent implements OnInit {
   public selectedDocument:ADocument = null;
   public documents:ADocument[];
   public docSelected:boolean = false;
+  public presentableFileSize : string;
   public isImage:boolean=false;
-  public userForbidden: boolean = false
+  public userForbidden: boolean = false;
   public responseMessage : string = undefined;
 
   public previewlink:String; // change this later
@@ -35,6 +36,8 @@ export class ArtifactComponent implements OnInit {
   public artID: number;
 
   public artifactPermission : string;
+  public isPreviewShown : boolean = false;
+
 
 
   constructor(
@@ -109,13 +112,15 @@ export class ArtifactComponent implements OnInit {
     })
   }
 
-  public selectDocument(document:any)
+  public selectDocument(document:ADocument)
   {
     this.docSelected = true;
     this.selectedDocument = document;
     let documentType = this.selectedDocument.type;
 
     let docID = this.selectedDocument.doc_id;
+
+    this.presentableFileSize = this.assessFileSize(document.file_size)
     
     // check if document is image
     if (documentType.split('/')[0] === 'image')
@@ -130,6 +135,15 @@ export class ArtifactComponent implements OnInit {
       //let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
       //this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
     })
+  }
+
+  private assessFileSize(fileSize:number) : string
+  {
+    if ((fileSize / 1000) > 1000)
+      return Math.floor(fileSize/1000000) + " Megabytes"
+    else if (fileSize > 1000)
+      return Math.floor(fileSize/1000) + " Kilobytes"
+    
   }
 
   private getAllDocuments(artID:number)

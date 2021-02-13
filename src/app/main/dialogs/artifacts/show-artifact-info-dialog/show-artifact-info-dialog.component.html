@@ -13,6 +13,7 @@
                 [disabled]="!isEditable">
             </mat-form-field>
           </p>
+          
           <p>
             <mat-form-field appearance="outline"
                 style="width: 350px;">
@@ -24,6 +25,10 @@
                   [disabled]="!isEditable">
                 </textarea>
               </mat-form-field>
+          </p>
+          <p>
+            <b> Artifact Size</b>
+            {{ this.artifactSize }}
           </p>
          <div>
            <button color="primary"

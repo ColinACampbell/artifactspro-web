@@ -1,15 +1,18 @@
 <app-main-header></app-main-header>
 <mat-toolbar color='primary' *ngIf="artifact">
   <mat-toolbar-row>
-    <span > <button mat-button (click)='goBack()'> <mat-icon>keyboard_arrow_left</mat-icon> </button> 
+    <span> <button mat-button (click)='goBack()'>
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
       <span *ngIf="artifact || !this.userForbidden">
-        Artifact / {{ artifact.name }} / 
+        Artifact / {{ artifact.name }} /
       </span>
       <span *ngIf="selectedDocument">
-        {{ selectedDocument.version }}</span> 
-      </span>
+        {{ selectedDocument.version }}</span>
+    </span>
     <div class="util-bar" *ngIf="artifact || !this.userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
-      <button *ngIf="artifactPermission == 'View and Upload' || artifactPermission == 'Admin'" matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
+      <button *ngIf="artifactPermission == 'View and Upload' || artifactPermission == 'Admin'"
+        matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
       <button matTooltip='Search Options' mat-button (click)="openDocumentSearchDialog()">
@@ -25,7 +28,8 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div style="display: flex; justify-content: center;" *ngIf="!userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
+<div style="display: flex; justify-content: center;"
+  *ngIf="!userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)">
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
@@ -56,46 +60,61 @@
           <h4> {{ selectedDocument.date_created }}</h4>
         </div>
         <div>
-          <b> Preview </b>
+          <div>
+            <b>
+              <mat-checkbox [(ngModel)]="isPreviewShown" style="margin-bottom: 30px;"> Show Preview </mat-checkbox>
+            </b>
+          </div>
           <!---
           <div style="display: flex; justify-content: center; align-items: center;">
             <img src='{{previewlink}}' width="400" />
           </div>
           -->
-          <div  >
-            <!--<ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google" style="width:100%;height:50vh;">
-            </ngx-doc-viewer>-->
-            <ngx-extended-pdf-viewer [src]="previewlink" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>
-            <img class='margin-vertical' *ngIf='isImage' src="{{previewlink}}" alt='image here' width="100%"/>
+          <div *ngIf="isPreviewShown">
+            <ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google"
+              style="width:100%;height:50vh;">
+            </ngx-doc-viewer>
+            <!--<ngx-extended-pdf-viewer [src]="previewlink" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>-->
+            <img class='margin-vertical' *ngIf='isImage' src="{{previewlink}}" alt='image here' width="100%" />
           </div>
-         <div>
-         </div>
+          <div>
+          </div>
         </div>
-        
-        <div>
-          <b> Date Uploaded </b>
-          <p>
-            {{ selectedDocument.date_uploaded }}
-          </p>
-        </div>
-        <div>
-          <b> Last Modified </b>
-          <p>
-            {{ selectedDocument.date_modified }}
-          </p>
-        </div>
-        <div>
-          <b> Comment </b>
-          <p>
-            {{ selectedDocument.comment }}
-          </p>
+
+        <mat-form-field class="fields" appearance="outline" style="width: 100%;">
+          <mat-label> What Changed/Comments </mat-label>
+          <textarea style="height: 250px;min-height: 250px;max-height: 250px;" matInput
+            placeholder="Comments Should Appear Here" [value]="this.selectedDocument.comment" readonly></textarea>
+        </mat-form-field>
+        <div 
+          style="display: flex; justify-content: space-around;">
+          <div>
+            
+            <b> Date Uploaded </b>
+            <p>
+              {{ selectedDocument.date_uploaded }}
+            </p>
+          </div>
+          <div>
+            <b> Last Modified </b>
+            <p>
+              {{ selectedDocument.date_modified }}
+            </p>
+          </div>
+          <div>
+            <b> Size </b>
+            <p>
+              {{ this.presentableFileSize }}
+            </p>
+          </div>
         </div>
         <mat-divider></mat-divider>
         <br />
         <div class="btn-group">
           <button mat-flat-button color="primary" class="margin-horizontal"> Edit </button>
           <a mat-flat-button color="primary" href="{{previewlink}}" download class="margin-horizontal"> Download </a>
-          <button mat-flat-button color="warn" (click)='deleteDocument(selectedDocument)' class="margin-horizontal"> Delete </button>
+          <button mat-flat-button color="warn" (click)='deleteDocument(selectedDocument)' class="margin-horizontal">
+            Delete </button>
         </div>
       </div>
     </div>
@@ -103,4 +122,5 @@
   </div>
 </div>
 
-<app-artifact-authorization *ngIf="userForbidden" [responseMessage]="this.responseMessage" [workspaceRef]="this.workspaceReference" [artifactID]="this.artID"></app-artifact-authorization>
+<app-artifact-authorization *ngIf="userForbidden" [responseMessage]="this.responseMessage"
+  [workspaceRef]="this.workspaceReference" [artifactID]="this.artID"></app-artifact-authorization>

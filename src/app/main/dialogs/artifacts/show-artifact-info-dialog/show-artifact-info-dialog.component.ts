@@ -6,6 +6,7 @@ import { Artifact } from 'src/app/models/artifacts';
 import { User } from 'src/app/models/user';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { UserService } from 'src/app/services/user.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-show-artifact-info-dialog',
@@ -17,13 +18,15 @@ export class ShowArtifactInfoDialogComponent implements OnInit {
   public artifact : Artifact;
   public isEditable : boolean = false;
   public user : User
+  public artifactSize : string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)  private data,
     private artifactService : ArtifactsService,
     private userService : UserService,
     private dialogRef : MatDialogRef<ShowArtifactInfoDialogComponent>,
-    private snackBar : MatSnackBar
+    private snackBar : MatSnackBar,
+    private utilService : UtilService
   ) { }
 
   ngOnInit() {
@@ -35,8 +38,16 @@ export class ShowArtifactInfoDialogComponent implements OnInit {
 
     this.artifactService.getArtifactFromID(this.data.artID,this.data.workspaceReference)
     .subscribe((artifact : Artifact)=>{
-      this.artifact = artifact
+      this.artifact = artifact;
+  
     })
+
+    this.artifactService.getArtifactSize(this.data.artID)
+      .subscribe(( data : {sum:string})=>{
+        const {sum} = data;
+        const size = parseInt(sum);
+        this.artifactSize = this.utilService.assessFileSize(size)
+      })
   }
 
   makeFieldsEditable()
