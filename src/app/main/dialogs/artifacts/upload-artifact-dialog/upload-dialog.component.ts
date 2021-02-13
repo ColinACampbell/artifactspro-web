@@ -81,6 +81,8 @@ export class UploadDialogComponent implements OnInit {
     document['date_uploaded'] = dateUploaded;
     document['data'] = this.fileData;
     document['file_type'] = this.selectedFile.type
+    console.log("File Size : "+ this.selectedFile.size)
+    document['fileSize'] = this.selectedFile.size;
 
     this.docServ.uploadDocument(artID,document)
     .subscribe((event:HttpEvent<any>)=>{
