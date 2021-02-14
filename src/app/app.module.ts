@@ -15,6 +15,7 @@ import { MatTableModule } from "@angular/material/table"
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from '@angular/material/button';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -177,7 +178,8 @@ import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-a
     MatCheckboxModule,
     MatSidenavModule,
     MatRippleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatStepperModule
   ],
   entryComponents: [ // provide vital information to create dialog at run time
     AddArtifactDialogComponent,
