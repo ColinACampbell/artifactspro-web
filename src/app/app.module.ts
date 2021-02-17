@@ -92,6 +92,7 @@ import { WsdetailArtifactsComponent } from './main/dialogs/workspace/workspace-d
 import { ConfirmDeleteWorkspaceComponent } from './main/dialogs/workspace/workspace-details/wsdetail-overview/confirm-delete-workspace/confirm-delete-workspace.component';
 import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component';
 import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component'
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-a
 
   ],
   imports: [
+    MatCarouselModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -20,12 +20,15 @@ export class OrganizationService {
     
   }
 
-  public createOrganization(name,orgKey,orgPassKey) : Observable<HttpResponse<Object>>
+  public createOrganization(name,phone1:string,phone2:string,address1:string,address2:string,pricePackageID:number) : Observable<HttpResponse<Object>>
   {
     return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+"api/org/create",{
       name,
-      orgKey,
-      orgPassKey,
+      phone1,
+      phone2,
+      address1,
+      address2,
+      pricePackageID
     },
     {
       withCredentials: true,
