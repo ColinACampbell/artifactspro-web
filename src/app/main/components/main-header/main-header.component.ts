@@ -8,6 +8,8 @@ import { HttpResponse } from '@angular/common/http';
 import { NavigationService } from 'src/app/services/util/navigation.service';
 import { Input } from '@angular/core';
 import { User } from "./../../../models/user"
+import { MatDialog } from '@angular/material/dialog';
+import { UserInfoComponent } from '../user-info/user-info.component';
 
 @Component({
   selector: 'app-main-header',
@@ -28,6 +30,7 @@ export class MainHeaderComponent implements OnInit {
     private userServ:UserService,
     private navigationService : NavigationService,
     private router: Router,
+    private dialog : MatDialog
     ) { }
 
   ngOnInit() {
@@ -55,6 +58,14 @@ export class MainHeaderComponent implements OnInit {
     .subscribe((response : HttpResponse<Object>)=>{
       if (response.status == 200)
         this.router.navigate(['/login'])
+    })
+  }
+
+  public openUserInfoComponent()
+  {
+    this.dialog.open(UserInfoComponent,{
+      width : "700px",
+      height: "500px"
     })
   }
 

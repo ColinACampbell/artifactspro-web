@@ -19,9 +19,9 @@
     -->
 
         <span>
-            <button mat-button>
+            <button mat-button (click)="openUserInfoComponent()">
                 <mat-icon style="margin-right: 5px;"> account_circle</mat-icon>
-                {{ fullName === ' ' ? 'My Account' : fullName}}
+                {{ fullName === ' ' ? 'Verify Your Account' : fullName}}
             </button>
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
