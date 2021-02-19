@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
     "@ngbmodule/material-carousel": "^0.7.1",
+    "@pdftron/webviewer": "^7.2.0",
     "hammerjs": "^2.0.8",
     "ngx-doc-viewer": "^1.4.0",
     "ngx-extended-pdf-viewer": "^7.3.2",

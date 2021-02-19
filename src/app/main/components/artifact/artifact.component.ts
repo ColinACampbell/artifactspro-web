@@ -103,7 +103,8 @@ export class ArtifactComponent implements OnInit {
       
     },(response : any)=>{
       const forbidden = 401
-      const message = undefined || response.error['message'] // Give it undefined if the user just don't have access
+      const message = undefined || response.error['message']; // Give it undefined if the user just don't have access
+      this.artifact = response.error['artifact'];
       if (response.status === forbidden) 
       {
         this.userForbidden = true
@@ -184,6 +185,7 @@ export class ArtifactComponent implements OnInit {
         this.getAllDocuments(this.artID);
         this.snackBar.open(`Document '${document.version}' was deleted, successfully`,'Okay')
     });
+    // *ngIf="artifact || !this.userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)"
   }
 
   openDocumentSearchDialog()

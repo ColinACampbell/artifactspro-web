@@ -40,13 +40,13 @@ export class ArtifactAuthorizationComponent implements OnInit {
         this.artifactManager.addAuthorizedArtifact({
           artifactID : this.artifactID
         })
-        this.snackBar.open("You Now Have Access To The Documents of This Artfact","Okay")
+        this.snackBar.open("You Now Have Access This Artifact","Okay")
       }
     },(error : any)=>{
       const status = error.status
       const unauthorizedStatus = 401
       if (status === unauthorizedStatus)
-        this.snackBar.open("You Don't Have Access To This Document","Okay")
+        this.snackBar.open("The Passward Enter Is Incorrect","Okay")
       else  
         this.snackBar.open("It Looks Like Something Went Wrong","Okay")
     })

@@ -27,12 +27,9 @@ export class ArtifactManagerService {
   }
 
   public hasAccessFromAuth(artifactID : number) : Boolean
-  {
-    let found = false
-    this.authorizedArtifacts.forEach((authArt : AuthorizedArtifacts)=>{
-      if (artifactID === authArt.artifactID)
-        found = true
+  {   
+    return this.authorizedArtifacts.some((authArt : AuthorizedArtifacts)=>{
+      return artifactID === authArt.artifactID  
     })
-    return found
   }
 }
