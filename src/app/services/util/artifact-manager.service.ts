@@ -13,6 +13,7 @@ export class ArtifactManagerService {
 
   private currentAuthorizedArtifact : number;
   public authorizedArtifacts : AuthorizedArtifacts[] = [];
+  private userForbidden : boolean = false;
 
   constructor() { }
 
@@ -28,8 +29,14 @@ export class ArtifactManagerService {
 
   public hasAccessFromAuth(artifactID : number) : Boolean
   {   
-    return this.authorizedArtifacts.some((authArt : AuthorizedArtifacts)=>{
+    const hasAccess = this.authorizedArtifacts.some((authArt : AuthorizedArtifacts)=>{
       return artifactID === authArt.artifactID  
     })
+    return hasAccess
   }
+
+  get isUserForbidden() {
+    return this.userForbidden
+  }
+  
 }

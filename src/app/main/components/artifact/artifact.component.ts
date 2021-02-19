@@ -14,6 +14,8 @@ import { DocumentSearchComponent } from './document-search/document-search.compo
 import { ArtifactPermission } from 'src/app/models/artifactPermissionsts';
 import { ShowArtifactInfoDialogComponent } from '../../dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component';
 import WebViewer from "@pdftron/webviewer"
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-artifact',
@@ -38,7 +40,10 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
   public artifactPermission: string;
   public isPreviewShown: boolean = false;
-   
+  public canUploadArtifact: boolean = false;
+
+  public user: User;
+
 
   constructor(
     private artServ: ArtifactsService,
@@ -50,9 +55,10 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
     private artifactInfoDialog: MatDialog,
     private _location: Location,
     private snackBar: MatSnackBar,
-    public artifactManager: ArtifactManagerService
+    public artifactManager: ArtifactManagerService,
+    private userService: UserService
   ) { }
-  
+
 
   ngOnInit() {
 
@@ -73,12 +79,12 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
   }
 
-  @ViewChild('viewer',{static:false}) public viewerRef : ElementRef;
+  @ViewChild('viewer', { static: false }) public viewerRef: ElementRef;
   ngAfterViewInit(): void {
     WebViewer({
-      path : "./../../../../assets/lib/pdftron",
+      path: "./../../../../assets/lib/pdftron",
       initialDoc: "http://localhost:3000/api/docs/preview/1/2.pdf"
-    },this.viewerRef.nativeElement)
+    }, this.viewerRef.nativeElement)
   }
 
   openArtifactInfoDialog() {
@@ -104,9 +110,22 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
           else
             this.artifactPermission = "Admin" // if it is null it implies the user owns it
 
-          
           this.artifact = artifact;
 
+          this.userService.getUserInfo()
+            .subscribe((user: User) => {
+              this.user = user;
+              // this.artifactPermission !== 'Admin' || this.artifact.user_id !== this.user.user_id
+              
+              if (this.artifactPermission === 'Admin')
+                this.canUploadArtifact = true;
+              else if (this.artifactPermission == 'View and Upload')
+                this.canUploadArtifact = true;
+              else 
+                this.canUploadArtifact = false;
+            })
+
+            
         })
 
     }, (response: any) => {
@@ -117,6 +136,11 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
         this.userForbidden = true
         this.responseMessage = message
       }
+
+      this.userService.getUserInfo()
+        .subscribe((user: User) => {
+          this.user = user;
+        })
     })
   }
 

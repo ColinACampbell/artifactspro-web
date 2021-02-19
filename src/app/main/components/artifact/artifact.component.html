@@ -1,5 +1,5 @@
 <app-main-header></app-main-header>
-<mat-toolbar color='primary' *ngIf="artifact">
+<mat-toolbar color='primary' *ngIf="artifact && this.user">
   <mat-toolbar-row>
     <span> <button mat-button (click)='goBack()'>
         <mat-icon>keyboard_arrow_left</mat-icon>
@@ -12,7 +12,7 @@
     </span>
     <div class="util-bar" >
       <button 
-        *ngIf="artifactPermission == 'View and Upload' || artifactPermission == 'Admin'"
+        [disabled]="!this.canUploadArtifact"
         matTooltip="Upload Document Version" mat-flat-button color='primary' (click)='openUploadDialog()'>
         <mat-icon> cloud_upload </mat-icon>
       </button>
@@ -22,7 +22,8 @@
       <button matTooltip='Artifact Info' mat-button (click)="openArtifactInfoDialog()">
         <mat-icon>info</mat-icon>
       </button>
-      <button matTooltip='Delete Artifact' mat-raised-button color='warn' (click)='openDeleteDialogue()'>
+      <button matTooltip='Delete Artifact' mat-raised-button color='warn' (click)='openDeleteDialogue()'
+        [disabled]="this.artifact.user_id !== this.user.user_id">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
@@ -126,7 +127,9 @@
         <div class="btn-group">
           <button mat-flat-button color="primary" class="margin-horizontal"> Edit </button>
           <a mat-flat-button color="primary" href="{{previewlink}}" download class="margin-horizontal"> Download </a>
-          <button mat-flat-button color="warn" (click)='deleteDocument(selectedDocument)' class="margin-horizontal">
+          <button mat-flat-button color="warn" 
+          [disabled]="this.artifact.user_id !== this.user.user_id"
+          (click)='deleteDocument(selectedDocument)' class="margin-horizontal">
             Delete </button>
         </div>
       </div>
@@ -141,5 +144,5 @@
 </div>
 
 -->
-<app-artifact-authorization *ngIf="this.artifactManager.hasAccessFromAuth(this.artID)" [responseMessage]="this.responseMessage"
+<app-artifact-authorization *ngIf="!this.artifactManager.hasAccessFromAuth(this.artID) && this.userForbidden" [responseMessage]="this.responseMessage"
   [workspaceRef]="this.workspaceReference" [artifactID]="this.artID"></app-artifact-authorization>
