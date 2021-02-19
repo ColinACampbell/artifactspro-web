@@ -4,6 +4,8 @@ export interface ADocument {
     version:String;
     comment:String;
     user_id:number;
+    user_email: string;
+    user_full_name: string;
     data:String | ArrayBuffer;
     date_uploaded:String;
     data_modified:String;

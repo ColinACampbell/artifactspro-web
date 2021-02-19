@@ -93,6 +93,7 @@ import { ConfirmDeleteWorkspaceComponent } from './main/dialogs/workspace/worksp
 import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component';
 import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component'
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { UserInfoComponent } from './main/components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
     ConfirmDeleteWorkspaceComponent,
     DocumentSearchComponent,
     ShowArtifactInfoDialogComponent,
+    UserInfoComponent,
 
   ],
   imports: [

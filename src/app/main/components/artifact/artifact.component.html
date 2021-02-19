@@ -59,6 +59,15 @@
           <h1> {{ artifact.name }} / {{ selectedDocument.version }}</h1>
           <h4> {{ selectedDocument.date_created }}</h4>
         </div>
+        <div style="display: flex; margin: 20px;">
+          <div>
+            <img src="./../../../../assets/profile-placeholder.png" width="70" style="border-radius: 50%;"/>
+          </div>
+          <div style="display: flex; flex-direction: column;justify-content: center; padding:10px">
+            <span> {{ selectedDocument.user_full_name }}</span>
+            <span> {{ selectedDocument.user_email }}</span>
+          </div>
+        </div>
         <div>
           <div>
             <b>
@@ -80,7 +89,7 @@
           <div>
           </div>
         </div>
-
+       
         <mat-form-field class="fields" appearance="outline" style="width: 100%;">
           <mat-label> What Changed/Comments </mat-label>
           <textarea style="height: 250px;min-height: 250px;max-height: 250px;" matInput
