@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Artifact } from 'src/app/models/artifacts';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,13 +13,14 @@ import { ArtifactManagerService } from 'src/app/services/util/artifact-manager.s
 import { DocumentSearchComponent } from './document-search/document-search.component';
 import { ArtifactPermission } from 'src/app/models/artifactPermissionsts';
 import { ShowArtifactInfoDialogComponent } from '../../dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component';
+import WebViewer from "@pdftron/webviewer"
 
 @Component({
   selector: 'app-artifact',
   templateUrl: './artifact.component.html',
   styleUrls: ['./artifact.component.css']
 })
-export class ArtifactComponent implements OnInit {
+export class ArtifactComponent implements OnInit, AfterViewInit {
 
   public artifact: Artifact;
   public selectedDocument: ADocument = null;
@@ -37,8 +38,7 @@ export class ArtifactComponent implements OnInit {
 
   public artifactPermission: string;
   public isPreviewShown: boolean = false;
-
-
+   
 
   constructor(
     private artServ: ArtifactsService,
@@ -52,6 +52,7 @@ export class ArtifactComponent implements OnInit {
     private snackBar: MatSnackBar,
     public artifactManager: ArtifactManagerService
   ) { }
+  
 
   ngOnInit() {
 
@@ -70,6 +71,14 @@ export class ArtifactComponent implements OnInit {
         this.documents = documents;
       })
 
+  }
+
+  @ViewChild('viewer',{static:false}) public viewerRef : ElementRef;
+  ngAfterViewInit(): void {
+    WebViewer({
+      path : "./../../../../assets/lib/pdftron",
+      initialDoc: "http://localhost:3000/api/docs/preview/1/2.pdf"
+    },this.viewerRef.nativeElement)
   }
 
   openArtifactInfoDialog() {
@@ -95,9 +104,7 @@ export class ArtifactComponent implements OnInit {
           else
             this.artifactPermission = "Admin" // if it is null it implies the user owns it
 
-          this.artifactManager.addAuthorizedArtifact({
-            artifactID: artifact.art_id
-          })
+          
           this.artifact = artifact;
 
         })

@@ -86,9 +86,7 @@
               style="width:100%;height:50vh;">
             </ngx-doc-viewer>
 
-            <div #viewer class="webviewer">
-
-            </div>
+            
             <!--<ngx-extended-pdf-viewer [src]="previewlink" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>-->
             <img class='margin-vertical' *ngIf='isImage' src="{{previewlink}}" alt='image here' width="100%" />
           </div>
@@ -136,6 +134,12 @@
 
   </div>
 </div>
+<!---
 
-<app-artifact-authorization *ngIf="!this.artifactManager.hasAccessFromAuth(this.artID)" [responseMessage]="this.responseMessage"
+  <div #viewer class="webviewer">
+
+</div>
+
+-->
+<app-artifact-authorization *ngIf="this.artifactManager.hasAccessFromAuth(this.artID)" [responseMessage]="this.responseMessage"
   [workspaceRef]="this.workspaceReference" [artifactID]="this.artID"></app-artifact-authorization>
