@@ -8,6 +8,7 @@ export class Environment {
         const urlLocal = isNextworked ? "http://192.168.100.192:3000/" : 'http://localhost:3000/' 
         // https://artifacts-pro.uc.r.appspot.com
         this.url = this.prod ? "https://artifactspro.herokuapp.com/" : urlLocal; 
+        //this.url = this.prod ? "https://artifacts-pro.uc.r.appspot.com/" : urlLocal; 
     }
 
     public baseURL() : String

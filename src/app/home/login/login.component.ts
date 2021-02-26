@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
+import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private userServ:UserService,
-    private router:Router
+    private router:Router,
+    private jwtService: JWTService
     ) { }
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class LoginComponent implements OnInit {
 
       if (status === 200)
       {
+        const jwtToken = response.body['token']
+        this.jwtService.setToken(jwtToken)
         this.router.navigate(['/app'])
       }
       else if (status === 401){

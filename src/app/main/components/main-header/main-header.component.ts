@@ -10,6 +10,7 @@ import { Input } from '@angular/core';
 import { User } from "./../../../models/user"
 import { MatDialog } from '@angular/material/dialog';
 import { UserInfoComponent } from '../user-info/user-info.component';
+import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
   selector: 'app-main-header',
@@ -30,7 +31,8 @@ export class MainHeaderComponent implements OnInit {
     private userServ:UserService,
     private navigationService : NavigationService,
     private router: Router,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private jwtService : JWTService,
     ) { }
 
   ngOnInit() {
@@ -54,11 +56,8 @@ export class MainHeaderComponent implements OnInit {
   
   public logOut()
   {
-    this.userServ.signOut()
-    .subscribe((response : HttpResponse<Object>)=>{
-      if (response.status == 200)
-        this.router.navigate(['/login'])
-    })
+    this.jwtService.setToken('')
+    this.router.navigate(['/login'])
   }
 
   public openUserInfoComponent()

@@ -8,6 +8,7 @@ import { BillingService } from 'src/app/services/billing.service';
 import PricePackage from 'src/app/models/pricePackage';
 import { MatCarousel, MatCarouselComponent } from '@ngbmodule/material-carousel';
 import { MatStepper } from '@angular/material/stepper';
+import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
   selector: 'app-signup-action',
@@ -21,7 +22,8 @@ export class SignupActionComponent implements OnInit {
     private snackBar: MatSnackBar, 
     private router: Router, 
     private _formBuilder: FormBuilder,
-    private billingService : BillingService
+    private billingService : BillingService,
+    private jwtService : JWTService
     ) {
 
   }
@@ -72,7 +74,8 @@ export class SignupActionComponent implements OnInit {
         let status = response.status;
 
         if (status === 201) {
-
+          const jwtToken = response.body['token']
+          this.jwtService.setToken(jwtToken)
           let snackBarRef = this.snackBar.open("Creation Success", "Next");
           snackBarRef.onAction().subscribe(() => {
             this.router.navigate(['/app'])

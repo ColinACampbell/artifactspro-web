@@ -37,7 +37,7 @@ import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './home/header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { SignupActionComponent } from './home/signup/signup-action/signup-action.component';
 import { MainComponent } from './main/main/main.component';
@@ -94,6 +94,8 @@ import { DocumentSearchComponent } from './main/components/artifact/document-sea
 import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component'
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { UserInfoComponent } from './main/components/user-info/user-info.component';
+
+import { JWTInterceptor } from "./interceptors/jwt.interceptor"
 
 @NgModule({
   declarations: [
@@ -216,7 +218,8 @@ import { UserInfoComponent } from './main/components/user-info/user-info.compone
     ChatService,
     WorkspaceManagerService,
     NavigationService,
-    ArtifactManagerService
+    ArtifactManagerService,
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
