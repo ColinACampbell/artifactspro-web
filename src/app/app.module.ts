@@ -96,6 +96,7 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { UserInfoComponent } from './main/components/user-info/user-info.component';
 
 import { JWTInterceptor } from "./interceptors/jwt.interceptor"
+import { EmailService } from './services/email.service';
 
 @NgModule({
   declarations: [
@@ -219,6 +220,7 @@ import { JWTInterceptor } from "./interceptors/jwt.interceptor"
     WorkspaceManagerService,
     NavigationService,
     ArtifactManagerService,
+    EmailService,
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
