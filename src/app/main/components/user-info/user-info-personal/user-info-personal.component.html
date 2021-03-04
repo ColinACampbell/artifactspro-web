@@ -1,0 +1,59 @@
+<div *ngIf="!this.user"
+    style="display: flex;justify-content: center;align-items: center;margin-top: 100px;">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="this.user">
+   
+    <div style="margin-top: 20px;" style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
+        <div style="margin-top: 10px;">
+            <img src="./../../../../../assets/profile-placeholder.png" width="100" style="border-radius:50%;"/>
+        </div>
+        <p>
+            <mat-form-field appearance="outline"
+                style="width: 350px;">
+              <mat-label>My First Name</mat-label>
+              <input matInput placeholder="My First Name"
+                [(ngModel)]="this.user.first_name"
+                [disabled]="!isEditable">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline"
+                style="width: 350px;">
+              <mat-label>My Last Name</mat-label>
+              <input matInput placeholder="My Last Name"
+                [(ngModel)]="this.user.last_name"
+                [disabled]="!isEditable">
+            </mat-form-field>
+          </p>
+        
+          <p>
+            <mat-form-field appearance="outline"
+                style="width: 350px;">
+              <mat-label>My Email Address</mat-label>
+              <input matInput placeholder="My Email Address"
+                [(ngModel)]="this.user.email"
+                [disabled]="!isEditable">
+            </mat-form-field>
+          </p>
+          
+         <div>
+           <button color="primary"
+              *ngIf="isEditable" 
+              mat-raised-button
+              (click)="saveChanges()">
+              Save Information
+           </button>
+            <button color="primary" mat-raised-button
+                *ngIf="!isEditable"
+                (click)="makeFieldsEditable()">  
+                Edit Information
+            </button>
+            <button mat-button
+                *ngIf="isEditable"
+                (click)="cancelEdit()">
+                Cancel
+            </button>
+         </div>
+    </div>
+</div>
