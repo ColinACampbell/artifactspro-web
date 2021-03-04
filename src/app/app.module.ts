@@ -97,6 +97,7 @@ import { UserInfoComponent } from './main/components/user-info/user-info.compone
 
 import { JWTInterceptor } from "./interceptors/jwt.interceptor"
 import { EmailService } from './services/email.service';
+import { UserInfoPersonalComponent } from './main/components/user-info/user-info-personal/user-info-personal.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +146,7 @@ import { EmailService } from './services/email.service';
     DocumentSearchComponent,
     ShowArtifactInfoDialogComponent,
     UserInfoComponent,
+    UserInfoPersonalComponent,
 
   ],
   imports: [

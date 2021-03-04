@@ -64,7 +64,7 @@ export class MainHeaderComponent implements OnInit {
   {
     this.dialog.open(UserInfoComponent,{
       width : "700px",
-      height: "500px"
+      height: "550px"
     })
   }
 
