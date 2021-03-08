@@ -4,6 +4,7 @@ import { OrganizationService } from 'src/app/services/organization.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpResponse } from '@angular/common/http';
+import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
   selector: 'app-team-invite',
@@ -17,7 +18,8 @@ export class TeamInviteComponent implements OnInit {
     private orgServ : OrganizationService,
     private userServ : UserService,
     private snackBar : MatSnackBar,
-    private router : Router
+    private router : Router,
+    private jwtService : JWTService
   ) { }
 
   public accessCode : String;
@@ -42,6 +44,8 @@ export class TeamInviteComponent implements OnInit {
       let status = response.status
       if (status === 201)
       {
+        const token = response.body['token']
+        this.jwtService.setToken(token);
         this.orgServ.addUserToOganization(this.accessCode)
         .subscribe((response : HttpResponse<Object>)=>{
 
@@ -49,10 +53,12 @@ export class TeamInviteComponent implements OnInit {
           
           if (status === 201)
           {
+            const token2 = response.body['token']
+            this.jwtService.setToken(token2);
             let snackBarRef = this.snackBar.open('You joined successfully. Please check your email to verify your account','Ok');
             snackBarRef.onAction()
             .subscribe(()=>{
-              this.router.navigate(['/login'])
+              this.router.navigate(['/app'])
             })
   
           }

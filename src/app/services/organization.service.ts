@@ -60,7 +60,7 @@ export class OrganizationService {
 
   public addUserToOganization(accessCode:String) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/org//invite-from-code/${accessCode}`,
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/org/invite-from-code/${accessCode}`,
     {},{
       withCredentials : true,
       observe : "response"

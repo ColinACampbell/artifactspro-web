@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpResponse } from '@angular/common/http';
+import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
   selector: 'app-verify-user',
@@ -15,7 +16,8 @@ export class VerifyUserComponent implements OnInit {
     private router:Router,
     private route:ActivatedRoute,
     private userServ:UserService,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    private jwtService : JWTService
   ) { }
 
   private verificationCode:String;
@@ -41,7 +43,10 @@ export class VerifyUserComponent implements OnInit {
         const snackBarRef = this.snackBar.open('Verification Successful','Login');
         snackBarRef.onAction()
         .subscribe((_)=>{
-          this.router.navigate(['/login']);
+          if (!this.jwtService.jwtToken)
+            this.router.navigate(['/login']);
+          else 
+            this.router.navigate(['/app']);
         })
       }
     })
