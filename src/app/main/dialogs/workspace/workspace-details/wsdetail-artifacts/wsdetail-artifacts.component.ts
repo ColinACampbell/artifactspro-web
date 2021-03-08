@@ -25,7 +25,7 @@ export class WsdetailArtifactsComponent implements OnInit {
   public selectedArtifact : Artifact = null
   public accessUsers : WorkspaceArtifactAccessUser[]
   public displayedColumns: string[] = ['Email', 'Permissions'];
-  public workspaceArtifact : WorkspaceArtifact = null
+  public workspaceArtifact : WorkspaceArtifact = null;
 
   constructor(
     private workspaceService : WorkSpaceService,

@@ -54,7 +54,7 @@
                                 <mat-chip color="accent"> {{ this.workspaceArtifact.is_secured === 1 ? "Only to who have access" : "None, Everyone has access" }} </mat-chip>
                             </mat-chip-list>
                             <div style="margin-top: 15px;">
-                                <mat-slide-toggle [checked]="this.workspaceArtifact.is_secured === 1"
+                                <mat-slide-toggle [checked]="this.workspaceArtifact.is_secured === 1" [disabled]="this.workspaceParticipantAsUser.role !='admin'"
                                     (toggleChange)="togglePasswordProtection()"> Password Protected </mat-slide-toggle>
                             </div>
                             
