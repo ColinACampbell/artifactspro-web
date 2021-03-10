@@ -74,6 +74,17 @@ export class UserService {
     })
   }
 
+  public updateBasicUserInfo(newFirstName:string, newLastName:string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+'api/user/update-base-info',{
+      newFirstName,
+      newLastName
+    },{
+      observe : "response"
+    })
+  }
+
+
   public signOut() : Observable<HttpResponse<Object>>{
     return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + 'api/user/logout', {}, {
       withCredentials: true,

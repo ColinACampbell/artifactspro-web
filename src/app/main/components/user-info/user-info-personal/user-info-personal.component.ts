@@ -1,4 +1,6 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,7 +16,8 @@ export class UserInfoPersonalComponent implements OnInit {
   public isEditable: boolean;
 
   constructor(
-    private userService : UserService
+    private userService : UserService,
+    private snackBar : MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +41,16 @@ export class UserInfoPersonalComponent implements OnInit {
   {
     // Work on send point to updating user name
     this.isEditable = !this.isEditable;
+    console.log(this.user)
+    const firstName = this.user.first_name;
+    const lastName = this.user.last_name;
+    this.userService.updateBasicUserInfo(firstName,lastName)
+    .subscribe((response:HttpResponse<Object>)=>{
+      if (response.status === 200)
+      {
+        this.snackBar.open('Information Updated Successfully. Logout and login for changes to take effect','Okay')
+      }
+    })
   }
 
   // work on endpoint to update user email
