@@ -18,7 +18,8 @@ export class MessageCardComponent implements OnInit {
   public timeLapse : String;
 
   @Input('workspacePost') workspacePost : WorkSpacePost;
-  @Input('workspaceName') workspaceName : string
+  @Input('workspaceName') workspaceName : string;
+  @Input('hideControls') hideControls : boolean = false
 
   public availableColors : string[] = ['red']
 

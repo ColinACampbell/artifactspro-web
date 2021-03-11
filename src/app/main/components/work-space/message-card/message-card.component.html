@@ -24,7 +24,7 @@
             </mat-chip-list>
         </div>
     </div>
-    <div style="width: 100%; display: flex; justify-content: flex-start;">
+    <div style="width: 100%; display: flex; justify-content: flex-start;" *ngIf="!hideControls">
         <button mat-button color="primary" (click)="goToMessageThread()">
             <mat-icon> preview </mat-icon>
             <span> View Message Thread </span>
