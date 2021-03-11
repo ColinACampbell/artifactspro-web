@@ -1,12 +1,12 @@
 <div class="form">
 
     <div style="display: flex; justify-content: center;">
-        <h2> Add Thread </h2>
+        <h2> Reply </h2>
     </div>
 
-    <mat-form-field class="fields">
+    <mat-form-field class="fields" [appearance]="'outline'">
         <mat-label> Enter Message </mat-label>
-        <textarea matInput placeholder="What do you want to say ?" value="" #content maxlength="150"> </textarea>
+        <textarea style="height: 200px;max-height: 200px; min-width: 200px;" matInput placeholder="What do you want to say ?" value="" #content maxlength="150"> </textarea>
     </mat-form-field>
 
     <div>

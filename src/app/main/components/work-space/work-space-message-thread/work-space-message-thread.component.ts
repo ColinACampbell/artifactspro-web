@@ -74,7 +74,7 @@ export class WorkSpaceMessageThreadComponent implements OnInit {
     this.createReplyDialog.open(CreateWorkspaceThreadDialogComponent,
       {
         width : "400px",
-        height : "280px",
+        height : "410px",
         data : this.workspacePost
       })
   }
