@@ -74,7 +74,7 @@
         <div>
           <div>
             <b>
-              <mat-checkbox [(ngModel)]="isPreviewShown" style="margin-bottom: 30px;"> Show Preview </mat-checkbox>
+              <mat-checkbox [(ngModel)]="isPreviewShown" style="margin-bottom: 30px;" (change)="onPreviewChanged(selectedDocument)"> Show Preview </mat-checkbox>
             </b>
           </div>
           <!---
@@ -83,7 +83,9 @@
           </div>
           -->
           <div *ngIf="isPreviewShown">
-            <ngx-doc-viewer *ngIf='!isImage' class='margin-vertical' [url]="previewlink" viewer="google"
+
+            <mat-spinner style="margin: 30px;" *ngIf="!previewlink && isPreviewShown" [diameter]="90"></mat-spinner>
+            <ngx-doc-viewer *ngIf='previewlink' class='margin-vertical' [url]="previewlink" viewer="google"
               style="width:100%;height:50vh;">
             </ngx-doc-viewer>
 

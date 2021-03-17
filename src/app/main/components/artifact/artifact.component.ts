@@ -34,7 +34,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
   public userForbidden: boolean = false;
   public responseMessage: string = undefined;
 
-  public previewlink: String; // change this later
+  public previewlink: string; // change this later
 
   public workspaceReference: string = ''
   public artID: number;
@@ -146,6 +146,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
   }
 
   public selectDocument(document: ADocument) {
+    this.previewlink = null
     this.docSelected = true;
     this.selectedDocument = document;
     let documentType = this.selectedDocument.type;
@@ -160,13 +161,6 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
     else
       this.isImage = false;
 
-    this.docServ.providePreviewLink(this.artID, docID)
-      .subscribe((response) => {
-        this.previewlink = response['download'];
-
-        //let officeView = `https://view.officeapps.live.com/op/embed.aspx?src=${this.previewlink}`
-        //this.sanitizer.bypassSecurityTrustResourceUrl(officeView)
-      })
   }
 
   private assessFileSize(fileSize: number): string {
@@ -223,6 +217,24 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
     })
   }
 
+
+  public onPreviewChanged(document:ADocument)
+  {
+    if (this.isPreviewShown)
+    {
+      this.docServ.downloadDocument(document.doc_id)
+      .subscribe((response)=>{
+        this.previewlink = this.getLocalURLLink(response,document.type)
+        console.log(this.previewlink)
+      })
+
+    } else
+    {
+      this.previewlink = null
+    }
+
+  }
+
   private downloadFileAsPWA(data: any, type: string) {
     let blob = new Blob([data], { type: type});
     let url = window.URL.createObjectURL(blob);
@@ -230,7 +242,13 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
     if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
         alert( 'Please disable your Pop-up blocker and try again.');
     }
-}
+  }
+
+  private getLocalURLLink(data: any, type: string): string{
+    let blob = new Blob([data], { type: type});
+    let url = window.URL.createObjectURL(blob);
+    return url;
+  }
 
 
   openDocumentSearchDialog() {
@@ -241,6 +259,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
         }
       })
   }
+
 
   public goBack() {
     this._location.back();
