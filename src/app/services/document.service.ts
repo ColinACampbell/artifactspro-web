@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpEventType, HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpEventType, HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ADocument } from '../models/adocument';
 import { Environment } from '../models/environment';
@@ -55,6 +55,13 @@ export class DocumentService {
     });
 
     return this.httpClient.request(request);
+  }
+
+  public downloadDocument(docID: number) : Observable<ArrayBuffer>
+  {
+    return this.httpClient.get(this.environment.baseURL()+`api/docs/download?id=${docID}`,{
+      responseType:"arraybuffer"
+    })
   }
 
   public providePreviewLink(artID:number,docID:number)

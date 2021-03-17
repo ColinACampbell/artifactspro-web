@@ -126,7 +126,7 @@
         <br />
         <div class="btn-group">
           <button mat-flat-button color="primary" class="margin-horizontal"> Edit </button>
-          <a mat-flat-button color="primary" href="{{previewlink}}" download class="margin-horizontal"> Download </a>
+          <button (click)="downloadDocument(selectedDocument)" mat-flat-button color="primary" download class="margin-horizontal"> Download </button>
           <button mat-flat-button color="warn" 
           [disabled]="this.artifact.user_id !== this.user.user_id"
           (click)='deleteDocument(selectedDocument)' class="margin-horizontal">

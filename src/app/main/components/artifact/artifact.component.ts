@@ -16,6 +16,7 @@ import { ShowArtifactInfoDialogComponent } from '../../dialogs/artifacts/show-ar
 import WebViewer from "@pdftron/webviewer"
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-artifact',
@@ -212,6 +213,25 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
       });
     // *ngIf="artifact || !this.userForbidden || this.artifactManager.hasAccessFromAuth(this.artID)"
   }
+
+
+  public downloadDocument(document: ADocument)
+  {
+    this.docServ.downloadDocument(document.doc_id)
+    .subscribe((response)=>{
+      this.downloadFileAsPWA(response,document.type)
+    })
+  }
+
+  private downloadFileAsPWA(data: any, type: string) {
+    let blob = new Blob([data], { type: type});
+    let url = window.URL.createObjectURL(blob);
+    let pwa = window.open(url);
+    if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+        alert( 'Please disable your Pop-up blocker and try again.');
+    }
+}
+
 
   openDocumentSearchDialog() {
     this.searchDialog.open(DocumentSearchComponent,
