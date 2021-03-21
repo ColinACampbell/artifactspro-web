@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http"
+import { HttpClient, HttpResponse } from "@angular/common/http"
 import { Environment } from '../models/environment';
 import { Observable } from 'rxjs';
 import PricePackage from '../models/pricePackage';
@@ -17,6 +17,11 @@ export class BillingService {
   getPricePackages() : Observable<PricePackage[]>
   {
     return this.httpClient.get<PricePackage[]>(this.environment.baseURL()+"api/billing/get-all-plans")
+  }
+
+  verifyOrgCapacity(orgCode : string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.get<HttpResponse<Object>>(this.environment.baseURL()+`api/billing/verify/capacity?code=${orgCode}`)
   }
 
 }

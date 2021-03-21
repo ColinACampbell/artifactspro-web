@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpResponse } from '@angular/common/http';
 import { JWTService } from 'src/app/services/util/jwt.service';
+import { BillingService } from 'src/app/services/billing.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   constructor(private userServ:UserService,
     private router : Router,
     private snackBar:MatSnackBar,
-    private jwtService : JWTService
+    private jwtService : JWTService,
     ) { }
 
   private password:String;
