@@ -21,7 +21,16 @@ export class BillingService {
 
   verifyOrgCapacity(orgCode : string) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.get<HttpResponse<Object>>(this.environment.baseURL()+`api/billing/verify/capacity?code=${orgCode}`)
+    return this.httpClient.get<HttpResponse<Object>>(this.environment.baseURL()+`api/billing/verify/capacity?code=${orgCode}`,{
+      observe: "response"
+    })
+  }
+
+  verifyWorkspaceCapacity(orgID:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.get<HttpResponse<Object>>(this.environment.baseURL()+`api/billing/verify/workspaces?orgID=${orgID}`,{
+      observe: "response"
+    })
   }
 
 }
