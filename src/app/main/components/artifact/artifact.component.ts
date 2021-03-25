@@ -213,7 +213,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
   {
     this.docServ.downloadDocument(document.doc_id)
     .subscribe((response)=>{
-      this.downloadFileAsPWA(response,document.type)
+      this.downloadFileAsPWA(response,`${this.artifact.name}-${document.version}`,document.type)
     })
   }
 
@@ -235,13 +235,25 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
   }
 
-  private downloadFileAsPWA(data: any, type: string) {
+  private downloadFileAsPWA(data: any,fileName: String,type: string) {
     let blob = new Blob([data], { type: type});
     let url = window.URL.createObjectURL(blob);
-    let pwa = window.open(url);
-    if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-        alert( 'Please disable your Pop-up blocker and try again.');
-    }
+    //let pwa = window.open(url);
+
+    const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+
+    a.href = url;
+    console.log(fileName)
+    a.download = `${fileName}`;
+    document.body.appendChild(a);
+    a.click();        
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    //if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+    //    alert( 'Please disable your Pop-up blocker and try again.');
+    //}
   }
 
   private getLocalURLLink(data: any, type: string): string{
