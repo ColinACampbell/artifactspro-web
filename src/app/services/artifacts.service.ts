@@ -80,11 +80,12 @@ export class ArtifactsService {
     });
   }
 
-  deleteArtifact(artID:number)
+  deleteArtifact(artID:number) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.delete(this.environment.baseURL()+`api/art/delete/${artID}`,
+    return this.httpClient.delete<HttpResponse<Object>>(this.environment.baseURL()+`api/art/delete/${artID}`,
     {
-      withCredentials : true
+      withCredentials : true,
+      observe:"response"
     });
   } 
 

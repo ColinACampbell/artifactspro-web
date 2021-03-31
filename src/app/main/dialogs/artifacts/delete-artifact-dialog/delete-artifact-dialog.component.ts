@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef,  } from '@angular/material/dialog';
 import { MatSnackBar } from "@angular/material/snack-bar"
 import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-artifact-dialog',
@@ -39,9 +40,9 @@ export class DeleteArtifactDialogComponent implements OnInit {
   public deleteArtifact()
   {
     this.artServ.deleteArtifact(this.artID)
-    .subscribe((observable)=>{
-      const message = observable['message'];
-      if (message === 'done')
+    .subscribe((response : HttpResponse<Object>)=>{
+      const status = response.status
+      if (status === 200)
       {
         const snackBarRef = this.snackBar.open(`The Artifact '${this.artifactName}' was deleted`,'Okay');
         snackBarRef.afterDismissed()
