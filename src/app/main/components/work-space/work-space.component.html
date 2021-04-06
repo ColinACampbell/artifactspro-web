@@ -7,7 +7,7 @@
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <div style="margin-bottom: 50px;" *ngIf="this.userAsMember">
-            <button *ngIf="this.userAsMember.role === 'owner'" mat-raised-button color="primary" (click)="openCreateWorkSpaceDialog()"> Create Workspace </button>
+            <button *ngIf="this.userAsMember.role === 'owner' || this.userAsMember.role === 'admin'" mat-raised-button color="primary" (click)="openCreateWorkSpaceDialog()"> Create Workspace </button>
         </div>
     </div>
 
