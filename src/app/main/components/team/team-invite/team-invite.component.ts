@@ -53,8 +53,8 @@ export class TeamInviteComponent implements OnInit {
                 .subscribe((response: HttpResponse<Object>) => {
 
                   let status = response.status;
-
-                  if (status === 201) {
+                  const success = 201
+                  if (status === success) {
                     const token2 = response.body['token']
                     this.jwtService.setToken(token2);
                     let snackBarRef = this.snackBar.open('You joined successfully. Please check your email to verify your account', 'Ok');
@@ -66,6 +66,12 @@ export class TeamInviteComponent implements OnInit {
                   }
                 })
             }
+          },(error)=>{
+            this.loginInProcess = false
+            const status = error['status']
+            const conflict = 409;
+            if (status === conflict)
+              this.snackBar.open("An account for this email already exists","Okay")
           })
 
       },(error)=>{
