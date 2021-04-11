@@ -7,7 +7,7 @@ import { SignupActionComponent } from './home/signup/signup-action/signup-action
 import { MainComponent } from './main/main/main.component';
 import { ArtifactComponent } from './main/components/artifact/artifact.component';
 import { NoaccessComponent } from './home/noaccess/noaccess.component';
-import { VerifyUserComponent } from './main/components/verify-user/verify-user.component'
+import { VerifyUserComponent } from './main/components/user/verify-user/verify-user.component'
 import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
 import { ViewWorkSpaceComponent } from './main/components/work-space/view-work-space/view-work-space.component';
 import { WorkSpaceMessageThreadComponent } from './main/components/work-space/work-space-message-thread/work-space-message-thread.component';

@@ -52,7 +52,7 @@ import { NoaccessComponent } from './home/noaccess/noaccess.component';
 import { TeamComponent } from './main/components/team/team.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer'
 import { MemberService } from './services/member.service';
-import { VerifyUserComponent } from './main/components/verify-user/verify-user.component';
+import { VerifyUserComponent } from './main/components/user/verify-user/verify-user.component';
 import { TeamInviteComponent } from './main/components/team/team-invite/team-invite.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
@@ -93,12 +93,13 @@ import { ConfirmDeleteWorkspaceComponent } from './main/dialogs/workspace/worksp
 import { DocumentSearchComponent } from './main/components/artifact/document-search/document-search.component';
 import { ShowArtifactInfoDialogComponent } from './main/dialogs/artifacts/show-artifact-info-dialog/show-artifact-info-dialog.component'
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
-import { UserInfoComponent } from './main/components/user-info/user-info.component';
+import { UserInfoComponent } from './main/components/user/user-info/user-info.component';
 
 import { JWTInterceptor } from "./interceptors/jwt.interceptor"
 import { EmailService } from './services/email.service';
-import { UserInfoPersonalComponent } from './main/components/user-info/user-info-personal/user-info-personal.component';
-import { UserInfoOrganizationComponent } from './main/components/user-info/user-info-organization/user-info-organization.component';
+import { UserInfoPersonalComponent } from './main/components/user/user-info/user-info-personal/user-info-personal.component';
+import { UserInfoOrganizationComponent } from './main/components/user/user-info/user-info-organization/user-info-organization.component';
+import { RequestForgetPasswordComponent } from './main/components/user/user-forget-password/request-forget-password/request-forget-password.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import { UserInfoOrganizationComponent } from './main/components/user-info/user-
     UserInfoComponent,
     UserInfoPersonalComponent,
     UserInfoOrganizationComponent,
+    RequestForgetPasswordComponent,
 
   ],
   imports: [
