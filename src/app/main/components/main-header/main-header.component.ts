@@ -9,7 +9,7 @@ import { NavigationService } from 'src/app/services/util/navigation.service';
 import { Input } from '@angular/core';
 import { User } from "./../../../models/user"
 import { MatDialog } from '@angular/material/dialog';
-import { UserInfoComponent } from '../user-info/user-info.component';
+import { UserInfoComponent } from '../user/user-info/user-info.component';
 import { JWTService } from 'src/app/services/util/jwt.service';
 
 @Component({
