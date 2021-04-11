@@ -14,13 +14,17 @@ import { WorkSpaceMessageThreadComponent } from './main/components/work-space/wo
 import { WorkSpaceComponent } from './main/components/work-space/work-space.component';
 import { TeamComponent } from './main/components/team/team.component';
 import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
+import { RequestForgetPasswordComponent } from './main/components/user/user-forget-password/request-forget-password/request-forget-password.component';
+import { RecoverPasswordComponent } from './main/components/user/user-forget-password/recover-password/recover-password.component';
 
 
 const routes: Routes = [
-  { path : "", component: LandingPageComponent },
-  { path : "signup", component : SignupComponent },
+  { path : '', component: LandingPageComponent },
+  { path : 'signup', component : SignupComponent },
   { path : 'login', component : LoginComponent },
   { path : 'signup/action', component : SignupActionComponent },
+  { path:  'action/forgot-password', component : RequestForgetPasswordComponent },
+  { path:  'action/recovery/:code', component : RecoverPasswordComponent},
   { path : 'error', component : NoaccessComponent },
   { path : 'account/verify/:id', component : VerifyUserComponent },
   { path : 'team/invite/:id', component: TeamInviteComponent},

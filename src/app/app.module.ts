@@ -100,6 +100,7 @@ import { EmailService } from './services/email.service';
 import { UserInfoPersonalComponent } from './main/components/user/user-info/user-info-personal/user-info-personal.component';
 import { UserInfoOrganizationComponent } from './main/components/user/user-info/user-info-organization/user-info-organization.component';
 import { RequestForgetPasswordComponent } from './main/components/user/user-forget-password/request-forget-password/request-forget-password.component';
+import { RecoverPasswordComponent } from './main/components/user/user-forget-password/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +152,7 @@ import { RequestForgetPasswordComponent } from './main/components/user/user-forg
     UserInfoPersonalComponent,
     UserInfoOrganizationComponent,
     RequestForgetPasswordComponent,
+    RecoverPasswordComponent,
 
   ],
   imports: [
