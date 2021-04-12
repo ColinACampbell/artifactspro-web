@@ -236,6 +236,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
   }
 
   private downloadFileAsPWA(data: any,fileName: String,type: string) {
+    console.log(type)
     let blob = new Blob([data], { type: type});
     let url = window.URL.createObjectURL(blob);
     //let pwa = window.open(url);
@@ -244,7 +245,7 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
     a.href = url;
     console.log(fileName)
-    a.download = `${fileName}`;
+    a.download = `${fileName}.docx`;
     document.body.appendChild(a);
     a.click();        
 
