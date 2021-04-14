@@ -33,7 +33,9 @@ export class UserService {
         let status = err.status
         let activeUrl = this.router.url;
         if (status === 401 && activeUrl.includes('/app'))
-        this.router.navigate(['/error'], { replaceUrl: true })
+        {
+          this.router.navigate(['/error'], { replaceUrl: true })
+        }
       });
   }
 
@@ -97,4 +99,15 @@ export class UserService {
     const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     return regex.test(email);
   }
+
+  public requestPasswordRecovery(email:string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/user/request-password-recovery`,{
+      email
+    },{
+      observe: 'response',
+      withCredentials: true // ??
+    })
+  }
+
 }
