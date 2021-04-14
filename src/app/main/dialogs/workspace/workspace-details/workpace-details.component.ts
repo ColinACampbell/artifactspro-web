@@ -43,6 +43,7 @@ export class WorkpaceDetailsComponent implements OnInit, AfterViewInit {
 
   getWorkspaceParticipantAsUser()
   {
+    //this.workspaceService.getParticipantAsCurrentUser(this.workspaceID)
     this.workspaceService.workspaceUserAsParticipantObservable
     .subscribe((user : WorkspaceParticipant)=>{
       this.workspaceParticipantAsUser = user

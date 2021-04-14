@@ -53,7 +53,7 @@ export class ViewWorkSpaceComponent implements OnInit {
 
   public goBack()
   {
-    this.location.back()
+    this.location.back();
   }
 
   private loadWorkspaceInfo()

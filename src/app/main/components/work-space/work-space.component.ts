@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Member } from 'src/app/models/member';
 import { MemberService } from 'src/app/services/member.service';
 import { CreateWorkSpaceDialogComponent } from '../../dialogs/workspace/create-work-space-dialog/create-work-space-dialog.component';
+// This component provides a view for a workspace
 
 @Component({
   selector: 'app-work-space',
@@ -21,7 +22,8 @@ export class WorkSpaceComponent implements OnInit {
     private workSpaceService: WorkSpaceService,
     private memberService : MemberService,
     private createWSDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
