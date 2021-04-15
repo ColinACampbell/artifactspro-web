@@ -110,4 +110,15 @@ export class UserService {
     })
   }
 
+  public recoverPassword(recoveryCode:string,newPassword:string) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/user/recover-password`,{
+      recoveryCode,
+      password: newPassword
+    },{
+      observe: 'response',
+      withCredentials: true // ??
+    })
+  }
+
 }
