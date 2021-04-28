@@ -137,6 +137,14 @@ export class WorkSpaceService {
     })
   }
 
+  public removeMember(workspaceID: number, participantID: number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.delete<HttpResponse<Object>>(this.environment.baseURL() + `api/workspace/${workspaceID}/remove-member?id=${participantID}`,
+    {
+      observe:"response"
+    })
+  }
+
   public postMessage(workspaceID: number, title: String, content: String, time: number, date: String, artifactName: String): Observable<HttpResponse<Object>> {
     return this.httpClient.post(this.environment.baseURL() + `api/workspace/${workspaceID}/add/message`,
       {

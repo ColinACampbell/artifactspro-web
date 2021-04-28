@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +16,7 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
   public selectedRole : string;
   public requestInProcess : Boolean = false
   public roles : string[] = [];
-
+  public participantRole : string;
   public userRole : string;
   public isSureToDelete : Boolean = false 
 
@@ -34,6 +35,8 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
         if (role !== participant.role)
           this.roles.push(role)
       })
+
+      this.participantRole = participant.role;
       this.selectedRole = participant.role // set the user role on default
       this.roles.unshift(participant.role) // add it to the start on the array
       
@@ -56,7 +59,6 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
       })
   }
 
-
   public initRemoveParticipant()
   {
     this.isSureToDelete = true
@@ -65,7 +67,33 @@ export class WsdetailParticipantsActionDialogComponent implements OnInit {
   // TODO Handle removing user from the a workspace
   public differDelete()
   {
-    this.dialogRef.close()
     this.isSureToDelete = false;
+    this.dialogRef.close()
   }
+
+  public removeParticipant()
+  {
+    if (this.participantRole === 'admin')
+      this.matSnackBar.open("You Cannot Remove An Admin","Okay")
+      .onAction()
+      .subscribe(()=>{
+        this.dialogRef.close();
+      })
+    else
+      this.workspaceService.removeMember(this.dialogData.workspaceID,this.dialogData.participantID)
+      .subscribe((response : HttpResponse<Object>)=>{
+        console.log(response.status)
+        if (response.status === 200)
+        {
+          this.workspaceService.getParticipants(this.dialogData.workspaceID)
+          this.matSnackBar.open('This Member Was Removed Successfully','Okay')
+          .onAction()
+          .subscribe(()=>{
+            this.dialogRef.close()
+          })
+        }
+      })
+
+  }
+
 }

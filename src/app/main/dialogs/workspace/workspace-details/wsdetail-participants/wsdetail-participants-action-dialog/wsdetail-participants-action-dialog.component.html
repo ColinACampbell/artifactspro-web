@@ -17,7 +17,7 @@
   <div *ngIf="isSureToDelete" style="text-align: center;">
     <h3> Are You Sure ?</h3>
     <div>
-      <button mat-flat-button> Yes </button>
+      <button mat-flat-button (click)="removeParticipant()"> Yes </button>
       <button mat-raised-button color="primary" (click)="differDelete()"> No </button>
     </div>
   </div>

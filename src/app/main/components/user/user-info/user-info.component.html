@@ -5,5 +5,5 @@
     <mat-tab label="My Organization" *ngIf="(this.user && this.organization) && (this.user.user_id == this.organization.org_id)"> 
         <app-user-info-organization [organization]="this.organization" [user]="this.user"> </app-user-info-organization>
     </mat-tab>
-    <mat-tab label="Billing"> Content 2 </mat-tab>
+    <!--<mat-tab label="Billing"> Content 2 </mat-tab>-->
 </mat-tab-group>
