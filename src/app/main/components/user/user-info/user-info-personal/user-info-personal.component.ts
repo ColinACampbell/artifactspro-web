@@ -29,7 +29,7 @@ export class UserInfoPersonalComponent implements OnInit {
 
   public cancelEdit()
   {
-
+    this.isEditable = !this.isEditable;
   }
 
   public makeFieldsEditable()
