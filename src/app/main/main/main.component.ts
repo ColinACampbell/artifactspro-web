@@ -3,6 +3,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormControl } from '@angular/forms';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
 import { MatDrawer } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Organization } from 'src/app/models/organization';
 import { OrganizationService } from 'src/app/services/organization.service';
 import { NavigationService } from 'src/app/services/util/navigation.service';
@@ -20,7 +22,6 @@ interface LinkToPage
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, AfterViewInit{
-
 
   public links : LinkToPage[] = [
     {
@@ -42,7 +43,9 @@ export class MainComponent implements OnInit, AfterViewInit{
 
   constructor(
     private navigationService : NavigationService,
-    private organizationService: OrganizationService
+    private organizationService: OrganizationService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   @ViewChild('drawer',{static : true}) public mainNavDrawer : MatDrawer
@@ -71,6 +74,20 @@ export class MainComponent implements OnInit, AfterViewInit{
     .subscribe(( organization : Organization)=>
     {
       this.organization = organization
+    },(error)=>{
+      console.log(error)
+      const status = error['status']
+      const nonProcessisble = 422;
+      // Check if the user belongs to an organization
+      if (status === nonProcessisble)
+      {
+        this.snackBar.open("You don't belong to any organization, do you want to create one ?","Yes")
+        .onAction()
+        .subscribe(()=>{
+          this.router.navigate(['/signup/action'])
+        })
+      }
+
     });
   }
 

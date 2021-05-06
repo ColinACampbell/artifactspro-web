@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit {
       if (status === 200)
       {
         const jwtToken = response.body['token']
+        console.log(jwtToken)
+
         this.jwtService.setToken(jwtToken)
         this.router.navigate(['/app'])
       }
@@ -51,8 +53,14 @@ export class LoginComponent implements OnInit {
         this.snackBar.open("Looks like your email or password is incorrect","Okay");
       }
     },(err)=>{
-      console.log(err)
-      this.snackBar.open("Looks like your email or password is incorrect","Okay");
+
+      const status = err['status']
+      const cantProcessInfo = 422;
+      const wrongCredentials = 401;
+      if (status == wrongCredentials)
+        this.snackBar.open("Looks like your email or password is incorrect","Okay");
+      else if (status == cantProcessInfo)
+        this.snackBar.open("This account exists but doesn't belong to any organization","Okay")
     })
   }
 
