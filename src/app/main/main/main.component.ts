@@ -1,4 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { HttpResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
@@ -7,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Organization } from 'src/app/models/organization';
 import { OrganizationService } from 'src/app/services/organization.service';
+import { UserService } from 'src/app/services/user.service';
+import { JWTService } from 'src/app/services/util/jwt.service';
 import { NavigationService } from 'src/app/services/util/navigation.service';
 
 interface LinkToPage
@@ -44,8 +47,10 @@ export class MainComponent implements OnInit, AfterViewInit{
   constructor(
     private navigationService : NavigationService,
     private organizationService: OrganizationService,
+    private userService: UserService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private jwtService: JWTService
   ) { }
 
   @ViewChild('drawer',{static : true}) public mainNavDrawer : MatDrawer
@@ -54,6 +59,8 @@ export class MainComponent implements OnInit, AfterViewInit{
   public selectedTab :any;
   public showFiller : boolean = true
   public organization : Organization;
+  public organizations : Organization[];
+  public chosenOrganization: Organization;
   public fullYear : number = new Date().getFullYear()
 
   ngOnInit() {
@@ -67,6 +74,14 @@ export class MainComponent implements OnInit, AfterViewInit{
     this.navigationService.setMainNavDrawer(this.mainNavDrawer)
   }
 
+  private getOrganizations()
+  {
+    this.organizationService.getOrganizations()
+    .subscribe((organizations : Organization[])=>{
+      // Filter out the current organization where ever it is
+      this.organizations = organizations.filter(organization => organization.org_id !== this.organization.org_id)
+    })
+  }
 
   private getOrganization()
   {
@@ -74,6 +89,7 @@ export class MainComponent implements OnInit, AfterViewInit{
     .subscribe(( organization : Organization)=>
     {
       this.organization = organization
+      this.getOrganizations();
     },(error)=>{
       console.log(error)
       const status = error['status']
@@ -89,6 +105,22 @@ export class MainComponent implements OnInit, AfterViewInit{
       }
 
     });
+  }
+
+  public switchOrganizations(event:any)
+  {
+    const orgID = event['value']
+    this.organizationService.currentOrganizationID = orgID;
+    this.organizationService.switchOrganization(orgID)
+    .subscribe((response:HttpResponse<Object>)=>{
+      const okayStatus = 200
+      if (response.status === okayStatus)
+      {
+        const token = response.body['token']
+        this.jwtService.setToken(token)
+        location.reload()
+      } 
+    })
   }
 
   // Persist the value of the tab index

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       return
     }
 
-    this.userServ.login(email,password,this.organizationService.currentOranizationID)
+    this.userServ.login(email,password,this.organizationService.currentOrganizationID)
     .subscribe((response:HttpResponse<Object>)=>
     {
       let status = response.status
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
       if (status === 200)
       {
         const jwtToken = response.body['token']
-        console.log(jwtToken)
 
         this.jwtService.setToken(jwtToken)
         this.router.navigate(['/app'])

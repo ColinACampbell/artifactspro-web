@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class OrganizationService {
   
 
-  private currentOrgID : number;
+  private currentOrgID : number = parseInt(localStorage.getItem("currentOrgID"));
 
   private organization : Organization;
 
@@ -43,8 +43,13 @@ export class OrganizationService {
     this.organization = organization;
   }
 
-  get currentOranizationID() {
+  public get currentOrganizationID() {
     return this.currentOrgID;
+  }
+
+  public set currentOrganizationID(id:number) {
+    localStorage.setItem("currentOrgID",`${id}`)
+    this.currentOrgID = id;
   }
 
   public getOrganization() : Observable<Organization>
@@ -52,6 +57,13 @@ export class OrganizationService {
     return this.httpClient.get<Organization>(this.environment.baseURL()+'api/org/info',
     {
       withCredentials : true,
+    })
+  }
+
+  public getOrganizations(): Observable<Organization[]>
+  {
+    return this.httpClient.get<Organization[]>(this.environment.baseURL()+'api/org/',{
+      withCredentials: true
     })
   }
 
@@ -71,5 +83,15 @@ export class OrganizationService {
       withCredentials : true,
       observe : "response"
     });
+  }
+
+  public switchOrganization(newOrgID: number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/org/switch`,
+    {
+      newOrgID:newOrgID
+    },{
+      observe: "response"
+    })
   }
 }
