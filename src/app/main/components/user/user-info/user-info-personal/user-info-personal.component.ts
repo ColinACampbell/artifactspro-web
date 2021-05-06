@@ -11,7 +11,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserInfoPersonalComponent implements OnInit {
 
-
   public user : User;
   public isEditable: boolean;
 
@@ -39,14 +38,13 @@ export class UserInfoPersonalComponent implements OnInit {
 
   public saveChanges()
   {
-    // Work on send point to updating user name
     this.isEditable = !this.isEditable;
-    console.log(this.user)
     const firstName = this.user.first_name;
     const lastName = this.user.last_name;
     this.userService.updateBasicUserInfo(firstName,lastName)
     .subscribe((response:HttpResponse<Object>)=>{
-      if (response.status === 200)
+      const okayStatus = 200;
+      if (response.status === okayStatus)
       {
         this.snackBar.open('Information Updated Successfully. Logout and login for changes to take effect','Okay')
       }
