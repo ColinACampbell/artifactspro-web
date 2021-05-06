@@ -47,9 +47,9 @@ export class UserService {
       .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/signup/process-1", body,{observe:"response",withCredentials:true})
   }
 
-  public login(email: String, password: String) : Observable<HttpResponse<Object>>
+  public login(email: String, password: String, chosenOrgID: number) : Observable<HttpResponse<Object>>
    {
-    let body = { email, password }
+    let body = { email, password,chosenOrgID }
 
     return this.httpClient
       .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/login", body, {

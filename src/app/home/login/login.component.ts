@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { JWTService } from 'src/app/services/util/jwt.service';
+import { OrganizationService } from 'src/app/services/organization.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private snackBar: MatSnackBar,
     private userServ:UserService,
     private router:Router,
-    private jwtService: JWTService
+    private jwtService: JWTService,
+    private organizationService: OrganizationService
     ) { }
 
   ngOnInit() {
@@ -37,7 +39,8 @@ export class LoginComponent implements OnInit {
       return
     }
 
-    this.userServ.login(email,password).subscribe((response:HttpResponse<Object>)=>
+    this.userServ.login(email,password,this.organizationService.currentOranizationID)
+    .subscribe((response:HttpResponse<Object>)=>
     {
       let status = response.status
 

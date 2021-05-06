@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 
 export class OrganizationService {
   
-  private jwtToken: string = localStorage.getItem("jwt_token")
+
+  private currentOrgID : number;
 
   private organization : Organization;
 
@@ -36,9 +37,14 @@ export class OrganizationService {
     })
   }
 
+  // TODO : Review to remove this
   public setOrganization(organization:Organization)
   {
     this.organization = organization;
+  }
+
+  get currentOranizationID() {
+    return this.currentOrgID;
   }
 
   public getOrganization() : Observable<Organization>
