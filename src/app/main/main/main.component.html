@@ -4,7 +4,7 @@
     style="height: calc(100vh - 64px)">
     <mat-drawer #drawer mode="over" style="width: 300px;">
         <mat-list class="noselect" >
-            <div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div style="width: 100%; min-height: 200px; max-height: 340px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
                 <div style="width: 120px; height: 120px;">
                     <mat-icon style="font-size: 120px;color:#25517c"> business </mat-icon>
@@ -12,9 +12,9 @@
                 <h1 *ngIf="organization" style="margin-top: 0px;margin-bottom: 0px; color:#3597fa"> {{organization.name}} </h1>
                 <div style="margin-top: 5px;margin-bottom: 10px;">
                     <button mat-button [color]="'primary'" [matTooltip]="'Create A New Organization'" style="margin-right: 3px;" [routerLink]="'/signup/action'"> Create New</button>
-                    <button mat-flat-button [matTooltip]="'Switch Organizations'" [color]="'primary'"> Change </button>
+                    <button mat-flat-button [matTooltip]="'Switch Organizations'" [color]="'primary'" (click)="toggleSwitchOrganization()"> Change </button>
                 </div>
-                <div>
+                <div *ngIf="isReadyToSwitchOrg">
                     <mat-form-field appearance="fill">
                         <mat-label>Select Organization</mat-label>
                         <mat-select [(ngModel)]="chosenOrganization" name="organization" (selectionChange)="switchOrganizations($event)">
@@ -25,7 +25,7 @@
                       </mat-form-field>
                 </div>
             </div>
-            <hr style="width: 85%;margin-top: 45px;"/>
+            <hr style="width: 85%;margin-top: 5px;"/>
             <mat-list-item matRipple *ngFor="let link of links" [routerLink]="link.routerLink"> 
                 <mat-icon mat-list-icon class="icon">{{link.icon}}</mat-icon>
                 <span class="label"> {{link.label}} </span>

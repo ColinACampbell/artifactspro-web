@@ -26,6 +26,7 @@ interface LinkToPage
 })
 export class MainComponent implements OnInit, AfterViewInit{
 
+  public isReadyToSwitchOrg : boolean = false
   public links : LinkToPage[] = [
     {
       label: "Artifacts",
@@ -133,5 +134,10 @@ export class MainComponent implements OnInit, AfterViewInit{
   public toggle()
   {
     this.mainNavDrawer.toggle()
+  }
+
+  public toggleSwitchOrganization()
+  {
+    this.isReadyToSwitchOrg = !this.isReadyToSwitchOrg
   }
 }
