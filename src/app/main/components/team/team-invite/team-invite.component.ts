@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpResponse } from '@angular/common/http';
 import { JWTService } from 'src/app/services/util/jwt.service';
 import { BillingService } from 'src/app/services/billing.service';
+import { Observable } from 'rxjs';
+import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-team-invite',
@@ -13,6 +15,11 @@ import { BillingService } from 'src/app/services/billing.service';
   styleUrls: ['./team-invite.component.css']
 })
 export class TeamInviteComponent implements OnInit {
+
+  private conflictStatus = 409;
+  private createdStatus = 201;
+  private okayStatus = 200;
+  private unauthorizedStatus = 401
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +33,7 @@ export class TeamInviteComponent implements OnInit {
 
   public accessCode: string;
   public organizationName: string;
-  public loginInProcess: Boolean = false;
+  public inProcess: Boolean = false;
 
   ngOnInit() {
     this.accessCode = this.route.snapshot.paramMap.get('id');
@@ -36,48 +43,70 @@ export class TeamInviteComponent implements OnInit {
       })
   }
 
+
+  private addUserToOrg(accessCode: string, token) {
+
+    this.jwtService.setToken(token);
+    this.orgServ.addUserToOganization(accessCode)
+      .subscribe((response: HttpResponse<Object>) => {
+
+        let status = response.status;
+        if (status === this.createdStatus) {
+          const token2 = response.body['token']
+          this.jwtService.setToken(token2);
+          let snackBarRef = this.snackBar.open('You have joined successfully. Please check your email to verify your account if you are new', 'Ok');
+          snackBarRef.onAction()
+            .subscribe(() => {
+              this.router.navigate(['/app'])
+            })
+
+        }
+      })
+  }
+
   // TODO : Fix this later
   public signUpUser(email: String, password: String) {
+
     this.billingService.verifyOrgCapacity(this.accessCode)
       .subscribe((response: HttpResponse<Object>) => {
 
-        this.loginInProcess = true;
+        this.inProcess = true;
         this.userServ.signup(email, password)
           .subscribe((response: HttpResponse<Object>) => {
-            this.loginInProcess = false;
+            this.inProcess = false;
             let status = response.status
-            if (status === 201) {
+            if (status === this.createdStatus) {
               const token = response.body['token']
-              this.jwtService.setToken(token);
-              this.orgServ.addUserToOganization(this.accessCode)
+              this.addUserToOrg(this.accessCode, token)
+            }
+          }, (error) => {
+            //this.inProcess = false
+            const status = error['status']
+
+            if (status === this.conflictStatus) {
+              // if the user already has an account, we should log them in
+              this.userServ.login(email, password, null)
                 .subscribe((response: HttpResponse<Object>) => {
-
-                  let status = response.status;
-                  const success = 201
-                  if (status === success) {
-                    const token2 = response.body['token']
-                    this.jwtService.setToken(token2);
-                    let snackBarRef = this.snackBar.open('You joined successfully. Please check your email to verify your account', 'Ok');
-                    snackBarRef.onAction()
-                      .subscribe(() => {
-                        this.router.navigate(['/app'])
-                      })
-
+                  this.inProcess = false;
+                  if (response.status == this.okayStatus) {
+                    const token = response.body['token']
+                    this.addUserToOrg(this.accessCode, token);
                   }
+                },(err)=>{
+                  this.inProcess = false
+                  if (err['status'] === this.unauthorizedStatus)
+                    this.snackBar.open('Email or password in incorrect','Okay')
                 })
             }
-          },(error)=>{
-            this.loginInProcess = false
-            const status = error['status']
-            const conflict = 409;
-            if (status === conflict)
-              this.snackBar.open("An account for this email already exists","Okay")
+            //this.snackBar.open("An account for this email already exists","Okay")
           })
 
-      },(error)=>{
+      }, (error) => {
         console.log(error)
-        this.snackBar.open("Cannot join organization. The User limit has been reached","Okay")
+        this.snackBar.open("Cannot join organization. The User limit has been reached", "Okay")
       })
   }
+
+
 
 }
