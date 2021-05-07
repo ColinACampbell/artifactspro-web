@@ -11,8 +11,10 @@
                 </div>
                 <h1 *ngIf="organization" style="margin-top: 0px;margin-bottom: 0px; color:#3597fa"> {{organization.name}} </h1>
                 <div style="margin-top: 5px;margin-bottom: 10px;">
-                    <button mat-button [color]="'primary'" [matTooltip]="'Create A New Organization'" style="margin-right: 3px;" [routerLink]="'/signup/action'"> Create New</button>
-                    <button mat-flat-button [matTooltip]="'Switch Organizations'" [color]="'primary'" (click)="toggleSwitchOrganization()"> Change </button>
+                    <button mat-button [color]="'primary'" [matTooltip]="'Create A New Organization'" 
+                        style="margin-right: 3px;" [routerLink]="'/signup/action'"> Create New </button>
+                    <button mat-flat-button [matTooltip]="'Switch Organizations'" [color]="'primary'" (click)="toggleSwitchOrganization()"> 
+                        {{ isReadyToSwitchOrg ? 'Cancel' : 'Switch' }} </button>
                 </div>
                 <div *ngIf="isReadyToSwitchOrg">
                     <mat-form-field appearance="fill">
