@@ -60,6 +60,16 @@ export class OrganizationService {
     })
   }
 
+  public changeOrgInfo( orgName:string, phoneLine1:string, 
+    phoneLine2:string, address1:string, address2:string,orgID:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/org/info?id=${orgID}`,{
+      orgName, phoneLine1, phoneLine2, address1, address2
+    },{
+      observe:"response"
+    })
+  }
+
   public getOrganizations(): Observable<Organization[]>
   {
     return this.httpClient.get<Organization[]>(this.environment.baseURL()+'api/org/',{
