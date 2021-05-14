@@ -1,0 +1,57 @@
+<div *ngIf="!this.user && !this.organization"
+    style="display: flex;justify-content: center;align-items: center;margin-top: 100px;">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="editable-fields" *ngIf="this.user && this.organization">
+    <div style="margin-top: 10px;">
+        <img src="./../../../../../assets/profile-placeholder.png" width="100" style="border-radius:50%;" />
+    </div>
+    <div>
+        <p>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Organization Name</mat-label>
+                <input matInput placeholder="Organization Name" [(ngModel)]="this.organization.name"
+                    [disabled]="!isEditable">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Address Line 1</mat-label>
+                <input matInput placeholder="Address Line 1" [(ngModel)]="this.organization.address_line_1"
+                    [disabled]="!isEditable">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Address Line 2</mat-label>
+                <input matInput placeholder="Address Line 2" [(ngModel)]="this.organization.address_line_2"
+                    [disabled]="!isEditable">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Phone Line 1</mat-label>
+                <input matInput placeholder="Phone Line 1" [(ngModel)]="this.organization.phone_line_1"
+                    [disabled]="!isEditable">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Phone Line 2</mat-label>
+                <input matInput placeholder="Phone Line 2" [(ngModel)]="this.organization.phone_line_2"
+                    [disabled]="!isEditable">
+            </mat-form-field>
+        </p>
+        <div style="text-align: center;">
+            <button color="primary" *ngIf="isEditable" mat-raised-button (click)="saveChanges()">
+                Save Information
+            </button>
+            <button color="primary" mat-raised-button *ngIf="!isEditable" (click)="makeFieldsEditable()">
+                Edit Information
+            </button>
+            <button mat-button *ngIf="isEditable" (click)="cancelEdit()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

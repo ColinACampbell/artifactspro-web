@@ -11,10 +11,25 @@ export class UserInfoOrganizationComponent implements OnInit {
 
   @Input('user') public user : User;
   @Input('organization') public organization: Organization
-  
+  public isEditable : boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
+  public saveChanges()
+  {
+
+  }
+
+  public makeFieldsEditable()
+  {
+    this.isEditable = !this.isEditable;
+  }
+
+  public cancelEdit()
+  {
+    this.isEditable = !this.isEditable;
+  }
 }

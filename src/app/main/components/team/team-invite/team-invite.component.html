@@ -24,7 +24,7 @@
             </mat-form-field>
         </p>
         <!---->
-        <mat-progress-bar *ngIf='loginInProcess' mode="indeterminate" ></mat-progress-bar>
+        <mat-progress-bar *ngIf='inProcess' mode="indeterminate" ></mat-progress-bar>
         <p style="text-align:center">
             <button mat-raised-button color="primary" (click)="signUpUser(email.value,password.value)"> Join </button>
         </p>

@@ -28,6 +28,7 @@ export class UserInfoComponent implements OnInit {
     this.orgService.getOrganization()
     .subscribe((organization : Organization)=>{
       this.organization = organization
+      console.log(organization)
     })
   }
 

@@ -7,7 +7,6 @@ import { HttpResponse } from '@angular/common/http';
 import { JWTService } from 'src/app/services/util/jwt.service';
 import { BillingService } from 'src/app/services/billing.service';
 import { Observable } from 'rxjs';
-import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-team-invite',

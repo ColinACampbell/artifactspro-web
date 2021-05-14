@@ -6,5 +6,9 @@ export interface Organization
   name : string, 
   createdAt : Timestamp<number>, 
   type : string, 
-  user_id : number
+  user_id : number,
+  address_line_1:string,
+  address_line_2:string,
+  phone_line_1:string,
+  phone_line_2:string,
 }
