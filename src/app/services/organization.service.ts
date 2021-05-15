@@ -104,4 +104,14 @@ export class OrganizationService {
       observe: "response"
     })
   }
+
+  public updateAccessCode(orgID:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/org/access-code`,{
+      orgID
+    },{
+      observe:"response"
+    })
+  }
+
 }

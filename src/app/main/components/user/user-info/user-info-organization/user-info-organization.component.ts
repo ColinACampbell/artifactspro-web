@@ -49,4 +49,17 @@ export class UserInfoOrganizationComponent implements OnInit {
   {
     this.isEditable = !this.isEditable;
   }
+
+  public updateInviteLink()
+  {
+    this.organizationService.updateAccessCode(this.organization.org_id)
+    .subscribe((response:HttpResponse<Object>)=>{
+      const okayStatus = 200
+      if (response.status === okayStatus)
+        this.snackBar.open("Invite code was updated","Okay")
+    },(error)=>{
+      this.snackBar.open("Looks like something went wrong","Okay")
+      if (error) throw error;
+    })
+  }
 }
