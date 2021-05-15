@@ -44,7 +44,7 @@ export class UserService {
     let body = { email, password }
 
     return this.httpClient
-      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/signup/process-1", body,{observe:"response",withCredentials:true})
+      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/sign-up", body,{observe:"response",withCredentials:true})
   }
 
   public login(email: String, password: String, chosenOrgID: number) : Observable<HttpResponse<Object>>
@@ -59,7 +59,7 @@ export class UserService {
   }
 
   public getUserInfo(): Observable<User> {
-    return this.httpClient.get<User>(this.environment.baseURL() + "api/user/info",
+    return this.httpClient.get<User>(this.environment.baseURL() + "api/user",
       {
         withCredentials: true
       })
@@ -78,7 +78,7 @@ export class UserService {
 
   public updateBasicUserInfo(newFirstName:string, newLastName:string) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+'api/user/update-base-info',{
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+'api/user/',{
       newFirstName,
       newLastName
     },{
@@ -102,7 +102,7 @@ export class UserService {
 
   public requestPasswordRecovery(email:string) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/user/request-password-recovery`,{
+    return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL()+`api/user/password/recovery`,{
       email
     },{
       observe: 'response',
@@ -112,7 +112,7 @@ export class UserService {
 
   public recoverPassword(recoveryCode:string,newPassword:string) : Observable<HttpResponse<Object>>
   {
-    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/user/recover-password`,{
+    return this.httpClient.put<HttpResponse<Object>>(this.environment.baseURL()+`api/user/password/recovery`,{
       recoveryCode,
       password: newPassword
     },{
