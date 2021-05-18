@@ -1,5 +1,4 @@
-<app-main-header></app-main-header>
-<mat-toolbar color='primary' *ngIf="artifact && this.user">
+<mat-toolbar style="background-color: white;" *ngIf="artifact && this.user">
   <mat-toolbar-row>
     <span> <button mat-button (click)='goBack()'>
         <mat-icon>keyboard_arrow_left</mat-icon>
@@ -30,8 +29,39 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div id="artifact-display" *ngIf="this.artifactManager.hasAccessFromAuth(this.artID) || !this.userForbidden">
+  <div>
+    <img src="./../../../../assets/profile-placeholder.png" width="130" style="border-radius: 50%;"/>
+  </div>
+  <div style="padding:5px;text-align: center;">
+    <h1> Version 1</h1>
+    <small> by Colin Campbell, 10/10/2020</small>
+  </div>
+  <div style="margin:10px;padding:5px;min-width: 400px; text-align: center;
+          max-width: 500px; box-shadow: 0px 2px 3px grey;border-radius: 10px; min-height: 60px; max-height: 300px;">
+    <h4 style="margin-bottom: 2px;"> <b> Description </b> </h4>
+    <p style="padding: 5px;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+      in culpa qui officia deserunt mollit anim id est laborum </p>
+  </div>
+  <div>
+    <h1> Other Versions </h1>
+    <div>
+      
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <mat-chip *ngFor="let chip of ['Version 2','Version 3']" selected [color]="primary">
+          {{chip}}
+        </mat-chip>
+      </mat-chip-list>
+      
+    </div>
+  </div>
+</div>
+
 <div style="display: flex; justify-content: center;"
-  *ngIf="this.artifactManager.hasAccessFromAuth(this.artID) || !this.userForbidden">
+  *ngIf="false">
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">

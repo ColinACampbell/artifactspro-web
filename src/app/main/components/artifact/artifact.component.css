@@ -59,3 +59,12 @@ mat-list-item:hover
   margin-left:5px;
   margin-right:5px;
 }
+
+
+#artifact-display
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
