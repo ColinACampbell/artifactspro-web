@@ -1,3 +1,4 @@
+<app-header></app-header>
 <mat-toolbar color="primary" *ngIf="artifact && this.user">
   <mat-toolbar-row>
     <span> <button mat-button (click)='goBack()'>
@@ -29,7 +30,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div id="artifact-display" *ngIf="(this.artifactManager.hasAccessFromAuth(this.artID) || !this.userForbidden) && this.selectedDocument !== null">
+<div id="artifact-display" *ngIf="false">
   <div>
     <img src="./../../../../assets/profile-placeholder.png" width="130" style="border-radius: 50%;"/>
   </div>
@@ -70,7 +71,7 @@
 </div>
 
 <div style="display: flex; justify-content: center;"
-  *ngIf="false">
+  *ngIf="(this.artifactManager.hasAccessFromAuth(this.artID) || !this.userForbidden)">
 
   <mat-list class="doc-list">
     <div mat-subheader style="justify-content:flex-start;">
