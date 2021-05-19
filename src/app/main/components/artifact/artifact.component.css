@@ -68,3 +68,59 @@ mat-list-item:hover
   justify-content: center;
   align-items: center;
 }
+
+.version-card
+{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 400px;
+  margin-left: 20px;
+  border-radius: 30px;
+  padding: 10px;
+  padding-left: 30px;
+  box-shadow: 0px 0px 5px #074485;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.version-card:hover
+{
+  transform: translateY(-5px);
+}
+
+
+.version-card > div > div > h3
+{
+  margin-bottom: 0px;
+  margin-left: 10px;
+  height: 30px;
+}
+
+.version-info
+{
+  width: 90%;
+  margin-left: 10px;
+}
+
+.version-description
+{
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+.version-header
+{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

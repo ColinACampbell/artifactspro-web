@@ -76,6 +76,8 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
     this.docServ.documentsObservable
       .subscribe((documents: ADocument[]) => {
         this.documents = documents;
+        this.documents.reverse();
+        this.selectedDocument = this.documents[0]
       })
 
   }
