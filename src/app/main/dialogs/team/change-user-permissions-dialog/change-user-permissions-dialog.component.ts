@@ -16,6 +16,7 @@ export class ChangeUserPermissionsDialogComponent implements OnInit {
   public potentialRoles : string[] = ['admin','member','guest']
   public selectedRole : string;
   public requestInProcess : Boolean = false;
+  public isAboutToRemoveUser : boolean = false;
 
   constructor(
     private dialogRef : MatDialogRef<ChangeUserPermissionsDialogComponent>,
@@ -51,6 +52,28 @@ export class ChangeUserPermissionsDialogComponent implements OnInit {
       }
     },(error)=>{
       this.snackBar.open("Looks like something went wrong under the hood. Please try again","Okay")
+    })
+  }
+
+  public toggleIsAboutToRemoveUser()
+  {
+    this.isAboutToRemoveUser = !this.isAboutToRemoveUser;
+  }
+
+  public removeUser()
+  {
+    this.memberService.removeFromOrg(this.dialogData.userID)
+    .subscribe((response:HttpResponse<Object>)=>{
+      const okayStatus = 200;
+      if (response.status === okayStatus)
+      {
+        this.memberService.getAllMembers();
+        this.dialogRef.close();
+        this.snackBar.open("Removed User From Organization Successfully","Okay")
+      }
+    },(err)=>{
+        console.log(err)
+        this.snackBar.open("Whoops. Looks like something went wrong, please try again","Okay")
     })
   }
 

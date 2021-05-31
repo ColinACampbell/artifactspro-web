@@ -1,5 +1,6 @@
 <mat-spinner [diameter]="50" *ngIf="requestInProcess"></mat-spinner>
 <br/>
+<h3> Change Role </h3>
 <mat-form-field appearance="fill">
   <mat-label> Select Role </mat-label>
     <mat-select [(value)]="selectedRole" (valueChange)="changeRole()">
@@ -8,3 +9,11 @@
       </mat-option>
     </mat-select>
 </mat-form-field>
+<div>
+  <button mat-raised-button color="warn" *ngIf="!isAboutToRemoveUser" (click)="toggleIsAboutToRemoveUser()"> Remove From Organization </button>
+  <div *ngIf="isAboutToRemoveUser">
+    <h4> Are You Sure ? </h4>
+    <button mat-flat-button color="primary" (click)="removeUser()"> Yes </button>
+    <button mat-raised-button color="primary" class="margin-left-10" (click)="toggleIsAboutToRemoveUser()"> No </button>
+  </div>
+</div>

@@ -62,4 +62,11 @@ export class MemberService {
     })
   }
 
+  public removeFromOrg(userID:number) : Observable<HttpResponse<Object>>
+  {
+    return this.httpClient.delete<HttpResponse<Object>>(this.environment.baseURL()+`api/members/user/${userID}`,{
+      observe:"response"
+    });
+  }
+
 }
