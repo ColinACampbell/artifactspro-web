@@ -24,7 +24,7 @@ export class DocumentService {
 
   public getDocuments(artID:number)
   {
-    const observer = this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/from-art/${artID}`,
+    const observer = this.httpClient.get<ADocument[]>(this.environment.baseURL()+`api/docs/${artID}`,
     {
       withCredentials : true,
     })
