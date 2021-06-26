@@ -37,12 +37,22 @@
   align-items: center;
   height: 60px;
   padding-left: 20px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
+.list-item:hover{
+  background-color: #dfdfdf;
+}
+
+.list-item-selected{
+  background-color: #d5f1fd !important;
+}
 
 .item-label
 {
-  margin-left: 10px;
+  margin-left: 25px;
+  text-transform: uppercase;
 }
 
 .indicator
@@ -171,4 +181,14 @@ mat-list-item:hover
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

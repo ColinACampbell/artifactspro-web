@@ -73,12 +73,12 @@
 <div style="display: flex; justify-content: center;"
   *ngIf="(this.artifactManager.hasAccessFromAuth(this.artID) || !this.userForbidden)">
 
-  <mat-list class="doc-list" *ngIf="documents||async">
+  <mat-list class="doc-list" *ngIf="documents||async" draggable="">
     <div mat-subheader style="justify-content:flex-start;">
       Versions
     </div>
-    <mat-divider></mat-divider>
-    <div class="list-item" *ngFor="let document of documents" (click)="selectDocument(document)">
+    <!--<mat-divider></mat-divider>-->
+    <div class="list-item noselect" [ngClass]="{'list-item-selected':document.doc_id === this.selectedDocument.doc_id}" *ngFor="let document of documents" (click)="selectDocument(document)">
       <div class="poles">
         <div class="pole-up" *ngIf="!isFirstDocument(document)"></div>
         <div class="pole-down" *ngIf="!isLastDocument(document)"></div>
@@ -94,7 +94,7 @@
     <!--<mat-divider></mat-divider>-->
   </mat-list>
 
-  <div style="width: 60%;">
+  <div style="width: 60%;" draggable="true">
     <div class="artifact-view-absent" *ngIf="!docSelected">
       <div>
         <img width="300" src="./../../../assets/doc_search.svg">
@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <div *ngIf="docSelected" class="artifact-view">
+    <div *ngIf="docSelected && artifact" class="artifact-view">
       <div style="width: 100%;">
         <div style="text-align: left;">
           <h1> {{ artifact.name }} / {{ selectedDocument.version }}</h1>
