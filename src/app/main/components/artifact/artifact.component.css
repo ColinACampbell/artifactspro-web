@@ -5,6 +5,54 @@
     width: 40%;
 }
 
+.poles
+{
+  position: absolute;
+  width: 5px;
+  height: 60px;
+  background-color: transparent;
+  margin-left:9px;
+  display: flex;
+  flex-direction: column;
+}
+
+.poles > .pole-up {
+  width: 2px;
+  height: 30px;
+  background-color: #03a9f4;
+  position: absolute;
+}
+
+.poles > .pole-down {
+  width: 2px;
+  height: 30px;
+  background-color: #03a9f4;
+  position: absolute;
+  top:30px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  padding-left: 20px;
+}
+
+
+.item-label
+{
+  margin-left: 10px;
+}
+
+.indicator
+{
+  background-color: #03a9f4;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
 .artifact-view
 {
     display: flex;

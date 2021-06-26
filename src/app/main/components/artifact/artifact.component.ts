@@ -23,7 +23,7 @@ import { HttpResponse } from '@angular/common/http';
   templateUrl: './artifact.component.html',
   styleUrls: ['./artifact.component.css']
 })
-export class ArtifactComponent implements OnInit, AfterViewInit {
+export class ArtifactComponent implements OnInit {
 
   public artifact: Artifact;
   public selectedDocument: ADocument = null;
@@ -65,7 +65,6 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
     let artID = this.route.snapshot.paramMap.get('id');
     this.artID = parseInt(artID);
-
     this.route.queryParams
       .subscribe((params) => {
         this.workspaceReference = params.ref
@@ -82,13 +81,13 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
 
   }
 
-  @ViewChild('viewer', { static: false }) public viewerRef: ElementRef;
-  ngAfterViewInit(): void {
-    WebViewer({
-      path: "./../../../../assets/lib/pdftron",
-      initialDoc: "http://localhost:3000/api/docs/preview/1/2.pdf"
-    }, this.viewerRef.nativeElement)
-  }
+  //@ViewChild('viewer', { static: false }) public viewerRef: ElementRef;
+  //ngAfterViewInit(): void {
+  //  WebViewer({
+  //    path: "./../../../../assets/lib/pdftron",
+  //    initialDoc: "http://localhost:3000/api/docs/preview/1/2.pdf"
+  //  }, this.viewerRef.nativeElement)
+  //}
 
   openArtifactInfoDialog() {
     this.artifactInfoDialog.open(ShowArtifactInfoDialogComponent, {
@@ -145,6 +144,17 @@ export class ArtifactComponent implements OnInit, AfterViewInit {
           this.user = user;
         })
     })
+  }
+
+
+  public isFirstDocument(document:ADocument) : boolean
+  {
+    return 0 === this.documents.indexOf(document)
+  }
+
+  public isLastDocument(document:ADocument) : boolean
+  {
+    return (this.documents.length - 1) === this.documents.indexOf(document)
   }
 
   public selectDocument(document: ADocument) {

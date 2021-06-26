@@ -11,7 +11,7 @@ export class DocumentService {
 
 
   private document = new BehaviorSubject<ADocument>(null)
-  private documents = new BehaviorSubject<ADocument[]>(null)
+  private documents = new BehaviorSubject<ADocument[]>([])
   public documentObservable = this.document.asObservable();
   public documentsObservable = this.documents.asObservable();
 
