@@ -25,7 +25,7 @@ export class UserService {
   public authUser() {
     this.httpClient.post(this.environment.baseURL() + 'api/user/auth', {},
       {
-        withCredentials: true,
+        
         observe : 'response'
       }).subscribe((observer) => {
         // Do nothing  
@@ -44,7 +44,7 @@ export class UserService {
     let body = { email, password }
 
     return this.httpClient
-      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/sign-up", body,{observe:"response",withCredentials:true})
+      .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/sign-up", body,{observe:"response"})
   }
 
   public login(email: String, password: String, chosenOrgID: number) : Observable<HttpResponse<Object>>
@@ -53,16 +53,12 @@ export class UserService {
 
     return this.httpClient
       .post<HttpResponse<Object>>(this.environment.baseURL() + "api/user/login", body, {
-        withCredentials: true,
         observe : "response"
       })
   }
 
   public getUserInfo(): Observable<User> {
-    return this.httpClient.get<User>(this.environment.baseURL() + "api/user",
-      {
-        withCredentials: true
-      })
+    return this.httpClient.get<User>(this.environment.baseURL() + "api/user")
   }
 
   public verifyUser(first_name: String, last_name: String, accessCode) : Observable<HttpResponse<Object>>
@@ -71,7 +67,6 @@ export class UserService {
       first_name,
       last_name
     }, {
-      withCredentials: true,
       observe : "response"
     })
   }
@@ -89,7 +84,6 @@ export class UserService {
 
   public signOut() : Observable<HttpResponse<Object>>{
     return this.httpClient.post<HttpResponse<Object>>(this.environment.baseURL() + 'api/user/logout', {}, {
-      withCredentials: true,
       observe : 'response'
     })
   }
@@ -106,7 +100,6 @@ export class UserService {
       email
     },{
       observe: 'response',
-      withCredentials: true // ??
     })
   }
 
@@ -117,7 +110,6 @@ export class UserService {
       password: newPassword
     },{
       observe: 'response',
-      withCredentials: true // ??
     })
   }
 
