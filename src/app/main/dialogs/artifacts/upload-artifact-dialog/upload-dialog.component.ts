@@ -24,6 +24,8 @@ export class UploadDialogComponent implements OnInit {
   public fileData : String | ArrayBuffer;
   public uploadProgress : number;
   public hasUploaded:boolean = false;
+  private documentsLength = 0;
+  public versionName = "";
 
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
@@ -36,6 +38,11 @@ export class UploadDialogComponent implements OnInit {
   public selectedFile:File = null;
 
   ngOnInit() {
+    this.docServ.documentsObservable
+    .subscribe((documents)=>{
+      this.documentsLength = documents.length
+      this.versionName = `Version ${this.documentsLength + 1}`
+    })
   }
 
   public fileInputChange(event)

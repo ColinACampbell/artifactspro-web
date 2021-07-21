@@ -5,8 +5,6 @@ import { ArtifactsService } from 'src/app/services/artifacts.service';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
 
-// TODO Work on the interface;
-
 interface DialogData {
   name: String;
   content: String;
