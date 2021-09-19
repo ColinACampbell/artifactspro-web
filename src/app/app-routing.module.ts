@@ -16,6 +16,7 @@ import { TeamComponent } from './main/components/team/team.component';
 import { ArtifactsComponent } from './main/components/artifacts/artifacts.component';
 import { RequestForgetPasswordComponent } from './main/components/user/user-forget-password/request-forget-password/request-forget-password.component';
 import { RecoverPasswordComponent } from './main/components/user/user-forget-password/recover-password/recover-password.component';
+import { WorkflowComponent } from './main/components/workflow/workflow.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path : 'app', component : MainComponent, children : [
     { path :'', component : ArtifactsComponent},
     { path :'my-workspaces', component : WorkSpaceComponent},
-    { path :'my-team', component : TeamComponent }
+    { path :'my-team', component : TeamComponent },
+    { path : "my-workflows", component: WorkflowComponent}
   ]},
   { path : 'app/artifact/:id', component: ArtifactComponent },
   { path : 'app/workspace/:workspaceID/message/:messageID', component : WorkSpaceMessageThreadComponent },

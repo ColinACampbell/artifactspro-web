@@ -101,6 +101,7 @@ import { UserInfoPersonalComponent } from './main/components/user/user-info/user
 import { UserInfoOrganizationComponent } from './main/components/user/user-info/user-info-organization/user-info-organization.component';
 import { RequestForgetPasswordComponent } from './main/components/user/user-forget-password/request-forget-password/request-forget-password.component';
 import { RecoverPasswordComponent } from './main/components/user/user-forget-password/recover-password/recover-password.component';
+import { WorkflowComponent } from './main/components/workflow/workflow.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { RecoverPasswordComponent } from './main/components/user/user-forget-pas
     UserInfoOrganizationComponent,
     RequestForgetPasswordComponent,
     RecoverPasswordComponent,
+    WorkflowComponent,
 
   ],
   imports: [

@@ -39,6 +39,11 @@ export class MainComponent implements OnInit, AfterViewInit{
       icon: "work"
     },
     {
+      label : "WorkFlows",
+      routerLink: "my-workflows",
+      icon: "account_tree"
+    },
+    {
       label: "Team",
       routerLink: "my-team",
       icon: "groups"
